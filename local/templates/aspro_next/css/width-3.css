@@ -1,0 +1,13 @@
+body .wrapper_inner, body .maxwidth-theme{ max-width: 1350px; }
+.fill_bg_y .front.wide_page .adv_bottom_block, .fill_bg_y .front.wide_page hr{max-width: 1350px;}
+.fill_bg_y .line-row{max-width: 1350px;}
+.fill_bg_y .banners-content .maxwidth-banner{max-width: 1350px;}
+.fill_bg_y .contacts_map, .fill_bg_y .contacts-page-map{max-width: 1350px;}
+.fill_bg_y .banner.TOP_UNDERHEADER, .fill_bg_y .banner.FOOTER, .fill_bg_y .banner.CONTENT_TOP, .fill_bg_y .banner.CONTENT_BOTTOM{max-width: 1350px;}
+
+body.fill_bg_y  .top_big_one_banner { max-width: 1350px; margin: 0 auto; }
+
+@media (max-width: 1600px){
+	.top-block .top-description .confirm_region{left:10px;}
+	.top-block .top-description .confirm_region:before, .top-description .confirm_region:after{left:50px;}
+}

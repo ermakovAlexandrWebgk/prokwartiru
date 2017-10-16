@@ -1,0 +1,1 @@
+<a class="wallpapers" href="/catalog/oboi/" ></a><a class="plitka" href="/catalog/plitka/" ></a><a class="mosaic" href="/catalog/mosaic/" ></a><a class="blinds" href="/catalog/lights/" ></a><a class="lepnina" href="/catalog/lepnina/" ></a>

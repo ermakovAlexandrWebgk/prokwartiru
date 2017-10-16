@@ -1,0 +1,1 @@
+<?$arTemplate = Array("NAME"=>"Шаблон для сайта prokwarti.ru", "DESCRIPTION"=>"Светлый шаблон с фиксацией по ширине");?>

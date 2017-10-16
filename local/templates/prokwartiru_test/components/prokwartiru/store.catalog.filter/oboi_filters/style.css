@@ -1,0 +1,22 @@
+div.filter {
+    border-bottom: 1px solid #91908D;
+    margin: 5px 0 10px 0;
+    padding: 2px 0 7px 0;
+}
+div.filter table.filters{
+   width: 725px;
+}
+div.filter table.filters td{
+    vertical-align: middle;
+    width: 137px;
+}
+div.filter table.filters td.separator{
+    width: 10px;
+}
+div.filter select{
+    width: 137px;
+    font-size: 12px;
+    font-family: arial;
+}
+
+

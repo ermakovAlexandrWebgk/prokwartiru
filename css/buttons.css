@@ -1,0 +1,391 @@
+/**
+ * Кнопки расчитаны на размер шрифта, равный 12 пикселям
+ * /i/style/second/widget-part/button/
+ */
+/* firefox bugfix */
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0
+}
+
+/*
+BUGS
+
+1. кнопка рвется в недостаточно широком контейнере, поэтому 3 ее внутренних элемента отображены как inline-block, и пробелы между тегами недопустимы.
+
+button:before, button b, button:after {
+	float:left;
+}
+- так рвется верстка, если контейнер уже, чем сама кнопка
+но верстка становится безразличной к наличию пробелов между тегами
+
+2. тег button в chrome 1, chrome 2, ie8 в некоторых случаях получается слегка "подрезан" снизу
+
+*/
+
+
+/* all but IE click reaction - IE has its own */
+.button-20:active, .button-24:active, .button-40:active, .button-active {
+	outline: 0px none !important;
+	top: 0.1em;
+	left: 0.1em;
+}
+
+.button-20[disabled]:active, .button-20[rel~=disabled]:active,
+.button-24[disabled]:active, .button-24[rel~=disabled]:active {
+	top: 0;
+	left: 0;
+}
+
+.button-20, .button-40 {
+	font-size: 0.8333em;
+}
+
+.button-24 {
+	font-size: 0.91667em;
+}
+
+.button-18, .button-20, .button-24 , .button-40 {
+	display: -moz-inline-box;
+	display: inline-block;
+	margin: 0;
+	border: 0px none;
+	text-decoration: none;
+	outline: 0px none !important;
+	padding: 0 !important;
+	color: #fff !important;
+	text-transform: uppercase;
+	font-family: Tahoma, Geneva, "DejaVu Sans", Arial, sans-serif;
+	background-color: transparent;
+	background-position: left center;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+	position: relative;
+	overflow: visible;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.button-20 *, .button-24 *, .button-40 * {
+	cursor: pointer;
+	white-space: nowrap !important;
+	text-align: center !important;
+	float: none !important;
+}
+
+.button-18 b, .button-20 b, .button-24 b, .button-40 b {
+	display: -moz-inline-box;
+	display: inline-block;
+	vertical-align: top;
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-background-size: auto 100%;
+	-khtml-background-size: auto 100%;
+	/* заливка вылезает при увеличенном min-font-size, отключил пока */
+	/*background-color: transparent !important;*/
+}
+
+.button-20 b, .button-24 b {
+	padding: 0 0.5em;
+}
+
+.button-40 b {
+	line-height: 1.5em !important;
+	padding: 0.5em;
+	height: 3em !important;
+}
+
+.button-18:after, .button-18 .after, .button-18:before, .button-18 .before,
+.button-20:after, .button-20 .after, .button-20:before, .button-20 .before,
+.button-24:after, .button-24 .after, .button-24:before, .button-24 .before,
+.button-40:after, .button-40 .after, .button-40:before, .button-40 .before {
+	display: -moz-inline-box;
+	display: inline-block;
+	width: 0.5em;
+	line-height: 0;
+	content: '';
+	vertical-align: top;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	-webkit-background-size: auto 100%;
+	-khtml-background-size: auto 100%;
+}
+
+.button-18:after, .button-18 .after, .button-20:after, .button-20 .after,
+.button-24:after, .button-24 .after, .button-40:after, .button-40 .after {
+	background-position: right center;
+}
+
+.button-18:before, .button-18 .before, .button-20:before, .button-20 .before,
+.button-24:before, .button-24 .before, .button-40:before, .button-40 .before {
+	background-position: left center;
+}
+
+.button-20, .button-20 b, .button-20:after, .button-20 .after,
+.button-20:before, .button-20 .before {
+	height: 2em;
+	line-height: 2em !important;
+}
+
+.button-24, .button-24 b, .button-24:after, .button-24 .after,
+.button-24:before, .button-24 .before {
+	height: 2.1818em;
+	line-height: 2.1818em !important;
+}
+
+.button-40, .button-40 b, .button-40:after, .button-40 .after,
+.button-40:before, .button-40 .before {
+	height: 4em;
+	line-height: 1.5em !important;
+}
+
+
+/* дефолтная заливка цветом и тени*/
+.button-green b, .button-green-forward b {
+	background-color: #83db00;
+	text-shadow: 0 -0.1em 0 #7fc307;
+}
+
+.button-orange b, .button-orange-back b {
+	background-color: #f87500;
+	text-shadow: 0 -0.1em 0 #d26600;
+}
+
+.button-red b {
+	background-color: #e42f15;
+	text-shadow: 0 -0.1em 0 #cf3a1f;
+}
+
+.button-blue b {
+	background-color: #0095db;
+	text-shadow: 0 -0.1em 0 #0086be;
+}
+
+.button-20[disabled] b, .button-20[rel~=disabled] b,
+.button-24[disabled] b, .button-24[rel~=disabled] b {
+	background-color: #b6b6b6;
+	text-shadow: 0 -0.1em 0 #999;
+}
+
+
+/* .button-green */
+.button-green *, .button-green:after, .button-green:before {
+	background-image: url('../buttons/20-green.png') !important;
+}
+
+.button-24.button-green *, .button-24.button-green:after, .button-24.button-green:before {
+	background-image: url('../buttons/24-green.png') !important;
+}
+
+.button-40.button-green *, .button-40.button-green:after, .button-40.button-green:before {
+	background-image: url('../buttons/40-green.png') !important;
+}
+
+/* .button-green-forward*/
+.button-green-forward *, .button-green-forward:after, .button-green-forward:before {
+	background-image: url('../buttons/20-green-forward.png') !important;
+}
+.button-green-forward:after, .button-green-forward .after {
+	width: 2.2em;
+}
+
+.button-24.button-green-forward *, .button-24.button-green-forward:after, .button-24.button-green-forward:before {
+	background-image: url('../buttons/24-green-forward.png') !important;
+}
+.button-24.button-green-forward:after, .button-24.button-green-forward .after {
+	width: 2em;
+}
+
+.button-40.button-green-forward *, .button-40.button-green-forward:after, .button-40.button-green-forward:before {
+	background-image: url('../buttons/40-green-forward.png') !important;
+}
+.button-40.button-green-forward:after, .button-40.button-green-forward .after {
+	width: 2.2em;
+}
+
+/* .button-orange */
+.button-orange *, .button-orange:after, .button-orange:before {
+	background-image: url('../buttons/20-orange.png') !important;
+}
+
+.button-24.button-orange *, .button-24.button-orange:after, .button-24.button-orange:before {
+	background-image: url('../buttons/24-orange.png') !important;
+}
+
+/* .button-orange-back */
+.button-orange-back *, .button-orange-back:after, .button-orange-back:before {
+	background-image: url('../buttons/20-orange-back.png') !important;
+}
+.button-orange-back:before, .button-orange-back .before {
+	width: 2.3em;
+}
+
+.button-24.button-orange-back *, .button-24.button-orange-back:after, .button-24.button-orange-back:before {
+	background-image: url('../buttons/24-orange-back.png') !important;
+}
+.button-24.button-orange-back:before, .button-24.button-orange-back .before {
+	width: 2em;
+}
+
+/* .button-red */
+.button-red *, .button-red:after, .button-red:before {
+	background-image: url('../buttons/20-red.png') !important;
+}
+
+.button-24.button-red *, .button-24.button-red:after, .button-24.button-red:before {
+	background-image: url('../buttons/24-red.png') !important;
+}
+
+/* .button-blue */
+.button-blue *, .button-blue:after, .button-blue:before {
+	background-image: url('../buttons/20-blue.png') !important;
+}
+
+.button-24.button-blue *, .button-24.button-blue:after, .button-24.button-blue:before {
+	background-image: url('../buttons/24-blue.png') !important;
+}
+
+
+/* 20px: disabled */
+.button-20[disabled] *,
+.button-20[disabled]:after,
+.button-20[disabled]:before,
+.button-20[rel~=disabled] *,
+.button-20[rel~=disabled]:after,
+.button-20[rel~=disabled]:before {
+	background-image: url('../buttons/20-disabled.png') !important;
+}
+
+.button-green-forward[disabled] *,
+.button-green-forward[disabled]:after,
+.button-green-forward[disabled]:before,
+.button-green-forward[rel~=disabled] *,
+.button-green-forward[rel~=disabled]:after,
+.button-green-forward[rel~=disabled]:before {
+	background-image: url('../buttons/20-disabled-forward.png') !important;
+}
+
+.button-orange-back[disabled] *,
+.button-orange-back[disabled]:after,
+.button-orange-back[disabled]:before,
+.button-orange-back[rel~=disabled] *,
+.button-orange-back[rel~=disabled]:after,
+.button-orange-back[rel~=disabled]:before {
+	background-image: url('../buttons/20-disabled-back.png') !important;
+}
+
+.button-20[disabled], .button-20[rel~=disabled],
+.button-20[disabled] *, .button-20[rel~=disabled] * {
+	cursor: default;
+}
+
+/* 24px: disabled */
+.button-24[disabled] *,
+.button-24[disabled]:after,
+.button-24[disabled]:before,
+.button-24[rel~=disabled] *,
+.button-24[rel~=disabled]:after,
+.button-24[rel~=disabled]:before {
+	background-image: url('../buttons/24-disabled.png') !important;
+}
+
+.button-24.button-green-forward[disabled] *,
+.button-24.button-green-forward[disabled]:after,
+.button-24.button-green-forward[disabled]:before,
+.button-24.button-green-forward[rel~=disabled] *
+.button-24.button-green-forward[rel~=disabled]:after,
+.button-24.button-green-forward[rel~=disabled]:before {
+	background-image: url('../buttons/24-disabled-forward.png') !important;
+}
+
+.button-24.button-orange-back[disabled] *,
+.button-24.button-orange-back[disabled]:after,
+.button-24.button-orange-back[disabled]:before,
+.button-24.button-orange-back[rel~=disabled] *,
+.button-24.button-orange-back[rel~=disabled]:after,
+.button-24.button-orange-back[rel~=disabled]:before {
+	background-image: url('../buttons/24-disabled-back.png') !important;
+}
+
+.button-24[disabled], .button-24[rel~=disabled] {
+	text-shadow: 0 -0.1em 0 #999;
+}
+
+.button-24[disabled], .button-24[rel~=disabled],
+.button-24[disabled] *, .button-24[rel~=disabled] * {
+	cursor: default;
+}
+
+
+/* кнопки 18 пикселей */
+.button-18 {
+	font-size: 1em;
+	height: 1.5em;
+	line-height: 1.5em !important;
+	color: #000 !important;
+	text-transform: none;
+}
+
+a.button-18 *, a.button-18 * {
+	cursor: pointer;
+}
+
+.button-18 b {
+	font-weight: normal;
+	height: 1.5em;
+	line-height: 1.5em;
+	padding: 0 0.34em 0 0.5em;
+	background-position: center center;
+}
+
+.button-18:after, .button-18 .after, .button-18:before, .button-18 .before {
+	width: 0.16em;
+	height: 1.5em;
+}
+
+/* 18px: reg-innovations */
+.button-innovations *, .button-innovations:before, .button-innovations:after {
+	background-image: url('../buttons/18-innovations.png') !important;
+}
+.button-innovations b {
+	background-color: #1ad4c5;
+}
+
+/* 18px: reg-help */
+.button-help *, .button-help:before, .button-help:after {
+	background-image: url('../buttons/18-help.png') !important;
+}
+.button-help b {
+	background-color: #93d138;
+}
+.button-help:after, .button-help .after {
+	width: 1.5em;
+}
+/* 18px: reg-sms */
+.button-sms *, .button-sms:before, .button-sms:after {
+	background-image: url('../buttons/18-sms.png') !important;
+}
+.button-sms b {
+	background-color: #d38df7;
+}
+/* 18px: reg-ticket */
+.button-ticket *, .button-ticket:before, .button-ticket:after {
+	background-image: url('../i/18-ticket.png') !important;
+}
+.button-ticket b {
+	background-color: #509bed;
+}
+/* 18px: reg-choice */
+.button-choice *, .button-choice:before, .button-choice:after {
+	background-image: url('../buttons/18-choice.png') !important;
+}
+.button-choice b {
+	background-color: #fb8727;
+}
+/* 18px: reg-check */
+.button-check *, .button-check:before, .button-check:after {
+	background-image: url('../buttons/18-check.png') !important;
+}
+.button-check b {
+	background-color: #55c4f0;
+}

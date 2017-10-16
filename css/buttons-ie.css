@@ -1,0 +1,59 @@
+.button-18, .button-20, .button-24, .button-40 {
+	display: inline;
+	zoom: 1;
+	cursor: default;
+}
+
+.button-18 {
+	vertical-align: -0.2em;
+	scrollbar-track-color: expression(!this.isInserted==true ? this.isInserted=(this.innerHTML = '<span class="before"></span>' + this.innerHTML + '<span class="after"></span>') : '');
+}
+
+.button-20, .button-24, .button-40 {
+	left: 0.1em;
+	margin-left: 0.2em;
+	scrollbar-track-color: expression(!this.isInserted==true ? this.isInserted=(this.innerHTML = '<span class="before"></span><span class="shadow">' + this.innerHTML + '<span>' + this.innerHTML + '</span></span><span class="after"></span>') : '');
+}
+
+.button-18 .shadow, .button-20 .shadow, .button-24 .shadow, .button-40 .shadow {
+	position: relative;
+	background: transparent none;
+}
+
+.button-20 b, .button-24 b, .button-40 b {
+	display: inline-block !important;
+	margin: 0 !important;
+}
+
+.button-20 b, .button-24 b {
+	line-height: 1.8em !important;
+}
+
+.button-20 span, .button-24 span, .button-40 span {
+	position: relative !important;
+	display: inline-block !important;
+	margin: 0 !important;
+}
+  
+.button-20 .shadow span, .button-24 .shadow span, .button-40 .shadow span {
+	position: absolute !important;
+	left: 0;
+	top: 1px;
+	color: #fff !important;
+	background: transparent none !important;
+}
+
+.button-20 .shadow span b, .button-24 .shadow span b, .button-40 .shadow span b {
+	background: transparent none !important;
+}
+  
+/* green */
+.button-green .shadow, .button-green-forward .shadow { color: #7fc307; }
+/* orange */
+.button-orange .shadow, .button-orange-back .shadow { color: #d26600; }
+/* blue */
+.button-blue .shadow { color: #0086be; }
+/* red */
+.button-red .shadow { color: #cf3a1f; }
+
+.button-20[disabled] .shadow, .button-20[rel~=disabled] .shadow, .button-24[disabled] .shadow, .button-24[rel~=disabled] .shadow { color: #999; }

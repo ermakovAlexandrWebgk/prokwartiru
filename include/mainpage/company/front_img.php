@@ -1,0 +1,1 @@
+<img alt="companypic.png" src="/include/mainpage/company/home_company_photo.jpg" title="companypic.png">

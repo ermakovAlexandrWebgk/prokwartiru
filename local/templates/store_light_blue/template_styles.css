@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+* { margin:0; padding:0;}
+a img { border:none;}
+body{ font-size:100%; font-family:Arial, Helvetica, sans-serif; background:#8d8b85 url(images/body.png) no-repeat;  position:relative; }
+ul { list-style-position:inside;}
+#wrapper { width:922px; margin:0 auto; position:relative; z-index:2; }
+
+h1{ font-size:20px; font-weight:normal; margin:0 0 20px 0;}
+h2{ font-size:18px; font-weight:normal; margin:0 0 20px 0;}
+h3{ font-size:16px; font-weight:normal; margin:0 0 20px 0;}
+
+/*   Header 
+-----------------------------------------------------*/
+#header{ height:224px; background:url(images/header.jpg) no-repeat 0 0; position:relative;  }
+	#header .logo { width:190px; height:120px; position:absolute; display:block; top:25px; left:30px; background:url(images/logo.png);}
+	.mm { list-style:none; height:32px; background:#22211f; margin:-1px 0 0 1px;}
+		.mm li { float:left; list-style:none; }
+		.mm a{ display:block; height:25px; float:left;  color:#FFFFFF !important; text-decoration:none; padding:7px 12px 0 20px; font-size: 14px; background:url(images/li-top.jpg) top left no-repeat;}
+		.mm a:hover{text-decoration:underline; background:url(images/li-active.jpg) top left no-repeat #45443F;}
+		.mm li.active a{ background:url(images/li-active.jpg) top left no-repeat #45443F; }
+			
+/*---------------------------------------------------*/
+
+/*   Content 
+-----------------------------------------------------*/
+#content{position:relative; overflow:hidden; width: 922px; background:url(images/content.jpg) top repeat-y; border-top:2px solid #fff;}
+	#content-inner{ float:left; background:#fff; width:746px; overflow:hidden;  }
+		#content-inner .contacts{ display:block; position:relative; margin:17px 0 0 29px;}
+		#content-inner .links{ margin:0 0 -8px 0; overflow:hidden; position:relative;}
+			.links a { float:left; display:block; height:158px;}
+			.links a.wallpapers { width:150px; background:url(images/wallpapers.jpg) no-repeat;}
+			.links a.plitka{ width:146px; background:url(images/plitka.jpg) no-repeat;}
+			.links a.desing { width:157px; background:url(images/desing.jpg)  no-repeat;}
+			.links a.mosaic { width:146px; background:url(images/mosaic.jpg)  no-repeat;}
+			.links a.blinds { width:147px; background:url(images/shtory.jpg)  no-repeat;}
+		.text{ background:#b7b6b2; border-top:solid 2px #91908d; padding:15px 0 96px 11px;}
+			.text p{font-size:12px; line-height:14px; text-align: justify;     width: 720px; margin:0 0 15px; }
+	    #content-inner .linkst{ margin:0 0 10px 0; overflow:hidden; position:relative; font-family: verdana; }
+		               .linkst a {color: #ffffff; text-decoration: none;}
+		               .linkst table{width: 741px; height: 70px; border-spacing: 8px;}
+					   .linkst .twal1{width: 125px; background-color:#f58220; text-align: center;  vertical-align: center; font-size: 22px; color: #ffffff;}
+					   .linkst .twal2{width: 125px; background-color:#f58220; text-align: center;  vertical-align: center; font-size: 22px; color: #ffffff;}
+					   .linkst .twal3{width: 125px; background-color:#f58220; text-align: center;  vertical-align: center; font-size: 22px; color: #ffffff;}
+					   .linkst .twal4{width: 125px; background-color:#f58220; text-align: center;  vertical-align: center; font-size: 22px; color: #ffffff;}
+					   .linkst .twal5{width: 125px; background-color:#f58220; text-align: center;  vertical-align: center; font-size: 22px; color: #ffffff;}
+					   .linkst .twal1:hover{background-color:#312f2a;}
+					   .linkst .twal2:hover{background-color:#312f2a;}
+					   .linkst .twal3:hover{background-color:#312f2a;}
+					   .linkst .twal4:hover{background-color:#312f2a;}
+					   .linkst .twal5:hover{background-color:#312f2a;}
+					  
+    #sidebar{ float:left; width:172px; background:url(images/rigth.jpg) top left no-repeat; position:relative; overflow:hidden; padding:0 0 0 3px;}
+		.search{ height:25px; padding:3px 0 0;  float:right;}
+			.search .txt { width:126px; height:25px; display:block; float:left; background:url(images/search_txt.png); overflow:hidden;}
+				.search .txt input {  width:116px; padding:0 5px; height:25px; line-height:24px; border:none; background:none; font-size:12px; color:#fff; }
+		.search .btn{ float:left; line-height:0; font-size:0; width:23px; height:22px; background:url(images/btn_search.png); margin:1px 0 0 7px; border:none;}
+		
+		.sidebar-menu { list-style:none; width:176px;  padding:5px 0 0; }
+		.sidebar-menu a { display:block; height:32px; width:95px; margin:0 0 4px 0; color:#fff; font-size:12px; text-decoration: none; padding:15px 0 0 73px; margin:0 0 13px; }
+            .sidebar-menu     .basket{background:url(images/basket.jpg);}
+			.sidebar-menu     .dostavka{background:url(images/dostavka.jpg);}
+			.sidebar-menu     .bloknot{background:url(images/bloknot.jpg);}	
+			.sidebar-menu     .skidki{background:url(images/skidka.jpg);}
+            .sidebar-menu     .vopros{background:url(images/vopros.jpg); height:33px;}			
+            .sidebar-menu     .reg{background:url(images/reg.jpg);}	
+		.sidebar-menu a:hover{background-position:0 -47px;	}
+		.sidebar-menu .vopros:hover{background-position:0 -48px;	}
+			
+			.sm-how-find{ background:url(images/sm_how_find.png);}
+			.sm-reviews{ background:url(images/sm_reviews.png);}
+			.mm-discounts{ background:url(images/mm_discounts.png);}
+			.sm-how-to-order{ background:url(images/sm_how_to_order.png);}
+			.sm-delivery{ background:url(images/sm_delivery.png);}
+		
+		.notebook-basket{ list-style:none; padding:44px 0 27px 0;}
+			.notebook-basket a { display:block; height:19px; color:#fff; line-height:19px; width:88px; padding:0 0 0 8px; text-decoration:none; font-size:12px; margin:0 0 6px 0;}
+				.notebook-basket a.active {color:#312f2a; background: url(images/basket.jpg) bottom right no-repeat #f58220; padding-right:15px; }
+				.notebook-basket a.active:hover{background: url(images/basket.jpg) bottom right no-repeat #f58220;}
+				.notebook-basket a:hover {color:#312f2a; background: #f58220;  }
+/*---------------------------------------------------*/
+
+
+/*   Footer 
+-----------------------------------------------------*/
+#footer-outer { height:46px; background:#22211f; margin:0;}
+	#footer {  height:31px; width:763px; margin:0 auto; color:#b7b6b2; font-size:12px; padding:15px 0 0 160px;}
+/*---------------------------------------------------*/
+
+
+/*   Classes 
+-----------------------------------------------------*/
+.clr{ clear:both; height:0; overflow:hidden;}
+/*---------------------------------------------------*/
+

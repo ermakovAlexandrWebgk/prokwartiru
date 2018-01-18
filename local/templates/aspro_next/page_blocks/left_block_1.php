@@ -17,7 +17,7 @@
 
 <?CNext::get_banners_position('SIDE', 'Y');?>
 
-<?$APPLICATION->IncludeComponent("bitrix:main.include", ".default",
+<?/*$APPLICATION->IncludeComponent("bitrix:main.include", ".default",
 	array(
 		"COMPONENT_TEMPLATE" => ".default",
 		"PATH" => SITE_DIR."include/left_block/comp_subscribe.php",
@@ -27,8 +27,8 @@
 		"EDIT_TEMPLATE" => "include_area.php"
 	),
 	false
-);?>
-<?$APPLICATION->IncludeComponent("bitrix:main.include", ".default",
+);*/?>
+<?/*$APPLICATION->IncludeComponent("bitrix:main.include", ".default",
 	array(
 		"COMPONENT_TEMPLATE" => ".default",
 		"PATH" => SITE_DIR."include/left_block/comp_news.php",
@@ -49,4 +49,4 @@
 		"EDIT_TEMPLATE" => "include_area.php"
 	),
 	false
-);?>
+);*/?>

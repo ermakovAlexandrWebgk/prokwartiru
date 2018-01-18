@@ -10,9 +10,10 @@
 		"MENU_CACHE_GET_VARS" => array(
 		),
 		"DELAY" => "N",
-		"MAX_LEVEL" => $arTheme["MAX_DEPTH_MENU"]["VALUE"],
+		//"MAX_LEVEL" => $arTheme["MAX_DEPTH_MENU"]["VALUE"],
+        "MAX_LEVEL" => 2,
 		"ALLOW_MULTI_SELECT" => "Y",
-		"ROOT_MENU_TYPE" => "top_content_multilevel",
+		"ROOT_MENU_TYPE" => "fixed_top_catalog",
 		"CHILD_MENU_TYPE" => "left",
 		"CACHE_SELECTED_ITEMS" => "N",
 		"ALLOW_MULTI_SELECT" => "Y",

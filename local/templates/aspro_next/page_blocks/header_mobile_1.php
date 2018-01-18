@@ -27,7 +27,7 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 		</div>
 		<div class="pull-right">
 			<div class="wrap_icon wrap_cabinet">
-				<?=CNext::showCabinetLink(true, false, 'lg');?>
+				<?//=CNext::showCabinetLink(true, false, 'lg');?>
 			</div>
 		</div>
 	</div>

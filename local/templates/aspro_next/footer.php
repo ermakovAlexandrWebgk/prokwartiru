@@ -36,6 +36,21 @@
 				<?endif;?>
 			</div> <?// #content?>
 			<?CNext::get_banners_position('FOOTER');?>
+            <div class="social_wrapper">
+                                <div class="social">
+                                    <?$APPLICATION->IncludeComponent("bitrix:main.include", ".default",
+                                        array(
+                                            "COMPONENT_TEMPLATE" => ".default",
+                                            "PATH" => SITE_DIR."include/footer/social.info.next.default.php",
+                                            "AREA_FILE_SHOW" => "file",
+                                            "AREA_FILE_SUFFIX" => "",
+                                            "AREA_FILE_RECURSIVE" => "Y",
+                                            "EDIT_TEMPLATE" => "include_area.php"
+                                        ),
+                                        false
+                                    );?>
+                                </div>
+                            </div>
 		</div><?// .wrapper?>
 		<footer id="footer">
 			<?if($APPLICATION->GetProperty("viewed_show") == "Y" || $is404):?>

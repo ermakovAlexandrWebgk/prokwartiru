@@ -7,7 +7,7 @@ if($arRegion)
 else
 	$bPhone = ((int)$arTheme['HEADER_PHONES'] ? true : false);
 $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
-?>
+/*?>
 <div class="top-block top-block-v1">
 	<div class="maxwidth-theme">
 		<div class="row">
@@ -50,6 +50,7 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 		</div>
 	</div>
 </div>
+<?*/?>
 <header class="header-v3 header-wrapper">
 	<div class="logo_and_menu-row">
 		<div class="logo-row">
@@ -77,7 +78,7 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 							</div>
 						</div>
 					<?endif;?>
-					<div class="pull-left search_wrap wide_search">
+					<div class="pull-left search_wrap wide_search" style="width: 55%;">
 						<div class="search-block inner-table-block">
 							<?$APPLICATION->IncludeComponent(
 								"bitrix:main.include",
@@ -98,7 +99,7 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 										<?CNext::ShowHeaderPhones();?>
 										<div class="schedule">
 											<?$APPLICATION->IncludeFile(SITE_DIR."include/header-schedule.php", array(), array("MODE" => "html","NAME" => GetMessage('HEADER_SCHEDULE'),"TEMPLATE" => "include_area.php"));?>
-										</div>
+										</div>                     
 									</div>
 								<?endif?>
 								<?if($arTheme['SHOW_CALLBACK']['VALUE'] == 'Y'):?>
@@ -110,7 +111,22 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 						</div>
 					<?endif;?>
 					<div class="pull-right block-link">
-						<?=CNext::ShowBasketWithCompareLink('with_price', 'lg', true, 'wrap_icon inner-table-block baskets big-padding');?>
+						<?//=CNext::ShowBasketWithCompareLink('with_price', 'lg', true, 'wrap_icon inner-table-block baskets big-padding');?>
+                        <div class="phone-block with_btn">
+                                <?if($bPhone):?>
+                                    <div class="inner-table-block">
+                                        <div class="schedule">
+                                            <?$APPLICATION->IncludeFile(SITE_DIR."include/header-schedule.php", array(), array("MODE" => "html","NAME" => GetMessage('HEADER_SCHEDULE'),"TEMPLATE" => "include_area.php"));?>
+                                        </div>
+                                        <?CNext::ShowHeaderPhones();?>
+                                    </div>
+                                <?endif?>
+                                <?if($arTheme['SHOW_CALLBACK']['VALUE'] == 'Y'):?>
+                                    <div class="inner-table-block">
+                                        <span class="callback-block animate-load twosmallfont colored  white btn-default btn" data-event="jqm" data-param-form_id="CALLBACK" data-name="callback"><?=GetMessage("CALLBACK")?></span>
+                                    </div>
+                                <?endif;?>
+                            </div>
 					</div>
 				</div>
 			</div>
@@ -120,7 +136,7 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 		<div class="maxwidth-theme">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="menu-only">
+					<div class="menu-only" style="display: inline-block; width: 68%;">
 						<nav class="mega-menu sliced">
 							<?$APPLICATION->IncludeComponent("bitrix:main.include", ".default",
 								array(
@@ -135,6 +151,34 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 							);?>
 						</nav>
 					</div>
+                    <div class="basket_and_compare_icons_block" style="display: inline-block;">
+                    <?=CNext::ShowBasketWithCompareLink('with_price', 'lg', true, 'wrap_icon inner-table-block baskets big-padding');?>
+                    </div>
+                    <div class="menu-only" style="display: inline-block;">
+                        <nav class="mega-menu sliced index_top_menu">
+                            <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"top", 
+	array(
+		"ALLOW_MULTI_SELECT" => "Y",
+		"CHILD_MENU_TYPE" => "index_top",
+		"COMPONENT_TEMPLATE" => "top",
+		"COUNT_ITEM" => "6",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "1",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600000",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_USE_GROUPS" => "N",
+		"CACHE_SELECTED_ITEMS" => "N",
+		"ROOT_MENU_TYPE" => "index_top",
+		"USE_EXT" => "Y"
+	),
+	false
+);?>
+                        </nav>
+                    </div>
 				</div>
 			</div>
 		</div>

@@ -3,9 +3,10 @@ global $APPLICATION, $arTheme;
 $aMenuLinksExt = $APPLICATION->IncludeComponent(
 	"bitrix:menu.sections", "",
 	Array(
-		"IBLOCK_TYPE" => "aspro_next_catalog",
-		"IBLOCK_ID" => "66",
-		"DEPTH_LEVEL" => $arTheme["MAX_DEPTH_MENU"]["VALUE"], 
+		"IBLOCK_TYPE" => "catalog",
+		"IBLOCK_ID" => "70",
+		//"DEPTH_LEVEL" => $arTheme["MAX_DEPTH_MENU"]["VALUE"],
+        "DEPTH_LEVEL" => "1", 
 		"MENU_CACHE_TIME" => "3600000",
 		"MENU_CACHE_TYPE" => "A",
 		"MENU_CACHE_USE_GROUPS" => "N",

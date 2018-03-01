@@ -43,16 +43,16 @@ $arUrlRewrite = array(
 		"PATH" => "/contacts/stores/index.php",
 	),
 	array(
-		"CONDITION" => "#^/company/vacancy/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/company/vacancy/index.php",
-	),
-	array(
 		"CONDITION" => "#^/contacts/stores/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/contacts/stores/index.php",
+	),
+	array(
+		"CONDITION" => "#^/company/vacancy/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/company/vacancy/index.php",
 	),
 	array(
 		"CONDITION" => "#^/personal/order/#",
@@ -67,22 +67,40 @@ $arUrlRewrite = array(
 		"PATH" => "/company/staff/index.php",
 	),
 	array(
-		"CONDITION" => "#^/catalog/oboi/#",
-		"RULE" => "",
-		"ID" => "",
-		"PATH" => "/catalog/oboi/index.php",
-	),
-	array(
 		"CONDITION" => "#^/company/news/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/company/news/index.php",
 	),
 	array(
+		"CONDITION" => "#^/catalog_test/#",
+		"RULE" => "",
+		"ID" => "bitrix:catalog",
+		"PATH" => "/catalog_test/index.php",
+	),
+	array(
+		"CONDITION" => "#^/catalog/oboi/#",
+		"RULE" => "",
+		"ID" => "",
+		"PATH" => "/catalog/oboi/index.php",
+	),
+	array(
 		"CONDITION" => "#^/info/brands/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
 		"PATH" => "/info/brands/index.php",
+	),
+	array(
+		"CONDITION" => "#^/services/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/services/index.php",
+	),
+	array(
+		"CONDITION" => "#^/projects/#",
+		"RULE" => "",
+		"ID" => "bitrix:news",
+		"PATH" => "/projects/index.php",
 	),
 	array(
 		"CONDITION" => "#^/landings/#",
@@ -97,18 +115,6 @@ $arUrlRewrite = array(
 		"PATH" => "/personal/index.php",
 	),
 	array(
-		"CONDITION" => "#^/projects/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/projects/index.php",
-	),
-	array(
-		"CONDITION" => "#^/services/#",
-		"RULE" => "",
-		"ID" => "bitrix:news",
-		"PATH" => "/services/index.php",
-	),
-	array(
 		"CONDITION" => "#^/catalog/#",
 		"RULE" => "",
 		"ID" => "bitrix:catalog",
@@ -121,16 +127,10 @@ $arUrlRewrite = array(
 		"PATH" => "/advices/index.php",
 	),
 	array(
-		"CONDITION" => "#^/sale/#",
+		"CONDITION" => "#^/news/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
-		"PATH" => "/sale/index.php",
-	),
-	array(
-		"CONDITION" => "#^/auth/#",
-		"RULE" => "",
-		"ID" => "aspro:auth.next",
-		"PATH" => "/auth/index.php",
+		"PATH" => "/news/index.php",
 	),
 	array(
 		"CONDITION" => "#^/blog/#",
@@ -139,10 +139,16 @@ $arUrlRewrite = array(
 		"PATH" => "/blog/index.php",
 	),
 	array(
-		"CONDITION" => "#^/news/#",
+		"CONDITION" => "#^/auth/#",
+		"RULE" => "",
+		"ID" => "aspro:auth.next",
+		"PATH" => "/auth/index.php",
+	),
+	array(
+		"CONDITION" => "#^/sale/#",
 		"RULE" => "",
 		"ID" => "bitrix:news",
-		"PATH" => "/news/index.php",
+		"PATH" => "/sale/index.php",
 	),
 );
 

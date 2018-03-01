@@ -91,7 +91,7 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 							);?>
 						</div>
 					</div>
-					<?if($arTheme['ORDER_BASKET_VIEW']['VALUE'] !== 'NORMAL'):?>
+					<?if(/*$arTheme['ORDER_BASKET_VIEW']['VALUE'] !== 'NORMAL'*/ false):?>
 						<div class="pull-right block-link">
 							<div class="phone-block with_btn">
 								<?if($bPhone):?>
@@ -99,7 +99,7 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 										<?CNext::ShowHeaderPhones();?>
 										<div class="schedule">
 											<?$APPLICATION->IncludeFile(SITE_DIR."include/header-schedule.php", array(), array("MODE" => "html","NAME" => GetMessage('HEADER_SCHEDULE'),"TEMPLATE" => "include_area.php"));?>
-										</div>                     
+										</div>
 									</div>
 								<?endif?>
 								<?if($arTheme['SHOW_CALLBACK']['VALUE'] == 'Y'):?>
@@ -151,32 +151,32 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 							);?>
 						</nav>
 					</div>
-                    <div class="basket_and_compare_icons_block" style="display: inline-block;">
+                    <?/*<div class="basket_and_compare_icons_block" style="display: inline-block;">
                     <?=CNext::ShowBasketWithCompareLink('with_price', 'lg', true, 'wrap_icon inner-table-block baskets big-padding');?>
-                    </div>
-                    <div class="menu-only" style="display: inline-block;">
+                    </div>*/?>
+                    <div class="menu-only" style="display: inline-block;position:  absolute;right: 0px;">
                         <nav class="mega-menu sliced index_top_menu">
                             <?$APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"top", 
-	array(
-		"ALLOW_MULTI_SELECT" => "Y",
-		"CHILD_MENU_TYPE" => "index_top",
-		"COMPONENT_TEMPLATE" => "top",
-		"COUNT_ITEM" => "6",
-		"DELAY" => "N",
-		"MAX_LEVEL" => "1",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"MENU_CACHE_TIME" => "3600000",
-		"MENU_CACHE_TYPE" => "A",
-		"MENU_CACHE_USE_GROUPS" => "N",
-		"CACHE_SELECTED_ITEMS" => "N",
-		"ROOT_MENU_TYPE" => "index_top",
-		"USE_EXT" => "Y"
-	),
-	false
-);?>
+								"bitrix:menu",
+								"top",
+								array(
+									"ALLOW_MULTI_SELECT" => "Y",
+									"CHILD_MENU_TYPE" => "index_top",
+									"COMPONENT_TEMPLATE" => "top",
+									"COUNT_ITEM" => "6",
+									"DELAY" => "N",
+									"MAX_LEVEL" => "1",
+									"MENU_CACHE_GET_VARS" => array(
+									),
+									"MENU_CACHE_TIME" => "3600000",
+									"MENU_CACHE_TYPE" => "A",
+									"MENU_CACHE_USE_GROUPS" => "N",
+									"CACHE_SELECTED_ITEMS" => "N",
+									"ROOT_MENU_TYPE" => "index_top",
+									"USE_EXT" => "Y"
+								),
+								false
+							);?>
                         </nav>
                     </div>
 				</div>

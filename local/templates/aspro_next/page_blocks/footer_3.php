@@ -1,6 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();?>
 
-<div class="footer_inner <?=($arTheme["SHOW_BG_BLOCK"]["VALUE"] == "Y" ? "fill" : "no_fill");?>">
+<div class="footer_inner <?=($arTheme["SHOW_BG_BLOCK"]["VALUE"] == "Y" ? "fill" : "no_fill");?>" >
 
 <div class="wrapper_inner">
 	<div class="footer_bottom_inner">
@@ -10,7 +10,7 @@
 			</div>
 			<span class="pay_system_icons">
 				<?//$APPLICATION->IncludeFile(SITE_DIR."include/footer/copy/pay_system_icons.php", Array(), Array("MODE" => "html", "NAME" => GetMessage("PHONE"), "TEMPLATE" => "include_area.php",));?>
-			</span>						
+			</span>
 			<div id="bx-composite-banner"></div>
 		</div>
 		<div class="right_block">
@@ -77,7 +77,7 @@
 									<?endif;?>
 								</div>
 							</div>
-							
+
 						</div>
 						<div class="clearfix"></div>
 					</div>

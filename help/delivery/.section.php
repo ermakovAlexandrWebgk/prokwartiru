@@ -1,5 +1,5 @@
 <?
-$sSectionName = "Условия доставки";
+$sSectionName = "Доставка и самовывоз";
 $arDirProperties = Array(
 
 );

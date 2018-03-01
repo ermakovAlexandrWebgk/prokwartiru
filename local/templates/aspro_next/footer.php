@@ -22,7 +22,7 @@
 						</div> <?// .middle?>
 					<?//if(!$isHideLeftBlock && !$isBlog):?>
 					<?if(($isIndex && $isShowIndexLeftBlock) || (!$isIndex && !$isHideLeftBlock) && !$isBlog):?>
-						</div> <?// .right_block?>				
+						</div> <?// .right_block?>
 						<?if($APPLICATION->GetProperty("HIDE_LEFT_BLOCK") != "Y" && !defined("ERROR_404")):?>
 							<div class="left_block">
 								<?CNext::ShowPageType('left_block');?>
@@ -32,7 +32,7 @@
 				<?if($isIndex):?>
 					</div>
 				<?elseif(!$isWidePage):?>
-					</div> <?// .wrapper_inner?>				
+					</div> <?// .wrapper_inner?>
 				<?endif;?>
 			</div> <?// #content?>
 			<?CNext::get_banners_position('FOOTER');?>
@@ -51,31 +51,56 @@
                                     );?>
                                 </div>
                             </div>
+							<?/*if($APPLICATION->GetProperty("viewed_show") == "Y" || $is404):?>
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:main.include",
+								"basket",
+								array(
+									"COMPONENT_TEMPLATE" => "basket",
+									"PATH" => SITE_DIR."include/footer/comp_viewed.php",
+									"AREA_FILE_SHOW" => "file",
+									"AREA_FILE_SUFFIX" => "",
+									"AREA_FILE_RECURSIVE" => "Y",
+									"EDIT_TEMPLATE" => "standard.php",
+									"PRICE_CODE" => array(
+										0 => "BASE",
+									),
+									"STORES" => array(
+										0 => "",
+										1 => "",
+									),
+									"BIG_DATA_RCM_TYPE" => "bestsell"
+								),
+								false
+							);?>
+							<?endif;*/?>
 		</div><?// .wrapper?>
-		<footer id="footer">
-			<?if($APPLICATION->GetProperty("viewed_show") == "Y" || $is404):?>
-				<?$APPLICATION->IncludeComponent(
-					"bitrix:main.include", 
-					"basket", 
-					array(
-						"COMPONENT_TEMPLATE" => "basket",
-						"PATH" => SITE_DIR."include/footer/comp_viewed.php",
-						"AREA_FILE_SHOW" => "file",
-						"AREA_FILE_SUFFIX" => "",
-						"AREA_FILE_RECURSIVE" => "Y",
-						"EDIT_TEMPLATE" => "standard.php",
-						"PRICE_CODE" => array(
-							0 => "BASE",
-						),
-						"STORES" => array(
-							0 => "",
-							1 => "",
-						),
-						"BIG_DATA_RCM_TYPE" => "bestsell"
-					),
-					false
-				);?>					
-			<?endif;?>
+		<footer id="footer" >
+
+	<?if($APPLICATION->GetProperty("viewed_show") == "Y" || $is404):?>
+	<?$APPLICATION->IncludeComponent(
+		"bitrix:main.include",
+		"basket",
+		array(
+			"COMPONENT_TEMPLATE" => "basket",
+			"PATH" => SITE_DIR."include/footer/comp_viewed.php",
+			"AREA_FILE_SHOW" => "file",
+			"AREA_FILE_SUFFIX" => "",
+			"AREA_FILE_RECURSIVE" => "Y",
+			"EDIT_TEMPLATE" => "standard.php",
+			"PRICE_CODE" => array(
+				0 => "BASE",
+			),
+			"STORES" => array(
+				0 => "",
+				1 => "",
+			),
+			"BIG_DATA_RCM_TYPE" => "bestsell"
+		),
+		false
+	);?>
+	<?endif;?>
+
 			<?CNext::ShowPageType('footer');?>
 		</footer>
 		<div class="bx_areas">

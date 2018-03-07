@@ -5,7 +5,7 @@
 	 Адрес: 117452, г. Москва, ул. Азовская, д.24, к.3, офис 71
 </p>
 <p>
-	 Тел.: +7 (985) 155-17-55
+	 Тел.: +7 (985) 155 1755, (985) 118 1755
 </p>
 <p>
 	 Email: <a href="mailto:info@prokwarti.ru">info@prokwarti.ru</a>
@@ -20,7 +20,7 @@
 	 Мы рады видеть Вас <b>ежедневно с 9 до 21 часов</b> (до последнего клиента).
 </p>
 <p>
- <img width="340" src="/bitrix/templates/prokwartiru/images/azovsky.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;"> <img width="340" src="/bitrix/templates/prokwartiru/images/business-center.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;"> <img width="340" src="/bitrix/templates/prokwartiru/images/show-room_oboi1.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;"> <img width="340" src="/bitrix/templates/prokwartiru/images/show-room_oboi2.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;"> <img width="340" src="/bitrix/templates/prokwartiru/images/show-room_plitka1.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;"> <img width="340" src="/bitrix/templates/prokwartiru/images/show-room_plitka2.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;">
+ <img width="340" src="/bitrix/templates/prokwartiru/images/azovsky.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;"> <img width="340" src="/bitrix/templates/prokwartiru/images/business-center.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;"> <img width="340" src="/bitrix/templates/prokwartiru/images/show-room_entrance.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;"> <img width="340" src="/bitrix/templates/prokwartiru/images/show-room_oboi.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;"> <img width="340" src="/bitrix/templates/prokwartiru/images/show-room_plitka.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;"> <img width="340" src="/bitrix/templates/prokwartiru/images/show-room_shtory.jpg" height="225" border="0" style="margin-right: 20px; margin-bottom: 20px;">
 </p>
 <p>
  <b>Регистрационные данные:</b><br>

@@ -77,7 +77,7 @@
 		</div><?// .wrapper?>
 		<footer id="footer" >
 
-	<?if($APPLICATION->GetProperty("viewed_show") == "Y" || $is404):?>
+	<?/*if($APPLICATION->GetProperty("viewed_show") == "Y" || $is404):?>
 	<?$APPLICATION->IncludeComponent(
 		"bitrix:main.include",
 		"basket",
@@ -99,7 +99,7 @@
 		),
 		false
 	);?>
-	<?endif;?>
+	<?endif;*/?>
 
 			<?CNext::ShowPageType('footer');?>
 		</footer>
@@ -112,9 +112,9 @@
 	</body>
 	<style media="screen">
 		#footer{
-			/* position: sticky;
+			position: sticky;
 			bottom: 0;
-			z-index: 625; */
+			z-index: 625;
 		}
 	</style>
 </html>

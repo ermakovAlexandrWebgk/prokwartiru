@@ -1,8 +1,8 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Каталог");
-$APPLICATION->IncludeComponent(
-	"bitrix:catalog", 
-	"main", 
+$APPLICATION->SetTitle("Каталог");?>
+<?$APPLICATION->IncludeComponent(
+	"bitrix:catalog",
+	"main",
 	array(
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => "77",
@@ -537,4 +537,5 @@ $APPLICATION->IncludeComponent(
 		)
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

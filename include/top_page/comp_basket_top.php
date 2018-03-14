@@ -33,18 +33,7 @@
 						</div>
 					</div>
 				</div>
-				<div title="<?=$arCounters['COMPARE']['TITLE']?>" class="compare_count small">
-					<a href="<?=$arCounters['COMPARE']['HREF']?>"></a>
-					<div id="compare_fly" class="wraps_icon_block compare <?=($arCounters['COMPARE']['COUNT'] ? '' : 'empty_block');?>">
-						<div class="count <?=($arCounters['COMPARE']['COUNT'] ? '' : 'empty_items');?>">
-							<span>
-								<span class="items">
-									<span><?=$arCounters['COMPARE']['COUNT'];?></span>
-								</span>
-							</span>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 			<div class="basket_sort">
 				<span class="basket_title"><?=GetMessage('T_BASKET')?></span>

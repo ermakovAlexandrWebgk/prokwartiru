@@ -1,6 +1,6 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Каталог");
-$APPLICATION->IncludeComponent(
+$APPLICATION->SetTitle("Каталог");?>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
 	"main", 
 	array(
@@ -126,8 +126,8 @@ $APPLICATION->IncludeComponent(
 		"SECTION_TOP_DEPTH" => "3",
 		"SECTIONS_LIST_PREVIEW_PROPERTY" => "DESCRIPTION",
 		"SHOW_SECTION_LIST_PICTURES" => "Y",
-		"PAGE_ELEMENT_COUNT" => "20",
-		"LINE_ELEMENT_COUNT" => "4",
+		"PAGE_ELEMENT_COUNT" => "21",
+		"LINE_ELEMENT_COUNT" => "3",
 		"ELEMENT_SORT_FIELD" => "shows",
 		"ELEMENT_SORT_ORDER" => "asc",
 		"ELEMENT_SORT_FIELD2" => "shows",
@@ -536,4 +536,5 @@ $APPLICATION->IncludeComponent(
 		)
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

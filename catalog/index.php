@@ -1,8 +1,8 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog",
-	"main",
+	"bitrix:catalog", 
+	"main", 
 	array(
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => "77",
@@ -127,8 +127,8 @@ $APPLICATION->SetTitle("Каталог");?>
 		"SECTION_TOP_DEPTH" => "3",
 		"SECTIONS_LIST_PREVIEW_PROPERTY" => "DESCRIPTION",
 		"SHOW_SECTION_LIST_PICTURES" => "Y",
-		"PAGE_ELEMENT_COUNT" => "20",
-		"LINE_ELEMENT_COUNT" => "4",
+		"PAGE_ELEMENT_COUNT" => "21",
+		"LINE_ELEMENT_COUNT" => "3",
 		"ELEMENT_SORT_FIELD" => "shows",
 		"ELEMENT_SORT_ORDER" => "asc",
 		"ELEMENT_SORT_FIELD2" => "shows",

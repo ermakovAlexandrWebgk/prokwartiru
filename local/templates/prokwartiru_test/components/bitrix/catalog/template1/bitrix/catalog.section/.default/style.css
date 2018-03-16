@@ -1,0 +1,26 @@
+.catalog-item-list {
+overflow:hidden;
+}
+.catalog-item-list h2 {
+font:bold 12px Tahoma;
+}
+.catalog-item-list h2 span {
+color:#505050;
+}
+div.catalog-item {
+background-color:#B7B6B2;
+float:left;
+text-align: center;
+margin: 0 25px 25px 25px;
+}
+div.catalog-item a {
+text-decoration:none;
+color:#000;
+}
+.catalog-item-image img {
+border: 1px solid #F1EFEC;
+margin-top:5px;
+}
+.catalog-item-links, .catalog-item-price, .catalog-item-desc {
+display:none;
+}

@@ -1,0 +1,35 @@
+div.advices-list{
+   width: 825px;
+}
+
+div.advices-item{
+   width: 125px;
+   height: 125px;
+   float: left;
+   border: 1px solid white;
+   padding: 5px;
+   margin: 0 10px 10px 0;
+   background-color: #DF7216;
+   text-align: center;
+}
+
+div.advices-item a{
+   color: white;
+   font-size: 16px;
+   font-weight: bold;
+   text-decoration: none;
+}
+div.advices-item a:hover{
+   text-decoration: underline;
+}
+
+div.advices-date{
+   color: #CC6600;
+   font-size: 12px;
+   font-weight: bold;
+   padding-bottom: 7px;
+}
+div.advices-detail h1{
+   font-size: 24px;
+   padding-bottom: 20px;
+}

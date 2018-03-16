@@ -129,9 +129,9 @@ $APPLICATION->SetTitle("Каталог");?>
 		"PAGE_ELEMENT_COUNT" => "21",
 		"LINE_ELEMENT_COUNT" => "3",
 		"ELEMENT_SORT_FIELD" => "shows",
-		"ELEMENT_SORT_ORDER" => "asc",
+		"ELEMENT_SORT_ORDER" => "desc",
 		"ELEMENT_SORT_FIELD2" => "shows",
-		"ELEMENT_SORT_ORDER2" => "asc",
+		"ELEMENT_SORT_ORDER2" => "desc",
 		"LIST_PROPERTY_CODE" => array(
 			0 => "BRAND",
 			1 => "PROP_2033",

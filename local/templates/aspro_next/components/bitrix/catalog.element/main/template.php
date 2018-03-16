@@ -317,12 +317,12 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 	</div>
 	<div class="right_info">
 		<div class="info_item">
+			<p class="card_title">
+				Артикул: <?=$arResult["NAME"];?>
+			</p>
 			<?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>
 			<?if($isArticle || $arResult["BRAND_ITEM"] || $arParams["SHOW_RATING"] == "Y" || strlen($arResult["PREVIEW_TEXT"])){?>
 				<div class="top_info">
-					<p class="card_title">
-						Артикул: <?=$arResult["NAME"];?>
-					</p>
 					<div class="rows_block">
 						<?$col=1;
 						if($isArticle && $arResult["BRAND_ITEM"] && $arParams["SHOW_RATING"] == "Y"){

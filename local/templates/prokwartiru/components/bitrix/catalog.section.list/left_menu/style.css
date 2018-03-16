@@ -1,0 +1,4 @@
+#left_menu { /*width: 137px;*/ padding:0; margin:0; line-height: 18px; font-size: 14px;}
+#left_menu a {color: #000; text-decoration: none;}
+#left_menu a.fabriki { padding: 0;}
+#left_menu a:hover {color: #000; text-decoration: underline;}

@@ -1,0 +1,56 @@
+.inline-filter.cart-filter {
+    font: 12px Tahoma;
+    
+}
+.inline-filter.cart-filter a {
+    color: #676767;
+}
+.inline-filter.cart-filter label {
+    font: 14px Tahoma;
+    margin: 0 40px 0 0;
+}
+.inline-filter.cart-filter .ready {
+    margin: 0 35px 0 0;
+}
+
+.cart-items-table {
+    width: 720px;
+    text-align: center;
+    font: 12px Tahoma;
+    margin-top: 20px;
+}
+.cart-items-table-head td {
+    background: #dadada;
+    height: 40px;
+    
+}
+.cart-items-table td {
+    border-bottom: 1px solid #dadada;
+}
+.cart-items-table td a {
+    color: #000;
+    text-decoration: none;
+}
+.cart-items-table td img {
+    border: 1px solid #ececec;
+}
+.cart-item-price {
+    font-size: 18px;
+}
+.cart-item-price span {
+    font-size: 14px;
+}
+.cart-item-price.allSum {
+    float: right;
+    margin: 8px 15px 0 0;
+}
+
+.input_gray {
+    font: bold 12px Arial;
+    color: #5c5c5c;
+    border: 1px solid #989898;
+    padding: 8px 12px;
+    background: #b7b6b2;
+    cursor: pointer;
+    margin: 0 10px;
+}

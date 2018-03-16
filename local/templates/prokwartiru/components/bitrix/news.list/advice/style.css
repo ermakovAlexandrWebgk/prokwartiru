@@ -1,0 +1,39 @@
+/* Совет дизайнера */
+#advice {width: 735px; /*border: 2px solid #91908d;*/ padding: 15px 0px 0px 0px; height: 190px;}
+
+#advice div.news-list img.preview_picture
+{
+	/*float:left;*/
+	margin:0 4px 6px 0;
+	border: 1px solid white;
+}
+
+#advice .news-date-time {
+	color:#486DAA;
+}
+
+
+#advice div.news-list div.news-item
+{
+	float:left;
+	width: 137px;
+	overflow: hidden;
+	margin-right: 9px;
+}
+
+#advice div.news-list a
+{
+   text-decoration: none;
+}
+
+#advice div.news-list p
+{
+   text-align: center;
+}
+
+#advice h4
+{
+   font-size: 14px;
+   /*margin: 0px;
+   padding: 0px;*/
+}

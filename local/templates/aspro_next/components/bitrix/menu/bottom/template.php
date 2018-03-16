@@ -55,7 +55,7 @@ $colsm = 12;
 					<td class="wrap">
 				<?//endif;?>
 					<?$bLink = strlen($arItem['LINK']);?>
-                    <div><img class="menu_image" src="<?=$arItem["PARAMS"]["IMG"]?>"></div>
+                    <div><img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>"></div>
 					<div class="item-link">
 						<div class="item<?//=($arItem["SELECTED"] ? " active" : "")?>">
 							<div class="title">

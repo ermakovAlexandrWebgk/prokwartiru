@@ -1,57 +1,53 @@
 <?
 $aMenuLinks = Array(
-    Array(
-        "Главная", 
-        "/", 
-        Array(), 
-        Array(), 
-        "" 
-    ),
-
-    Array(
-        "Скидки", 
-        "/", 
-        Array(), 
-        Array(), 
-        "" 
-    ),
-
-    Array(
-        "Доставка и самовывоз", 
-        "/help/delivery/", 
-        Array(), 
-        Array(), 
-        "" 
-    ),
-    Array(
-        "Оплата и возврат", 
-        "/help/payment/", 
-        Array(), 
-        Array(), 
-        "" 
-    ),
-     Array(
-        "Кабинет", 
-        "/personal/", 
-        Array(), 
-        Array(), 
-        "" 
-    ),
-    Array(
-        "Отзывы", 
-        "/reviews/", 
-        Array(), 
-        Array(), 
-        "" 
-    ),
-    Array(
-        "Перезвоним", 
-        "/contacts/", 
-        Array(), 
-        Array(), 
-        "" 
-    )
-    
-    
+	Array(
+		"Главная", 
+		"/", 
+		Array(), 
+		Array("IMG"=>"/images/-1.png"), 
+		"" 
+	),
+	Array(
+		"Скидки", 
+		"/", 
+		Array(), 
+		Array("IMG"=>"/images/-2.png"), 
+		"" 
+	),
+	Array(
+		"Доставка и самовывоз", 
+		"/help/delivery/", 
+		Array(), 
+		Array("IMG"=>"/images/-3.png"), 
+		"" 
+	),
+	Array(
+		"Оплата и возврат", 
+		"/help/payment/", 
+		Array(), 
+		Array("IMG"=>"/images/-4.png"), 
+		"" 
+	),
+	Array(
+		"Кабинет", 
+		"/personal/", 
+		Array(), 
+		Array("IMG"=>"/images/-5.png"), 
+		"" 
+	),
+	Array(
+		"Перезвоним", 
+		"/contacts/", 
+		Array(), 
+		Array("IMG"=>"/images/-7.png"), 
+		"" 
+	),
+	Array(
+		"Отзывы", 
+		"https://clck.yandex.ru/redir/dtype=stred/pid=47/cid=2508/*https://market.yandex.ru/shop/167576/reviews", 
+		Array(), 
+		Array("IMG"=>"/images/market_banner.jpg"), 
+		"" 
+	)
 );
 ?>

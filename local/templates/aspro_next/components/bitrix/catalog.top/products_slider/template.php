@@ -10,7 +10,7 @@ $arNotify = unserialize($notifyOption);
 	<?if(strlen($arParams['TITLE'])):?>
 		<h5><?=$arParams['TITLE'];?></h5>
 	<?endif;?>
-	<div class="common_product wrapper_block" id="<?=$sliderID?>">		
+	<div class="common_product wrapper_block" id="<?=$sliderID?>">
 		<ul class="slider_navigation top_big custom_flex border"></ul>
 		<div class="all_wrapp">
 			<div class="content_inner tab flexslider loading_state shadow border custom_flex top_right" data-plugin-options='{"animation": "slide", "animationSpeed": 600, "directionNav": true, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [4,3,3,2,1]}'>
@@ -22,7 +22,7 @@ $arNotify = unserialize($notifyOption);
 						$totalCount = CNext::GetTotalCount($arItem, $arParams);
 						$arQuantityData = CNext::GetQuantityArray($totalCount);
 						$arItem["FRONT_CATALOG"]="Y";
-						
+
 						$strMeasure='';
 						if($arItem["OFFERS"]){
 							$strMeasure=$arItem["MIN_PRICE"]["CATALOG_MEASURE_NAME"];
@@ -84,7 +84,6 @@ $arNotify = unserialize($notifyOption);
 										else
 											$fast_view_text = GetMessage('FAST_VIEW');?>
 									</a>
-									<div class="fast_view_block" data-event="jqm" data-param-form_id="fast_view" data-param-iblock_id="<?=$arParams["IBLOCK_ID"];?>" data-param-id="<?=$arItem["ID"];?>" data-param-item_href="<?=urlencode($arItem["DETAIL_PAGE_URL"]);?>" data-name="fast_view"><?=$fast_view_text;?></div>
 								</div>
 								<div class="item_info">
 									<div class="item-title">
@@ -144,15 +143,15 @@ $arNotify = unserialize($notifyOption);
 												<?=CNext::showPriceMatrix($arItem, $arParams, $strMeasure, $arAddToBasketData);?>
 												<?$arMatrixKey = array_keys($arItem['PRICE_MATRIX']['MATRIX']);
 												$min_price_id=current($arMatrixKey);?>
-											<?	
+											<?
 											}
 											elseif($arItem["PRICES"])
 											{?>
 												<?=\Aspro\Functions\CAsproNextItem::getItemPrices($arParams, $arItem["PRICES"], $strMeasure, $min_price_id);?>
 											<?}?>
 										<?endif;?>
-									</div>									
-								</div>								
+									</div>
+								</div>
 								<div class="footer_button">
 									<?=$arAddToBasketData["HTML"]?>
 								</div>

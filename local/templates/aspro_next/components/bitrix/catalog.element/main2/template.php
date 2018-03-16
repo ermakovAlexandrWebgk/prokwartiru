@@ -389,7 +389,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 							$min_price_id=0;
 							if (isset($arResult['MIN_PRICE']) || isset($arResult['RATIO_PRICE']))
 								$minPrice = $arResult['MIN_PRICE'];
-							
+
 							$offer_id=0;
 							if($arParams["TYPE_SKU"]=="N"){
 								$offer_id=$minPrice["MIN_ITEM_ID"];
@@ -397,7 +397,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 							$min_price_id=$minPrice["MIN_PRICE_ID"];
 							if(!$min_price_id)
 								$min_price_id=$minPrice["PRICE_ID"];
-							
+
 							$arTmpOffer = current($arResult["OFFERS"]);
 							if(!$min_price_id)
 								$min_price_id=$arTmpOffer["MIN_PRICE"]["PRICE_ID"];
@@ -463,7 +463,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 									<?=CNext::showPriceRangeTop($arResult, $arParams, GetMessage("CATALOG_ECONOMY"));?>
 								<?endif;?>
 								<?=CNext::showPriceMatrix($arResult, $arParams, $strMeasure, $arAddToBasketData);?>
-							<?	
+							<?
 							}
 							else
 							{
@@ -536,20 +536,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 								$('.catalog_detail input[data-sid="PRODUCT_NAME"]').attr('value', $('h1').text());
 							});
 						</script>
-						<div class="counter_wrapp">
-							<?if(($arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_DETAIL"] && $arAddToBasketData["ACTION"] == "ADD") && $arAddToBasketData["CAN_BUY"]):?>
-								<div class="counter_block big_basket" data-offers="<?=($arResult["OFFERS"] ? "Y" : "N");?>" data-item="<?=$arResult["ID"];?>" <?=(($arResult["OFFERS"] && $arParams["TYPE_SKU"]=="N") ? "style='display: none;'" : "");?>>
-									<span class="minus" id="<? echo $arItemIDs["ALL_ITEM_IDS"]['QUANTITY_DOWN']; ?>">-</span>
-									<input type="text" class="text" id="<? echo $arItemIDs["ALL_ITEM_IDS"]['QUANTITY']; ?>" name="<? echo $arParams["PRODUCT_QUANTITY_VARIABLE"]; ?>" value="<?=$arAddToBasketData["MIN_QUANTITY_BUY"]?>" />
-									<span class="plus" id="<? echo $arItemIDs["ALL_ITEM_IDS"]['QUANTITY_UP']; ?>" <?=($arAddToBasketData["MAX_QUANTITY_BUY"] ? "data-max='".$arAddToBasketData["MAX_QUANTITY_BUY"]."'" : "")?>>+</span>
-								</div>
-							<?endif;?>
-							<div id="<? echo $arItemIDs["ALL_ITEM_IDS"]['BASKET_ACTIONS']; ?>" class="button_block <?=(($arAddToBasketData["ACTION"] == "ORDER" /*&& !$arResult["CAN_BUY"]*/) || !$arAddToBasketData["CAN_BUY"] || !$arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_DETAIL"] || ($arAddToBasketData["ACTION"] == "SUBSCRIBE" && $arResult["CATALOG_SUBSCRIBE"] == "Y")  ? "wide" : "");?>">
-								<!--noindex-->
-									<?=$arAddToBasketData["HTML"]?>
-								<!--/noindex-->
-							</div>
-						</div>
+
 						<?if(isset($arResult['PRICE_MATRIX']) && $arResult['PRICE_MATRIX']) // USE_PRICE_COUNT
 						{?>
 							<?if($arResult['ITEM_PRICE_MODE'] == 'Q' && count($arResult['PRICE_MATRIX']['ROWS']) > 1):?>
@@ -625,7 +612,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 					<meta itemprop="sku" content="<?=implode('/', $currentOffersList)?>" />
 					<a href="<?=$arOffer['DETAIL_PAGE_URL']?>" itemprop="url"></a>
 					<meta itemprop="price" content="<?=($arOffer['MIN_PRICE']['DISCOUNT_VALUE']) ? $arOffer['MIN_PRICE']['DISCOUNT_VALUE'] : $arOffer['MIN_PRICE']['VALUE']?>" />
-					<meta itemprop="priceCurrency" content="<?=$arOffer['MIN_PRICE']['CURRENCY']?>" />					
+					<meta itemprop="priceCurrency" content="<?=$arOffer['MIN_PRICE']['CURRENCY']?>" />
 					<link itemprop="availability" href="http://schema.org/<?=($arOffer['CAN_BUY'] ? 'InStock' : 'OutOfStock')?>" />
 				</span>
 			<?endforeach;?>
@@ -1163,7 +1150,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 								<?endforeach;?>
 							</div>
 						<?else:?>
-							<div class="char_block">								
+							<div class="char_block">
 								<table class="props_list">
 									<?foreach($arResult["DISPLAY_PROPERTIES"] as $arProp):?>
 										<?if(!in_array($arProp["CODE"], array("SERVICES", "BRAND", "HIT", "RECOMMEND", "NEW", "STOCK", "VIDEO", "VIDEO_YOUTUBE", "CML2_ARTICLE"))):?>
@@ -1233,7 +1220,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 	<?if($arParams["USE_REVIEW"] == "Y"):?>
 		<div class="wraps product_reviews_tab hidden_print">
 			<hr>
-			<h4><?=($arParams["TAB_REVIEW_NAME"] ? $arParams["TAB_REVIEW_NAME"] : GetMessage("REVIEW_TAB"))?><span class="count empty"></span></h4>			
+			<h4><?=($arParams["TAB_REVIEW_NAME"] ? $arParams["TAB_REVIEW_NAME"] : GetMessage("REVIEW_TAB"))?><span class="count empty"></span></h4>
 		</div>
 	<?endif;?>
 	<?if(($arParams["SHOW_ASK_BLOCK"] == "Y") && (intVal($arParams["ASK_FORM_ID"]))):?>
@@ -1300,7 +1287,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 				"FILTER_NAME" => "arrSaleFilter",
 				"FIELD_CODE" => array(
 					0 => "NAME",
-					1 => "PREVIEW_TEXT",			
+					1 => "PREVIEW_TEXT",
 					3 => "PREVIEW_PICTURE",
 					4 => "",
 				),

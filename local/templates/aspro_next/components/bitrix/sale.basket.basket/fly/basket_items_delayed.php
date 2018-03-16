@@ -5,6 +5,24 @@ $bDeleteColumn = false;
 $bWeightColumn = false;
 $bPropsColumn  = false;
 ?>
+
+<a class="svg svg-print" onclick="printDiv('printableArea')" title="<?GetMessage('PRINT')?>"></a>
+
+<script type="text/javascript">
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+
+
+<div class="module-cart delayed" id="printableArea">
 <div class="module-cart delayed">
 	<?if(isset($arResult["ITEMS_IBLOCK_ID"])){?>
 		<div class="iblockid" data-iblockid="<?=$arResult["ITEMS_IBLOCK_ID"];?>"></div>
@@ -43,7 +61,7 @@ $bPropsColumn  = false;
 					<? foreach ($arResult["GRID"]["HEADERS"] as $id => $arHeader):
 						if (in_array($arHeader["id"], array("PROPS", "DELAY", "DELETE", "TYPE", "DISCOUNT"))) continue; // some values are not shown in columns in this template
 						if ($arHeader["id"] == "NAME"):?>
-							<td class="thumb-cell">			
+							<td class="thumb-cell">
 								<?if( strlen($arItem["PREVIEW_PICTURE"]["SRC"])>0 ){?>
 									<?if (strlen($arItem["DETAIL_PAGE_URL"]) > 0):?><a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="thumb"><?endif;?>
 										<img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="<?=(is_array($arItem["PREVIEW_PICTURE"]["ALT"])?$arItem["PREVIEW_PICTURE"]["ALT"]:$arItem["NAME"]);?>" title="<?=(is_array($arItem["PREVIEW_PICTURE"]["TITLE"])?$arItem["PREVIEW_PICTURE"]["TITLE"]:$arItem["NAME"]);?>" />
@@ -56,24 +74,24 @@ $bPropsColumn  = false;
 									<?if (strlen($arItem["DETAIL_PAGE_URL"]) > 0):?><a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="thumb"><?endif;?>
 										<img src="<?=SITE_TEMPLATE_PATH?>/images/no_photo_medium.png" alt="<?=$arItem["NAME"]?>" title="<?=$arItem["NAME"]?>" width="80" height="80" />
 									<?if (strlen($arItem["DETAIL_PAGE_URL"]) > 0):?></a><?endif;?>
-								<?}?>	
+								<?}?>
 								<?if (!empty($arItem["BRAND"])):?><div class="ordercart_brand"><img src="<?=$arItem["BRAND"]?>" /></div><?endif;?>
 							</td>
-							
-							<td class="name-cell">	
+
+							<td class="name-cell">
 								<?if (strlen($arItem["DETAIL_PAGE_URL"]) > 0):?><a href="<?=$arItem["DETAIL_PAGE_URL"]?>"><?endif;?><?=$arItem["NAME"]?><?if (strlen($arItem["DETAIL_PAGE_URL"]) > 0):?></a><?endif;?><br />
-								<?if ($bPropsColumn):?>	
+								<?if ($bPropsColumn):?>
 									<div class="item_props">
 										<? foreach ($arItem["PROPS"] as $val) {
 												if (is_array($arItem["SKU_DATA"])) {
 													$bSkip = false;
-													foreach ($arItem["SKU_DATA"] as $propId => $arProp) { if ($arProp["CODE"] == $val["CODE"]) { $bSkip = true; break; } } 
+													foreach ($arItem["SKU_DATA"] as $propId => $arProp) { if ($arProp["CODE"] == $val["CODE"]) { $bSkip = true; break; } }
 													if ($bSkip) continue;
 												} echo '<span class="item_prop"><span class="name">'.$val["NAME"].':&nbsp;</span><span class="property_value">'.$val["VALUE"].'</span></span>';
 											}?>
 									</div>
 								<?endif;?>
-								
+
 								<?if (is_array($arItem["SKU_DATA"]) && $arItem["PROPS"]):
 									foreach ($arItem["SKU_DATA"] as $propId => $arProp):
 										$isImgProperty = false; // is image property
@@ -88,7 +106,7 @@ $bPropsColumn  = false;
 														<ul id="prop_<?=$arProp["CODE"]?>_<?=$arItem["ID"]?>">
 														<?	foreach ($arProp["VALUES"] as $valueId => $arSkuValue){
 																$selected = "";
-																foreach ($arItem["PROPS"] as $arItemProp) { 
+																foreach ($arItem["PROPS"] as $arItemProp) {
 																	if ($arItemProp["CODE"] == $arItem["SKU_DATA"][$propId]["CODE"])
 																		{ if ($arItemProp["VALUE"] == $arSkuValue["NAME"] || $arItemProp["VALUE"] == $arSkuValue["XML_ID"]) $selected = "class=\"bx_active\""; }
 																};?>
@@ -113,7 +131,7 @@ $bPropsColumn  = false;
 															<?foreach ($arProp["VALUES"] as $valueId => $arSkuValue) {
 																$selected = "";
 																foreach ($arItem["PROPS"] as $arItemProp) {
-																	if ($arItemProp["CODE"] == $arItem["SKU_DATA"][$propId]["CODE"]) 
+																	if ($arItemProp["CODE"] == $arItem["SKU_DATA"][$propId]["CODE"])
 																	{ if ($arItemProp["VALUE"] == $arSkuValue["NAME"]) $selected = "class=\"bx_active\""; }
 																}?>
 																<li <?=$selected?>><span><?=$arSkuValue["NAME"]?></span></li>
@@ -127,30 +145,30 @@ $bPropsColumn  = false;
 								endif;
 								?>
 								<input type="hidden" name="DELAY_<?=$arItem["ID"]?>" value="Y"/>
-							</td>	
+							</td>
 						<?elseif ($arHeader["id"] == "QUANTITY"):?>
-							<td class="count-cell">	
+							<td class="count-cell">
 								<?=$arItem["QUANTITY"]?><?if (isset($arItem["MEASURE_TEXT"]) && $arParams["SHOW_MEASURE"]=="Y"):?> <?=$arItem["MEASURE_TEXT"];?>.<?endif;?>
 								<?
 									$ratio = isset($arItem["MEASURE_RATIO"]) ? $arItem["MEASURE_RATIO"] : 0;
 									$max = isset($arItem["AVAILABLE_QUANTITY"]) ? "max=\"".$arItem["AVAILABLE_QUANTITY"]."\"" : "";
 								?>
 								<input
-									type="hidden" 
+									type="hidden"
 									id="QUANTITY_INPUT_<?=$arItem["ID"]?>"
 									name="QUANTITY_INPUT_<?=$arItem["ID"]?>"
 									size="2"
-									data-id="<?=$arItem["ID"];?>" 
+									data-id="<?=$arItem["ID"];?>"
 									maxlength="18"
 									min="0"
 									<?=$max?>
 									step="<?=$ratio?>"
 									value="<?=$arItem["QUANTITY"]?>"
 								>
-								<input type="hidden" id="QUANTITY_<?=$arItem['ID']?>" name="QUANTITY_<?=$arItem['ID']?>" value="<?=$arItem["QUANTITY"]?>" > 
+								<input type="hidden" id="QUANTITY_<?=$arItem['ID']?>" name="QUANTITY_<?=$arItem['ID']?>" value="<?=$arItem["QUANTITY"]?>" >
 							</td>
 						<?elseif ($arHeader["id"] == "SUMM"):?>
-							<td class="summ-cell"><div class="cost prices"><div class="price"><?=$arItem["SUMM_FORMATED"];?></div></div></td>	
+							<td class="summ-cell"><div class="cost prices"><div class="price"><?=$arItem["SUMM_FORMATED"];?></div></div></td>
 						<?elseif ($arHeader["id"] == "PRICE"):?>
 							<td class="cost-cell <?=( $bTypeColumn ? 'notes' : '' );?>">
 								<div class="cost prices clearfix">
@@ -176,14 +194,14 @@ $bPropsColumn  = false;
 									<input type="hidden" name="item_summ_<?=$arItem["ID"]?>" value="<?=$arItem["PRICE"]*$arItem["QUANTITY"]?>" />
 								</div>
 							</td>
-						<?elseif ($arHeader["id"] == "WEIGHT"):?>	
+						<?elseif ($arHeader["id"] == "WEIGHT"):?>
 							<td class="weight-cell"><?=$arItem["WEIGHT_FORMATED"]?></td>
-						<?else:?>	
+						<?else:?>
 							<td class="cell"><?=$arItem[$arHeader["id"]]?></td>
 						<?endif;?>
 					<?endforeach;?>
 					<?if ($bDelayColumn ):?>
-						<td class="add delay-cell">	
+						<td class="add delay-cell">
 							<a class="wish_item to_basket" href="<?=str_replace("#ID#", $arItem["ID"], $arUrls["add"])?>">
 								<span class="icon" title="<?=GetMessage("SALE_ADD_TO_BASKET");?>"><i></i></span>
 							</a>

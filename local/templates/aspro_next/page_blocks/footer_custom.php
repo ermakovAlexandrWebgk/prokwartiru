@@ -13,38 +13,32 @@
 					<div class="item_block col-md-9 menus">
 						<div class="row">
 							<div class="item_block col-md-4 col-sm-4">
-								<?$APPLICATION->IncludeComponent("bitrix:menu", "bottom", array(
-									"ROOT_MENU_TYPE" => "footer_menu",
-									"MENU_CACHE_TYPE" => "Y",
-									"MENU_CACHE_TIME" => "3600000",
-									"MENU_CACHE_USE_GROUPS" => "N",
-									"CACHE_SELECTED_ITEMS" => "N",
-									"MENU_CACHE_GET_VARS" => array(),
-									"MAX_LEVEL" => "1",
-									"USE_EXT" => "N",
-									"DELAY" => "N",
-									"ALLOW_MULTI_SELECT" => "N"
-									),false
-								);?>
+								<?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"bottom", 
+	array(
+		"ROOT_MENU_TYPE" => "footer_menu",
+		"MENU_CACHE_TYPE" => "Y",
+		"MENU_CACHE_TIME" => "3600000",
+		"MENU_CACHE_USE_GROUPS" => "N",
+		"CACHE_SELECTED_ITEMS" => "N",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MAX_LEVEL" => "1",
+		"USE_EXT" => "N",
+		"DELAY" => "N",
+		"ALLOW_MULTI_SELECT" => "N",
+		"COMPONENT_TEMPLATE" => "bottom",
+		"CHILD_MENU_TYPE" => "left"
+	),
+	false
+);?>
 							</div>
 						</div>
 					</div>
-					<div class="item_block col-md-3 soc">
-						<div class="soc_wrapper">
-							<div class="phones">
-								<div class="phone_block">
-									<?//=CNext::ShowHeaderPhones();?>
-									<?if($arTheme['SHOW_CALLBACK']['VALUE'] == 'Y'):?>
-										<span class="order_wrap_btn">
-											<span class="callback_btn animate-load" data-event="jqm" data-param-form_id="CALLBACK" data-name="callback"><?=GetMessage('CALLBACK')?></span>
-										</span>
-									<?endif;?>
-								</div>
-							</div>
-
-						</div>
-						<div class="clearfix"></div>
-					</div>
+				
+						
+					
 				</div>
 			</div>
 		</div>

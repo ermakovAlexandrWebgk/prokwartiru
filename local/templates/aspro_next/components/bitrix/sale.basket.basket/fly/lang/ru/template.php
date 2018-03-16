@@ -40,7 +40,7 @@
 	$MESS["SALE_REFRESH_DESCRIPTION"] = "Обновить расчеты";
 	$MESS["SALE_APPLY"] = "Применить";
 	$MESS["STB_COUPON_LABEL"] = "Код купона на скидку";
-	
+
 	$MESS["SALE_BACK"] = "Продолжить покупки";
 	$MESS["SALE_BACK_DESCRIPTION"] = "Вернуться к выбору товаров";
 	$MESS["SALE_ORDER"] = "Оформить заказ";
@@ -68,4 +68,5 @@
 	$MESS["BASKET_DELAY_COUNT"] = "В отложенных товаров на #PRICE#";
 	$MESS["BASKET_LIST"] = "Список товаров в корзине";
 	$MESS["BASKET_DELAY_LIST"] = "Список отложенных товаров";
+    $MESS["PRINT"] = "Версия для печати";
 ?>

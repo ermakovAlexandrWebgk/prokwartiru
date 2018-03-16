@@ -61,8 +61,8 @@ if($arResult['ITEMS']){?>
 					$arItem["RID"]=$arResult["RID"];
 					$arAddToBasketData = CNext::GetAddToBasketArray($arItem, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], true);
 
-					$elementName = ((isset($arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE']) && $arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE']) ? $arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE'] : $arItem['NAME']);					
-					
+					$elementName = ((isset($arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE']) && $arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE']) ? $arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE'] : $arItem['NAME']);
+
 					$strMeasure='';
 					if($arItem["OFFERS"]){
 						$strMeasure=$arItem["MIN_PRICE"]["CATALOG_MEASURE_NAME"];
@@ -73,7 +73,7 @@ if($arResult['ITEMS']){?>
 						}
 					}
 					?>
-				
+
 					<div class="inner_wrap">
 						<div class="image_wrapper_block">
 							<a href="<?=$arItem["DETAIL_PAGE_URL"]?>?RID=<?=$arResult["RID"]?>" class="thumb shine">
@@ -116,7 +116,7 @@ if($arResult['ITEMS']){?>
 									$fast_view_text = $fast_view_text_tmp;
 								else
 									$fast_view_text = GetMessage('FAST_VIEW');?>
-								<div class="fast_view_block" data-event="jqm" data-param-form_id="fast_view" data-param-iblock_id="<?=$arItem["IBLOCK_ID"];?>" data-param-id="<?=$arItem["ID"];?>" data-param-item_href="<?=urlencode($arItem["DETAIL_PAGE_URL"]);?>" data-name="fast_view"><?=$fast_view_text;?></div>
+
 							</a>
 						</div>
 						<div class="item_info">
@@ -175,7 +175,7 @@ if($arResult['ITEMS']){?>
 											<?=CNext::showPriceRangeTop($arItem, $arParams, GetMessage("CATALOG_ECONOMY"));?>
 										<?endif;?>
 										<?=CNext::showPriceMatrix($arItem, $arParams, $strMeasure, $arAddToBasketData);?>
-									<?	
+									<?
 									}
 									elseif($arItem["PRICES"])
 									{?>
@@ -192,7 +192,7 @@ if($arResult['ITEMS']){?>
 			<?}?>
 		</ul>
 	</span>
-	
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('.tabs li[data-code="RECOMENDATION"]').show();

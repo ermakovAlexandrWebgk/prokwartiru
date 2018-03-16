@@ -51,18 +51,9 @@ $arCounters = CNext::updateBasketCounters(array('READY' => array('COUNT' => $nor
 				</div>
 			</div>
 		</div>
-		<div title="<?=$arCounters['COMPARE']['TITLE']?>" class="compare_count small">
-			<a href="<?=$arCounters['COMPARE']['HREF']?>"></a>
-			<div id="compare_fly" class="wraps_icon_block compare <?=(!$arCounters['COMPARE']['COUNT'] ? ' empty_block' : '')?>">
-				<div class="count<?=(!$arCounters['COMPARE']['COUNT'] ? ' empty_items' : '')?>">
-					<span>
-						<span class="items">
-							<span><?=$arCounters['COMPARE']['COUNT']?></span>
-						</span>
-					</span>
-				</div>
-			</div>
-		</div>
+
+
+
 	</div>
 	<script src="<?=(((COption::GetOptionString('main', 'use_minified_assets', 'N', $siteID) === 'Y') && file_exists($_SERVER['DOCUMENT_ROOT'].$templateFolder.'/script.min.js')) ? $templateFolder.'/script.min.js' : $templateFolder.'/script.js')?>" type="text/javascript"></script>
 	<?
@@ -97,6 +88,8 @@ $arCounters = CNext::updateBasketCounters(array('READY' => array('COUNT' => $nor
 			<span class="wrap_remove_button">
 				<?if($normalCount){?>
 					<span class="btn btn-default white white-bg grey remove_all_basket AnDelCanBuy cur" data-type="basket"><?=GetMessage('CLEAR_BASKET')?></span>
+
+
 				<?}?>
 				<?if($delayCount){?>
 					<span class="btn btn-default white white-bg grey remove_all_basket DelDelCanBuy" data-type="delay"><?=GetMessage('CLEAR_BASKET')?></span>
@@ -105,6 +98,8 @@ $arCounters = CNext::updateBasketCounters(array('READY' => array('COUNT' => $nor
 					<span class="btn btn-default white white-bg grey remove_all_basket nAnCanBuy" data-type="na"><?=GetMessage('CLEAR_BASKET')?></span>
 				<?}?>
 			</span>
+
+
 		</div>
 
 		<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="basket_form" id="basket_form" class="basket_wrapp">

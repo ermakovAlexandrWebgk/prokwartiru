@@ -752,18 +752,3 @@ if($arResult["ITEMS"]){?>
 		})
 	</script>
 <?}?>
-<?/*$console_info = \Bitrix\Main\Web\Json::encode($arResult, $options = null);?>
-<script>
-    console.log('arResult = ',<?echo $console_info;?>);
-</script>
-<?
-*/
-/*if (isset($arResult["ELEMENT_COUNT"])) {
-	$APPLICATION->SetViewTarget('produkts_count');
-	?>
-	<span class="cccount"><?=$arResult["ELEMENT_COUNT"]?> товаров</span>
-	<?
-	$APPLICATION->EndViewTarget();
-
-}*/
-?>

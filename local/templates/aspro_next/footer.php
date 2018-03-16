@@ -115,6 +115,10 @@
 			position: sticky;
 			bottom: 0;
 			z-index: 625;
+        
 		}
+        #footer .footer_bottom_inner{
+            padding-bottom: 0;
+        }
 	</style>
 </html>

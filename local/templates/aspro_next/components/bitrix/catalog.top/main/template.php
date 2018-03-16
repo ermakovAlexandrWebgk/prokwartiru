@@ -13,7 +13,7 @@ $arNotify = unserialize($notifyOption);
 	$totalCount = CNext::GetTotalCount($arItem, $arParams);
 	$arQuantityData = CNext::GetQuantityArray($totalCount);
 	$arItem["FRONT_CATALOG"]="Y";
-	
+
 	$strMeasure='';
 	if($arItem["OFFERS"]){
 		$strMeasure=$arItem["MIN_PRICE"]["CATALOG_MEASURE_NAME"];
@@ -77,7 +77,6 @@ $arNotify = unserialize($notifyOption);
 					else
 						$fast_view_text = GetMessage('FAST_VIEW');?>
 				</a>
-				<div class="fast_view_block" data-event="jqm" data-param-form_id="fast_view" data-param-iblock_id="<?=$arParams["IBLOCK_ID"];?>" data-param-id="<?=$arItem["ID"];?>" data-param-item_href="<?=urlencode($arItem["DETAIL_PAGE_URL"]);?>" data-name="fast_view"><?=$fast_view_text;?></div>
 			</div>
 			<div class="item_info">
 				<div class="item-title">
@@ -135,7 +134,7 @@ $arNotify = unserialize($notifyOption);
 								<?=CNext::showPriceRangeTop($arItem, $arParams, GetMessage("CATALOG_ECONOMY"));?>
 							<?endif;?>
 							<?=CNext::showPriceMatrix($arItem, $arParams, $strMeasure, $arAddToBasketData);?>
-						<?	
+						<?
 						}
 						elseif($arItem["PRICES"])
 						{?>
@@ -144,7 +143,7 @@ $arNotify = unserialize($notifyOption);
 					<?endif;?>
 				</div>
 			</div>
-			
+
 			<div class="footer_button">
 				<?=$arAddToBasketData["HTML"]?>
 			</div>
@@ -153,7 +152,7 @@ $arNotify = unserialize($notifyOption);
 <?endforeach;?>
 <?else:?>
 	<div class="empty_items"></div>
-	<script type="text/javascript">			
+	<script type="text/javascript">
 		$('.top_blocks li[data-code=BEST]').remove();
 		$('.tabs_content tab[data-code=BEST]').remove();
 		if(!$('.slider_navigation.top li').length){
@@ -165,7 +164,7 @@ $arNotify = unserialize($notifyOption);
 					var index=$(this).closest('.tab').index();
 					$('.top_blocks .tabs>li:eq('+index+')').remove();
 					$('.tabs_content .tab:eq('+index+')').remove();
-				})				
+				})
 				$('.tabs_content .tab.cur').trigger('click');
 			}
 		}

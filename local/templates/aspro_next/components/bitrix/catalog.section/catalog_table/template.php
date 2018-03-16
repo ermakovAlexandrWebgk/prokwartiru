@@ -68,7 +68,7 @@
 												$fast_view_text = $fast_view_text_tmp;
 											else
 												$fast_view_text = GetMessage('FAST_VIEW');?>
-											<?/*<div class="fast_view_block icons" data-event="jqm" data-param-form_id="fast_view" data-param-iblock_id="<?=$arParams["IBLOCK_ID"];?>" data-param-id="<?=$arItem["ID"];?>" data-param-item_href="<?=urlencode($arItem["DETAIL_PAGE_URL"]);?>" data-name="fast_view"><?=$fast_view_text;?></div>*/?>
+
 										</div>
 									</td>
 									<td class="item-name-cell">
@@ -199,27 +199,7 @@
 												<?
 											}?>
 										</div>
-										<div class="adaptive_button_buy">
-											<!--noindex-->
-												<?=$arAddToBasketData["HTML"]?>
-											<!--/noindex-->
-										</div>
-									</td>
-									<td class="but-cell item_<?=$arItem["ID"]?>">
-										<div class="counter_wrapp">
-											<?if($arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_LIST"] && !count($arItem["OFFERS"]) && $arAddToBasketData["ACTION"] == "ADD" && $arAddToBasketData["CAN_BUY"]):?>
-												<div class="counter_block" data-item="<?=$arItem["ID"];?>" <?=(in_array($arItem["ID"], $arParams["BASKET_ITEMS"]) ? "style='display: none;'" : "");?>>
-													<span class="minus">-</span>
-													<input type="text" class="text" name="quantity" value="<?=$arAddToBasketData["MIN_QUANTITY_BUY"]?>" />
-													<span class="plus" <?=($arAddToBasketData["MAX_QUANTITY_BUY"] ? "data-max='".$arAddToBasketData["MAX_QUANTITY_BUY"]."'" : "")?>>+</span>
-												</div>
-											<?endif;?>
-											<div class="button_block <?=(in_array($arItem["ID"], $arParams["BASKET_ITEMS"])  || $arAddToBasketData["ACTION"] == "ORDER" || !$arAddToBasketData["CAN_BUY"] || !$arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_LIST"] ? "wide" : "");?>">
-												<!--noindex-->
-													<?=$arAddToBasketData["HTML"]?>
-												<!--/noindex-->
-											</div>
-										</div>
+
 										<?
 										if(isset($arItem['PRICE_MATRIX']) && $arItem['PRICE_MATRIX']) // USE_PRICE_COUNT
 										{?>

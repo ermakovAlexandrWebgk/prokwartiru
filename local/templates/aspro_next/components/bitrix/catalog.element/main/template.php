@@ -394,7 +394,6 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 							$min_price_id=0;
 							if (isset($arResult['MIN_PRICE']) || isset($arResult['RATIO_PRICE']))
 								$minPrice = $arResult['MIN_PRICE'];
-
 							$offer_id=0;
 							if($arParams["TYPE_SKU"]=="N"){
 								$offer_id=$minPrice["MIN_ITEM_ID"];
@@ -402,7 +401,6 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 							$min_price_id=$minPrice["MIN_PRICE_ID"];
 							if(!$min_price_id)
 								$min_price_id=$minPrice["PRICE_ID"];
-
 							$arTmpOffer = current($arResult["OFFERS"]);
 							if(!$min_price_id)
 								$min_price_id=$arTmpOffer["MIN_PRICE"]["PRICE_ID"];
@@ -902,7 +900,6 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 	<div class="tabs">
 		<ul class="nav nav-tabs">
 			<?$iTab = 0;?>
-
 			<?if($arResult["OFFERS"] && $arParams["TYPE_SKU"]=="N"):?>
 				<li class="prices_tab<?=(!($iTab++) ? ' active' : '')?>">
 					<a href="#prices_offer" data-toggle="tab"><span><?=($arParams["TAB_OFFERS_NAME"] ? $arParams["TAB_OFFERS_NAME"] : GetMessage("OFFER_PRICES"));?></span></a>
@@ -1359,7 +1356,6 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 							$component, array("HIDE_ICONS" => "Y")
 						);?>
 					<?endif;?>
-
 					</div>
 				</div>
 			<?endif;?>

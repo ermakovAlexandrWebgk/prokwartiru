@@ -388,7 +388,6 @@ if ($arResult['CATALOG'] && isset($arResult['OFFERS']) && !empty($arResult['OFFE
 				}
 			}
 		}
-
 		$arOffer['MORE_PHOTO_COUNT'] = count($arOffer['MORE_PHOTO']);
 
 		/*if (CIBlockPriceTools::clearProperties($arOffer['DISPLAY_PROPERTIES'], $arParams['OFFER_TREE_PROPS']))
@@ -820,7 +819,6 @@ if ($arResult['MODULES']['catalog'] && $arResult['CATALOG'])
 			$arResult["FIX_PRICE_MATRIX"] = CNext::checkPriceRangeExt($arResult);
 		}
 	}
-
 	//format prices when USE_PRICE_COUNT
 	$arResult = array_merge($arResult, CNext::formatPriceMatrix($arResult));
 }
@@ -1023,16 +1021,13 @@ if(is_array($arParams["SECTION_TIZER"]) && $arParams["SECTION_TIZER"]){
 		$obCache->EndDataCache($arTizersData);
 	}
 	$arResult["TIZERS_ITEMS"]=$arTizersData;
+
 }?>
 
 <?
-//arshow($arResult);
-
 
 $parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => '77', "HAS_ELEMENT" => $arResult['IBLOCK_SECTION_ID'], "DEPTH_LEVEL" => '1'), false);
 while ($ar_parent = $parent_res->GetNext()) {
-
-
 	switch ($ar_parent["ID"]) {
 		case '34639':
 			$prop_str = "";
@@ -1043,6 +1038,7 @@ while ($ar_parent = $parent_res->GetNext()) {
 				$ar_size_value = str_replace(",",".",$ar_size_value);
 				$ar_size_n[] = floatval($ar_size_value);
 			}
+			
 			if ($ar_size_n[0] < $ar_size_n[1]) {
 				$width_oboi = $ar_size_n[0];
 				$lengst_oboi = $ar_size_n[1];
@@ -1065,6 +1061,4 @@ while ($ar_parent = $parent_res->GetNext()) {
 			break;
 	}
 }
-
-// arshow($arResult);
 ?>

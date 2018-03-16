@@ -1,0 +1,17 @@
+.catalog-section-list {
+    margin: 0 20px 0 0;
+}
+.catalog-section-list img {
+    float: left;
+    margin: 7px 20px 30px 25px;
+    border: 1px solid #ececec;
+}
+.catalog-section-title {
+    font: 18px Tahoma;
+}
+.catalog-section-desc {
+    font: 12px Tahoma;
+}
+.catalog-section-separator {
+    clear: both;
+}

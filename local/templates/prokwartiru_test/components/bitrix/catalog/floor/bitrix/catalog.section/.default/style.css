@@ -1,0 +1,39 @@
+table.float-card div.float-card-properties {padding-top: 5px !important;}
+.float-card-price
+{
+  color: #F58220 !important;
+  background-color: transparent !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  padding: 0px !important;
+}
+
+div.catalog-item-links_new
+{
+  /*font-size: 18px !important;*/
+  /*font-weight: bold !important;*/
+  height: 47px;
+  width: 120px;
+  float:left;
+  background:orange url(images/buy.png) no-repeat !important;
+  margin-right: 10px;
+}
+div.catalog-item-links_new a
+{
+  color: white !important;
+  text-decoration: none !important;
+}
+
+div.catalog-item-links_new div.buttons
+{
+  padding: 9px 0 0 52px;
+  /*width:70px;*/
+  height: 100%;
+  color: white !important;
+}
+
+div.catalog-item-links_new div.buttons:hover
+{
+  cursor: pointer;
+}
+

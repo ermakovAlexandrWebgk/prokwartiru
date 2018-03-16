@@ -204,7 +204,7 @@ function myFormat($fSum, $strCurrency)
 	}
 }
 
-function arshow($array, $adminCheck = true){
+function arshow($array, $adminCheck = false){
     global $USER;
     $USER = new Cuser;
     if ($adminCheck) {
@@ -213,7 +213,8 @@ function arshow($array, $adminCheck = true){
         }
     }
     echo "<pre>";
-    var_dump($array);
+    // var_dump($array);
+    print_r($array);
     echo "</pre>";
 }
 

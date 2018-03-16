@@ -1,0 +1,36 @@
+div.lepnina{
+   width: 580px;
+   padding-left: 10px;
+   clear: both;
+} 
+div.lepnina table{
+   width: 570px;
+   background-color: #ffffff;
+   border: 1px solid #8E8B86;
+}
+div.lepnina table td{
+   padding:0 10px 0 10px;
+}
+div.catalog-item-card{
+   width: 264px !important;
+   height: 200px !important;
+   border: 1px solid #eeeeee !important;
+}
+div.catalog-item-card div.item-image{
+   width: 260px !important;
+   //height: 100%;
+   text-align: center;
+}
+
+div.catalog-item-card img{
+   max-width: 250px !important;
+   max-height:120px !important;
+   margin: 0 10px;
+}
+div.catalog-item-card div.item-title{
+   width: 264px !important;
+   text-align: center;
+}
+div.lepnina hr{
+   margin: 0px; padding: 0px;
+}

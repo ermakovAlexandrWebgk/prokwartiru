@@ -1,0 +1,20 @@
+div.catalog-item-cards{
+   background-color: #ffffff;
+   padding: 10px;
+   width: 705px !important;
+   border: 1px solid #8E8B86;
+}
+
+div.catalog-item-card{
+   border: 0px !important;
+   width: 340px !important;
+}
+div.catalog-item-card img{
+   max-width: 340px !important;
+   max-height: 200px !important;
+
+}
+div.catalog-item-card div.item-title{
+   width: 340px !important;
+
+}

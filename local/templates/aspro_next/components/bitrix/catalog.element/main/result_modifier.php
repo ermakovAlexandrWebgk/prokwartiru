@@ -1025,9 +1025,10 @@ if(is_array($arParams["SECTION_TIZER"]) && $arParams["SECTION_TIZER"]){
 }?>
 
 <?
-
-$parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => CATALOG_ID, "HAS_ELEMENT" => $arResult['IBLOCK_SECTION_ID'], "DEPTH_LEVEL" => '1'), false);
+var_dump($arResult['IBLOCK_SECTION_ID']);
+$parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => CATALOG_ID, "HAS_ELEMENT" => $arResult['ID'], "DEPTH_LEVEL" => 1), false);
 while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товара в зависимости от раздела первого уровня
+
 	switch ($ar_parent["ID"]) {
 		case OBOI_SECTION_ID:
 			$prop_str = "";
@@ -1046,9 +1047,15 @@ while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товар
 				$width_oboi = $ar_size_n[1];
 				$lengst_oboi = $ar_size_n[0];
 			}
+
 			$oboi_rapport = str_replace(",",".",$arResult["PROPERTIES"]['RAPPORT']['VALUE']);
+
 			$prop_str .= "<span class='red'>Размеры: </span>";
-			$prop_str .= "<span>длинна: ".$lengst_oboi."м | ширина: ".$width_oboi."м | раппорт: ".$oboi_rapport."м</span></div>";
+			if (is_numeric($oboi_rapport)) {
+				$oboi_rapport .= "м";
+			}
+
+			$prop_str .= "<span>длинна: ".$lengst_oboi."м | ширина: ".$width_oboi."м | раппорт: ".$oboi_rapport."</span></div>";
 
 			$arResult["IMP_PROPS_STR"] = $prop_str;
 

@@ -318,7 +318,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 	<div class="right_info">
 		<div class="info_item">
 			<p class="card_title">
-				Артикул: <?=$arResult["NAME"];?>
+				Артикул: <?=$arResult["PROPERTIES"]["CML2_ARTICLE"]["VALUE"];?>
 			</p>
 			<?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>
 			<?if($isArticle || $arResult["BRAND_ITEM"] || $arParams["SHOW_RATING"] == "Y" || strlen($arResult["PREVIEW_TEXT"])){?>
@@ -616,10 +616,10 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 				$arFiles = array();
 				if($arResult["PROPERTIES"][$instr_prop]["VALUE"]){
 				    $arFiles = $arResult["PROPERTIES"][$instr_prop]["VALUE"];
-				}
-				else{
+				} else {
 				    $arFiles = $arResult["SECTION_FULL"]["UF_FILES"];
 				}
+
 				if(is_array($arFiles)){
 				    foreach($arFiles as $key => $value){
 				        if(!intval($value)){

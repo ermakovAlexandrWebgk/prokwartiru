@@ -1026,10 +1026,10 @@ if(is_array($arParams["SECTION_TIZER"]) && $arParams["SECTION_TIZER"]){
 
 <?
 
-$parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => '77', "HAS_ELEMENT" => $arResult['IBLOCK_SECTION_ID'], "DEPTH_LEVEL" => '1'), false);
-while ($ar_parent = $parent_res->GetNext()) {
+$parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => CATALOG_ID, "HAS_ELEMENT" => $arResult['IBLOCK_SECTION_ID'], "DEPTH_LEVEL" => '1'), false);
+while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товара в зависимости от раздела первого уровня
 	switch ($ar_parent["ID"]) {
-		case '34639':
+		case OBOI_SECTION_ID:
 			$prop_str = "";
 			$prop_str .= "<div class='imp_props_txt'>";
 			$ar_size = explode("х", $arResult["PROPERTIES"]['SIZE']['VALUE'] );
@@ -1038,7 +1038,7 @@ while ($ar_parent = $parent_res->GetNext()) {
 				$ar_size_value = str_replace(",",".",$ar_size_value);
 				$ar_size_n[] = floatval($ar_size_value);
 			}
-			
+
 			if ($ar_size_n[0] < $ar_size_n[1]) {
 				$width_oboi = $ar_size_n[0];
 				$lengst_oboi = $ar_size_n[1];

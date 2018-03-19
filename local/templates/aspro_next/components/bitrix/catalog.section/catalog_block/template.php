@@ -5,7 +5,7 @@
 		<div class="top_wrapper row margin0 <?=($arParams["SHOW_UNABLE_SKU_PROPS"] != "N" ? "show_un_props" : "unshow_un_props");?>">
 			<div class="catalog_block items block_list">
 	<?}?>
-		<?   
+		<?
 		$currencyList = '';
 		if (!empty($arResult['CURRENCIES'])){
 			$templateLibrary[] = 'currency';
@@ -332,8 +332,8 @@
 									<?}?>
 								<?}?>
 								<?if(!$arItem["OFFERS"] || $arParams['TYPE_SKU'] !== 'TYPE_1'):?>
-									
-                                    
+
+
 									<?
 									if(isset($arItem['PRICE_MATRIX']) && $arItem['PRICE_MATRIX']) // USE_PRICE_COUNT
 									{?>

@@ -9,7 +9,7 @@
 		if (!empty($arResult['CURRENCIES'])){
 			$templateLibrary[] = 'currency';
 			$currencyList = CUtil::PhpToJSObject($arResult['CURRENCIES'], false, true, true);
-		}    
+		}
 		$templateData = array(
 			'TEMPLATE_LIBRARY' => $templateLibrary,
 			'CURRENCIES' => $currencyList
@@ -21,7 +21,7 @@
 		$arOfferProps = implode(';', $arParams['OFFERS_CART_PROPERTIES']);
 		?>
 		<?foreach($arResult["ITEMS"] as $arItem){?>
-        
+
 
 			<?$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "ELEMENT_EDIT"));
 			$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BCS_ELEMENT_DELETE_CONFIRM')));
@@ -87,7 +87,7 @@
 							$fast_view_text = $fast_view_text_tmp;
 						else
 							$fast_view_text = GetMessage('FAST_VIEW');?>
-						
+
 					</td>
 
 					<td class="description_wrapp">

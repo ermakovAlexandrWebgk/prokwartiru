@@ -13,7 +13,6 @@ $signedParameters = $signer->sign(
 	'bx.sale.gift.main.products'
 );
 $signedTemplate = $signer->sign($arResult['RCM_TEMPLATE'], 'bx.sale.gift.main.products');
-
 ?>
 <div class="bx_item_list_you_looked_horizontal detail">
 	<div id="<?= $injectId ?>" class="bx_sale_gift_main_products common_product wrapper_block">

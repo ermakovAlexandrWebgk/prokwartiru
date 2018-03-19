@@ -2695,7 +2695,7 @@ if(!funcDefined('setPriceItem')){
 		if(main_block.find('.buy_block').length)
 		{
 			if(!main_block.find('.buy_block .total_summ').length)
-				$(total_block).appendTo(main_block.find('.buy_block'))
+				$(total_block).appendTo(main_block.find('.counter_wrapp'))
 		}
 		else if(main_block.find('.counter_wrapp').length)
 		{
@@ -2774,7 +2774,7 @@ $(document).ready(function(){
 			}
 		}
 	}
-	
+
 	if(!jQuery.browser.safari){
 		CheckTopMenuPadding();
 		CheckTopMenuOncePadding();
@@ -2791,7 +2791,7 @@ $(document).ready(function(){
 				CheckTopMenuOncePadding();
 				CheckTopMenuDotted();
 				CheckHeaderFixed();
-				
+
 				setTimeout(function(){
 					$(window).scroll();
 				}, 50);
@@ -4809,7 +4809,7 @@ $(document).ready(function(){
 			$('.bx-breadcrumb-item.drop').removeClass('hover');
 		}
 		if(!$(event.target).closest('.menu.topest').length){
-			$('.menu.topest').css({'overflow': 'hidden'});	
+			$('.menu.topest').css({'overflow': 'hidden'});
 			$('.menu.topest > li').removeClass('hover');
 		}
 		if(!$(event.target).closest('.full.has-child').length){
@@ -5017,7 +5017,7 @@ function touchMenu(selector){
 				var th=$(this);
 				th.on('touchend', function(e) {
 					var _th = $(e.target).closest('.menu-item');
-					
+
 					$('.menu.topest > li').removeClass('hover');
 					$('.menu_top_block.catalog_block li').removeClass('hover');
 					$('.bx-breadcrumb-item.drop').removeClass('hover');
@@ -5241,7 +5241,7 @@ if(!funcDefined('orderActions')){
 							}
 						}
 					}
-					if($('.bx-soa-cart-total-line-total').length && !$('.licence_block.filter').length && arNextOptions["THEME"]["SHOW_LICENCE"] == "Y"){						
+					if($('.bx-soa-cart-total-line-total').length && !$('.licence_block.filter').length && arNextOptions["THEME"]["SHOW_LICENCE"] == "Y"){
 						if(typeof(e) === 'undefined')
 							BX.Sale.OrderAjaxComponent.state_licence = (arNextOptions['THEME']['LICENCE_CHECKED'] == 'Y' ? 'checked' : '');
 						$('<div class="form"><div class="licence_block filter label_block"><label data-for="licenses_order" class="hidden error">'+BX.message('JS_REQUIRED_LICENSES')+'</label><input type="checkbox" name="licenses_order" required '+BX.Sale.OrderAjaxComponent.state_licence+' value="Y"><label data-for="licenses_order" class="license">'+BX.message('LICENSES_TEXT')+'</label></div></div>').insertBefore($('#bx-soa-orderSave'));

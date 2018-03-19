@@ -18,7 +18,7 @@
 				{
 					$strMeasure = $arItem["ITEM_MEASURE"]["TITLE"];
 				}
-				else   
+				else
 				{
 					$arMeasure = CCatalogMeasure::getList(array(), array("ID" => $arItem["CATALOG_MEASURE"]), false, false, array())->GetNext();
 					$strMeasure = $arMeasure["SYMBOL_RUS"];
@@ -70,7 +70,7 @@
 									<?endif;?>
 								</div>
 							<?endif;?>
-							<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="thumb">								
+							<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="thumb">
 								<?
 								$a_alt=($arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"] ? $arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"] : $arItem["NAME"] );
 								$a_title=($arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_TITLE"] ? $arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_TITLE"] : $arItem["NAME"] );
@@ -88,7 +88,7 @@
 								else
 									$fast_view_text = GetMessage('FAST_VIEW');?>
 							</a>
-							
+
 						</div>
 						<div class="item_info">
 							<div class="item-title">
@@ -128,7 +128,7 @@
 									$min_price_id=$minPrice["MIN_PRICE_ID"];
 									if(!$min_price_id)
 										$min_price_id=$minPrice["PRICE_ID"];
-									
+
 									$arTmpOffer = current($arItem["OFFERS"]);
 									if(!$min_price_id)
 										$min_price_id=$arTmpOffer["MIN_PRICE"]["PRICE_ID"];
@@ -172,7 +172,7 @@
 										<?=CNext::showPriceMatrix($arItem, $arParams, $strMeasure, $arAddToBasketData);?>
 										<?$arMatrixKey = array_keys($arItem['PRICE_MATRIX']['MATRIX']);
 										$min_price_id=current($arMatrixKey);?>
-									<?	
+									<?
 									}
 									elseif($arItem["PRICES"])
 									{

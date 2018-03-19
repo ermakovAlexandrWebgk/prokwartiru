@@ -1,0 +1,45 @@
+p.card_title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #1d2029;
+}
+
+.info_item .middle_info div.prices_block {
+    display: inline-block;
+    padding: 12px 0;
+}
+
+.wrapper_inner .info_item .middle_info div.buy_block {
+    display: inline;
+}
+
+.catalog_detail .element_detail_text .showroom_txt {
+    color: #7d7d7d;
+    font-size: 12px;
+    line-height: 18px;
+    border-left: 3px solid orange;
+    padding-left: 6px;
+}
+.catalog_detail .element_detail_text .price_txt{
+    border-left: 3px solid orange;
+    padding-left: 6px;
+}
+.catalog_detail .element_detail_text .showroom_txt :nth-child(2){
+    text-decoration: underline;
+}
+
+.middle_info.main_item_wrapper .imp_props_txt {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d2029;
+    margin-bottom: 20px;
+}
+
+.middle_info.main_item_wrapper .imp_props_txt .red{
+    color: #f9a141;
+}
+
+button.btn-get_discount{
+    border: 2px solid orange;
+    margin-bottom: 30px;
+}

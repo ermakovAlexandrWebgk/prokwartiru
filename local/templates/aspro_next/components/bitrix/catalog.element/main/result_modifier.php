@@ -388,7 +388,6 @@ if ($arResult['CATALOG'] && isset($arResult['OFFERS']) && !empty($arResult['OFFE
 				}
 			}
 		}
-		
 		$arOffer['MORE_PHOTO_COUNT'] = count($arOffer['MORE_PHOTO']);
 
 		/*if (CIBlockPriceTools::clearProperties($arOffer['DISPLAY_PROPERTIES'], $arParams['OFFER_TREE_PROPS']))
@@ -537,7 +536,7 @@ if ($arResult['CATALOG'] && isset($arResult['OFFERS']) && !empty($arResult['OFFE
 			//format offer prices when USE_PRICE_COUNT
 			$sPriceMatrix = '';
 			if($arParams['USE_PRICE_COUNT'] == 'Y')
-			{	
+			{
 				if(function_exists('CatalogGetPriceTableEx') && (isset($arOffer['PRICE_MATRIX'])) && !$arOffer['PRICE_MATRIX'] && $arPriceTypeID)
 				{
 					$arOffer['PRICE_MATRIX'] = CatalogGetPriceTableEx($arOffer["ID"], 0, $arPriceTypeID, 'Y', $arConvertParams);
@@ -551,7 +550,7 @@ if ($arResult['CATALOG'] && isset($arResult['OFFERS']) && !empty($arResult['OFFE
 				$arOffer = array_merge($arOffer, CNext::formatPriceMatrix($arOffer));
 				$sPriceMatrix = CNext::showPriceMatrix($arOffer, $arParams, $arOffer['~CATALOG_MEASURE_NAME']);
 			}
-			
+
 			$arAddToBasketData = CNext::GetAddToBasketArray($arOffer, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], false, $arItemIDs["ALL_ITEM_IDS"], 'btn-lg w_icons', $arParams);
 			$arAddToBasketData["HTML"] = str_replace('data-item', 'data-props="'.$arOfferProps.'" data-item', $arAddToBasketData["HTML"]);
 
@@ -696,10 +695,10 @@ if ($arResult['CATALOG'] && isset($arResult['OFFERS']) && !empty($arResult['OFFE
 					}
 				}
 			}
-			
+
 			//format offer prices when USE_PRICE_COUNT
 			if($arParams['USE_PRICE_COUNT'] == 'Y')
-			{				
+			{
 				$arPriceTypeID = array();
 				if($arOffer['PRICES'])
 				{
@@ -818,9 +817,8 @@ if ($arResult['MODULES']['catalog'] && $arResult['CATALOG'])
 		else
 		{
 			$arResult["FIX_PRICE_MATRIX"] = CNext::checkPriceRangeExt($arResult);
-		}			
+		}
 	}
-	
 	//format prices when USE_PRICE_COUNT
 	$arResult = array_merge($arResult, CNext::formatPriceMatrix($arResult));
 }
@@ -1023,4 +1021,50 @@ if(is_array($arParams["SECTION_TIZER"]) && $arParams["SECTION_TIZER"]){
 		$obCache->EndDataCache($arTizersData);
 	}
 	$arResult["TIZERS_ITEMS"]=$arTizersData;
+
 }?>
+
+<?
+$parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => CATALOG_ID, "HAS_ELEMENT" => $arResult['ID'], "DEPTH_LEVEL" => 1), false);
+while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товара в зависимости от раздела первого уровня
+
+	switch ($ar_parent["ID"]) {
+		case OBOI_SECTION_ID:
+			$prop_str = "";
+			$prop_str .= "<div class='imp_props_txt'>";
+			$ar_size = explode("х", $arResult["PROPERTIES"]['SIZE']['VALUE'] );
+
+			foreach ($ar_size as $ar_size_value) {
+				$ar_size_value = str_replace(",",".",$ar_size_value);
+				$ar_size_n[] = floatval($ar_size_value);
+			}
+
+			if ($ar_size_n[0] < $ar_size_n[1]) {
+				$width_oboi = $ar_size_n[0];
+				$lengst_oboi = $ar_size_n[1];
+			} else {
+				$width_oboi = $ar_size_n[1];
+				$lengst_oboi = $ar_size_n[0];
+			}
+
+			$oboi_rapport = str_replace(",",".",$arResult["PROPERTIES"]['RAPPORT']['VALUE']);
+
+			$prop_str .= "<span class='red'>Размеры: </span>";
+			if (is_numeric($oboi_rapport)) {
+				$oboi_rapport .= "м";
+			}
+
+			$prop_str .= "<span>длинна: ".$lengst_oboi."м | ширина: ".$width_oboi."м | раппорт: ".$oboi_rapport."</span></div>";
+
+			$arResult["IMP_PROPS_STR"] = $prop_str;
+
+			// unset($arResult["DISPLAY_PROPERTIES"]['SIZE']);
+			// unset($arResult["DISPLAY_PROPERTIES"]['RAPPORT']);
+
+			break;
+
+		default:
+			break;
+	}
+}
+?>

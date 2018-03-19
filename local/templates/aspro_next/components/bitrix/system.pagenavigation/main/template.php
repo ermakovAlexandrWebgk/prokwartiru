@@ -58,6 +58,7 @@
             }
         }
 
+
     }?>
     <div class="module-pagination">
         <div class="nums">
@@ -94,4 +95,5 @@
             <?endif;?>
         </div>
     </div>
+
 <?endif;?>

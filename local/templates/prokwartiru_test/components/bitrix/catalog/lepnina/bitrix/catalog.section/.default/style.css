@@ -1,0 +1,13 @@
+div.catalog-item-card__{
+   border: 1px solid black !important;
+   width: 355px !important;
+}
+div.catalog-item-card__ img{
+   max-width: 355px !important;
+   max-height: 200px !important;
+
+}
+div.catalog-item-card__ div.item-title{
+   width: 355px !important;
+
+}

@@ -1,0 +1,68 @@
+table.catalog-detail td
+{
+  font-size: 12px !important;
+}
+
+div.catalog-detail-properties p
+{
+  font-size: 12px !important;
+  padding: 0px;
+}
+div.catalog-detail-price p
+{
+  font-size: 12px !important;
+  margin:0px !important;
+}
+
+span.catalog-detail-price
+{
+  color: #F58220 !important;
+  background-color: transparent !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  padding: 0px !important;
+}
+
+b.big{
+  font-size: 14px !important;
+}
+div.glue
+{
+  height: 47px;
+  width: 120px;
+  float:left;
+  background:#878787 url(images/glue.png) no-repeat !important;
+  margin-right: 10px;
+}
+div.glue:hover
+{
+  cursor: pointer;
+}
+div.catalog-detail-buttons_new
+{
+  /*font-size: 18px !important;*/
+  /*font-weight: bold !important;*/
+  height: 47px;
+  width: 120px;
+  float:left;
+  background:orange url(images/buy.png) no-repeat !important;
+  margin-right: 10px;
+}
+div.catalog-detail-buttons_new a
+{
+  color: white !important;
+  text-decoration: none !important;
+}
+
+div.catalog-detail-buttons_new div.buttons
+{
+  padding: 9px 0 0 52px;
+  /*width:70px;*/
+  height: 100%;
+  color: white !important;
+}
+
+div.catalog-detail-buttons_new div.buttons:hover
+{
+  cursor: pointer;
+}

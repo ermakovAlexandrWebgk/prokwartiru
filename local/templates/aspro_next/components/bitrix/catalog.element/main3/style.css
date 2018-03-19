@@ -1,0 +1,93 @@
+.product_wrapper{
+    width: 100%;
+    color: #5d504a;
+}
+.product_main_info{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.product_wrapper div {
+    box-sizing: border-box;
+}
+
+.product_wrapper .image_block{
+    /* background: rgba(0,255,0,0.2); */
+    width: 40%;
+}
+.product_wrapper .image_block .images_container{
+    /* background: rgba(0,255,0,0.2); */
+    width: 100%;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    padding: 92px 30px 30px;
+
+}
+.product_wrapper .image_block .images_container img{
+    /* background: rgba(0,255,0,0.2); */
+    width: 100%;
+
+
+}
+.product_wrapper .image_block .images_container .imagers_preview, .product_wrapper .product_info_wrapper .imagers_preview{
+    /* background: rgba(255,0,0,0.2); */
+    width: 100%;
+    margin-top: 20px;
+    height: 120px;
+
+}
+.product_wrapper .product_info_wrapper{
+    width: 60%;
+    /* background: rgba(0,0,255,0.2); */
+}
+.product_wrapper .product_info_wrapper div{
+    /* background: rgba(0,0,255,0.2); */
+    /* font-size: 1.2em; */
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.product_wrapper .product_info_wrapper .product_title{
+    /* background: rgba(0,0,255,0.2); */
+}
+div.product_price input[type="text"] {
+    width: 85px;
+    padding: 1px;
+    line-height: 15px;
+    border: 1px solid #909090;
+    border-radius: 0;
+}
+div.product_price p {
+    margin: 0 0 5px;
+}
+div.product_price button {
+    width: 130px;
+    height: 22px;
+    padding: 1px;
+    line-height: 15px;
+    border: 1px solid #ec6b06;
+    border-radius: 0;
+    text-align: center;
+}
+.product_wrapper .product_info_wrapper .product_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.product_wrapper .product_info_wrapper .product_buttons button{
+    width: 45%;
+    margin-bottom: 30px;
+    height: 30px;
+    border: 2px solid #ec6b06;
+    line-height: 20px;
+
+}
+
+.personal_recommendation{
+    /* background: rgba(255,0,0,0.2); */
+    width: 100%;
+    /* height: 400px; */
+}

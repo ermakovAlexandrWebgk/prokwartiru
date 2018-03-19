@@ -1,0 +1,66 @@
+.gallery-holder{
+    overflow:hidden;
+    padding: 8px 8px 8px;
+    background:#f0f0f0;
+}
+.gallery-holder .jcarousel-next-horizontal,
+.gallery-holder .jcarousel-prev-horizontal{
+    float:right;
+    text-indent:-9999px;
+    background:url(/images/bg-gallery-next.gif) no-repeat;
+    width:9px;
+    height:15px;
+    margin: 0px 0 0;
+    position: relative;
+    top: -65px;
+}
+.gallery-holder .jcarousel-prev-horizontal{
+    float:left;   
+    background:url(/images/bg-gallery-prev.gif) no-repeat;
+    
+}
+.gallery{
+    overflow:hidden;
+    width:800px;
+    position:relative;
+}
+.gallery ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    width:9999px;
+    position:relative;
+}
+.gallery ul li{
+    width:800px;
+    display:inline-block;
+}
+*+ html .gallery ul li{
+    display:inline;
+}
+.gallery ul li .visual{
+    overflow:hidden;
+    padding:0 0 10px;
+    text-align:center;
+}
+.gallery ul li .visual a img{
+    vertical-align:top;
+}
+.gallery .text {
+    overflow:hidden;
+}
+.gallery .text .name{
+    display:block;
+    text-align:center;
+    color:#000000; /*#959595;*/
+    font-weight:normal;
+}
+
+div.news-list img.preview_picture
+{
+	float:left;
+	margin:0 4px 6px 0;
+}
+.news-date-time {
+	color:#486DAA;
+}

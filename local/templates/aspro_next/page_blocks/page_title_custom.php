@@ -2,6 +2,7 @@
 	<div class="page-top-wrapper color vcustom">
 		<section class="page-top maxwidth-theme <?CNext::ShowPageProps('TITLE_CLASS');?>">	
 			<div class="row">
+            <?$APPLICATION->ShowViewContent('items_count')?>
 				<div class="col-md-12">
 					<b><?=__FILE__?></b>				
 				</div>

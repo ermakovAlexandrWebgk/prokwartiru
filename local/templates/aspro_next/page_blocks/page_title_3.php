@@ -2,8 +2,10 @@
 	<div class="page-top-wrapper grey v3">
 		<section class="page-top maxwidth-theme <?CNext::ShowPageProps('TITLE_CLASS');?>">
 			<div class="page-top-main">
+        
 				<?=$APPLICATION->ShowViewContent('product_share')?>
 				<h1 id="pagetitle"><?$APPLICATION->ShowTitle(false)?></h1>
+                <?$APPLICATION->ShowViewContent('items_count');?>
 			</div>
 			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "next", array(
 				"START_FROM" => "0",

@@ -1,6 +1,6 @@
 <?$this->setFrameMode(true);?>
 <?if($arResult["NavPageCount"] > 1):?>
-
+ 
     <?
     if($arResult["NavQueryString"])
     {
@@ -95,16 +95,3 @@
         </div>
     </div>
 <?endif;?>
-<?$this->SetViewTarget('items_count');?>
-<div class="items_count">
-<?=$arResult["NavRecordCount"]?> 
-<?
-use Bitrix\Main\Grid\Declension;
-$yearDeclension = new Declension(GetMessage('ITEMS_COUNT_1'),
-GetMessage('ITEMS_COUNT_2'),
-GetMessage('ITEMS_COUNT_3'));
-$word=$yearDeclension->get($arResult["NavRecordCount"]);
-echo $word;
-?>
-</div>
-<?$this->EndViewTarget();?>

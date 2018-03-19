@@ -5,7 +5,7 @@
         
 				<?=$APPLICATION->ShowViewContent('product_share')?>
 				<h1 id="pagetitle"><?$APPLICATION->ShowTitle(false)?></h1>
-                <?$APPLICATION->ShowViewContent('items_count')?>
+                <?$APPLICATION->ShowViewContent('items_count');?>
 			</div>
 			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "next", array(
 				"START_FROM" => "0",

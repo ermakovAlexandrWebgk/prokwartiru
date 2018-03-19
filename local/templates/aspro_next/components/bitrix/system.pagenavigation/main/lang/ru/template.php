@@ -11,5 +11,4 @@ $MESS ['PAGER_SHOW_MORE'] = "Показать еще";
 $MESS ['ITEMS_COUNT_1'] = "товар";
 $MESS ['ITEMS_COUNT_2'] = "товара";
 $MESS ['ITEMS_COUNT_3'] = "товаров";
-
 ?>

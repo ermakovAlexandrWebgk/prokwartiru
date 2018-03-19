@@ -32,6 +32,7 @@
 				$col=4;
 				break;
 		}?>
+        
 		<?foreach($arResult["ITEMS"] as $arItem){?>
 			<div class="item_block col-<?=$col;?> col-md-<?=floor(12/$arParams["LINE_ELEMENT_COUNT"]);?> col-sm-<?=floor(12/round($arParams['LINE_ELEMENT_COUNT'] / 2))?> col-xs-6">
 				<div class="catalog_item_wrapp item">

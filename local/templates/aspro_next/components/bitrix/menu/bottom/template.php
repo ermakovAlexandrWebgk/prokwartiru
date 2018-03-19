@@ -13,7 +13,7 @@ $colsm = 12;
 				<?$noMoreSubMenuOnThisDepth = false;
 				$count = count($arItem["CHILD"]);?>
 				<?$lastIndex = count($arItem["CHILD"]) - 1;?>
-				
+
 				<?foreach($arItem["CHILD"] as $i => $arSubItem):?>
 					<?if(!$i):?>
 						<div class="wrap">
@@ -38,7 +38,7 @@ $colsm = 12;
 						</div>
 					<?endif;?>
 				<?endforeach;?>
-				
+
 			<?endif;?>
 			<?
 		}
@@ -50,7 +50,7 @@ $colsm = 12;
             <tr>
 			<?$lastIndex = count($arResult) - 1;?>
 			<?foreach($arResult as $i => $arItem):?>
-            
+
 				<?//if($i === 1):?>
 					<td class="wrap">
 				<?//endif;?>

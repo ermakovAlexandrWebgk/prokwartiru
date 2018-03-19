@@ -196,6 +196,10 @@
 
 /************** NEW ****************/
 
+if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/config.php")) {
+	include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/config.php");
+}
+
 AddEventHandler("currency", "CurrencyFormat", "myFormat");
 function myFormat($fSum, $strCurrency)
 {
@@ -214,7 +218,7 @@ function arshow($array, $adminCheck = false){
     }
     echo "<pre>";
     // var_dump($array);
-	print_r($array);
+    print_r($array);
     echo "</pre>";
 }
 

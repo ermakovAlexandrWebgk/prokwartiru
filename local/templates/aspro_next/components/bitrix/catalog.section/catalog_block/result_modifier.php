@@ -640,13 +640,9 @@ foreach ($arResult["ITEMS"] as $arItem) {
     if ($curr_section) {
         $sect_info = CIBlockSection::GetByID($curr_section) -> Fetch();
         if ($sect_info["CODE"]) {
-            // $arSelect[] = "PROPERTY_BRAND_" . $sect_info["CODE"];
-            // $arSelect[] = "PROPERTY_ARTICUL_" . $sect_info["CODE"];
-            // $arSelect[] = "PROPERTY_SIZE_" . $sect_info["CODE"];
 			$arSelect[] = "PROPERTY_BRAND_VALUE";
 			$arSelect[] = "PROPERTY_SIZE";
 			$arSelect[] = "PROPERTY_COUNTRY";
-            // $arSelect[] = "PROPERTY_ARTICUL_" . $sect_info["CODE"];
             $sect_code = $sect_info["CODE"];
         }
     }
@@ -664,11 +660,9 @@ foreach ($arResult["ITEMS"] as $arItem) {
                 $arResult["ITEM_PROPS_INFO"][$arItem["ID"]][] = "Коллекция: " . $section_info["NAME"];
             }
         }
-        // if (strlen($item_props_info["PROPERTY_ARTICUL_" . strtoupper($sect_code) . "_VALUE"])) {
-        //     $arResult["ITEM_PROPS_INFO"][$arItem["ID"]][] = "Артикул: " . $item_props_info["PROPERTY_ARTICUL_" . strtoupper($sect_code) . "_VALUE"];
-        // }
+
         if (strlen($item_props_info["PROPERTY_BRAND_VALUE_VALUE"])) {
-            // $arResult["ITEM_PROPS_INFO"][$arItem["ID"]][] = "Бренд: " . $item_props_info["PROPERTY_BRAND_" . strtoupper($sect_code) . "_VALUE"];
+
 
             $arResult["ITEM_PROPS_INFO"][$arItem["ID"]][] = "Бренд: " . $item_props_info["PROPERTY_BRAND_VALUE_VALUE"];
         }
@@ -676,10 +670,6 @@ foreach ($arResult["ITEMS"] as $arItem) {
 		if (strlen($item_props_info["PROPERTY_COUNTRY_VALUE"])) {
 			$arResult["ITEM_PROPS_INFO"][$arItem["ID"]][] = "Страна: " . $item_props_info["PROPERTY_COUNTRY_VALUE"];
 		}
-		// if (strlen($item_props_info["PROPERTY_SIZE_" . strtoupper($sect_code) . "_VALUE"])) {
-		//     $arResult["ITEM_PROPS_INFO"][$arItem["ID"]][] = "Размер: " . $item_props_info["PROPERTY_SIZE_" . strtoupper($sect_code) . "_VALUE"];
-		// }
     }
 }
 ?>
- 

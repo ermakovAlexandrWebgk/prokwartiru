@@ -1,6 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 $this->setFrameMode(true);
- 
 if($arResult["ITEMS"]){?>
 	<div class="bx_filter bx_filter_vertical">
 		<div class="bx_filter_section">
@@ -730,7 +729,6 @@ if($arResult["ITEMS"]){?>
 									<?=GetMessage("CT_BCSF_DEL_FILTER")?>
 								</button>
 							</div>
-                          
 						</div>
 					</div>
 				<?}?>
@@ -754,18 +752,3 @@ if($arResult["ITEMS"]){?>
 		})
 	</script>
 <?}?>
-<?/*$console_info = \Bitrix\Main\Web\Json::encode($arResult, $options = null);?>
-<script>
-    console.log('arResult = ',<?echo $console_info;?>);
-</script>
-<?
-*/
-/*if (isset($arResult["ELEMENT_COUNT"])) {
-	$APPLICATION->SetViewTarget('produkts_count');
-	?>
-	<span class="cccount"><?=$arResult["ELEMENT_COUNT"]?> товаров</span>
-	<?
-	$APPLICATION->EndViewTarget();
-
-}*/
-?>

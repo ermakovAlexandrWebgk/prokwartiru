@@ -137,6 +137,7 @@ $arViewedData = array(
 	'WITH_OFFERS' => $arResult['OFFERS'] ? 'Y' : 'N',
 );
 ?>
+<?$instr_prop = ($arParams["DETAIL_DOCS_PROP"] ? $arParams["DETAIL_DOCS_PROP"] : "INSTRUCTIONS");?>
 <script type="text/javascript">
 setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, false)?>);
 </script>
@@ -316,6 +317,9 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 	</div>
 	<div class="right_info">
 		<div class="info_item">
+			<p class="card_title">
+				Артикул: <?=$arResult["PROPERTIES"]["CML2_ARTICLE"]["VALUE"];?>
+			</p>
 			<?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>
 			<?if($isArticle || $arResult["BRAND_ITEM"] || $arParams["SHOW_RATING"] == "Y" || strlen($arResult["PREVIEW_TEXT"])){?>
 				<div class="top_info">
@@ -382,6 +386,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 				</div>
 			<?}?>
 			<div class="middle_info main_item_wrapper">
+				<?=$arResult["IMP_PROPS_STR"];?>
 				<div class="prices_block">
 					<div class="cost prices clearfix">
 						<?if( count( $arResult["OFFERS"] ) > 0 ){
@@ -389,7 +394,6 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 							$min_price_id=0;
 							if (isset($arResult['MIN_PRICE']) || isset($arResult['RATIO_PRICE']))
 								$minPrice = $arResult['MIN_PRICE'];
-							
 							$offer_id=0;
 							if($arParams["TYPE_SKU"]=="N"){
 								$offer_id=$minPrice["MIN_ITEM_ID"];
@@ -397,7 +401,6 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 							$min_price_id=$minPrice["MIN_PRICE_ID"];
 							if(!$min_price_id)
 								$min_price_id=$minPrice["PRICE_ID"];
-							
 							$arTmpOffer = current($arResult["OFFERS"]);
 							if(!$min_price_id)
 								$min_price_id=$arTmpOffer["MIN_PRICE"]["PRICE_ID"];
@@ -464,7 +467,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 									<?=CNext::showPriceRangeTop($arResult, $arParams, GetMessage("CATALOG_ECONOMY"));?>
 								<?endif;?>
 								<?=CNext::showPriceMatrix($arResult, $arParams, $strMeasure, $arAddToBasketData);?>
-							<?	
+							<?
 							}
 							else
 							{
@@ -550,10 +553,9 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 									<?=$arAddToBasketData["HTML"]?>
 								<!--/noindex-->
 							</div>
-						</div>
-						<?if(isset($arResult['PRICE_MATRIX']) && $arResult['PRICE_MATRIX']) // USE_PRICE_COUNT
-						{?>
-							<?if($arResult['ITEM_PRICE_MODE'] == 'Q' && count($arResult['PRICE_MATRIX']['ROWS']) > 1):?>
+							<?if(isset($arResult['PRICE_MATRIX']) && $arResult['PRICE_MATRIX']) // USE_PRICE_COUNT
+							{?>
+								<?if($arResult['ITEM_PRICE_MODE'] == 'Q' && count($arResult['PRICE_MATRIX']['ROWS']) > 1):?>
 								<?$arOnlyItemJSParams = array(
 									"ITEM_PRICES" => $arResult["ITEM_PRICES"],
 									"ITEM_PRICE_MODE" => $arResult["ITEM_PRICE_MODE"],
@@ -562,10 +564,11 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 									"ID" => $arItemIDs["strMainID"],
 								)?>
 								<script type="text/javascript">
-									var <? echo $arItemIDs["strObName"]; ?>el = new JCCatalogOnlyElement(<? echo CUtil::PhpToJSObject($arOnlyItemJSParams, false, true); ?>);
+								var <? echo $arItemIDs["strObName"]; ?>el = new JCCatalogOnlyElement(<? echo CUtil::PhpToJSObject($arOnlyItemJSParams, false, true); ?>);
 								</script>
-							<?endif;?>
-						<?}?>
+								<?endif;?>
+								<?}?>
+						</div>
 						<?if($arAddToBasketData["ACTION"] !== "NOTHING"):?>
 							<?if($arAddToBasketData["ACTION"] == "ADD" && $arAddToBasketData["CAN_BUY"] && $arParams["SHOW_ONE_CLICK_BUY"]!="N"):?>
 								<div class="wrapp_one_click">
@@ -583,6 +586,10 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 						<span class="btn btn-default btn-lg slide_offer transition_bg type_block"><i></i><span><?=GetMessage("MORE_TEXT_BOTTOM");?></span></span>
 					<?endif;?>
 				</div>
+				<div class="discount_block">
+					<button type="button" name="getDiscount" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку</button>
+				</div>
+
 			</div>
 			<?if(is_array($arResult["STOCK"]) && $arResult["STOCK"]):?>
 				<div class="stock_wrapper">
@@ -598,6 +605,52 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 				<div class="price_txt">
 					<?$APPLICATION->IncludeFile(SITE_DIR."include/element_detail_text.php", Array(), Array("MODE" => "html",  "NAME" => GetMessage('CT_BCE_CATALOG_DOP_DESCR')));?>
 				</div>
+				<?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
+				<div class="showroom_txt">
+					<span>Посмотреть в шоуруме по адресу:</span><br>
+					<span>г. Москва, ул. Азовская, д. 24, к. 3, офис 71, ст.м. Севастопольская</span>
+				</div>
+				<?endif;?>
+
+				<?
+				$arFiles = array();
+				if($arResult["PROPERTIES"][$instr_prop]["VALUE"]){
+				    $arFiles = $arResult["PROPERTIES"][$instr_prop]["VALUE"];
+				} else {
+				    $arFiles = $arResult["SECTION_FULL"]["UF_FILES"];
+				}
+
+				if(is_array($arFiles)){
+				    foreach($arFiles as $key => $value){
+				        if(!intval($value)){
+				            unset($arFiles[$key]);
+				        }
+				    }
+				}
+				?>
+				<?if($arFiles):?>
+				    <div class="wraps">
+				        <h4><?=($arParams["BLOCK_DOCS_NAME"] ? $arParams["BLOCK_DOCS_NAME"] : GetMessage("DOCUMENTS_TITLE"))?></h4>
+				        <div class="files_block">
+				            <div class="row">
+				                <?foreach($arFiles as $arItem):?>
+				                    <div class="col-md-3 col-sm-6">
+				                        <?$arFile=CNext::GetFileInfo($arItem);?>
+				                        <div class="file_type clearfix <?=$arFile["TYPE"];?>">
+				                            <i class="icon"></i>
+				                            <div class="description">
+				                                <a target="_blank" href="<?=$arFile["SRC"];?>" class="dark_link"><?=$arFile["DESCRIPTION"];?></a>
+				                                <span class="size">
+				                                    <?=$arFile["FILE_SIZE_FORMAT"];?>
+				                                </span>
+				                            </div>
+				                        </div>
+				                    </div>
+				                <?endforeach;?>
+				            </div>
+				        </div>
+				    </div>
+				<?endif;?>
 			</div>
 		</div>
 	</div>
@@ -626,7 +679,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 					<meta itemprop="sku" content="<?=implode('/', $currentOffersList)?>" />
 					<a href="<?=$arOffer['DETAIL_PAGE_URL']?>" itemprop="url"></a>
 					<meta itemprop="price" content="<?=($arOffer['MIN_PRICE']['DISCOUNT_VALUE']) ? $arOffer['MIN_PRICE']['DISCOUNT_VALUE'] : $arOffer['MIN_PRICE']['VALUE']?>" />
-					<meta itemprop="priceCurrency" content="<?=$arOffer['MIN_PRICE']['CURRENCY']?>" />					
+					<meta itemprop="priceCurrency" content="<?=$arOffer['MIN_PRICE']['CURRENCY']?>" />
 					<link itemprop="availability" href="http://schema.org/<?=($arOffer['CAN_BUY'] ? 'InStock' : 'OutOfStock')?>" />
 				</span>
 			<?endforeach;?>
@@ -847,7 +900,6 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 	<div class="tabs">
 		<ul class="nav nav-tabs">
 			<?$iTab = 0;?>
-			<?$instr_prop = ($arParams["DETAIL_DOCS_PROP"] ? $arParams["DETAIL_DOCS_PROP"] : "INSTRUCTIONS");?>
 			<?if($arResult["OFFERS"] && $arParams["TYPE_SKU"]=="N"):?>
 				<li class="prices_tab<?=(!($iTab++) ? ' active' : '')?>">
 					<a href="#prices_offer" data-toggle="tab"><span><?=($arParams["TAB_OFFERS_NAME"] ? $arParams["TAB_OFFERS_NAME"] : GetMessage("OFFER_PRICES"));?></span></a>
@@ -1211,7 +1263,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 									<?endforeach;?>
 								</div>
 							<?else:?>
-								<div class="char_block">								
+								<div class="char_block">
 									<table class="props_list">
 										<?foreach($arResult["DISPLAY_PROPERTIES"] as $arProp):?>
 											<?if(!in_array($arProp["CODE"], array("SERVICES", "BRAND", "HIT", "RECOMMEND", "NEW", "STOCK", "VIDEO", "VIDEO_YOUTUBE", "CML2_ARTICLE"))):?>
@@ -1242,7 +1294,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 							<?endif;?>
 						</div>
 					<?endif;?>
-					<?if($arResult["SERVICES"]):?>						
+					<?if($arResult["SERVICES"]):?>
 						<?global $arrSaleFilter; $arrSaleFilter = array("ID" => $arResult["PROPERTIES"]["SERVICES"]["VALUE"]);?>
 						<?$APPLICATION->IncludeComponent(
 							"bitrix:news.list",
@@ -1258,7 +1310,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 								"FILTER_NAME" => "arrSaleFilter",
 								"FIELD_CODE" => array(
 									0 => "NAME",
-									1 => "PREVIEW_TEXT",			
+									1 => "PREVIEW_TEXT",
 									3 => "PREVIEW_PICTURE",
 									4 => "",
 								),
@@ -1304,46 +1356,6 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 							$component, array("HIDE_ICONS" => "Y")
 						);?>
 					<?endif;?>
-					<?
-					$arFiles = array();
-					if($arResult["PROPERTIES"][$instr_prop]["VALUE"]){
-						$arFiles = $arResult["PROPERTIES"][$instr_prop]["VALUE"];
-					}
-					else{
-						$arFiles = $arResult["SECTION_FULL"]["UF_FILES"];
-					}
-					if(is_array($arFiles)){
-						foreach($arFiles as $key => $value){
-							if(!intval($value)){
-								unset($arFiles[$key]);
-							}
-						}
-					}
-					?>
-					<?if($arFiles):?>
-						<div class="wraps">
-							<hr>
-							<h4><?=($arParams["BLOCK_DOCS_NAME"] ? $arParams["BLOCK_DOCS_NAME"] : GetMessage("DOCUMENTS_TITLE"))?></h4>
-							<div class="files_block">
-								<div class="row">
-									<?foreach($arFiles as $arItem):?>
-										<div class="col-md-3 col-sm-6">
-											<?$arFile=CNext::GetFileInfo($arItem);?>
-											<div class="file_type clearfix <?=$arFile["TYPE"];?>">
-												<i class="icon"></i>
-												<div class="description">
-													<a target="_blank" href="<?=$arFile["SRC"];?>" class="dark_link"><?=$arFile["DESCRIPTION"];?></a>
-													<span class="size">
-														<?=$arFile["FILE_SIZE_FORMAT"];?>
-													</span>
-												</div>
-											</div>
-										</div>
-									<?endforeach;?>
-								</div>
-							</div>
-						</div>
-					<?endif;?>
 					</div>
 				</div>
 			<?endif;?>
@@ -1385,7 +1397,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 									<?if((!is_array($arProp["DISPLAY_VALUE"]) && strlen($arProp["DISPLAY_VALUE"])) || (is_array($arProp["DISPLAY_VALUE"]) && implode('', $arProp["DISPLAY_VALUE"]))):?>
 										<tr itemprop="additionalProperty" itemscope itemtype="http://schema.org/PropertyValue">
 											<td class="char_name">
-												<?if($arProp["HINT"] && $arParams["SHOW_HINTS"]=="Y"):?><div class="hint"><span class="icon"><i>?</i></span><div class="tooltip"><?=$arProp["HINT"]?></div></div><?endif;?>												
+												<?if($arProp["HINT"] && $arParams["SHOW_HINTS"]=="Y"):?><div class="hint"><span class="icon"><i>?</i></span><div class="tooltip"><?=$arProp["HINT"]?></div></div><?endif;?>
 												<div class="props_item <?if($arProp["HINT"] && $arParams["SHOW_HINTS"] == "Y"){?>whint<?}?>">
 													<span itemprop="name"><?=$arProp["NAME"]?></span>
 												</div>
@@ -1495,9 +1507,9 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 					</div>
 				</div>
 			<?endif;?>
-			<div class="tab-pane media_review<?=(!($iTab++) ? ' active' : '')?> product_reviews_tab visible-xs">
+			<?/*<div class="tab-pane media_review<?=(!($iTab++) ? ' active' : '')?> product_reviews_tab visible-xs">
 				<div class="title-tab-heading visible-xs"><?=($arParams["TAB_REVIEW_NAME"] ? $arParams["TAB_REVIEW_NAME"] : GetMessage("REVIEW_TAB"))?><span class="count empty"></span></div>
-			</div>
+			</div>*/?>
 		</div>
 	</div>
 </div>

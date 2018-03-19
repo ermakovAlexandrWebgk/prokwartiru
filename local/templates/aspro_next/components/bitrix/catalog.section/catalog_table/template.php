@@ -16,7 +16,7 @@
 			'CURRENCIES' => $currencyList
 		);
 		unset($currencyList, $templateLibrary);
-		?>        
+		?>
 			<?$arOfferProps = implode(';', $arParams['OFFERS_CART_PROPERTIES']);?>
 			<?foreach($arResult["ITEMS"]  as $arItem){
 				$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "ELEMENT_EDIT"));
@@ -68,7 +68,7 @@
 												$fast_view_text = $fast_view_text_tmp;
 											else
 												$fast_view_text = GetMessage('FAST_VIEW');?>
-											
+
 										</div>
 									</td>
 									<td class="item-name-cell">
@@ -199,7 +199,7 @@
 												<?
 											}?>
 										</div>
-										
+
 										<?
 										if(isset($arItem['PRICE_MATRIX']) && $arItem['PRICE_MATRIX']) // USE_PRICE_COUNT
 										{?>

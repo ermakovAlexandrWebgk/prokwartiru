@@ -36,5 +36,4 @@
 	<?if ($arParams["SHOW_PRODUCTS"] == "Y" && $arResult['NUM_PRODUCTS'] > 0):?>
 		<div class="bx_item_hr" style="margin-bottom:0"></div>
 	<?endif?>
-
 </div>

@@ -13,7 +13,7 @@ $currentProductId = (int)$arResult['POTENTIAL_PRODUCT_TO_BUY']['ID'];
 if (isset($arResult['REQUEST_ITEMS']))
 {
 	CJSCore::Init(array('ajax'));
-         
+
 	// component parameters
 	$signer = new \Bitrix\Main\Security\Sign\Signer;
 	$signedParameters = $signer->sign(
@@ -192,7 +192,7 @@ if (!empty($arResult['ITEMS'])){
 											else
 												$fast_view_text = GetMessage('FAST_VIEW');?>
 										</a>
-										
+
 									</div>
 									<div class="item_info <?=$arParams["TYPE_SKU"]?>">
 										<div class="item-title">
@@ -234,12 +234,12 @@ if (!empty($arResult['ITEMS'])){
 												$min_price_id=$minPrice["MIN_PRICE_ID"];
 												if(!$min_price_id)
 													$min_price_id=$minPrice["PRICE_ID"];
-												
+
 												$arTmpOffer = current($arItem["OFFERS"]);
 												if(!$min_price_id)
 													$min_price_id=$arTmpOffer["MIN_PRICE"]["PRICE_ID"];
 												$item_id = $arTmpOffer["ID"];
-												
+
 												$prefix = '';
 												if('N' == $arParams['TYPE_SKU'] || $arParams['DISPLAY_TYPE'] !== 'block'){
 													$prefix = GetMessage("CATALOG_FROM");
@@ -276,7 +276,7 @@ if (!empty($arResult['ITEMS'])){
 														<?=CNext::showPriceRangeTop($arItem, $arParams, GetMessage("CATALOG_ECONOMY"));?>
 													<?endif;?>
 													<?=CNext::showPriceMatrix($arItem, $arParams, $strMeasure, $arAddToBasketData);?>
-												<?	
+												<?
 												}
 												elseif ( $arItem["PRICES"] )
 												{
@@ -323,7 +323,7 @@ if (!empty($arResult['ITEMS'])){
 														}?>
 													</div>
 													<?$arItemJSParams=CNext::GetSKUJSParams($arResult, $arParams, $arItem, "N", "Y");?>
-													
+
 													<script type="text/javascript">
 														var <? echo $arItemIDs["strObName"]; ?> = new JCSaleGiftProduct(<? echo CUtil::PhpToJSObject($arItemJSParams, false, true); ?>);
 													</script>

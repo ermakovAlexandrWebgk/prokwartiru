@@ -17,7 +17,6 @@
 						$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], $elementDelete, $elementDeleteParams);
 						$arItem["strMainID"] = $this->GetEditAreaId($arItem['ID']);
 						$arItemIDs=CNext::GetItemsIDs($arItem);
-                             
 						$strMeasure = '';
 						$totalCount = CNext::GetTotalCount($arItem, $arParams);
 						$arQuantityData = CNext::GetQuantityArray($totalCount, $arItemIDs["ALL_ITEM_IDS"]);
@@ -99,7 +98,6 @@
 										else
 											$fast_view_text = GetMessage('FAST_VIEW');?>
 									</a>
-									
 								</div>
 								<div class="item_info <?=$arParams["TYPE_SKU"]?>">
 									<div class="item-title">
@@ -141,12 +139,12 @@
 											$min_price_id=$minPrice["MIN_PRICE_ID"];
 											if(!$min_price_id)
 												$min_price_id=$minPrice["PRICE_ID"];
-											
+
 											$arTmpOffer = current($arItem["OFFERS"]);
 											if(!$min_price_id)
 												$min_price_id=$arTmpOffer["MIN_PRICE"]["PRICE_ID"];
 											$item_id = $arTmpOffer["ID"];
-											
+
 											$prefix = '';
 											if('N' == $arParams['TYPE_SKU'] || $arParams['DISPLAY_TYPE'] !== 'block' || empty($arItem['OFFERS_PROP'])){
 												$prefix = GetMessage("CATALOG_FROM");

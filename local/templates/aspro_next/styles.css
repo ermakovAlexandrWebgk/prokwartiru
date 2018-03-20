@@ -172,11 +172,11 @@ a.icon-text:focus { color: #fff; }
 .btn.btn-default.in-cart, .btn.btn-default.in-cart:hover{background: #4fad00;border-color: #4fad00;}
 .btn.btn-default:focus:active{color:#fff;}
 .btn.btn-default.transparent.white:not(:hover){background: transparent;}
-#footer{
+footer#footer{
 position: sticky;
 bottom: 0;
 z-index: 625;
 }
-#footer .footer_bottom_inner{
+footer#footer .footer_bottom_inner{
 padding-bottom: 0;
 }

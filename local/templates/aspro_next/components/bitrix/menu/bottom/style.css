@@ -2,8 +2,8 @@ img.menu_image  {
 height: 20%;
 width: 20%;
 }
-.bottom-menu table tr :last-child img{
- height: 55%;
+img.menu_image.yandex_reviews{
+height: 55%;
 width: 55%;
 padding-top:5px;   
 }

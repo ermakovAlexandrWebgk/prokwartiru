@@ -13,7 +13,7 @@
         
 				<?=$APPLICATION->ShowViewContent('product_share')?>
 				<h1 id="pagetitle"><?$APPLICATION->ShowTitle(false)?></h1>
-                <?$APPLICATION->ShowViewContent('items_count');?>
+                <span style="dislpay:none;" id="replase_productPageCount"></span>
 			</div>
 		</section>
 	</div>

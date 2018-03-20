@@ -6221,3 +6221,7 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
     font-family:"Open Sans", Helvetica, Arial, sans-serif;
     font-size:25px;
 }
+.page-top-main{
+    display: flex;
+    justify-content: space-between;
+}

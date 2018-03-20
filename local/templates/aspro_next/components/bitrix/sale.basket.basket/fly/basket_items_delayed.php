@@ -5,9 +5,9 @@ $bDeleteColumn = false;
 $bWeightColumn = false;
 $bPropsColumn  = false;
 ?>
-
-<a class="svg svg-print" onclick="printDiv('printableArea')" title="<?GetMessage('PRINT')?>"></a>
-
+<!--Print button -->
+<a class="svg svg-print" onclick="printDiv('printableArea')" title="<?GetMessage('PRINT')?>"></a>   
+<!-- Print button end -->
 <script type="text/javascript">
 function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;

@@ -5,10 +5,13 @@ GetMessage('ITEMS_COUNT_1'),
 GetMessage('ITEMS_COUNT_2'),
 GetMessage('ITEMS_COUNT_3')
 );
-$word=$yearDeclension->get($arResult["NavRecordCount"]);?>
-
-<?$this->__template->SetViewTarget('items_count');?>
-    <div class="items_count">
-        <?=$arResult["NavRecordCount"];?> <?=$word;?>
+$wordForItems=$yearDeclension->get($arResult["NavRecordCount"]);?>
+    <div id="productPageCount" class="items_count">
+        <?=$arResult["NavRecordCount"]?> <?=$wordForItems?>
     </div>
-<?$this->__template->EndViewTarget();?>
+  <script>
+  $( document ).ready( function () {
+    var stores = $("#productPageCount");
+    $("#replase_productPageCount").replaceWith(stores);
+  })
+</script>

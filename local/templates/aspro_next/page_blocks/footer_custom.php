@@ -18,7 +18,7 @@
 	"bottom", 
 	array(
 		"ROOT_MENU_TYPE" => "footer_menu",
-		"MENU_CACHE_TYPE" => "Y",
+		"MENU_CACHE_TYPE" => "A",
 		"MENU_CACHE_TIME" => "3600000",
 		"MENU_CACHE_USE_GROUPS" => "N",
 		"CACHE_SELECTED_ITEMS" => "N",

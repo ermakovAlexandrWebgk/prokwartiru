@@ -6214,3 +6214,10 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
     padding-top: 0;
     padding-bottom: 21px;
 }
+.items_count {
+    display:flex;
+    justify-content:flex-end;
+    color:#919191;
+    font-family:"Open Sans", Helvetica, Arial, sans-serif;
+    font-size:25px;
+}

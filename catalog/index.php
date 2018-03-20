@@ -133,7 +133,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"ELEMENT_SORT_FIELD2" => "shows",
 		"ELEMENT_SORT_ORDER2" => "desc",
 		"LIST_PROPERTY_CODE" => array(
-			0 => "BRAND",
+			0 => "",
 			1 => "PROP_2033",
 			2 => "COLOR_REF2",
 			3 => "PROP_159",

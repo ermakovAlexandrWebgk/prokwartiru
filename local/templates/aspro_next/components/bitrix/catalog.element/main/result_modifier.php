@@ -1055,13 +1055,13 @@ while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товар
 			$oboi_rapport = str_replace(",",".",$arResult["PROPERTIES"]['RAPPORT']['VALUE']);
 
 			$prop_str .= "<span class='red'>Размеры: </span>";
-			if (is_numeric($oboi_rapport)) {
+			if ( is_numeric($oboi_rapport) ) {
 				$oboi_rapport .= "м";
 			}
 
 			$prop_str .= "<span>длинна: ".$lengst_oboi."м | ширина: ".$width_oboi."м | раппорт: ".$oboi_rapport."</span></div>";
 
-			if ( empty($lengst_oboi) || empty($width_oboi) || empty($oboi_rapport) || ) {
+			if ( empty($lengst_oboi) || empty($width_oboi) || empty($oboi_rapport) ) {
 				$prop_str = "";
 			}
 

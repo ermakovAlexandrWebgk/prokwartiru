@@ -1032,7 +1032,12 @@ while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товар
 		case OBOI_SECTION_ID:
 			$prop_str = "";
 			$prop_str .= "<div class='imp_props_txt'>";
-			$ar_size = explode("х", $arResult["PROPERTIES"]['SIZE']['VALUE'] );
+
+			if ( stripos($arResult["PROPERTIES"]['SIZE']['VALUE'],'х') ) { // хэ или икс
+				$ar_size = explode("х", $arResult["PROPERTIES"]['SIZE']['VALUE'] );
+			} else {
+				$ar_size = explode("x", $arResult["PROPERTIES"]['SIZE']['VALUE'] );
+			}
 
 			foreach ($ar_size as $ar_size_value) {
 				$ar_size_value = str_replace(",",".",$ar_size_value);
@@ -1055,6 +1060,10 @@ while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товар
 			}
 
 			$prop_str .= "<span>длинна: ".$lengst_oboi."м | ширина: ".$width_oboi."м | раппорт: ".$oboi_rapport."</span></div>";
+
+			if ( empty($lengst_oboi) || empty($width_oboi) || empty($oboi_rapport) || ) {
+				$prop_str = "";
+			}
 
 			$arResult["IMP_PROPS_STR"] = $prop_str;
 

@@ -11,7 +11,7 @@
 		),
 		"DELAY" => "N",
 		//"MAX_LEVEL" => $arTheme["MAX_DEPTH_MENU"]["VALUE"],
-        "MAX_LEVEL" => 2,
+        "MAX_LEVEL" => 1,
 		"ALLOW_MULTI_SELECT" => "Y",
 		"ROOT_MENU_TYPE" => "fixed_top_catalog",
 		"CHILD_MENU_TYPE" => "left",

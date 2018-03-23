@@ -5,22 +5,8 @@ $bDeleteColumn = false;
 $bWeightColumn = false;
 $bPropsColumn  = false;
 ?>
-<!--Print button -->
-<a class="svg svg-print" onclick="printDiv('printableArea')" title="<?GetMessage('PRINT')?>"></a>   
-<!-- Print button end -->
-<script type="text/javascript">
-function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
 
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
-}
-</script>
-
+     
 
 <div class="module-cart delayed" id="printableArea">
 <div class="module-cart delayed">
@@ -218,3 +204,6 @@ function printDiv(divName) {
 		</tbody>
 	</table>
 </div>
+  <div class="print" title="<?=GetMessage('PRINT')?>">
+        <a class="svg svg-print" onclick="printDiv('printableArea')"></a>
+    </div> 

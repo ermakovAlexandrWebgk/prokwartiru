@@ -977,8 +977,8 @@ ul.mobile_menu .search .search-input-div input{border: 0px;font-size: 13px;}
 #mobileheader .v2 .top-btn{height: 46px;line-height: 42px;padding:0px 15px;}
 
 /* mobile headers */
-#mobileheader{margin:0;padding:0;position:relative;height:63px;overflow:hidden;}
-.wrapper1 > div#mobileheader{z-index: 10;position:static;}
+#mobileheader{margin:0;padding:0;position:relative;height:63px;}
+.wrapper1 > div#mobileheader{z-index: 10;position:fixed;width:100%}
 #mobileheader .burger{height:100%;width:58px;position:relative;cursor:pointer;}
 #mobileheader .burger .svg-burger{width:18px;height:16px;min-width:18px;min-height:16px;position:absolute;left:50%;top:50%;margin:-8px 0 0 -9px;}
 #mobileheader .burger .svg-close{width: 16px; height: 16px; min-width: 16px; min-height: 16px; position: absolute; left: 50%; top: 50%; margin: -8px 0 0 -8px; display: none; }
@@ -1002,6 +1002,7 @@ ul.mobile_menu .search .search-input-div input{border: 0px;font-size: 13px;}
 #mobileheader .mobileheader-v2 .basket-link .count{background-color:#fff;color:#222;}
 
 /* mobile menu */
+    
 #mobilemenu{background:#fff;z-index:3002;overflow:hidden;overflow-y:auto;transition:left 0.4s ease 0s, opacity 0.4s ease 0s;position:fixed;}
 #mobilemenu::-webkit-scrollbar{width:8px;}
 #mobilemenu::-webkit-scrollbar-track{border-radius:8px;}
@@ -1010,7 +1011,7 @@ ul.mobile_menu .search .search-input-div input{border: 0px;font-size: 13px;}
 #mobilemenu.dropdown{top:64px;bottom:0;width:100%;border-top:1px solid #f2f2f2;opacity:0;visibility:hidden;}
 #mobilemenu.dropdown.show{opacity:1;visibility:visible;}
 #mobilemenu.leftside{left:-100%;top:0;bottom:0;width:300px;max-width:100%;}
-#mobilemenu.leftside.show{left:0;box-shadow:3px 0px 10px 0px rgba(0,0,0,0.45);}
+#mobilemenu.leftside.show{left:0;box-shadow:3px 0px 10px 0px rgba(0,0,0,0.45);transform:translateZ(1px);}
 #mobilemenu>.scroller{overflow:hidden;}
 #mobilemenu>.scroller>.wrap{width:100%;transition:transform 0.2s ease-in-out;-webkit-transition:transform 0.2s ease-in-out;-moz-transition:transform 0.2s ease-in-out;-ms-transition:transform 0.2s ease-in-out;}
 #mobilemenu-overlay{display:none;background: #3a3f44; opacity: 0.7 !important; height: 100%; width: 100%; position: fixed; left: 0px; top: 0px; z-index: 2999;}
@@ -6225,3 +6226,7 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
     display: flex;
     justify-content: space-between;
 }
+.print {
+    float:right;
+}
+

@@ -1067,7 +1067,6 @@ BX.Iblock.SmartFilter = (function()
 $(document).ready(function(){ // показать все для фильтра
 	$(".show_all_filter").on("click", function () {
 		var toggle_element = $(this);
-		console.log(1,$(this));
 		toggle_element.parent().find(".vr_hide").toggleClass("hide"); // скрытие/показ элементов
 		toggle_element.toggleClass("show"); // изменение надписи
 

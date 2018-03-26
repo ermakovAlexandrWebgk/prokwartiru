@@ -6292,8 +6292,10 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 }
 
 .print {
-    float:right;
+    display:flex;
+    justify-content:center;
+    height:45px;
+  
 }
-
 
 

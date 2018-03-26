@@ -204,13 +204,13 @@ $bPropsColumn  = false;
 		</tbody>
 	</table>
 <div class="print" title="<?=GetMessage('PRINT')?>">
-
     <button class="btn btn-default white white-bg grey" onclick="printDiv('printableArea')">
-    <div class="inner_area">
-        <span class="svg svg-print"> </span>
-        <span><?=GetMessage('PRINT')?></span>
+        <div class="inner_area">
+            <span class="svg svg-print"> </span>
+            <span><?=GetMessage('PRINT')?></span>
         </div>
     </button>
-</div></div> 
+</div>
+</div> 
 </div>           
   

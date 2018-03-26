@@ -1410,8 +1410,8 @@ display:inline-block;font-size:1em;position:relative;color:#222222;height:104px;
 .fill_bg_n .menu-row.middle-block.bgdark, .fill_bg_y .menu-row.bgdark>.maxwidth-theme{background:#424f60;}
 .menu-row.middle-block.bgdark table td:hover{background-color: #556170;}
 
-.menu-row.middle-block:not(.bglight) .mega-menu table { border-left: 1px solid rgba(255,255,255, 0.15);}
-.menu-row.middle-block:not(.bglight) .mega-menu table td .wrap > a {border-right:1px solid rgba(255,255,255,0.15);  color: #fff;}
+.menu-row.middle-block:not(.bglight) .mega-menu table { /*border-left: 1px solid rgba(255,255,255, 0.15);*/}
+.menu-row.middle-block:not(.bglight) .mega-menu table td .wrap > a {/*border-right:1px solid rgba(255,255,255,0.15);*/  color: #fff;}
 .menu-row.middle-block:not(.bglight) .mega-menu table td.active .wrap > a,
 .menu-row.middle-block:not(.bglight) .mega-menu table td:not(.search-item):hover .wrap > a { color: #fff; }
 .menu-row.middle-block .mega-menu table .dropdown-menu{margin-top:0px;}
@@ -6225,7 +6225,7 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 .logo-row .logo {
     display: inline-block;
     position: relative;
-    height: 52px;
+    height: 46px;
     max-width: 190px;
     line-height: 49px;
     z-index: 10;
@@ -6253,7 +6253,7 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 }
 
 .menu-row.middle-block .mega-menu {
-    height: 46px;
+    height: 41px;
 }
 
 .logo_and_menu-row .search .search-input {
@@ -6280,8 +6280,8 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 }
 
 .menu-row.middle-block .mega-menu table td .wrap > a {
-    padding: 13px 18px 18px;
-    height: 46px;
+    padding: 13px 18px;
+    height: 41px;
     line-height: 1.33em;
 }
 

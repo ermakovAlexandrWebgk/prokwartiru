@@ -197,13 +197,7 @@
 									    </div>
 								    </div>
                                 <?}?>
-                                <?//if ($_SESSION["view_by_items"]) {?>
-                                    <div style="font-size: 12px;">
-                                        <?foreach ($arResult["ITEM_PROPS_INFO"][$arItem["ID"]] as $item_prop_val) {?>
-                                            <span><?= $item_prop_val ?></span><br>
-                                        <?}?>
-                                    </div>
-                                <?//}?>
+
 								<div class="cost prices clearfix">
 									<?if( $arItem["OFFERS"]){?>
 										<?$minPrice = false;
@@ -283,6 +277,11 @@
 											$min_price_id=0;?>
 											<?=\Aspro\Functions\CAsproNextItem::getItemPrices($arParams, $arItem["PRICES"], $strMeasure, $min_price_id);?>
 										<?}?>
+									<?}?>
+								</div>
+								<div style="font-size: 12px;">
+									<?foreach ($arResult["ITEM_PROPS_INFO"][$arItem["ID"]] as $item_prop_val) {?>
+										<span><?= $item_prop_val ?></span><br>
 									<?}?>
 								</div>
 								<?if($arParams["SHOW_DISCOUNT_TIME"]=="Y"){?>

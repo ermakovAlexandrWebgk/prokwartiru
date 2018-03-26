@@ -6222,7 +6222,7 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
     font-size:25px;
 }
 
-.logo-row .logo {
+.logo-row .logo{
     display: inline-block;
     position: relative;
     height: 46px;
@@ -6230,6 +6230,7 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
     line-height: 49px;
     z-index: 10;
 }
+
 .logo_and_menu-row .inner-table-block {
     height: 52px;
 }
@@ -6238,7 +6239,6 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
     /* display: table; */
     width: 100%;
 }
-
 .logo_and_menu-row .search-wrapper {
     display: table-cell;
     vertical-align: middle;
@@ -6283,6 +6283,14 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
     padding: 13px 18px;
     height: 41px;
     line-height: 1.33em;
+}
+
+#headerfixed .logo-row .logo{
+    height: 46px;
+}
+
+#headerfixed .v1 .inner-table-block {
+    height: 46px;
 }
 
 .page-top-main{

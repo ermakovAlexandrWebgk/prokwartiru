@@ -3,8 +3,8 @@ html{width:100%;}
 header, nav, section, article, aside, footer{display:block;}
 div[id^=wait_comp], .bx-core-waitwindow{display:none;}
 .right_block ul, .right_block ol{ margin:0 0 27px;}
-.right_block ul li:before , .right_block ol li:before{padding:0px;margin-left:0px;width:20px;display:inline-block;vertical-align:top;*display:inline;zoom:1;position:absolute;top:0px;left:0px;}
-.right_block ul li, .right_block ol li{margin:0 0 4px;padding-left:20px;position:relative;}
+.right_block ul li:before , .right_block ol li:before{padding:0px;margin-left:0px;width:20px;display:inline-block;vertical-align:top;*display:inline;zoom:1;position:absolute;top:0px;left:0px;display:none;}
+.right_block ul li, .right_block ol li{margin:0 0 4px;position:relative;}
 a:hover, a:focus{outline:none;text-decoration:none;}
 
 #panel + div[id*=bx_incl_area]{min-height: 0px !important;}
@@ -2982,7 +2982,7 @@ div.item-title a span {padding:0px 0px 0px;}
 .ajax_load_btn{text-align:center;margin:0px 0px 20px;border: 1px solid #f2f2f2;cursor:pointer;}
 .ajax_load_btn:hover{border-color: #d2d2d4;}
 
-.bottom_nav{padding-bottom: 40px;}
+.bottom_nav{}
 .bottom_nav.block{padding-top:17px;}
 .bottom_nav .module-pagination{padding-bottom: 0;}
 .module-pagination .nums{display:inline-block;position:relative;}
@@ -6304,4 +6304,16 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
     justify-content:center;
     height:45px;
   
+
+}
+
+.bottom_nav {
+    padding-top:15px;
+    padding-left:0;
+}
+
+
+.menu_image.yandex_reviews {
+    padding-top:6px;
+
 }

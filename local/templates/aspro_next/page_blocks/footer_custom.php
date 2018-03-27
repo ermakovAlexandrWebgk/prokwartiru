@@ -13,23 +13,19 @@
 					<div class="item_block col-md-9 menus">
 						<div class="row">
 							<div class="item_block col-md-4 col-sm-4">
-								<?$APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"bottom", 
-	array(
-		"ROOT_MENU_TYPE" => "footer_menu",
-		"MENU_CACHE_TYPE" => "A",
-		"MENU_CACHE_TIME" => "3600000",
-		"MENU_CACHE_USE_GROUPS" => "N",
+								<?$APPLICATION->IncludeComponent("bitrix:menu", "bottom_rework", Array(
+	"ROOT_MENU_TYPE" => "footer_menu",	// Тип меню для первого уровня
+		"MENU_CACHE_TYPE" => "A",	// Тип кеширования
+		"MENU_CACHE_TIME" => "3600000",	// Время кеширования (сек.)
+		"MENU_CACHE_USE_GROUPS" => "N",	// Учитывать права доступа
 		"CACHE_SELECTED_ITEMS" => "N",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"MAX_LEVEL" => "1",
-		"USE_EXT" => "N",
-		"DELAY" => "N",
-		"ALLOW_MULTI_SELECT" => "N",
-		"COMPONENT_TEMPLATE" => "bottom",
-		"CHILD_MENU_TYPE" => "left"
+		"MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+		"MAX_LEVEL" => "1",	// Уровень вложенности меню
+		"USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+		"DELAY" => "N",	// Откладывать выполнение шаблона меню
+		"ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+		"COMPONENT_TEMPLATE" => "horizontal_multilevel",
+		"CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
 	),
 	false
 );?>

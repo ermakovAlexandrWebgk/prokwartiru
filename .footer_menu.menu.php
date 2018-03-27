@@ -1,13 +1,6 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Главная", 
-		"/", 
-		Array(), 
-		Array("IMG"=>"/images/-1.png"), 
-		"" 
-	),
-	Array(
 		"Скидки", 
 		"/", 
 		Array(), 
@@ -40,13 +33,6 @@ $aMenuLinks = Array(
 		"https://clck.yandex.ru/redir/dtype=stred/pid=47/cid=2508/*https://market.yandex.ru/shop/167576/reviews", 
 		Array(), 
 		Array("IMG"=>"/images/market_banner.jpg", "YANDEX"=>"Y"), 
-		"" 
-	),
-	Array(
-		"Перезвоним", 
-		"/contacts/", 
-		Array(), 
-		Array("IMG"=>"/images/-7.png"), 
 		"" 
 	)
 );

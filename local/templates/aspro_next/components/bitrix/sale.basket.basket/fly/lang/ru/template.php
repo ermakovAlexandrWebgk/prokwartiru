@@ -68,5 +68,5 @@
 	$MESS["BASKET_DELAY_COUNT"] = "В отложенных товаров на #PRICE#";
 	$MESS["BASKET_LIST"] = "Список товаров в корзине";
 	$MESS["BASKET_DELAY_LIST"] = "Список отложенных товаров";
-    $MESS["PRINT"] = "Версия для печати";
+    $MESS["PRINT"] = "Распечатать";
 ?>

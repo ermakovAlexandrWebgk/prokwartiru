@@ -99,6 +99,9 @@ $arCounters = CNext::updateBasketCounters(array('READY' => array('COUNT' => $nor
 				<?}?>
 			</span>
 
+     
+
+
 
 		</div>
 

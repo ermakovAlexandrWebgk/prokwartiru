@@ -32,7 +32,7 @@
 				$col=4;
 				break;
 		}?>
-        
+
 		<?foreach($arResult["ITEMS"] as $arItem){?>
 			<div class="item_block col-<?=$col;?> col-md-<?=floor(12/$arParams["LINE_ELEMENT_COUNT"]);?> col-sm-<?=floor(12/round($arParams['LINE_ELEMENT_COUNT'] / 2))?> col-xs-6">
 				<div class="catalog_item_wrapp item">
@@ -151,7 +151,7 @@
 									<?if( /*!empty($arItem["PREVIEW_PICTURE"])*/ false ):?>
 										<img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="<?=$a_alt;?>" title="<?=$a_title;?>" />
 									<?elseif( !empty($arItem["DETAIL_PICTURE"])):?>
-										<?$img = CFile::ResizeImageGet($arItem["DETAIL_PICTURE"], array( "width" => 240, "height" => 240 ), BX_RESIZE_IMAGE_PROPORTIONAL,true );?>
+										<?$img = CFile::ResizeImageGet($arItem["DETAIL_PICTURE"], array( "width" => 300, "height" => 300 ), BX_RESIZE_IMAGE_PROPORTIONAL,true );?>
 										<img src="<?=$img["src"]?>" alt="<?=$a_alt;?>" title="<?=$a_title;?>" />
 									<?else:?>
 										<img src="<?=SITE_TEMPLATE_PATH?>/images/no_photo_medium.png" alt="<?=$a_alt;?>" title="<?=$a_title;?>" />
@@ -197,13 +197,7 @@
 									    </div>
 								    </div>
                                 <?}?>
-                                <?//if ($_SESSION["view_by_items"]) {?>
-                                    <div style="font-size: 12px;">
-                                        <?foreach ($arResult["ITEM_PROPS_INFO"][$arItem["ID"]] as $item_prop_val) {?>
-                                            <span><?= $item_prop_val ?></span><br>
-                                        <?}?>
-                                    </div>
-                                <?//}?>
+
 								<div class="cost prices clearfix">
 									<?if( $arItem["OFFERS"]){?>
 										<?$minPrice = false;
@@ -283,6 +277,11 @@
 											$min_price_id=0;?>
 											<?=\Aspro\Functions\CAsproNextItem::getItemPrices($arParams, $arItem["PRICES"], $strMeasure, $min_price_id);?>
 										<?}?>
+									<?}?>
+								</div>
+								<div style="font-size: 12px;">
+									<?foreach ($arResult["ITEM_PROPS_INFO"][$arItem["ID"]] as $item_prop_val) {?>
+										<span><?= $item_prop_val ?></span><br>
 									<?}?>
 								</div>
 								<?if($arParams["SHOW_DISCOUNT_TIME"]=="Y"){?>

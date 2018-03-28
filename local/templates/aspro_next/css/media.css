@@ -472,7 +472,7 @@ ul.tabs li.stretch { display: none; }
 @media all and (min-width: 768px){
 	body .catalog.horizontal .adaptive_filter{display:none !important;}
 	.bx-core .filter_horizontal:not(.js_filter) .bx_filter.bx_filter_vertical{display:block !important;}
-	.bx_filter .bx_filter_section{margin:0 0px 27px 0;}
+	.bx_filter .bx_filter_section{margin:0 0px 5px 0;}
 	.bx_filter_vertical.bx_filter .hidden_values{display:block !important;}
 	.staff.item-views.list .item .image.padding {padding: 50px 0px 40px 30px;}
 	.wrap_md .big{padding-top:22px;}

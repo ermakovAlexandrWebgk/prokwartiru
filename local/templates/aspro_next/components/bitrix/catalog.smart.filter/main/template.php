@@ -674,10 +674,11 @@ if($arResult["ITEMS"]){?>
 									<?$j=1;
 									$isHidden = false;?>
 									<?foreach($arItem["VALUES"] as $val => $ar):?>
-										<?if($j > $numVisiblePropValues && !$isHidden):
+										<?/*if($j > $numVisiblePropValues && !$isHidden):
 											$isHidden = true;?>
 											<div class="hidden_values">
-										<?endif;?>
+										<?endif;*/?>
+<?//arshow($ar);?>
 										<input
 											type="checkbox"
 											value="<? echo $ar["HTML_VALUE"] ?>"
@@ -687,7 +688,15 @@ if($arResult["ITEMS"]){?>
 											<? echo $ar["CHECKED"]? 'checked="checked"': '' ?>
 											onclick="smartFilter.click(this)"
 										/>
-										<label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label <?=($isSize ? "nab sku" : "");?> <?=($i==$count ? "last" : "");?> <? echo $ar["DISABLED"] ? 'disabled': '' ?>" for="<? echo $ar["CONTROL_ID"] ?>">
+										<label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label <?=($isSize ? "nab sku" : "");?> <?=($i==$count ? "last" : "");?> <? echo $ar["DISABLED"] ? 'disabled': '' ?> <?
+										if ($count > 5 ){
+											if ($i <= 5 || $ar["CHECKED"]) {
+												echo "vr_show show";
+											} else {
+												echo "vr_hide hide";
+											}
+										}
+										?>" for="<? echo $ar["CONTROL_ID"] ?>">
 											<span class="bx_filter_input_checkbox">
 
 												<span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>"><?=$ar["VALUE"];?><?
@@ -699,10 +708,14 @@ if($arResult["ITEMS"]){?>
 										<?$i++;?>
 										<?$j++;?>
 									<?endforeach;?>
-									<?if($isHidden):?>
+									<?if ($count > 5): ?>
+
+										<span class="show_all_filter show"> Показать все...</span>
+									<?endif; ?>
+									<?/*if($isHidden):?>
 										</div>
 										<div class="inner_expand_text"><span class="expand_block"><?=GetMessage("FILTER_EXPAND_VALUES");?></span></div>
-									<?endif;?>
+									<?endif;*/?>
 							<?}?>
 							</div>
 							<div class="clb"></div>

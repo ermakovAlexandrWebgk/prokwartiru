@@ -1025,6 +1025,16 @@ if(is_array($arParams["SECTION_TIZER"]) && $arParams["SECTION_TIZER"]){
 }?>
 
 <?
+if (strlen($arResult["IBLOCK_SECTION_ID"])) {
+	$section_info = CIBlockSection::GetByID($arResult["IBLOCK_SECTION_ID"]) -> Fetch();
+	if (strlen($section_info["NAME"])) {
+		// $arResult["ITEM_PROPS_INFO"][$arItem["ID"]][] = "Фабрика: " . $section_info["NAME"];
+		$arResult["COLLECTION"] = /*"Коллекция: " . */$section_info["NAME"];
+	}
+}
+?>
+
+<?
 $parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => CATALOG_ID, "HAS_ELEMENT" => $arResult['ID'], "DEPTH_LEVEL" => 1), false);
 while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товара в зависимости от раздела первого уровня
 

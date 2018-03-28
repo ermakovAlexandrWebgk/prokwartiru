@@ -37,3 +37,17 @@ div.bx_filter_parameters_box_container:not(.numbers) input.max-price,
 div.bx_filter_parameters_box_container:not(.numbers) .divider {
     display: none !important;
 }
+
+.show_all_filter{
+	display: block;
+    /* line-height: 14px; */
+    margin-left: 21px;
+    text-align: left;
+    font-weight: normal;
+	font-size: 13px;
+    color: #666;
+	cursor: pointer;
+}
+.show_all_filter:hover{
+    color: #888;
+}

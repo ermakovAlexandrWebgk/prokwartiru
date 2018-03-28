@@ -587,7 +587,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 					<?endif;?>
 				</div>
 				<div class="discount_block">
-					<button type="button" name="getDiscount" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку</button>
+					<a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку</a>
 				</div>
 
 			</div>

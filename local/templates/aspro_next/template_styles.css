@@ -7,6 +7,9 @@ div[id^=wait_comp], .bx-core-waitwindow{display:none;}
 .right_block ul li, .right_block ol li{margin:0 0 4px;position:relative;}
 a:hover, a:focus{outline:none;text-decoration:none;}
 
+
+
+}
 #panel + div[id*=bx_incl_area]{min-height: 0px !important;}
 .margin0{margin-left:0px !important;margin-right: 0px !important;}
 .nopadding{padding:0px !important;}
@@ -26,7 +29,9 @@ a:hover, a:focus{outline:none;text-decoration:none;}
 .text_before_items hr{margin: 31px 0 38px;}
 
 a.back{font-weight:bold;}
+@media (min-width: 1024px){
 *:hover{/*transition:background-color ease 0.1s;*/}
+}
 a:hover{text-decoration:none !important;}
 a:focus{color:#222;}
 .transition_bg{transition:background-color ease 0.5s;}
@@ -2128,7 +2133,9 @@ body .best_block .tabs_slider .catalog_item .inner_wrap{margin: 0px;}
 .footer_button .name{color:#777;}
 .footer_button .char .char_item{margin:0px 0px 3px;line-height: 18px;}
 .footer_button .char .char_item:last-child{margin-bottom:0px;}
+
 body .catalog_item:hover .footer_button, body .catalog_item.hover .footer_button{opacity: 1;visibility: visible;height: 30px;margin: 11px 0px 0px;height:auto;}
+
 .best_block.tab_slider_wrapp .item .catalog_item:hover .item_info, .block .catalog_block .catalog_item_wrapp .catalog_item:hover .item_info{}
 .block .catalog_block .catalog_item_wrapp .catalog_item{cursor:default;}
 body .tabs_slider .catalog_item:hover{z-index:4;}
@@ -2973,7 +2980,7 @@ div.item-title a span {padding:0px 0px 0px;}
 .item-stock .icon{width:14px;height:14px;background:url('images/ai.png') -92px -48px no-repeat;margin:1px 6px 0px 0px;}
 .item-stock .icon.stock{background-position:-111px -50px;}
 .sa_block{font-size:0px;}
-.sa_block > div{display:inline-block;}
+.sa_block > div{display:none;}
 .catalog_block .item-stock, .catalog_block .article_block{display:inline-block;margin: 0px 6px;}
 .catalog_block .article_block{font-size:12px;color:#999999;}
 
@@ -3540,7 +3547,7 @@ div[id^=smartFilterDropDown] .popup-window-top-row, div[id^=smartFilterDropDown]
 /*list*/
 .display_list .item_wrap{border-left:1px solid #f2f2f2; border-right:1px solid #f2f2f2; border-bottom:1px solid #f2f2f2;}
 .display_list .item_wrap.prev{border-bottom-color:#fff;}
-.display_list .item_wrap:hover{border-color:#fff !important;}
+
 .display_list .list_item_wrapp:first-child{border-top:1px solid #f2f2f2;}
 .display_list .list_item_wrapp + div .list_item_wrapp{border-top-width:0px;}
 .display_list .description_wrapp .wrapp_stockers{margin:0px 0px 0px;font-size:0px;}
@@ -6184,8 +6191,9 @@ div#headerfixed .wrapper_inner .navs.table-menu ul.nav-pills li:nth-child(8) {
 div#mobileheader .svg-wish.lg, div#mobileheader .svg-basket.lg {
     background-color: transparent;
 }
-.sa_block {
+.sa_block {  
     margin-top: 4px;
+    
 }
 .catalog_item .item-title a:hover,
 .list_item .item-title a:hover,
@@ -6322,4 +6330,23 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 
 .bottom_navigation{
     padding-top:10px;
+}
+
+
+
+@media screen and (max-width: 450px) {
+  .menu_image  {
+    float:none;
+    height:23% !important;
+  }
+  .menu_item{
+  width: 25%;
+  height: 100px;
+  }
+}
+
+
+
+.sa_block {
+    display:none;
 }

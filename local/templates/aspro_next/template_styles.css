@@ -3540,7 +3540,7 @@ div[id^=smartFilterDropDown] .popup-window-top-row, div[id^=smartFilterDropDown]
 /*list*/
 .display_list .item_wrap{border-left:1px solid #f2f2f2; border-right:1px solid #f2f2f2; border-bottom:1px solid #f2f2f2;}
 .display_list .item_wrap.prev{border-bottom-color:#fff;}
-.display_list .item_wrap:hover{border-color:#fff !important;}
+
 .display_list .list_item_wrapp:first-child{border-top:1px solid #f2f2f2;}
 .display_list .list_item_wrapp + div .list_item_wrapp{border-top-width:0px;}
 .display_list .description_wrapp .wrapp_stockers{margin:0px 0px 0px;font-size:0px;}
@@ -6323,3 +6323,19 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 .bottom_navigation{
     padding-top:10px;
 }
+
+
+
+/*@media screen and (max-width: 450px) {
+  .menu_image  {
+    float:none;
+    height:23% !important;
+  }
+  .menu_item{
+  width: 25%;
+  height: 100px;
+  }
+}
+
+
+

@@ -6,7 +6,7 @@
         <span style="dislpay:none;" id="replase_productPageCount"></span>		
 			</div>
 			<div class="page-top-main">
-        
+               <input type="button" onclick="history.back();" value="Назад"/>
 				<?=$APPLICATION->ShowViewContent('product_share')?>
 				 <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "next", array(
                 "START_FROM" => "0",

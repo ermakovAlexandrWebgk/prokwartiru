@@ -324,9 +324,9 @@ if (!strstr($APPLICATION->GetCurDir(), "/filter/") && $enabled_banners) {
             <?if (in_array($_REQUEST["current_section"], array(35615, 34639))) {?>
                 <div class="bx_filter">
                     <div class="bx_filter_section">
-                        <div class="bx_filter_parameters_box active title">
+                        <!--<div class="bx_filter_parameters_box active title">
                             <div class="bx_filter_parameters_box_title">Вывод товаров</div>
-                        </div>
+                        </div>-->
                         <?if (isset($_SESSION["view_by_collections"])) {?>
                             <a href="<?= $APPLICATION -> GetCurPage() ?>?view_by_items=Y"><div class="bx_filter_parameters_box">По артикулам</div></a>
                         <?} else {?>

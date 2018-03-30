@@ -7,6 +7,13 @@
 				unset($arResult['PRODUCT_PROPERTIES'][$propID]);
 		}
 	}
+    /*if (isset['PROPERTIES']['IN_STOCK']['VALUE']){
+    echo 'На складе';  
+    }else echo 'Под заказ';
+    */ 
+    
+    
+    
 	$arResult["EMPTY_PROPS_JS"]="Y";
 	$emptyProductProperties = empty($arResult['PRODUCT_PROPERTIES']);
 	if (!$emptyProductProperties){

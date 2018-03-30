@@ -3121,7 +3121,7 @@ input::-ms-clear {display: none;width:0px;height:0px;visibility:hidden;}
 .bx_filter_vertical input[type="checkbox"] + label.sku.disabled:hover span{color:#373737;}
 .disabled:not(.link-item){opacity:0.4;}
 .bx_filter_vertical .bx_filter_block label:hover span.disabled *{color:#888;}
-.bx_filter_vertical .bx_filter_block.limited_block{max-height:250px;overflow-y:auto;}
+.bx_filter_vertical .bx_filter_block.limited_block{/*max-height:250px;*/overflow-y:auto;}
 
 .button_block .to-order.button{border-color:#888888; color:#888888;}
 .button.in-cart, .button.in-cart:hover{background:#4fad00;}

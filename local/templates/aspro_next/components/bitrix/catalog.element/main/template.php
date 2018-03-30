@@ -7,6 +7,12 @@
 				unset($arResult['PRODUCT_PROPERTIES'][$propID]);
 		}
 	}
+    
+    
+     
+    
+    
+    
 	$arResult["EMPTY_PROPS_JS"]="Y";
 	$emptyProductProperties = empty($arResult['PRODUCT_PROPERTIES']);
 	if (!$emptyProductProperties){
@@ -1708,3 +1714,9 @@ if ($arResult['CATALOG'] && $arParams['USE_GIFTS_MAIN_PR_SECTION_LIST'] == 'Y' &
 		SITE_ID: '<? echo SITE_ID; ?>'
 	})
 </script>
+
+<?/*if (!empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])){ ?>
+<div class="on_order">
+   <span>Под заказ</span>
+</div>
+<?}?>

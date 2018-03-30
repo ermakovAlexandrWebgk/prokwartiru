@@ -6,7 +6,7 @@
         <span style="dislpay:none;" id="replase_productPageCount"></span>		
 			</div>
 			<div class="page-top-main">
-        
+             
 				<?=$APPLICATION->ShowViewContent('product_share')?>
 				 <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "next", array(
                 "START_FROM" => "0",

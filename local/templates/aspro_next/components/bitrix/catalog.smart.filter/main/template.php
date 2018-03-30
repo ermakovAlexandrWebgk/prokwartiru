@@ -4,9 +4,9 @@ if($arResult["ITEMS"]){?>
 	<div class="bx_filter bx_filter_vertical">
 		<div class="bx_filter_section">
 			<form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter">
-				<div class="bx_filter_parameters_box active title">
+				<!--<div class="bx_filter_parameters_box active title">
 					<div class="bx_filter_parameters_box_title"><?=GetMessage("FILTER_TITLE");?></div>
-				</div>
+				</div> -->
 				<input type="hidden" name="del_url" id="del_url" value="<?echo $arResult["SEF_DEL_FILTER_URL"]?>" />
 				<?foreach($arResult["HIDDEN"] as $arItem):?>
 				<input type="hidden" name="<?echo $arItem["CONTROL_NAME"]?>" id="<?echo $arItem["CONTROL_ID"]?>" value="<?echo $arItem["HTML_VALUE"]?>" />

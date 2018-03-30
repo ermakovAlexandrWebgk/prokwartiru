@@ -7,10 +7,9 @@
 				unset($arResult['PRODUCT_PROPERTIES'][$propID]);
 		}
 	}
-    /*if (isset['PROPERTIES']['IN_STOCK']['VALUE']){
-    echo 'На складе';  
-    }else echo 'Под заказ';
-    */ 
+    
+    
+     
     
     
     
@@ -1715,3 +1714,9 @@ if ($arResult['CATALOG'] && $arParams['USE_GIFTS_MAIN_PR_SECTION_LIST'] == 'Y' &
 		SITE_ID: '<? echo SITE_ID; ?>'
 	})
 </script>
+
+<?/*if (!empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])){ ?>
+<div class="on_order">
+   <span>Под заказ</span>
+</div>
+<?}?>

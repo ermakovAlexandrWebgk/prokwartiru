@@ -2875,7 +2875,7 @@ body .fast_view_frame.popup .prices .price_matrix_block .price_wrapper_block > d
 .breadcrumbs a span, .breadcrumbs span{color:#b6b5b5;font-size:12px;}
 
 /* PAGE TITLE & BREADCRUMBS & PAGENAVIGATION */
-section.page-top{padding-top:8px;min-height:56px;position:relative;}
+section.page-top{padding-top:5px;min-height:56px;position:relative;}
 section.page-top.center{text-align:center;}
 .right_block section.page-top.maxwidth-theme{padding:0px;}
 .title-v1 h1{padding-bottom:3px;}
@@ -6193,7 +6193,7 @@ div#mobileheader .svg-wish.lg, div#mobileheader .svg-basket.lg {
 }
 .sa_block {  
     margin-top: 4px;
-    
+    display:none;
 }
 .catalog_item .item-title a:hover,
 .list_item .item-title a:hover,
@@ -6228,7 +6228,7 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
     justify-content:flex-end;
     color:#919191;
     font-family:"Open Sans", Helvetica, Arial, sans-serif;
-    font-size:25px;
+    font-size:20px;
 }
 
 .logo-row .logo{
@@ -6349,4 +6349,11 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 
 .sa_block {
     display:none;
+}
+
+
+
+.header_row{
+    display:flex;
+    justify-content:space-between;
 }

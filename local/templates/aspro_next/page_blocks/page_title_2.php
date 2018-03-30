@@ -1,8 +1,10 @@
 <div class="top_inner_block_wrapper maxwidth-theme">
 	<div class="page-top-wrapper grey">
 		<section class="page-top maxwidth-theme  <?CNext::ShowPageProps('TITLE_CLASS');?>">
-        <h1 id="pagetitle"><?$APPLICATION->ShowTitle(false)?></h1>		
-			
+        <div class="header_row">
+        <h1 id="pagetitle"><?$APPLICATION->ShowTitle(false)?></h1>
+        <span style="dislpay:none;" id="replase_productPageCount"></span>		
+			</div>
 			<div class="page-top-main">
         
 				<?=$APPLICATION->ShowViewContent('product_share')?>
@@ -14,7 +16,7 @@
                 ),
                 false
             );?>
-                <span style="dislpay:none;" id="replase_productPageCount"></span>
+                
 			</div>
 		</section>
 	</div>

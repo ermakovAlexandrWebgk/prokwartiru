@@ -55,10 +55,10 @@ if($arAccessories){
 		<div class="row">
 			<div class="col-md-9">
 	<?endif;?>
-	<div class="bottom_slider specials tab_slider_wrapp">
+	<!--<div class="bottom_slider specials tab_slider_wrapp">
 		<div class="top_blocks">
 			<ul class="tabs">
-				<?$i=1;
+				<?/*$i=1;
 				foreach($arTab as $code=>$title):?>
 					<li data-code="<?=$code?>" <?=($code=="RECOMENDATION" ? "style='display:none;'" : "" );?> <?=($i==1 ? "class='cur'" : "")?>><span><?=$title;?></span></li>
 					<?$i++;?>
@@ -232,9 +232,32 @@ if($arAccessories){
 						</div>
 					<?}?>
 				</li>
-			<?}?>
+			<?}*/?>
 		</ul>
-	</div>
+	</div>-->
+        <?if($APPLICATION->GetProperty("viewed_show") == "Y" || $is404):?>
+    <?$APPLICATION->IncludeComponent(
+        "bitrix:main.include",
+        "basket",
+        array(
+            "COMPONENT_TEMPLATE" => "basket",
+            "PATH" => SITE_DIR."include/footer/comp_viewed.php",
+            "AREA_FILE_SHOW" => "file",
+            "AREA_FILE_SUFFIX" => "",
+            "AREA_FILE_RECURSIVE" => "Y",
+            "EDIT_TEMPLATE" => "standard.php",
+            "PRICE_CODE" => array(
+                0 => "BASE",
+            ),
+            "STORES" => array(
+                0 => "",
+                1 => "",
+            ),
+            "BIG_DATA_RCM_TYPE" => "bestsell"
+        ),
+        false
+    );?>
+    <?endif;?>
 	<?if($isWideBlock == "Y"):?>
 			</div>
 		</div>

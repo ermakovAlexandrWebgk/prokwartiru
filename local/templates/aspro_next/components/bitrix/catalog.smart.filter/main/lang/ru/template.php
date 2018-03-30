@@ -8,5 +8,5 @@ $MESS ['CT_BCSF_FILTER_COUNT'] = "Выбрано #ELEMENT_COUNT#";
 $MESS ['CT_BCSF_FILTER_SHOW'] = "Показать";
 $MESS ['CT_BCSF_FILTER_ALL'] = "Все";
 $MESS ['PRICE'] = "Цена";
-$MESS ['FILTER_TITLE'] = "Фильтр по параметрам";
+$MESS ['FILTER_TITLE'] = "Фильтр";
 ?>

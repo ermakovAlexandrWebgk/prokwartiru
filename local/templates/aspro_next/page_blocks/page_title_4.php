@@ -15,10 +15,13 @@
                         ),
                         false
                     );?>    
-                        <span style="dislpay:none;" id="replase_productPageCount"></span>
+                        
                         
 					</div>
-					<h1 id="pagetitle"><?$APPLICATION->ShowTitle(false)?></h1>			
+                    <div class="header_row">
+					<h1 id="pagetitle"><?$APPLICATION->ShowTitle(false)?></h1>
+                    <span style="dislpay:none;" id="replase_productPageCount"></span>
+                    </div>			
 				</div>
 			</div>
 		</section>

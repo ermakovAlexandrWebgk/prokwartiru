@@ -151,7 +151,8 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 <meta itemprop="category" content="<?=$arResult['CATEGORY_PATH']?>" />
 <meta itemprop="description" content="<?=(strlen(strip_tags($arResult['PREVIEW_TEXT'])) ? strip_tags($arResult['PREVIEW_TEXT']) : (strlen(strip_tags($arResult['DETAIL_TEXT'])) ? strip_tags($arResult['DETAIL_TEXT']) : $name))?>" />
 <div class="item_main_info <?=(!$showCustomOffer ? "noffer" : "");?> <?=($arParams["SHOW_UNABLE_SKU_PROPS"] != "N" ? "show_un_props" : "unshow_un_props");?>" id="<?=$arItemIDs["strMainID"];?>">
-	<div class="img_wrapper">
+
+    <div class="img_wrapper">
 		<div class="stickers">
 			<?if (is_array($arResult["PROPERTIES"]["HIT"]["VALUE_XML_ID"])):?>
 				<?foreach($arResult["PROPERTIES"]["HIT"]["VALUE_XML_ID"] as $key=>$class){?>
@@ -611,6 +612,12 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 				<div class="price_txt">
 					<?$APPLICATION->IncludeFile(SITE_DIR."include/element_detail_text.php", Array(), Array("MODE" => "html",  "NAME" => GetMessage('CT_BCE_CATALOG_DOP_DESCR')));?>
 				</div>
+                
+                <?if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])){?>
+<span class="order_button">
+   <span class="order_button_text"><?=GetMessage('ON_ORDER');?></span>
+ </span>
+<?}?>
 				<?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
 				<div class="showroom_txt">
 					<span>Посмотреть в шоуруме по адресу:</span><br>
@@ -1715,8 +1722,4 @@ if ($arResult['CATALOG'] && $arParams['USE_GIFTS_MAIN_PR_SECTION_LIST'] == 'Y' &
 	})
 </script>
 
-<?/*if (!empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])){ ?>
-<div class="on_order">
-   <span>Под заказ</span>
-</div>
-<?}?>
+

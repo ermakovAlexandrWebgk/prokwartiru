@@ -93,4 +93,6 @@ $MESS["PRICE_MATRIX_COUNT_TO"] = "до";
 
 $MESS['S_ASK_QUESTION'] = 'Задать вопрос';
 $MESS['S_ORDER_SERVISE'] = 'Заказать услугу';
+$MESS['ON_ORDER'] = 'Товар под заказ';
+
 ?>

@@ -612,7 +612,8 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 				<div class="price_txt">
 					<?$APPLICATION->IncludeFile(SITE_DIR."include/element_detail_text.php", Array(), Array("MODE" => "html",  "NAME" => GetMessage('CT_BCE_CATALOG_DOP_DESCR')));?>
 				</div>
-                    <?if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])){?>
+                
+                <?if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])){?>
 <span class="order_button">
    <span class="order_button_text"><?=GetMessage('ON_ORDER');?></span>
  </span>

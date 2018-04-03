@@ -1,4 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<?$this->SetViewTarget('collection');?>
+<?=$arResult['COLLECTION']?>
+<?$this->EndViewTarget();?>
 <div class="basket_props_block" id="bx_basket_div_<?=$arResult["ID"];?>" style="display: none;">
 	<?if (!empty($arResult['PRODUCT_PROPERTIES_FILL'])){
 		foreach ($arResult['PRODUCT_PROPERTIES_FILL'] as $propID => $propInfo){?>
@@ -329,9 +332,9 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 			</p>
 			<?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>
 			<?if($isArticle || $arResult["BRAND_ITEM"] || $arParams["SHOW_RATING"] == "Y" || strlen($arResult["PREVIEW_TEXT"])){?>
-				<div class="top_info">
+				<!--<div class="top_info">
 					<div class="rows_block">
-						<?$col=1;
+						<?/*$col=1;
 						if($isArticle && $arResult["BRAND_ITEM"] && $arParams["SHOW_RATING"] == "Y"){
 							$col=3;
 						}elseif(($isArticle && $arResult["BRAND_ITEM"]) || ($isArticle && $arParams["SHOW_RATING"] == "Y") || ($arResult["BRAND_ITEM"] && $arParams["SHOW_RATING"] == "Y")){
@@ -385,12 +388,12 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 						<?}?>
 					</div>
 					<?if(strlen($arResult["PREVIEW_TEXT"])):?>
-						<div class="preview_text dotdot"><?=$arResult["PREVIEW_TEXT"]?></div>
+						!!!<div class="preview_text dotdot"><?=$arResult["PREVIEW_TEXT"]?></div>
 						<?if(strlen($arResult["DETAIL_TEXT"])):?>
 							<div class="more_block icons_fa color_link"><span><?=GetMessage('MORE_TEXT_BOTTOM');?></span></div>
 						<?endif;?>
-					<?endif;?>
-				</div>
+					<?endif;*/?>
+				</div>-->
 			<?}?>
 			<div class="middle_info main_item_wrapper">
 				<?=$arResult["IMP_PROPS_STR"];?>
@@ -609,15 +612,50 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 				</div>
 			<?endif;?>
 			<div class="element_detail_text wrap_md">
-				<div class="price_txt">
-					<?$APPLICATION->IncludeFile(SITE_DIR."include/element_detail_text.php", Array(), Array("MODE" => "html",  "NAME" => GetMessage('CT_BCE_CATALOG_DOP_DESCR')));?>
-				</div>
-                
-                <?if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])){?>
-<span class="order_button">
-   <span class="order_button_text"><?=GetMessage('ON_ORDER');?></span>
- </span>
+				<!--<div class="price_txt">
+					<?/*$APPLICATION->IncludeFile(SITE_DIR."include/element_detail_text.php", Array(), Array("MODE" => "html",  "NAME" => GetMessage('CT_BCE_CATALOG_DOP_DESCR')));*/?>
+				</div>-->
+<div class="properties-block">
+<span class="properties-element">
+<?=GetMessage('COLLECTION');?>
+    <span class="properties-text">
+        <?=$arResult["COLLECTION"]?>
+    </span>
+</span>
+<br>
+
+<?if (($arResult['PROPERTIES']['COUNTRY']['VALUE']) && ($arResult['PROPERTIES']['BRAND']['VALUE']) ){?>
+    <span class="properties-element">
+   <?=GetMessage('FACTORY');?>
+        <span class="properties-text">
+            <?=$arResult['PROPERTIES']['BRAND']['VALUE']?>
+        </span>
+<span class="properties-text">
+    (<?=$arResult['PROPERTIES']['COUNTRY']['VALUE'];?>)
+</span>
+</span>
 <?}?>
+
+<br>
+<span class="properties-element">               
+<?if ($arResult['PROPERTIES']['PROPERTY']['VALUE']){?>
+ <?=GetMessage('CHARACTERISTICS');?><span class="properties-text"><?=$arResult['PROPERTIES']['PROPERTY']['VALUE']?></span>
+<?}?>
+</span>
+<br>
+<?if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])):?>
+<span class="properties-element">
+   <?=GetMessage('STOCK');?>
+        <span class="properties-text">
+            <?=GetMessage('ON_ORDER');?>
+        </span>
+<?else:?>
+    <?=GetMessage('STOCK');?><span class="properties-text"><?=GetMessage('IN_STOCK');?></span>
+<?endif;?>
+<br>
+</span>
+</div>
+
 				<?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
 				<div class="showroom_txt">
 					<span>Посмотреть в шоуруме по адресу:</span><br>
@@ -1722,4 +1760,4 @@ if ($arResult['CATALOG'] && $arParams['USE_GIFTS_MAIN_PR_SECTION_LIST'] == 'Y' &
 	})
 </script>
 
-
+     

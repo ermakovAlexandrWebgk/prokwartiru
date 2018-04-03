@@ -12,9 +12,9 @@ use Bitrix\Main\Loader,
 <?$APPLICATION->SetPageProperty("HIDE_LEFT_BLOCK", $hide_left_block)?>
 <?if($arParams["USE_SHARE"] == "Y" && $arElement):?>
 	<?$this->SetViewTarget('product_share');?>
-	<div class="line_block share top <?=($arParams['USE_RSS'] == 'Y' ? 'rss-block' : '');?>">
-		<?$APPLICATION->IncludeFile(SITE_DIR."include/share_buttons.php", Array(), Array("MODE" => "html", "NAME" => GetMessage('CT_BCE_CATALOG_SOC_BUTTON')));?>
-	</div>
+	<!--<div class="line_block share top <?=($arParams['USE_RSS'] == 'Y' ? 'rss-block' : '');?>">
+		<?/*$APPLICATION->IncludeFile(SITE_DIR."include/share_buttons.php", Array(), Array("MODE" => "html", "NAME" => GetMessage('CT_BCE_CATALOG_SOC_BUTTON')));*/?>
+	</div> -->
 	<?$this->EndViewTarget();?>
 <?endif;?>
 <?$isWideBlock = (isset($arParams["DIR_PARAMS"]["HIDE_LEFT_BLOCK"]) ? $arParams["DIR_PARAMS"]["HIDE_LEFT_BLOCK"] : "");?>

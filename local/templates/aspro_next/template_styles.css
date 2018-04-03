@@ -2863,7 +2863,7 @@ body .fast_view_frame.popup .prices .price_matrix_block .price_wrapper_block > d
 .index_bottom .banners_column { width: 234px; float: left; }
 
 /*breadcrumbs*/
-.breadcrumbs{margin:-7px 0px 0px;padding:0px 0px 11px;}
+.breadcrumbs{margin: 0px 0px;padding:0px 0px 11px;}
 .breadcrumbs .breadcrumbs{padding:0px;}
 .breadcrumbs .bx-breadcrumb-item{display:inline-block;position:relative;line-height: 22px;font-size:14px;}
 .breadcrumbs a{text-decoration:none;}
@@ -2915,7 +2915,7 @@ body.header-v9 .page-top-wrapper.color.v3{margin-top: 0;box-shadow: 0 4px 10px 0
 body .title-v4.wrapper1  header .header-wrapper > .wrapper_inner{border:none;}
 .regions_padding{padding:0px 15px;}
 
-.top_inner_block_wrapper{padding:0px 0px 5px;}
+.top_inner_block_wrapper{padding:0px 0px 5px; padding:0px;}
 .fill_bg_n .top_inner_block_wrapper{max-width:none;}
 
 /*TABS*/
@@ -3693,9 +3693,9 @@ body .ajax_load.table .main_item_wrapper div.counter_wrapp{position:relative;tex
 body .ajax_load.table .main_item_wrapper div.counter_wrapp > div{margin-bottom:7px;}
 body .ajax_load.table .main_item_wrapper .counter_wrapp div.total_summ{margin: -4px 0px 0px;position:absolute;font-size:12px;}
 
-.catalog_detail .item_slider .like_icons{top:-47px;right:-16px;}
+/*.catalog_detail .item_slider .like_icons{top:-47px;right:-16px;} */
 .catalog_detail .item_slider .like_icons span{margin:0px;}
-.container .catalog_detail .item_slider{padding-top: 80px;}
+/*.container .catalog_detail .item_slider{padding-top: 80px;} */
 .container .catalog_detail .item_slider .slides{margin-bottom:30px;}
 .container .catalog_detail .tabs_content{color:#444;}
 
@@ -6228,7 +6228,11 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
     justify-content:flex-end;
     color:#919191;
     font-family:"Open Sans", Helvetica, Arial, sans-serif;
-    font-size:20px;
+    font-size:15px;
+    height: 20px;
+    /* position: absolute; */
+    padding-top: 8px;
+    padding-left: 10px;
 }
 
 .logo-row .logo{
@@ -6361,7 +6365,7 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 
 .header_row{
     display:flex;
-    justify-content:space-between;
+    
 }
 
 
@@ -6372,20 +6376,19 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 }
 
 
-.order_button  {
-    display: block;
-    height: 50px;
-    width: 180px;
-    background-color: red;
-    border:2px solid black;
-    padding-top: 15px;
-    padding-left: 25px;
-    text-align: center;
-    padding-bottom: 10px;
-    padding-right: 25px;
-    color: white;
-    text-decoration: solid;
-    font-size: 16px;
-    border-radius: 6px;
+.properties-text  {
+    color:black;
+    font-size:12px;
+    font-weight: bold;
     
     }
+
+    .properties-block{
+        padding-top:8px;
+        padding-bottom:8px;
+    }
+    
+.properties-element {
+display: block;
+
+}

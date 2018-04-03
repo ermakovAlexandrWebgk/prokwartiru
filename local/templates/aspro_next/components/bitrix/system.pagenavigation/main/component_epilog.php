@@ -7,7 +7,7 @@ GetMessage('ITEMS_COUNT_3')
 );
 $wordForItems=$yearDeclension->get($arResult["NavRecordCount"]);?>
     <div id="productPageCount" class="items_count">
-        <?=$arResult["NavRecordCount"]?> <?=$wordForItems?>
+        (<?=$arResult["NavRecordCount"]?> <?=$wordForItems?>)
     </div>
   <script>
   $( document ).ready( function () {

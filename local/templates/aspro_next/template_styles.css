@@ -3,7 +3,7 @@ html{width:100%;}
 header, nav, section, article, aside, footer{display:block;}
 div[id^=wait_comp], .bx-core-waitwindow{display:none;}
 .right_block ul, .right_block ol{ margin:0 0 5px;}
-.right_block ul li:before , .right_block ol li:before{padding:0px;margin-left:0px;width:20px;display:inline-block;vertical-align:top;*display:inline;zoom:1;position:absolute;top:0px;left:0px;display:none;}
+.right_block ul li:before , .right_block ol li:before{padding:0px;margin-left:0px;width:20px;display:inline-block;vertical-align:top;*display:inline;zoom:1;position:absolute;top:0px;left:0px;/*display:none;*/}
 .right_block ul li, .right_block ol li{margin:0 0 4px;position:relative;}
 a:hover, a:focus{outline:none;text-decoration:none;}
 
@@ -3067,7 +3067,7 @@ body .catalog_section_list .item_block{padding:0px;margin:0px 0px -1px -1px;}
 
 /*filter*/
 .bx_filter .form-control{margin-bottom:0;}
-.bx_filter .bx_filter_section{border:1px solid #f2f2f2;background:#f9f9f9;border-radius:2px;position:relative;margin: 0 0 5px;}
+.bx_filter .bx_filter_section{border:1px solid #f2f2f2;background:#f9f9f9;border-radius:2px;position:relative;/*margin: 0 0 5px;*/}
 .bx_filter_param_label.disabled{opacity:0.4;cursor:default;}
 .bx_filter .bx_filter_parameters_box{padding:13px 19px 14px;border-bottom:1px solid #f2f2f2;}
 .bx_filter .bx_filter_parameters_box:not(.title):hover{background:#fff;}

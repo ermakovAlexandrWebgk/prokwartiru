@@ -87,9 +87,9 @@ if($arParams["SHOW_NEXT_ELEMENT"] == "Y")
 	);?>
 	<div class="detail <?=($templateName = $component->{'__template'}->{'__name'})?> fixed_wrapper">
 		<?if($arParams["USE_SHARE"] == "Y" && $arElement):?>
-			<div class="line_block share top <?=($arParams['USE_RSS'] !== 'N' ? 'rss-block' : '');?>">
-				<?$APPLICATION->IncludeFile(SITE_DIR."include/share_buttons.php", Array(), Array("MODE" => "html", "NAME" => GetMessage('CT_BCE_CATALOG_SOC_BUTTON')));?>
-			</div>				
+			<!--<div class="line_block share top <?=($arParams['USE_RSS'] !== 'N' ? 'rss-block' : '');?>">
+				<?/*$APPLICATION->IncludeFile(SITE_DIR."include/share_buttons.php", Array(), Array("MODE" => "html", "NAME" => GetMessage('CT_BCE_CATALOG_SOC_BUTTON')));*/?>
+			</div> -->				
 			<script type="text/javascript">
 				$('h1').addClass('shares_block');
 				$(document).ready(function(){

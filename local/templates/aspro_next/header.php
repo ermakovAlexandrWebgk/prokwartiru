@@ -9,7 +9,9 @@ $bIncludedModule = (\Bitrix\Main\Loader::includeModule("aspro.next"));?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?=LANGUAGE_ID?>" lang="<?=LANGUAGE_ID?>" <?=($htmlClass ? 'class="'.$htmlClass.'"' : '')?>>
 <head>
-	<title><?$APPLICATION->ShowTitle()?></title>
+	<title><?$APPLICATION->ShowViewContent('collection')?>
+    <?$APPLICATION->ShowTitle()?>
+    </title>
 	<?$APPLICATION->ShowMeta("viewport");?>
 	<?$APPLICATION->ShowMeta("HandheldFriendly");?>
 	<?$APPLICATION->ShowMeta("apple-mobile-web-app-capable", "yes");?>

@@ -23,13 +23,13 @@
 }
 
 .horisontale_filter>li>a:before{
-    /*display: none; */
+    display: none;
 }
 .right_block ul.horisontale_filter>li:before , .right_block ul.horisontale_filter li:before{
-   /* display: none;  */
+    display: none;
 }
 .horisontale_filter>li>a:after{
-        /*display: none;/*
+        
     /*font-size: 13px;
     font: normal normal normal 14px/1 FontAwesome;
     top: 19px;

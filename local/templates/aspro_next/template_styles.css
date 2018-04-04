@@ -3,7 +3,7 @@ html{width:100%;}
 header, nav, section, article, aside, footer{display:block;}
 div[id^=wait_comp], .bx-core-waitwindow{display:none;}
 .right_block ul, .right_block ol{ margin:0 0 5px;}
-.right_block ul li:before , .right_block ol li:before{padding:0px;margin-left:0px;width:20px;display:inline-block;vertical-align:top;*display:inline;zoom:1;position:absolute;top:0px;left:0px;/*display:none;*/}
+.right_block ul li:before , .right_block ol li:before{padding:0px;margin-left:0px;width:20px;display:inline-block;vertical-align:top;*display:inline;zoom:1;position:absolute;top:0px;left:0px;display:none;}
 .right_block ul li, .right_block ol li{margin:0 0 4px;position:relative;}
 a:hover, a:focus{outline:none;text-decoration:none;}
 

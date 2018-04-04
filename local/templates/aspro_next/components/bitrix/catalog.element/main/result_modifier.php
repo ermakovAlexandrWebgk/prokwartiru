@@ -1069,7 +1069,7 @@ while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товар
 				$oboi_rapport .= "м";
 			}
 
-			$prop_str .= "<span>длинна: ".$lengst_oboi."м | ширина: ".$width_oboi."м | раппорт: ".$oboi_rapport."</span></div>";
+			$prop_str .= "<span>длина: ".$lengst_oboi."м | ширина: ".$width_oboi."м | раппорт: ".$oboi_rapport."</span></div>";
 
 			if ( empty($lengst_oboi) || empty($width_oboi) || empty($oboi_rapport) ) {
 				$prop_str = "";

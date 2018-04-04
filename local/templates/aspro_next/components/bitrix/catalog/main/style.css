@@ -29,7 +29,7 @@
     display: none;
 }
 .horisontale_filter>li>a:after{
-        
+        display: none;
     /*font-size: 13px;
     font: normal normal normal 14px/1 FontAwesome;
     top: 19px;

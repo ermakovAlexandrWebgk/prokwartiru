@@ -1036,10 +1036,12 @@ if (strlen($arResult["IBLOCK_SECTION_ID"])) {
 
 <?
 $parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => CATALOG_ID, "HAS_ELEMENT" => $arResult['ID'], "DEPTH_LEVEL" => 1), false);
+$sun='';
 while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товара в зависимости от раздела первого уровня
 
 	switch ($ar_parent["ID"]) {
 		case OBOI_SECTION_ID:
+            $sun="не выгорают на солнце";
 			$prop_str = "";
 			$prop_str .= "<div class='imp_props_txt'>";
 
@@ -1086,4 +1088,5 @@ while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товар
 			break;
 	}
 }
+$arResult["PROPERTIES"]["SUN"] = $sun;
 ?>

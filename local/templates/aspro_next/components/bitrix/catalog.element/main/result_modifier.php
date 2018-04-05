@@ -1036,12 +1036,41 @@ if (strlen($arResult["IBLOCK_SECTION_ID"])) {
 
 <?
 $parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => CATALOG_ID, "HAS_ELEMENT" => $arResult['ID'], "DEPTH_LEVEL" => 1), false);
+$vinilXmlId = 'vinil-na-flizeline';
+$paperXmlId = 'bumazhnye';
+$flizelinXmlId = 'flizelinovye';    
+
 $sun='';
+$propertyProperty='';
+$propertyColor='';
+$propertyWashing ='';
+$propertyPaper ='';
+$propertyWaterproof='';
+$propertyStyle='';
+$propertyDesign='';
 while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товара в зависимости от раздела первого уровня
 
 	switch ($ar_parent["ID"]) {
 		case OBOI_SECTION_ID:
-            $sun="не выгорают на солнце";
+            $propertyDesign = $arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']['0'];
+            
+            $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'];
+            $propertyColor=$arResult["PROPERTIES"]["COLOR"]["VALUE"]["0"].',';
+            
+             //$arResult["PROPERTIES"]["DESIGN_OBOI"]["VALUE"]["0"].',' 
+             //$arResult["PROPERTIES"]["STYLE"]["VALUE"]["0"].',');
+             if($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID'] == $vinilXmlId){
+             $propertyWashing = 'моющиеся'.',';    
+             }
+             if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $paperXmlId){
+             $propertyPaper = 'влагостойкие'.',';    
+             }
+             if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $flizelinXmlId){  
+             $propertyWaterproof = 'влагостойкие'.',';    
+             }
+             
+             
+            $sun="не выгорают на солнце".',';
 			$prop_str = "";
 			$prop_str .= "<div class='imp_props_txt'>";
 
@@ -1089,4 +1118,11 @@ while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товар
 	}
 }
 $arResult["PROPERTIES"]["SUN"] = $sun;
+$arResult["PROPERTIES"]["PROPERTIES_STRING"] = $propertyProperty;
+$arResult["PROPERTIES"]["PROPERTIES_COLOR"] = $propertyColor;
+$arResult["PROPERTIES"]["WASHING"] = $propertyWashing;
+$arResult["PROPERTIES"]["WATERPROOF"] = $propertyWaterproof;
+$arResult["PROPERTIES"]["WATERPROOFPAPER"] = $propertyPaper;
+$arResult["PROPERTIES"]["OBOI_STYLE"] = $propertyStyle;
+$arResult["PROPERTIES"]["OBOI_DESIGN"] = $propertyDesign;
 ?>

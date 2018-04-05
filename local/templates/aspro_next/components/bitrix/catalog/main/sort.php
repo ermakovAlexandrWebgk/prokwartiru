@@ -120,16 +120,7 @@ $template = "catalog_".$display;
 			}
 			?>
 		</div>
-		<div class="sort_display">	
-			<?foreach($arDisplays as $displayType):?>
-				<?
-				$current_url = '';
-				$current_url = $APPLICATION->GetCurPageParam('display='.$displayType, 	array('display'));
-				$url = str_replace('+', '%2B', $current_url);
-				?>
-				<a rel="nofollow" href="<?=$url;?>" class="sort_btn <?=$displayType?> <?=($display == $displayType ? 'current' : '')?>"><i title="<?=GetMessage("SECT_DISPLAY_".strtoupper($displayType))?>"></i></a>
-			<?endforeach;?>
-		</div>
+		
 		<div class="clearfix"></div>
 	<!--/noindex-->
 </div>

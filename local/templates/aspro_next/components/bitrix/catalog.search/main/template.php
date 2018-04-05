@@ -140,11 +140,7 @@ if (is_array($arElements) && !empty($arElements))
 					}
 					?>
 				</div>
-				<div class="sort_display">	
-					<?foreach($arDisplays as $displayType):?>
-						<a rel="nofollow" href="<?=$APPLICATION->GetCurPageParam('display='.$displayType, 	array('display'))?>" class="sort_btn <?=$displayType?> <?=($display == $displayType ? 'current' : '')?>"><i title="<?=GetMessage("SECT_DISPLAY_".strtoupper($displayType))?>"></i></a>
-					<?endforeach;?>
-				</div>
+				
 				<div class="clearfix"></div>
 			<!--/noindex-->
 		</div>

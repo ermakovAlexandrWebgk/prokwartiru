@@ -327,14 +327,18 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 	</div>
 	<div class="right_info">
 		<div class="info_item">
-			<p class="card_title">
-				Артикул: <?=$arResult["PROPERTIES"]["CML2_ARTICLE"]["VALUE"];?>
-			</p>
+			
             <div class="price_txt">
-            
-<?=$arResult['PROPERTIES']['PROPERTY']['VALUE'].','?> <?=$arResult["PROPERTIES"]["COLOR"]["VALUE"]["0"]?>,
-<?=$arResult["PROPERTIES"]["DESIGN_OBOI"]["VALUE"]["0"]?>, <?=$arResult["PROPERTIES"]["STYLE"]["VALUE"]["0"]?>,
-<?=$arResult["PROPERTIES"]["SUN"]?>
+            <?//=$arResult["PROPERTIES"]["PROPERTY"]["VALUE"]?>
+          <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>  
+          <?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
+          <?=$arResult["PROPERTIES"]["SUN"]?>
+          <?=$arResult["PROPERTIES"]["WASHING"]?>
+          <?=$arResult["PROPERTIES"]["WATERPROOF"]?>
+          <?=$arResult["PROPERTIES"]["WATERPROOFPAPER"]?>
+          <?=$arResult["PROPERTIES"]["OBOI_STYLE"]?>
+          <?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
+          
 
 
 
@@ -691,7 +695,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 				}
 				?>
 				<?if($arFiles):?>
-				    <div class="wraps">
+				    <div class="wraps" style="display:none">
 				        <h4><?=($arParams["BLOCK_DOCS_NAME"] ? $arParams["BLOCK_DOCS_NAME"] : GetMessage("DOCUMENTS_TITLE"))?></h4>
 				        <div class="files_block">
 				            <div class="row">
@@ -1158,4 +1162,3 @@ if ($arResult['CATALOG'] && $arParams['USE_GIFTS_MAIN_PR_SECTION_LIST'] == 'Y' &
 </script>
 
 
-<pre><?print_r($arResult["PROPERTIES"])?></pre>

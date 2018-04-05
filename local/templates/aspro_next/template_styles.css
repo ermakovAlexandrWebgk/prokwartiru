@@ -3881,7 +3881,7 @@ a .zoom{display:block;width:50px;height:50px;border-radius:100%;overflow:hidden;
 
 .catalog_detail .element_detail_text { font-size: 12px; line-height: 15px; padding: 0px 0px 39px; }
 .catalog_detail .element_detail_text .sh {width: 120px;float: left;}
-.catalog_detail .element_detail_text .price_txt {color: #7d7d7d; font-size: 12px;line-height:18px;}
+.catalog_detail .element_detail_text .price_txt {color: #7d7d7d; font-size: 12px;line-height:18px;padding-top:29px;}
 
 .catalog_detail .props_list{width:100%;margin:0px 0px 0px;color:#555;}
 .catalog_detail .tabs_content .char_block{margin-bottom:30px;}
@@ -6391,4 +6391,8 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 .properties-element {
 display: block;
 
+}
+
+.price_txt {
+    padding-top:29px;
 }

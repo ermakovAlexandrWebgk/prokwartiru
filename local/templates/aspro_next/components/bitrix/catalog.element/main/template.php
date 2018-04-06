@@ -329,6 +329,9 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 		<div class="info_item">
 			
             <div class="price_txt">
+          
+
+   
             <?//=$arResult["PROPERTIES"]["PROPERTY"]["VALUE"]?>
           <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>  
           <?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
@@ -339,7 +342,8 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
           <?=$arResult["PROPERTIES"]["OBOI_STYLE"]?>
           <?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
           
-
+       
+         
 
 
 

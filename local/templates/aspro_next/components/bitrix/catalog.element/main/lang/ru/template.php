@@ -96,9 +96,11 @@ $MESS['S_ORDER_SERVISE'] = 'Заказать услугу';
 $MESS['STOCK'] = 'Наличие:';
 $MESS['IN_STOCK'] = 'складская программа';
 $MESS['ON_ORDER'] = 'товар под заказ';
-$MESS['FACTORY'] = 'Фабрика:';
+$MESS['FACTORY'] = 'Бренд:';
 $MESS['CHARACTERISTICS'] = 'Основные характеристики:';
 $MESS['COLLECTION'] = 'Коллекция:';
+$MESS['ADD_TO_FAVORITES'] = 'Добавить в избранное';
+$MESS['INTERIOR'] = 'Интерьеры';
 
 
 ?>

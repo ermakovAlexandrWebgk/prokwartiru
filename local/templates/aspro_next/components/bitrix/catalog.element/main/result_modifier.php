@@ -298,7 +298,7 @@
                 break;
 
         }
-
+         
         if ($ar_parent['UF_RELATED_COLLECT']) {
             $filter = array(
                 'SECTION_ID'         => $ar_parent['UF_RELATED_COLLECT'],
@@ -313,10 +313,13 @@
                 if ($picture['DETAIL_PICTURE']){
                     $additionalPicture[]=array('ID'=>$picture['DETAIL_PICTURE']);   
                 }
+                
 
-            } 
+            }
+
         }
     }
+
     $productSlider=$productSlider+$additionalPicture;
     $arResult["PROPERTIES"]["SUN"] = $sun;
     $arResult["PROPERTIES"]["PROPERTIES_STRING"] = $propertyProperty;
@@ -335,7 +338,7 @@
                 $arImage, array(
                     "BIG" => array('src' => CFile::GetPath($arImage["ID"])),
                     "SMALL" => CFile::ResizeImageGet($arImage["ID"], array("width" => 400, "height" => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true, array()),
-                    "THUMB" => CFile::ResizeImageGet($arImage["ID"], array("width" => 50, "height" => 50), BX_RESIZE_IMAGE_PROPORTIONAL, true, array()),
+                    "THUMB" => CFile::ResizeImageGet($arImage["ID"], array("width" => 100, "height" => 100), BX_RESIZE_IMAGE_PROPORTIONAL, true, array()),
                 )
             );
         }
@@ -480,8 +483,8 @@
                 foreach($arOffer['MORE_PHOTO'] as $i => $arImage){
                     if($arImage["ID"]){
                         $arOffer['MORE_PHOTO'][$i]["BIG"]['src'] = CFile::GetPath($arImage["ID"]);
-                        $arOffer['MORE_PHOTO'][$i]["SMALL"] = CFile::ResizeImageGet($arImage["ID"], array("width" => 400, "height" => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true, array());
-                        $arOffer['MORE_PHOTO'][$i]["THUMB"] = CFile::ResizeImageGet($arImage["ID"], array("width" => 52, "height" => 52), BX_RESIZE_IMAGE_PROPORTIONAL, true, array());
+                        $arOffer['MORE_PHOTO'][$i]["SMALL"] = CFile::ResizeImageGet($arImage["ID"], array("width" => 800, "height" => 800), BX_RESIZE_IMAGE_PROPORTIONAL, true, array());
+                        $arOffer['MORE_PHOTO'][$i]["THUMB"] = CFile::ResizeImageGet($arImage["ID"], array("width" => 100, "height" => 100), BX_RESIZE_IMAGE_PROPORTIONAL, true, array());
                     }
                 }
             }
@@ -1120,7 +1123,7 @@
                     if($arEnum["UF_FILE"]){
                         $arEnum['PREVIEW_PICTURE'] = CFile::ResizeImageGet(
                             $arEnum['UF_FILE'],
-                            array("width" => 50, "height" => 50),
+                            array("width" => 100, "height" => 100),
                             BX_RESIZE_IMAGE_PROPORTIONAL_ALT,
                             true
                         );

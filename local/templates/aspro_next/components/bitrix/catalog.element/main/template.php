@@ -254,7 +254,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 			<?if(!$showCustomOffer || empty($arResult['OFFERS_PROP'])){
 				if(count($arResult["MORE_PHOTO"]) > 1):?>
 					<div class="wrapp_thumbs xzoom-thumbs">
-						<div class="thumbs flexslider" data-plugin-options='{"animation": "slide", "selector": ".slides_block > li", "directionNav": true, "itemMargin":10, "itemWidth": 54, "controlsContainer": ".thumbs_navigation", "controlNav" :false, "animationLoop": true, "slideshow": false}' style="max-width:<?=ceil(((count($arResult['MORE_PHOTO']) <= 4 ? count($arResult['MORE_PHOTO']) : 4) * 64) - 10)?>px;">
+						<div class="thumbs flexslider" data-plugin-options='{"animation": "slide", "selector": ".slides_block > li", "directionNav": true, "itemMargin":10, "itemWidth": 54, "controlsContainer": ".thumbs_navigation", "controlNav" :false, "animationLoop": true, "slideshow": false}' style="max-width:320px;">
 							<ul class="slides_block" id="thumbs">
 								<?foreach($arResult["MORE_PHOTO"]as $i => $arImage):?>
 									<li <?=(!$i ? 'class="current"' : '')?> data-big_img="<?=$arImage["BIG"]["src"]?>" data-small_img="<?=$arImage["SMALL"]["src"]?>">
@@ -264,7 +264,10 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 							</ul>
 							<span class="thumbs_navigation custom_flex"></span>
 						</div>
+                        
 					</div>
+                    <span class"interior"><?=GetMessage('INTERIOR')?> <?=$arResult['ORIGINAL_PARAMETERS']['SECTION_CODE'];?></span>
+                    
 					<script>
 						$(document).ready(function(){
 							$('.item_slider .thumbs li').first().addClass('current');
@@ -618,7 +621,41 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 				<div class="discount_block">
 					<a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку</a>
 				</div>
-
+                <div class="wishButton">
+                <div class="btn-get_discount btn-lg btn transition_bg btn-default white">
+                            <?if($arParams["DISPLAY_WISH_BUTTONS"] != "N"):?>
+                                <?if(!$arResult["OFFERS"]):?>
+                                    <div class="wish_item text" <?=($arAddToBasketData['CAN_BUY'] ? '' : 'style="display:none"');?> data-item="<?=$arResult["ID"]?>" data-iblock="<?=$arResult["IBLOCK_ID"]?>">
+                                        <span class="value" title="<?=GetMessage('CT_BCE_CATALOG_IZB')?>" >Добавить в избранное <img height="20" width="20" src="<?=SITE_TEMPLATE_PATH?>/images/redheart.png"></span>
+                                        <span class="value added" title="<?=GetMessage('CT_BCE_CATALOG_IZB_ADDED')?>">В избранном</span>
+                                    </div>
+                                <?elseif($arResult["OFFERS"] && $arParams["TYPE_SKU"] === 'TYPE_1' && !empty($arResult['OFFERS_PROP'])):?>
+                                    <div class="wish_item text " <?=($arAddToBasketData['CAN_BUY'] ? '' : 'style="display:none"');?> data-item="" data-iblock="<?=$arResult["IBLOCK_ID"]?>" <?=(!empty($arResult['OFFERS_PROP']) ? 'data-offers="Y"' : '');?> data-props="<?=$arOfferProps?>">
+                                        <span class="value <?=$arParams["TYPE_SKU"];?>" title="<?=GetMessage('CT_BCE_CATALOG_IZB')?>">Добавить в избранное <img height="20" width="20" src="<?=SITE_TEMPLATE_PATH?>/images/redheart.png"></span>
+                                        <span class="value added <?=$arParams["TYPE_SKU"];?>" title="<?=GetMessage('CT_BCE_CATALOG_IZB_ADDED')?>">В избранном</span>
+                                    </div>
+                                <?endif;?>
+                            <?endif;?>
+                            <?if($arParams["DISPLAY_COMPARE"] == "Y"):?>
+                                <?if(!$arResult["OFFERS"]):?>
+                                    <div data-item="<?=$arResult["ID"]?>" data-iblock="<?=$arResult["IBLOCK_ID"]?>" data-href="<?=$arResult["COMPARE_URL"]?>" class="compare_item text <?=($arResult["OFFERS"] ? $arParams["TYPE_SKU"] : "");?>" id="<? echo $arItemIDs["ALL_ITEM_IDS"]['COMPARE_LINK']; ?>">
+                                        <span class="value" title="<?=GetMessage('CT_BCE_CATALOG_COMPARE')?>"></span>
+                                        <span class="value added" title="<?=GetMessage('CT_BCE_CATALOG_COMPARE_ADDED')?>"></span>
+                                    </div>
+                                <?elseif($arResult["OFFERS"] && $arParams["TYPE_SKU"] === 'TYPE_1'):?>
+                                    <div data-item="" data-iblock="<?=$arResult["IBLOCK_ID"]?>" data-href="<?=$arResult["COMPARE_URL"]?>" class="compare_item text <?=$arParams["TYPE_SKU"];?>">
+                                        <span class="value" title="<?=GetMessage('CT_BCE_CATALOG_COMPARE')?>">Добавить в избранное <img height="20" width="20" src="<?=SITE_TEMPLATE_PATH?>/images/redheart.png"></span>
+                                        <span class="value added" title="<?=GetMessage('CT_BCE_CATALOG_COMPARE_ADDED')?>">В избранном</span>
+                                    </div>
+                                <?endif;?>
+                            <?endif;?>
+                            
+                              
+                             
+                        </div>
+                        </div>
+                
+              
 			</div>
 			<?if(is_array($arResult["STOCK"]) && $arResult["STOCK"]):?>
 				<div class="stock_wrapper">
@@ -677,10 +714,11 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 
 				<?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
 				<div class="showroom_txt">
-					<span>Посмотреть в шоуруме по адресу:</span><br>
-					<span>г. Москва, ул. Азовская, д. 24, к. 3, офис 71, ст.м. Севастопольская</span>
+					<a href="/contacts/"><span>Посмотреть в шоуруме по адресу:</span><br>
+					<span>г. Москва, ул. Азовская, д. 24, к. 3, офис 71, ст.м. Севастопольская</span></a>
 				</div>
 				<?endif;?>
+                
 
 				<?
 				$arFiles = array();

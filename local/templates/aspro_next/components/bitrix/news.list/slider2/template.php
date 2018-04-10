@@ -21,7 +21,7 @@
                                             <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="dark-color"><span><?=$arItem['NAME'];?></span></a>
                                         </div>
                                         <div class="cost prices clearfix">
-                                        <?=$arItem['MAXIMUM_PRICE']?><span>ð</span>
+                                        <?=$arItem['PROPERTIES']['MAXIMUM_PRICE']['VALUE']?><span>ð</span>
                                             
                                         </div>
                                         

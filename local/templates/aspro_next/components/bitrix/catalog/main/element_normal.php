@@ -258,7 +258,7 @@ if($arAccessories){
         false
     );?>
     <?endif;?>
-    <?if($APPLICATION->GetCurDir(true) ==='/oboi'){?>
+
     <?$APPLICATION->IncludeComponent(
     "bitrix:news.list", 
     "slider1", 
@@ -394,7 +394,7 @@ if($arAccessories){
     ),
     false
 );?>
-<?}?>
+
 
 	<?if($isWideBlock == "Y"):?>
 			</div>

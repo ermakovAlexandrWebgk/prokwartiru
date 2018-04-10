@@ -144,5 +144,9 @@ if($arViewedIDs){?>
 			</div>
 		</div>
 	</div>
+   
+
+    
+
 	<?Bitrix\Main\Page\Frame::getInstance()->finishDynamicWithID("viewed-block", "");?>
 <?}?>

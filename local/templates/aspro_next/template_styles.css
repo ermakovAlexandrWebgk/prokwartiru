@@ -2471,7 +2471,7 @@ body .wrapper .catalog_item .item_info .buttons_block{margin-top:17px;text-align
 
 /*viewed front*/
 .viewed_block .rows_block{margin:0px -5px;white-space: nowrap;}
-.viewed_block .rows_block .item_block{padding:0px 0px;margin:0px 10px 0px 0px;overflow: visible;}
+.viewed_block .rows_block .item_block{padding:0px 0px;margin:0px 10px 0px 0px;overflow: visible; height:144px;width:220px;}
 .viewed_block .title_block{margin: 26px 0px 4px;}
 .viewed_block .outer_wrap{margin:0px;}
 .viewed_block .item_block{}
@@ -6399,5 +6399,11 @@ display: block;
 
 
 .wishButton{
-    margin-top:5px;
+ 
+    display:inline-block;
 }
+
+.showroom_txt a {
+    text-decoration:underline;
+}
+

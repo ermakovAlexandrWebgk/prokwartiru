@@ -330,6 +330,8 @@
     $arResult["PROPERTIES"]["OBOI_STYLE"] = $propertyStyle;
     $arResult["PROPERTIES"]["OBOI_DESIGN"] = $propertyDesign;
 
+    
+
 
     $arResult['SHOW_SLIDER'] = true;
     if($productSlider){

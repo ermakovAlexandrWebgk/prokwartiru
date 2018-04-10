@@ -1,5 +1,5 @@
 <div class="viewed_block">
-        <h3 class="title_block sm">Другой цвет</h3>
+        <h3 class="title_block sm">Компаньоны</h3>
         <div class="outer_wrap flexslider shadow items border custom_flex top_right" data-plugin-options='{"animation": "slide", "directionNav": true, "itemMargin":10, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [8,4,3,2,1]}'>
             <ul class="rows_block slides">
                 <?foreach($arResult["ITEMS"] as $arItem){
@@ -16,21 +16,19 @@
                                             
                                         </a>
                                     </div>
-                                    <div class="item_info">
+                                   <div class="item_info">
                                         <div class="item-title">
-                                            <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="dark-color"><span><?=$arItem['NAME'];?></span></a>
-                                        </div>
-                                        <div class="cost prices clearfix">
-                                        <?=$arItem['PROPERTIES']['MAXIMUM_PRICE']['VALUE']?><span>р</span>
-                                            
+                                            <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="dark-color"><span><?=$arItem['NAME'];?><br> </span><span class="price-slider"><?=$arItem['PROPERTIES']['MAXIMUM_PRICE']['VALUE']?>р</span></a>
+                                         
                                         </div>
                                         
                                     </div>
-                                </div>
-                          
+
                         </div>
                     </li>
                 <?}?>
             </ul>
         </div>
     </div>
+
+

@@ -626,7 +626,6 @@
                 </div>
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку</a>
-                </div>
                 <div class="wishButton">
                     <div class="btn-get_discount btn-lg btn transition_bg btn-default white wish_item text" <?=($arAddToBasketData['CAN_BUY'] ? '' : 'style="display:none"');?> data-item="<?=$arResult["ID"]?>" data-iblock="<?=$arResult["IBLOCK_ID"]?>">
                         <?if($arParams["DISPLAY_WISH_BUTTONS"] != "N"):?>
@@ -660,6 +659,8 @@
 
                     </div>
                 </div>
+                </div>
+                
 
 
             </div>

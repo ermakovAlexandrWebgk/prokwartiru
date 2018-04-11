@@ -396,6 +396,7 @@ if($arAccessories){
 );?>
 
 
+
 	<?if($isWideBlock == "Y"):?>
 			</div>
 		</div>

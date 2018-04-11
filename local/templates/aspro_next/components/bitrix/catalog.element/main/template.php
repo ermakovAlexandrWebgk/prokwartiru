@@ -630,15 +630,15 @@
                     <div class="btn-get_discount btn-lg btn transition_bg btn-default white wish_item text" <?=($arAddToBasketData['CAN_BUY'] ? '' : 'style="display:none"');?> data-item="<?=$arResult["ID"]?>" data-iblock="<?=$arResult["IBLOCK_ID"]?>">
                         <?if($arParams["DISPLAY_WISH_BUTTONS"] != "N"):?>
                             <?if(!$arResult["OFFERS"]):?>
-                                <div class="wish_item text">
+                                
                                     <span class="value" title="<?=GetMessage('CT_BCE_CATALOG_IZB')?>" >Добавить в избранное <img height="20" width="20" src="<?=SITE_TEMPLATE_PATH?>/images/redheart.png"></span>
                                     <span class="value added" title="<?=GetMessage('CT_BCE_CATALOG_IZB_ADDED')?>">В избранном</span>
-                                </div>
+                                
                                 <?elseif($arResult["OFFERS"] && $arParams["TYPE_SKU"] === 'TYPE_1' && !empty($arResult['OFFERS_PROP'])):?>
-                                <div class="wish_item text " <?=($arAddToBasketData['CAN_BUY'] ? '' : 'style="display:none"');?> data-item="" data-iblock="<?=$arResult["IBLOCK_ID"]?>" <?=(!empty($arResult['OFFERS_PROP']) ? 'data-offers="Y"' : '');?> data-props="<?=$arOfferProps?>">
+                                 <?=($arAddToBasketData['CAN_BUY'] ? '' : 'style="display:none"');?> data-item="" data-iblock="<?=$arResult["IBLOCK_ID"]?>" <?=(!empty($arResult['OFFERS_PROP']) ? 'data-offers="Y"' : '');?> data-props="<?=$arOfferProps?>">
                                     <span class="value <?=$arParams["TYPE_SKU"];?>" title="<?=GetMessage('CT_BCE_CATALOG_IZB')?>">Добавить в избранное <img height="20" width="20" src="<?=SITE_TEMPLATE_PATH?>/images/redheart.png"></span>
                                     <span class="value added <?=$arParams["TYPE_SKU"];?>" title="<?=GetMessage('CT_BCE_CATALOG_IZB_ADDED')?>">В избранном</span>
-                                </div>
+                                
                                 <?endif;?>
                             <?endif;?>
                         <?if($arParams["DISPLAY_COMPARE"] == "Y"):?>

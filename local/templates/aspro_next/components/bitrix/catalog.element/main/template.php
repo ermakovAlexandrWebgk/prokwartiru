@@ -711,13 +711,43 @@
                             <?=GetMessage('STOCK');?>
                             <span class="properties-text">
                                 <?=GetMessage('ON_ORDER');?>
-                            </span>
+                            </span><br>
                             <?else:?>
-                            <?=GetMessage('STOCK');?><span class="properties-text"><?=GetMessage('IN_STOCK');?></span>
+                            <?=GetMessage('STOCK');?><span class="properties-text"><?=GetMessage('IN_STOCK');?></span><br>
                             <?endif;?>
                         <br>
                     </span>
+                    <!-- ƒоставка товара -->
+<? 
+
+
+    if($arResult['CATALOG_QUANTITY']>0) $delivery.="ƒоставка &ndash; 1 день<br />—амовывоз &ndash; 1 день после оплаты<br />";
+    elseif($arResult['PROPERTIES']['DELIVERY']['VALUE']) 
+    {
+      $delivery.="доставка &ndash; <b>";
+      if(in_array($arResult['PROPERTIES']['DELIVERY']['VALUE'], array(1,21,31,41,51,61,71,81,91))) $delivery.=$arResult['PROPERTIES']['DELIVERY']['VALUE']." день ";
+      elseif(in_array($arResult['PROPERTIES']['DELIVERY']['VALUE'], array(2,22,32,42,52,62,72,82,92,3,23,33,43,53,63,73,83,93,4,24,34,44,54,64,74,84,94))) $delivery.=$arResult['PROPERTIES']['DELIVERY']['VALUE']." дн€ ";
+      else $delivery.=$arResult['PROPERTIES']['DELIVERY']['VALUE']." дней ";
+      $delivery.="после оплаты</b><br />самовывоз &ndash; <b>1 день после поступлени€</b>";
+    }
+    else $delivery.="доставка &ndash; <b>1 день после оплаты</b><br />самовывоз &ndash; <b>1 день после поступлени€</b>";
+    $delivery.="</p></div>"; 
+?>
+<?=$delivery?>
+<!--  онец ƒоставка товара -->
                 </div>
+                
+                
+
+
+                
+                
+                
+                
+                
+                
+                
+                
 
                 <?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
                     <div class="showroom_txt">

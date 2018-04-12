@@ -717,38 +717,26 @@
                             <?endif;?>
                         <br>
                     </span>
-                    <!-- Доставка товара -->
-<? 
+ <!-- Доставка товара -->                   
 
-
-    if($arResult['CATALOG_QUANTITY']>0) $delivery.="Доставка &ndash; 1 день<br />Самовывоз &ndash; 1 день после оплаты<br />";
-    elseif($arResult['PROPERTIES']['DELIVERY']['VALUE']) 
-    {
-      $delivery.="доставка &ndash; <b>";
-      if(in_array($arResult['PROPERTIES']['DELIVERY']['VALUE'], array(1,21,31,41,51,61,71,81,91))) $delivery.=$arResult['PROPERTIES']['DELIVERY']['VALUE']." день ";
-      elseif(in_array($arResult['PROPERTIES']['DELIVERY']['VALUE'], array(2,22,32,42,52,62,72,82,92,3,23,33,43,53,63,73,83,93,4,24,34,44,54,64,74,84,94))) $delivery.=$arResult['PROPERTIES']['DELIVERY']['VALUE']." дня ";
-      else $delivery.=$arResult['PROPERTIES']['DELIVERY']['VALUE']." дней ";
-      $delivery.="после оплаты</b><br />самовывоз &ndash; <b>1 день после поступления</b>";
-    }
-    else $delivery.="доставка &ndash; <b>1 день после оплаты</b><br />самовывоз &ndash; <b>1 день после поступления</b>";
-    $delivery.="</p></div>"; 
-?>
-<?=$delivery?>
-<!-- Конец Доставка товара -->
-                </div>
-                
-                
-
-
-                
-                
-                
-                
-                
-                
-                
-                
-
+<?
+use Bitrix\Main\Grid\Declension; /*   Склонение слова "День" в зависимости от количества */
+$yearDeclension = new Declension(
+GetMessage('ITEMS_COUNT_1'),
+GetMessage('ITEMS_COUNT_2'),
+GetMessage('ITEMS_COUNT_3')
+);
+$wordForDays=$yearDeclension->get($arResult['PROPERTIES']['DELIVERY']['VALUE']);
+    if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])):?>
+        Срок поставки: <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?> <?=$wordForDays?> <br>
+        Самовывоз: 1 день после поступления <br>
+            <?else:?>
+                <span>
+                    Доставка: 1 день (от 20 тысяч бесплатно)<br>
+                    Самовывоз: через 1 после получения предоплаты<br>
+                </span>
+    <?endif;?>
+    <!-- Доставка товара --> 
                 <?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
                     <div class="showroom_txt">
                         <a href="/contacts/"><span>Посмотреть в шоуруме по адресу:</span><br>

@@ -6411,3 +6411,16 @@ display: block;
     font-weight: bold;
 
 }
+
+.item_block {
+    width:250px !important;
+}
+
+
+
+.price_txt, .interior{
+    color: #554e40 !important;
+    font-size: 14px;
+    font-weight: bold;
+    font-size: 14px;
+}

@@ -336,18 +336,17 @@
 
 
                 <?//=$arResult["PROPERTIES"]["PROPERTY"]["VALUE"]?>
-
-                <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>  
-                <?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
-                <?=$arResult["PROPERTIES"]["SUN"]?>
-                <?=$arResult["PROPERTIES"]["WASHING"]?>
-                <?=$arResult["PROPERTIES"]["WATERPROOF"]?>
-                <?=$arResult["PROPERTIES"]["WATERPROOFPAPER"]?>
-                <?=$arResult["PROPERTIES"]["OBOI_STYLE"]?>
-                <?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
-
-
-
+<span class="properties-string">
+<?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>  
+<?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
+<?=$arResult["PROPERTIES"]["SUN"]?>
+<?=$arResult["PROPERTIES"]["WASHING"]?>
+<?=$arResult["PROPERTIES"]["WATERPROOF"]?>
+<?=$arResult["PROPERTIES"]["WATERPROOFPAPER"]?>
+<?=$arResult["PROPERTIES"]["PROPERTY_STYLE"]?>
+<?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
+<?=$arResult["PROPERTIES"]["COUNTRY_STRING"]?>
+</span>
 
 
 
@@ -625,7 +624,8 @@
                         <?endif;?>
                 </div>
                 <div class="discount_block">
-                    <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку</a>
+                    <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
+                    <img height="20" width="20" src="<?=SITE_TEMPLATE_PATH?>/images/percent2.png"></a>
                 <div class="wishButton">
                     <div class="btn-get_discount btn-lg btn transition_bg btn-default white wish_item text" <?=($arAddToBasketData['CAN_BUY'] ? '' : 'style="display:none"');?> data-item="<?=$arResult["ID"]?>" data-iblock="<?=$arResult["IBLOCK_ID"]?>">
                         <?if($arParams["DISPLAY_WISH_BUTTONS"] != "N"):?>

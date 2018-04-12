@@ -44,3 +44,12 @@ button.btn-get_discount{
     border: 2px solid orange;
     margin-bottom: 30px;
 }
+
+.imp_props_txt, .properties-block, .showroom_txt{
+    color: #554e40 !important;
+    font-size: 14px;
+    font-weight: bold;
+    font-size: 14px;
+
+}
+

@@ -728,12 +728,12 @@ GetMessage('ITEMS_COUNT_3')
 );
 $wordForDays=$yearDeclension->get($arResult['PROPERTIES']['DELIVERY']['VALUE']);
     if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])):?>
-        Срок поставки: <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?> <?=$wordForDays?> <br>
-        Самовывоз: 1 день после поступления <br>
+        <?=GetMessage('DELIVERY_TIME');?> <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?> <?=$wordForDays?> <br>
+        <?=GetMessage('PICKUP_TIME');?> <br> 
             <?else:?>
                 <span>
-                    Доставка: 1 день (от 20 тысяч бесплатно)<br>
-                    Самовывоз: через 1 после получения предоплаты<br>
+                    <?=GetMessage('DELIVERY');?><br>
+                    <?=GetMessage('PICKUP_SECOND_TIME');?><br>
                 </span>
     <?endif;?>
     <!-- Доставка товара --> 

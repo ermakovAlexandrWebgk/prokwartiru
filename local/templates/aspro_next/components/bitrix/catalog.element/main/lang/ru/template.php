@@ -104,6 +104,11 @@ $MESS['INTERIOR'] = 'Интерьеры';
 $MESS ['ITEMS_COUNT_1'] = "день";
 $MESS ['ITEMS_COUNT_2'] = "дня";
 $MESS ['ITEMS_COUNT_3'] = "дней";
+$MESS ['DELIVERY_TIME'] = "Срок поставки:";
+$MESS ['PICKUP_TIME'] = "Самовывоз: 1 день после поступления";
+$MESS ['DELIVERY'] = "Доставка: 1 день (от 20 тысяч бесплатно)";
+$MESS ['PICKUP_SECOND_TIME'] = "Самовывоз: через 1 после получения предоплаты";
+
 
 
 ?>

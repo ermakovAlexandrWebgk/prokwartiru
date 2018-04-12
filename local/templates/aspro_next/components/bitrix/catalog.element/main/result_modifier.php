@@ -219,7 +219,8 @@
     $parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => CATALOG_ID, "HAS_ELEMENT" => $arResult['ID'], "DEPTH_LEVEL" => 1), false, array('UF_*'));
     $vinilXmlId = 'vinil-na-flizeline';
     $paperXmlId = 'bumazhnye';
-    $flizelinXmlId = 'flizelinovye';    
+    $flizelinXmlId = 'flizelinovye';
+    $paperFlizelineXmlId='bumazhnye-na-flizeline';    
 
     $sun='';
     $propertyProperty='';
@@ -229,25 +230,30 @@
     $propertyWaterproof='';
     $propertyStyle='';
     $propertyDesign='';
+    $propertyCountry='';
     while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товара в зависимости от раздела первого уровня
 
         switch ($ar_parent["ID"]) {
             case OBOI_SECTION_ID:
-                $propertyDesign = $arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']['0'];
-
-                $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'];
-                $propertyColor=$arResult["PROPERTIES"]["COLOR"]["VALUE"]["0"].',';
+                $propertyCountry = $arResult['PROPERTIES']['COUNTRY']['VALUE'];
+                $propertyDesign  = implode(',',$arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']).',';
+                $propertyStyle = implode(',',$arResult['PROPERTIES']['STYLE']['VALUE']).',';
+                $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .',';
+                $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).',';
 
                 //$arResult["PROPERTIES"]["DESIGN_OBOI"]["VALUE"]["0"].',' 
                 //$arResult["PROPERTIES"]["STYLE"]["VALUE"]["0"].',');
                 if($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID'] == $vinilXmlId){
-                    $propertyWashing = 'моющиеся'.',';    
+                    $propertyWashing = 'моющиеся' .',';    
                 }
                 if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $paperXmlId){
-                    $propertyPaper = 'влагостойкие'.',';    
+                    $propertyPaper = 'влагостойкие'. ',';    
                 }
                 if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $flizelinXmlId){  
-                    $propertyWaterproof = 'влагостойкие'.',';    
+                    $propertyWaterproof = 'влагостойкие'. ',';    
+                }
+                if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $paperFlizelineXmlId){  
+                    $propertyWaterproof = 'влагостойкие'. ',';    
                 }
 
 
@@ -329,8 +335,9 @@
     $arResult["PROPERTIES"]["WATERPROOFPAPER"] = $propertyPaper;
     $arResult["PROPERTIES"]["OBOI_STYLE"] = $propertyStyle;
     $arResult["PROPERTIES"]["OBOI_DESIGN"] = $propertyDesign;
+    $arResult["PROPERTIES"]["COUNTRY_STRING"] = $propertyCountry;
+    $arResult["PROPERTIES"]["PROPERTY_STYLE"] = $propertyStyle;
 
-    
 
 
     $arResult['SHOW_SLIDER'] = true;

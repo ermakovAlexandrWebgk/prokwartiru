@@ -336,18 +336,17 @@
 
 
                 <?//=$arResult["PROPERTIES"]["PROPERTY"]["VALUE"]?>
-
-                <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>  
-                <?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
-                <?=$arResult["PROPERTIES"]["SUN"]?>
-                <?=$arResult["PROPERTIES"]["WASHING"]?>
-                <?=$arResult["PROPERTIES"]["WATERPROOF"]?>
-                <?=$arResult["PROPERTIES"]["WATERPROOFPAPER"]?>
-                <?=$arResult["PROPERTIES"]["OBOI_STYLE"]?>
-                <?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
-
-
-
+<span class="properties-string">
+<?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>  
+<?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
+<?=$arResult["PROPERTIES"]["SUN"]?>
+<?=$arResult["PROPERTIES"]["WASHING"]?>
+<?=$arResult["PROPERTIES"]["WATERPROOF"]?>
+<?=$arResult["PROPERTIES"]["WATERPROOFPAPER"]?>
+<?=$arResult["PROPERTIES"]["PROPERTY_STYLE"]?>
+<?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
+<?=$arResult["PROPERTIES"]["COUNTRY_STRING"]?>
+</span>
 
 
 
@@ -625,7 +624,8 @@
                         <?endif;?>
                 </div>
                 <div class="discount_block">
-                    <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку</a>
+                    <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
+                    <img height="20" width="20" src="<?=SITE_TEMPLATE_PATH?>/images/percent2.png"></a>
                 <div class="wishButton">
                     <div class="btn-get_discount btn-lg btn transition_bg btn-default white wish_item text" <?=($arAddToBasketData['CAN_BUY'] ? '' : 'style="display:none"');?> data-item="<?=$arResult["ID"]?>" data-iblock="<?=$arResult["IBLOCK_ID"]?>">
                         <?if($arParams["DISPLAY_WISH_BUTTONS"] != "N"):?>
@@ -711,14 +711,32 @@
                             <?=GetMessage('STOCK');?>
                             <span class="properties-text">
                                 <?=GetMessage('ON_ORDER');?>
-                            </span>
+                            </span><br>
                             <?else:?>
-                            <?=GetMessage('STOCK');?><span class="properties-text"><?=GetMessage('IN_STOCK');?></span>
+                            <?=GetMessage('STOCK');?><span class="properties-text"><?=GetMessage('IN_STOCK');?></span><br>
                             <?endif;?>
                         <br>
                     </span>
-                </div>
+ <!-- Доставка товара -->                   
 
+<?
+use Bitrix\Main\Grid\Declension; /*   Склонение слова "День" в зависимости от количества */
+$yearDeclension = new Declension(
+GetMessage('ITEMS_COUNT_1'),
+GetMessage('ITEMS_COUNT_2'),
+GetMessage('ITEMS_COUNT_3')
+);
+$wordForDays=$yearDeclension->get($arResult['PROPERTIES']['DELIVERY']['VALUE']);
+    if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])):?>
+        Срок поставки: <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?> <?=$wordForDays?> <br>
+        Самовывоз: 1 день после поступления <br>
+            <?else:?>
+                <span>
+                    Доставка: 1 день (от 20 тысяч бесплатно)<br>
+                    Самовывоз: через 1 после получения предоплаты<br>
+                </span>
+    <?endif;?>
+    <!-- Доставка товара --> 
                 <?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
                     <div class="showroom_txt">
                         <a href="/contacts/"><span>Посмотреть в шоуруме по адресу:</span><br>

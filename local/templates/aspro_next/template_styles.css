@@ -6376,12 +6376,7 @@ ul.menu.menu_top_block, ul.menu.menu_top_block li {
 }
 
 
-.properties-text  {
-    color:black;
-    font-size:12px;
-    font-weight: bold;
-    
-    }
+
 
     .properties-block{
         padding-top:8px;
@@ -6410,4 +6405,22 @@ display: block;
 .price-slider {
     font-weight: bold;
 
+}
+
+.item_block {
+    width:250px !important;
+}
+
+
+
+.price_txt, .interior, .properties-text{
+    color: #554e40 !important;
+    font-size: 14px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.catalog_detail .element_detail_text .price_txt{
+    border-left: 3px solid orange;
+    padding-left: 6px;
 }

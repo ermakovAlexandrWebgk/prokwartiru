@@ -101,6 +101,9 @@ $MESS['CHARACTERISTICS'] = 'Основные характеристики:';
 $MESS['COLLECTION'] = 'Коллекция:';
 $MESS['ADD_TO_FAVORITES'] = 'Добавить в избранное';
 $MESS['INTERIOR'] = 'Интерьеры';
+$MESS ['ITEMS_COUNT_1'] = "день";
+$MESS ['ITEMS_COUNT_2'] = "дня";
+$MESS ['ITEMS_COUNT_3'] = "дней";
 
 
 ?>

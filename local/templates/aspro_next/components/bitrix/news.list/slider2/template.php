@@ -1,6 +1,6 @@
 <div class="viewed_block">
         <h3 class="title_block sm">Другой цвет</h3>
-        <div class="outer_wrap flexslider shadow items border custom_flex top_right" data-plugin-options='{"animation": "slide", "directionNav": true, "itemMargin":10, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [8,4,3,2,1]}'>
+        <div class="outer_wrap flexslider shadow items border custom_flex top_right" data-plugin-options='{"animation": "slide", "directionNav": true, "itemMargin":10, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [4]}'>
             <ul class="rows_block slides">
                 <?foreach($arResult["ITEMS"] as $arItem){
                     $isItem=(isset($arItem['ID']) ? true : false);?>

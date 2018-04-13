@@ -1603,7 +1603,7 @@ body .logo_and_menu-row .basket-link.delay{padding-right: 26px;}
 .basket_wrapp .basket_fly .wraps_icon_block.delay .count span{background:#fff;}
 .basket_wrapp.basket_fill_COLOR .basket_fly .wraps_icon_block.delay .count span{color:#333333;}
 
-.fly2 .basket_fly .opener{top:148px;}
+.fly2 .basket_fly .opener{top:30%;}
 
 .header-cart .basket_fly .opener .wish_count.empty .icon{background:transparent;}
 .header-cart .basket_fly tr.hidden{display:none;}
@@ -6429,4 +6429,9 @@ display: block;
 
 .viewed_block{
     padding-top:15px;
+}
+
+.properties-string{
+ font-size: 18px;
+    font-weight: 600;   
 }

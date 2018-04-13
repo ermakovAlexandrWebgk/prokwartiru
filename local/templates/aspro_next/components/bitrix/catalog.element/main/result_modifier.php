@@ -235,29 +235,29 @@
 
         switch ($ar_parent["ID"]) {
             case OBOI_SECTION_ID:
-                $propertyCountry = $arResult['PROPERTIES']['COUNTRY']['VALUE'];
-                $propertyDesign  = implode(',',$arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']).',';
-                $propertyStyle = implode(',',$arResult['PROPERTIES']['STYLE']['VALUE']).',';
+                $propertyCountry = "Производство:".$arResult['PROPERTIES']['COUNTRY']['VALUE'];
+                $propertyDesign  = implode($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']).', ';
+                $propertyStyle = implode($arResult['PROPERTIES']['STYLE']['VALUE']).', ';
                 $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .',';
-                $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).',';
+                $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
 
                 //$arResult["PROPERTIES"]["DESIGN_OBOI"]["VALUE"]["0"].',' 
                 //$arResult["PROPERTIES"]["STYLE"]["VALUE"]["0"].',');
-                if($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID'] == $vinilXmlId){
-                    $propertyWashing = 'моющиеся' .',';    
+                if($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID'] == $vinilXmlId ){
+                    $propertyWashing = 'моющиеся' .', ';    
                 }
                 if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $paperXmlId){
-                    $propertyPaper = 'влагостойкие'. ',';    
+                    $propertyPaper = 'влагостойкие' .', ';    
                 }
                 if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $flizelinXmlId){  
-                    $propertyWaterproof = 'влагостойкие'. ',';    
+                    $propertyWaterproof = 'влагостойкие'.', ';    
                 }
                 if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $paperFlizelineXmlId){  
-                    $propertyWaterproof = 'влагостойкие'. ',';    
+                    $propertyWaterproof = 'влагостойкие'.', ';    
                 }
 
 
-                $sun="не выгорают на солнце".',';
+                $sun="не выгорают на солнце".', ';
                 $prop_str = "";
                 $prop_str .= "<div class='imp_props_txt'>";
 
@@ -338,6 +338,8 @@
     $arResult["PROPERTIES"]["OBOI_DESIGN"] = $propertyDesign;
     $arResult["PROPERTIES"]["COUNTRY_STRING"] = $propertyCountry;
     $arResult["PROPERTIES"]["PROPERTY_STYLE"] = $propertyStyle;
+    $customstring = "{$sun}{$propertyProperty}{$propertyColor}";
+    echo $customstring;
 
 
 

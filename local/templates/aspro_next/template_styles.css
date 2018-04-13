@@ -6407,9 +6407,7 @@ display: block;
 
 }
 
-.item_block {
-    width:250px !important;
-}
+
 
 
 
@@ -6423,4 +6421,12 @@ display: block;
 .catalog_detail .element_detail_text .price_txt{
     border-left: 3px solid orange;
     padding-left: 6px;
+}
+
+.properties-text{
+    opacity:0.8;
+}
+
+.viewed_block{
+    padding-top:15px;
 }

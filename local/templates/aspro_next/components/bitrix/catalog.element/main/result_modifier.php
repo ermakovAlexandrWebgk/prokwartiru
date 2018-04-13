@@ -320,6 +320,7 @@
                     $additionalPicture[]=array('ID'=>$picture['DETAIL_PICTURE']);   
                 }
                 
+                
 
             }
 

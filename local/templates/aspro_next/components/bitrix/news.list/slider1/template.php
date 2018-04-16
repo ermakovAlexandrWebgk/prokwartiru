@@ -18,8 +18,13 @@
                                     </div>
                                    <div class="item_info">
                                         <div class="item-title">
-                                            <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="dark-color"><span><?=$arItem['NAME'];?><br> </span><span class="price-slider"><?=$arItem['PROPERTIES']['MAXIMUM_PRICE']['VALUE']?>р</span></a>
-                                         
+                                            <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="dark-color"><span><?=$arItem['NAME'];?><br>
+                                             </span><span class="price-slider"><?=$arItem['PROPERTIES']['MAXIMUM_PRICE']['VALUE']?>р</span>
+                                            Бренд:<?=$arItem['PROPERTIES']['BRAND']['VALUE']?><br>
+                                            Страна:<?=$arItem['PROPERTIES']['COUNTRY']['VALUE']?><br>
+                                            Размер:<?=$arItem['PROPERTIES']['SIZE']['VALUE']?><br>
+                                            </a>
+                                        
                                         </div>
                                         
                                     </div>

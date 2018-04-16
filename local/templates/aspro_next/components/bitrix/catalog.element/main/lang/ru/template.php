@@ -108,8 +108,10 @@ $MESS ['DELIVERY_TIME'] = "Срок поставки:";
 $MESS ['PICKUP_TIME'] = "Самовывоз:";
 $MESS ['PICKUP_TIME2'] = "1 день после поступления";
 
-$MESS ['DELIVERY'] = "Доставка: 1 день (от 20 тысяч бесплатно)";
-$MESS ['PICKUP_SECOND_TIME'] = "Самовывоз: через 1 день после получения предоплаты";
+$MESS ['DELIVERY'] = "Доставка:";
+$MESS ['DELIVERY2'] = "1 день (от 20 тысяч бесплатно)";
+$MESS ['PICKUP_SECOND_TIME'] = "Самовывоз:";
+$MESS ['PICKUP_SECOND_TIME2'] = "через 1 день после получения предоплаты";
 
 
 

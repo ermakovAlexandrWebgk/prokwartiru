@@ -349,7 +349,7 @@
 </span>
 
 
-
+               
 
 
 
@@ -624,7 +624,7 @@
                 </div>
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
-                    <img height="20" width="20" src="<?=SITE_TEMPLATE_PATH?>/images/percent2.png"></a>
+                    <img height="16" width="16" src="<?=SITE_TEMPLATE_PATH?>/images/perIcon.png"></a>
                 <div class="wishButton">
                     <div class="btn-get_discount btn-lg btn transition_bg btn-default white wish_item text" <?=($arAddToBasketData['CAN_BUY'] ? '' : 'style="display:none"');?> data-item="<?=$arResult["ID"]?>" data-iblock="<?=$arResult["IBLOCK_ID"]?>">
                         <?if($arParams["DISPLAY_WISH_BUTTONS"] != "N"):?>
@@ -657,8 +657,41 @@
 
 
                     </div>
+                    
+            </div>
+                  <?
+                    $arFiles = array();
+                    if($arResult["PROPERTIES"][$instr_prop]["VALUE"]){
+                        $arFiles = $arResult["PROPERTIES"][$instr_prop]["VALUE"];
+                    } else {
+                        $arFiles = $arResult["SECTION_FULL"]["UF_FILES"];
+                    }
+
+                    if(is_array($arFiles)){
+                        foreach($arFiles as $key => $value){
+                            if(!intval($value)){
+                                unset($arFiles[$key]);
+                            }
+                        }
+                    }
+                ?> 
+                <?if($arFiles):?>
+  
+                                <?foreach($arFiles as $arItem):?>
+
+                                        <?$arFile=CNext::GetFileInfo($arItem);?>
+                                          <div class="btn-get_discount btn-lg btn transition_bg btn-default white">
+                                                <a target="_blank" href="<?=$arFile["SRC"];?>"
+                                                 >Монтажная инструкция</a>
+                                            </div>
+                                    <?endforeach;?>
+                          
+                       
+                   
+  <?endif;?>
                 </div>
                 </div>
+                 
                 
 
 
@@ -748,8 +781,16 @@ $wordForDays=$yearDeclension->get($arResult['PROPERTIES']['DELIVERY']['VALUE']);
                 <span class="properties-text">
                     <?=GetMessage('DELIVERY');?>
                 </span>
-                    <?=GetMessage('PICKUP_SECOND_TIME');?><br>
-                </span>
+                    <?=GetMessage('DELIVERY2');?>
+            </span><br>
+            <span class="properties-element">
+            <span class="properties-text">
+            <?=GetMessage('PICKUP_SECOND_TIME');?>
+            </span>
+            <?=GetMessage('PICKUP_SECOND_TIME2');?><br>
+            
+            </span>
+             
     <?endif;?>
     <!-- Доставка товара --> 
                 <?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
@@ -760,45 +801,7 @@ $wordForDays=$yearDeclension->get($arResult['PROPERTIES']['DELIVERY']['VALUE']);
                     <?endif;?>
 
 
-                <?
-                    $arFiles = array();
-                    if($arResult["PROPERTIES"][$instr_prop]["VALUE"]){
-                        $arFiles = $arResult["PROPERTIES"][$instr_prop]["VALUE"];
-                    } else {
-                        $arFiles = $arResult["SECTION_FULL"]["UF_FILES"];
-                    }
-
-                    if(is_array($arFiles)){
-                        foreach($arFiles as $key => $value){
-                            if(!intval($value)){
-                                unset($arFiles[$key]);
-                            }
-                        }
-                    }
-                ?>
-                <?if($arFiles):?>
-                    <div class="wraps" style="display:none">
-                        <h4><?=($arParams["BLOCK_DOCS_NAME"] ? $arParams["BLOCK_DOCS_NAME"] : GetMessage("DOCUMENTS_TITLE"))?></h4>
-                        <div class="files_block">
-                            <div class="row">
-                                <?foreach($arFiles as $arItem):?>
-                                    <div class="col-md-3 col-sm-6">
-                                        <?$arFile=CNext::GetFileInfo($arItem);?>
-                                        <div class="file_type clearfix <?=$arFile["TYPE"];?>">
-                                            <i class="icon"></i>
-                                            <div class="description">
-                                                <a target="_blank" href="<?=$arFile["SRC"];?>" class="dark_link"><?=$arFile["DESCRIPTION"];?></a>
-                                                <span class="size">
-                                                    <?=$arFile["FILE_SIZE_FORMAT"];?>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?endforeach;?>
-                            </div>
-                        </div>
-                    </div>
-                    <?endif;?>
+                
             </div>
         </div>
     </div>
@@ -1380,78 +1383,80 @@ $GLOBALS['filterColor'] = array("PROPERTY_COLOR_VALUE"        =>$arResult['PROPE
         "SHOW_DETAIL_LINK" => "Y",
         "SORT_BY1" => "RANDOM",
         "SORT_BY2" => "SORT",
-        "SORT_ORDER1" => "DESC",
+        "SORT_ORDER1" => "DESC",    
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N"
     ),
     false
 );?>
  <?$APPLICATION->IncludeComponent(
-    "bitrix:news.list", 
-    "slider3", 
-    array(
-        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "ADD_SECTIONS_CHAIN" => "N",
-        "AJAX_MODE" => "N",
-        "AJAX_OPTION_ADDITIONAL" => "",
-        "AJAX_OPTION_HISTORY" => "N",
-        "AJAX_OPTION_JUMP" => "N",
-        "AJAX_OPTION_STYLE" => "Y",
-        "CACHE_FILTER" => "N",
-        "CACHE_GROUPS" => "Y",
-        "CACHE_TIME" => "36000000",
-        "CACHE_TYPE" => "A",
-        "CHECK_DATES" => "Y",
-        "COMPONENT_TEMPLATE" => "slider3",
-        "DETAIL_URL" => "",
-        "DISPLAY_BOTTOM_PAGER" => "N",
-        "DISPLAY_DATE" => "N",
-        "DISPLAY_NAME" => "Y",
-        "DISPLAY_PICTURE" => "Y",
-        "DISPLAY_PREVIEW_TEXT" => "Y",
-        "DISPLAY_TOP_PAGER" => "N",
-        "FIELD_CODE" => array(
-            0 => "",
-            1 => "",
-        ),
-        "FILTER_NAME" => "",
-        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "77",
-        "IBLOCK_TYPE" => "catalog",
-        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-        "INCLUDE_SUBSECTIONS" => "Y",
-        "MESSAGE_404" => "",
-        "NEWS_COUNT" => "15",
-        "NORMAL_BLOCK" => "Y",
-        "PAGER_BASE_LINK_ENABLE" => "N",
-        "PAGER_DESC_NUMBERING" => "N",
-        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-        "PAGER_SHOW_ALL" => "N",
-        "PAGER_SHOW_ALWAYS" => "N",
-        "PAGER_TEMPLATE" => ".default",
-        "PAGER_TITLE" => "Новости",
-        "PARENT_SECTION" => "34639",
-        "PARENT_SECTION_CODE" => "oboi",
-        "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => array(
-            0 => "MAXIMUM_PRICE",
-            1 => "",
-        ),
-        "SET_BROWSER_TITLE" => "N",
-        "SET_LAST_MODIFIED" => "N",
-        "SET_META_DESCRIPTION" => "N",
-        "SET_META_KEYWORDS" => "N",
-        "SET_STATUS_404" => "N",
-        "SET_TITLE" => "N",
-        "SHOW_404" => "N",
-        "SHOW_DETAIL_LINK" => "Y",
-        "SORT_BY1" => "RANDOM",
-        "SORT_BY2" => "SORT",
-        "SORT_ORDER1" => "DESC",
-        "SORT_ORDER2" => "ASC",
-        "STRICT_SECTION_CHECK" => "N"
-    ),
-    false
+	"bitrix:news.list", 
+	"slider3", 
+	array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"ADD_SECTIONS_CHAIN" => "N",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"CHECK_DATES" => "Y",
+		"COMPONENT_TEMPLATE" => "slider3",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "N",
+		"DISPLAY_DATE" => "N",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => "77",
+		"IBLOCK_TYPE" => "catalog",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "15",
+		"NORMAL_BLOCK" => "Y",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "34639",
+		"PARENT_SECTION_CODE" => "oboi",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array(
+			0 => "BRAND",
+			1 => "COUNTRY",
+			2 => "CML2_ARTICLE",
+			3 => "",
+		),
+		"SET_BROWSER_TITLE" => "N",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "N",
+		"SET_META_KEYWORDS" => "N",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "N",
+		"SHOW_404" => "N",
+		"SHOW_DETAIL_LINK" => "Y",
+		"SORT_BY1" => "RANDOM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC",
+		"STRICT_SECTION_CHECK" => "N"
+	),
+	false
 );?>
 
 </div>

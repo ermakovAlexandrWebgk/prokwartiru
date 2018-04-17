@@ -714,8 +714,8 @@ $arViewedData = array(
             <?/*$APPLICATION->IncludeFile(SITE_DIR."include/element_detail_text.php", Array(), Array("MODE" => "html",  "NAME" => GetMessage('CT_BCE_CATALOG_DOP_DESCR')));*/?>
             </div>-->
             <div class="properties-block">
-                <span class="properties-element">
                 <div class="properties-brand-collection">
+                 <span class="properties-element">
                     <span class="properties-text">
                         <?=GetMessage('COLLECTION');?>
                     </span>

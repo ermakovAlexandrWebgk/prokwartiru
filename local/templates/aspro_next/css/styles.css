@@ -318,7 +318,7 @@ body .breadcrumbs .dropdown{ background:#fff;padding: 12px; border-radius: 2px; 
 .catalog_detail .info_block  b.block_title { display: block; }
 .catalog_detail .info_block > div { display: inline-block; vertical-align: top; width: 130px; float: left; margin-bottom: 15px; min-height: 38px; }
 .catalog_detail .info_block .brand.right { float: right; }
-.catalog_detail .item_main_info .price { font-size: 16px; line-height: 26px; float: left; width: auto; white-space: nowrap; box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -webkit-box-sizing: border-box; padding-right: 10px; }
+.catalog_detail .item_main_info .price { font-size: 16px; line-height: 26px;  width: auto; white-space: nowrap; box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -webkit-box-sizing: border-box; padding-right: 10px; }
 .catalog_detail .item_main_info .price small { font-size: 16px; }
 .catalog_detail .rows_block .item_block{padding-top:3px;}
 

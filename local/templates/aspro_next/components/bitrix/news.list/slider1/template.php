@@ -16,12 +16,21 @@
                                             
                                         </a>
                                     </div>
-                                   <div class="item_info">
+                                <div class="item_info">
                                         <div class="item-title">
-                                            <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="dark-color"><span><?=$arItem['NAME'];?><br> </span><span class="price-slider"><?=$arItem['PROPERTIES']['MAXIMUM_PRICE']['VALUE']?>р</span></a>
-                                         
-                                        </div>
+                                            <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="dark-color">
+                                            <span class="price">Артикул:<?=$arItem['NAME'];?> </a> </span><br>
+                                            <span class="price-slider price">
+                                            Цена:<?=$arItem['PROPERTIES']['MAXIMUM_PRICE']['VALUE']?>р </span><br>
+                                            <span class="price-slider">Бренд:<?=$arItem['PROPERTIES']['BRAND']['VALUE']?></span><br>
+                                            <span class="price-slider">Страна:<?=$arItem['PROPERTIES']['COUNTRY']['VALUE']?></span><br>
+                                            <span class="price-slider">Размер:<?=$arItem['PROPERTIES']['SIZE']['VALUE']?></span><br>
+                                            
+                                           
                                         
+                                        </div>
+                                      
+                                              
                                     </div>
 
                         </div>

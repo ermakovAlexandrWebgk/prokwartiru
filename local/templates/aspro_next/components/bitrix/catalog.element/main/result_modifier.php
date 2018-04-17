@@ -236,19 +236,19 @@
         switch ($ar_parent["ID"]) {
             case OBOI_SECTION_ID:
             if($arResult['PROPERTIES']['COUNTRY']['VALUE']){
-                $propertyCountry = "Производство:".$arResult['PROPERTIES']['COUNTRY']['VALUE'];
+                $propertyCountry = "Производство: ".$arResult['PROPERTIES']['COUNTRY']['VALUE'];
             }
             if($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']){
-                $propertyDesign  = implode(', ', $arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']) .', ';
+                $propertyDesign  = implode($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']).', ';
             }
             if($arResult['PROPERTIES']['STYLE']['VALUE']){
-                $propertyStyle = implode(', ', $arResult['PROPERTIES']['STYLE']['VALUE']) .', ';
+                $propertyStyle = implode($arResult['PROPERTIES']['STYLE']['VALUE']).', ';
             }
             if($arResult['PROPERTIES']['PROPERTY']['VALUE']){
-                $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .', ';
+                $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .',';
             }
             if($arResult["PROPERTIES"]["COLOR"]["VALUE"]){
-                $propertyColor= implode(', ', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
+                $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
             }
 
                 //$arResult["PROPERTIES"]["DESIGN_OBOI"]["VALUE"]["0"].',' 

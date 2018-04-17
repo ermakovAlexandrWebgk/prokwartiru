@@ -605,6 +605,7 @@ $arViewedData = array(
                                 <?endif;?>
                             <?}?>
                         </div>
+                        </div>
                         <?if($arAddToBasketData["ACTION"] !== "NOTHING"):?>
                             <?if($arAddToBasketData["ACTION"] == "ADD" && $arAddToBasketData["CAN_BUY"] && $arParams["SHOW_ONE_CLICK_BUY"]!="N"):?>
                                 <div class="wrapp_one_click">
@@ -689,8 +690,10 @@ $arViewedData = array(
 
 
                     <?endif;?>
+                      <div class="btn-get_discount btn-lg btn transition_bg btn-default white wish_item text">Добавить клей</div>
                 </div>
-            </div>
+              
+            
 
 
 
@@ -711,7 +714,8 @@ $arViewedData = array(
             <?/*$APPLICATION->IncludeFile(SITE_DIR."include/element_detail_text.php", Array(), Array("MODE" => "html",  "NAME" => GetMessage('CT_BCE_CATALOG_DOP_DESCR')));*/?>
             </div>-->
             <div class="properties-block">
-                <span class="properties-element">
+                <div class="properties-brand-collection">
+                 <span class="properties-element">
                     <span class="properties-text">
                         <?=GetMessage('COLLECTION');?>
                     </span>
@@ -732,6 +736,7 @@ $arViewedData = array(
 
                     </span>
                 <?}?>
+                </div>
 
                 <br>
                 <!--<span class="properties-element">               
@@ -740,7 +745,9 @@ $arViewedData = array(
                 <?}*/?>
                 </span>
                 <br-->
+                <div class="delivery">
                 <?if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])):?>
+                
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('STOCK');?>
@@ -748,7 +755,7 @@ $arViewedData = array(
                         <?=GetMessage('ON_ORDER');?><br>
 
                     <?else:?>
-                        <span class="properties-text"><?=GetMessage('STOCK');?></span><?=GetMessage('IN_STOCK');?><br>
+                        <span class="properties-text"><?=GetMessage('STOCK');?></span><?=GetMessage('IN_STOCK');?>
                     <?endif;?>
 
                 </span><br>
@@ -768,7 +775,7 @@ $arViewedData = array(
                             <?=GetMessage('DELIVERY_TIME');?>
                         </span>
 
-                    <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?><?=$wordForDays?></span><br>
+                    <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?><?=$wordForDays?></span>
 
 
                     <span class="properties-element">     
@@ -782,14 +789,15 @@ $arViewedData = array(
                             <?=GetMessage('DELIVERY');?>
                         </span>
                         <?=GetMessage('DELIVERY2');?>
-                    </span><br>
+                    </span>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('PICKUP_SECOND_TIME');?>
                         </span>
-                        <?=GetMessage('PICKUP_SECOND_TIME2');?><br>
+                        <?=GetMessage('PICKUP_SECOND_TIME2');?>
 
                     </span>
+                    </div>
 
                 <?endif;?>
                 <!-- Доставка товара --> 

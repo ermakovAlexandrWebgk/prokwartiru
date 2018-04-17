@@ -310,7 +310,7 @@ body .breadcrumbs .dropdown{ background:#fff;padding: 12px; border-radius: 2px; 
 .catalog_detail .item_main_info { margin: 0px 0 30px; padding: 0px; border: 1px solid #f2f2f2; position: relative; }
 .catalog_detail .item_main_info .item_slider { width: 50%; box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; -webkit-box-sizing: border-box; padding: 29px 56px 29px 56px;  float: left; position: relative; z-index: 1;text-align:center; }
 .catalog_detail .item_main_info .right_info { padding: 0px 0px 0px 50%; position: relative; }
-.catalog_detail .item_main_info .right_info .info_item { position: relative;padding:0px 30px 0px 11px;}
+.catalog_detail .item_main_info .right_info .info_item { position: relative;padding:0px 30px 0px 0px;}
 #order_form_div .info_block  .l_block:after, #order_form_div .info_block .r_block:before { position: absolute; top: 0px; background: #F2F2F2; width: 1px; height: 100%; content: ""; }
 #order_form_div .info_block  .l_block:after { right: 0px; }
 #order_form_div .info_block .r_block:before { left: -1px; }
@@ -465,7 +465,7 @@ table.offers_table td { padding: 20px 10px;}
 .catalog_detail .set_wrapp .item .image img, .bx_item_set_hor .bx_item_set_hor_item  .bx_item_set_img_container img, .bx_modal_body .bx_kit_item .bx_kit_img_container img,
 .catalog_section_list .section_item_inner .image img, .basket_popup_wrapp .cart_shell .catalog_item .thumb-cell img,
 .bx_filter_vertical [class^=specials_] input[type="checkbox"] + label .icon, .include_module_error img:hover{ -webkit-transition: all ease-out .2s; -moz-transition: all ease-out .2s; -o-transition: all ease-out .2s; transition: all ease-out .2s; }
-.flexslider .slides img{ -webkit-transition: all ease .5s; -moz-transition: all ease .5s; -o-transition: all ease .5s; transition: all ease .5s; }
+.flexslider .slides img{ -webkit-transition: all ease .5s; -moz-transition: all ease .5s; -o-transition: all ease .5s; transition: all ease .5s; height: 220px; width:220px; }
 .front_slider .image:hover  img, .specials_slider li:hover .image img, .advt_banner:hover img,
 .viewed_products_column .view-item:hover img, .item_slider .thumbs li:hover img, .articles-list .item:hover .left-data img,
 .module-cart tr:hover img, .catalog_item:hover .image img, .module_products_list tr:hover td.foto-cell img, .display_list .list_item:hover  .image img,

@@ -755,7 +755,7 @@ $arViewedData = array(
                         <?=GetMessage('ON_ORDER');?><br>
 
                     <?else:?>
-                        <span class="properties-text"><?=GetMessage('STOCK');?></span><?=GetMessage('IN_STOCK');?><br>
+                        <span class="properties-text"><?=GetMessage('STOCK');?></span><?=GetMessage('IN_STOCK');?>
                     <?endif;?>
 
                 </span><br>
@@ -775,7 +775,7 @@ $arViewedData = array(
                             <?=GetMessage('DELIVERY_TIME');?>
                         </span>
 
-                    <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?><?=$wordForDays?></span><br>
+                    <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?><?=$wordForDays?></span>
 
 
                     <span class="properties-element">     
@@ -789,12 +789,12 @@ $arViewedData = array(
                             <?=GetMessage('DELIVERY');?>
                         </span>
                         <?=GetMessage('DELIVERY2');?>
-                    </span><br>
+                    </span>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('PICKUP_SECOND_TIME');?>
                         </span>
-                        <?=GetMessage('PICKUP_SECOND_TIME2');?><br>
+                        <?=GetMessage('PICKUP_SECOND_TIME2');?>
 
                     </span>
                     </div>

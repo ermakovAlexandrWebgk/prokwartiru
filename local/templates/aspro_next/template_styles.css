@@ -3679,7 +3679,7 @@ div[id^=smartFilterDropDown] .popup-window-top-row, div[id^=smartFilterDropDown]
 .img_wrapper .thumbs_navigation ol li{display:none;}
 .img_wrapper .thumbs_navigation ul li.flex-nav-prev{left:-38px;}
 .img_wrapper .thumbs_navigation ul li.flex-nav-next{right:-37px;}
-.info_item .top_info, .info_item .middle_info{padding:24px 0px 3px;overflow:hidden;}
+.info_item .top_info, .info_item .middle_info{padding-top:10px;overflow:hidden;}
 .info_item .top_info .item_block{vertical-align:middle;line-height:0px;}
 .info_item .top_info{padding: 28px 0px 19px;border-bottom:1px solid #F2F2F2;}
 .info_item .top_info .rows_block + .preview_text{padding-top: 13px;}
@@ -6441,4 +6441,11 @@ display: block;
 .properties-string{
  font-size: 18px;
     font-weight: 600;   
+}
+
+.properties-brand-collection{
+    padding-top:10px;
+}
+.delivery{
+    padding-top:10px;
 }

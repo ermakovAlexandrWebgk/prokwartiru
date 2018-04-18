@@ -25,6 +25,7 @@
                                             <span class="price-slider">Бренд:<?=$arItem['PROPERTIES']['BRAND']['VALUE']?></span><br>
                                             <span class="price-slider">Страна:<?=$arItem['PROPERTIES']['COUNTRY']['VALUE']?></span><br>
                                             <span class="price-slider">Размер:<?=$arItem['PROPERTIES']['SIZE']['VALUE']?></span><br>
+                                           
                                             
                                            
                                         
@@ -36,6 +37,7 @@
                         </div>
                     </li>
                 <?}?>
+              
             </ul>
         </div>
     </div>

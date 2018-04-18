@@ -238,7 +238,6 @@ function GetSeoLinks($sectionId)
     return $arSeoLinks;
 }
 /*
-
 $arSeoLn = GetSeoLinks($arResult["VARIABLES"]["SECTION_ID"]);
 
 foreach($arSeoLn as $seoLn)

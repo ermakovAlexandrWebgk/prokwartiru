@@ -2472,7 +2472,7 @@ body .wrapper .catalog_item .item_info .buttons_block{margin-top:17px;text-align
 /*viewed front*/
 .viewed_block .rows_block{margin:0px -5px;white-space: nowrap;}
 .viewed_block .rows_block .item_block{padding:0px 0px;margin:0px 10px 0px 0px;overflow: visible; }
-.viewed_block .title_block{margin: 26px 0px 4px;}
+.viewed_block .title_block{margin-left:120px}
 .viewed_block .outer_wrap{margin:0px;}
 .viewed_block .item_block{}
 .viewed_block .item_block .item{padding: 20px 12px 10px;border: 1px solid #eee;background:#8a8a8a;opacity:0.05;border-radius:4px;-webkit-transition: box-shadow ease-out 0.2s, border ease-out 0.2s;-moz-transition: box-shadow ease-out 0.2s, border ease-out 0.2s;-o-transition: box-shadow ease-out 0.2s, border ease-out 0.2s;transition: box-shadow ease-out 0.2s, border ease-out 0.2s;}

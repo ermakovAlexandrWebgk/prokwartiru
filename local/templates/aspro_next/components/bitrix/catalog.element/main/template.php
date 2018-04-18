@@ -1255,11 +1255,12 @@ if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'] )):?>
         SITE_ID: '<? echo SITE_ID; ?>'
     })
 </script>
-
+<!-- Три слайдера в нижней части карточки -->
+<?
+$p1 = "/catalog/oboi/";
+if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 <div class="slider-area">
     <?
-
-
     $GLOBALS['filterColor'] = array("PROPERTY_COLOR_VALUE"        =>$arResult['PROPERTIES']["COLOR"]["VALUE"],
         "PROPERTY_DESIGN_OBOI_VALUE"  =>$arResult['PROPERTIES']["DESIGN_OBOI"]["VALUE"]); 
     ?>
@@ -1469,4 +1470,6 @@ if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'] )):?>
     );?>
 
 </div>
+<?}?>
+<!-- Три слайдера в нижней части карточки (конец) -->
 

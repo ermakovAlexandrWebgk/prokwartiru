@@ -1258,8 +1258,10 @@ $p1 = "/catalog/oboi/";
 if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 <div class="slider-area">
     <?
-    $GLOBALS['filterColor'] = array("PROPERTY_COLOR_VALUE"        =>$arResult['PROPERTIES']["COLOR"]["VALUE"],
-        "PROPERTY_DESIGN_OBOI_VALUE"  =>$arResult['PROPERTIES']["DESIGN_OBOI"]["VALUE"]); 
+    $GLOBALS['filterColor'] = array(
+        "PROPERTY_COLOR_VALUE"      =>$arResult['PROPERTIES']["COLOR"]["VALUE"],
+        "PROPERTY_DESIGN_OBOI_VALUE"=>$arResult['PROPERTIES']["DESIGN_OBOI"]["VALUE"]
+    ); 
     ?>
     <?$APPLICATION->IncludeComponent(
         "bitrix:news.list", 

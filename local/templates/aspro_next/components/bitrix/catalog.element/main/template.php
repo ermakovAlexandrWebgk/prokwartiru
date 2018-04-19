@@ -766,18 +766,17 @@ $arViewedData = array(
                     GetMessage('ITEMS_COUNT_3')
                 );
                 $wordForDays=$yearDeclension->get($arResult['PROPERTIES']['DELIVERY']['VALUE']);
-if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'] )):?>
+                if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'] )):?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('DELIVERY_TIME');?>
                         </span>
-                    <?if(empty($arResult['PROPERTIES']['DELIVERY']['VALUE'])):?>
-                        <?=GetMessage('ONE_DAY');?></span>
-                    <?else:?>
-                        <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?> <?=$wordForDays?></span>
-                    <?endif;?>
-
-
+                        <?if(empty($arResult['PROPERTIES']['DELIVERY']['VALUE'])):?>
+                            <?=GetMessage('ONE_DAY');?>
+                        <?else:?>
+                            <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?> <?=$wordForDays?>
+                        <?endif;?>
+                    </span>
                     <span class="properties-element">     
                         <span class="properties-text"> <?=GetMessage('PICKUP_TIME');?></span>
                         <?=GetMessage('PICKUP_TIME2');?>
@@ -797,10 +796,8 @@ if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'] )):?>
                         <?=GetMessage('PICKUP_SECOND_TIME2');?>
 
                     </span>
-                    </div>
-                   
-
-<?endif;?>
+                <?endif;?>
+                </div>
                 <!-- Доставка товара --> 
                 <?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
                     <div class="showroom_txt">

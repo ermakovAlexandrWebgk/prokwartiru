@@ -314,7 +314,8 @@
                 break;
 
         }
-         
+        
+           
         if ($ar_parent['UF_RELATED_COLLECT']) {
             $filter = array(
                 'SECTION_ID'         => $ar_parent['UF_RELATED_COLLECT'],

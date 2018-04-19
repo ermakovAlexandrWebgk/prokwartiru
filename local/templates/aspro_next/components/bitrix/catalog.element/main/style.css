@@ -31,8 +31,8 @@ p.card_title {
 }
 
 .middle_info.main_item_wrapper .imp_props_txt {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: bold;
     color: #1d2029;
     margin-bottom: 20px;
 }

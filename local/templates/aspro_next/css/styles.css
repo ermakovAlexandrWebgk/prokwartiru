@@ -1040,7 +1040,7 @@ body .flex-direction-nav li .flex-next { background-position: -27px -50px; }
 .border.custom_flex .flex-direction-nav li.flex-nav-next a {background-position: -70px -18px;}
 .border.custom_flex .flex-direction-nav li.flex-nav-next:hover a {background-position: -69px 6px;}
 .border.custom_flex .flex-direction-nav li.flex-nav-next{border-left-width:0px !important;}
-.top_right.border.custom_flex .flex-direction-nav{position: absolute;top: -33px;right: 0px;}
+.top_right.border.custom_flex .flex-direction-nav{position: absolute;top: -33px;margin-left:245px;}
 
 .absolute .flex-direction-nav > li { position: absolute; top: 1px; }
 .absolute .flex-direction-nav li.flex-nav-prev { left: -30px; }

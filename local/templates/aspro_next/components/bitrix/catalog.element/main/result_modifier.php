@@ -236,7 +236,7 @@
         switch ($ar_parent["ID"]) {
             case OBOI_SECTION_ID:
             if($arResult['PROPERTIES']['COUNTRY']['VALUE']){
-                $propertyCountry = "Производство: ".$arResult['PROPERTIES']['COUNTRY']['VALUE'];
+                $propertyCountry = "производство: ".$arResult['PROPERTIES']['COUNTRY']['VALUE'];
             }
             if($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']){
                 $propertyDesign  = implode($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']).', ';
@@ -314,7 +314,8 @@
                 break;
 
         }
-         
+        
+           
         if ($ar_parent['UF_RELATED_COLLECT']) {
             $filter = array(
                 'SECTION_ID'         => $ar_parent['UF_RELATED_COLLECT'],

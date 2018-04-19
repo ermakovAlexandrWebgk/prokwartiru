@@ -353,8 +353,6 @@ $arViewedData = array(
 
 
 
-
-
             </div>
             <?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>
             <?if($isArticle || $arResult["BRAND_ITEM"] || $arParams["SHOW_RATING"] == "Y" || strlen($arResult["PREVIEW_TEXT"])){?>
@@ -722,7 +720,7 @@ $arViewedData = array(
                     <?=$arResult["COLLECTION"]?>
 
                 </span>
-                <br>
+               
 
                 <?if (($arResult['PROPERTIES']['COUNTRY']['VALUE']) && ($arResult['PROPERTIES']['BRAND']['VALUE']) ){?>
                     <span class="properties-element">
@@ -738,7 +736,7 @@ $arViewedData = array(
                 <?}?>
                 </div>
 
-                <br>
+            
                 <!--<span class="properties-element">               
                 <?/*if ($arResult['PROPERTIES']['PROPERTY']['VALUE']){?>
                 <?=GetMessage('CHARACTERISTICS');?><span class="properties-text"><?=$arResult['PROPERTIES']['PROPERTY']['VALUE']?></span>
@@ -747,18 +745,17 @@ $arViewedData = array(
                 <br-->
                 <div class="delivery">
                 <?if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])):?>
-                
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('STOCK');?>
                         </span>
-                        <?=GetMessage('ON_ORDER');?><br>
+                        <?=GetMessage('ON_ORDER');?>
 
                     <?else:?>
                         <span class="properties-text"><?=GetMessage('STOCK');?></span><?=GetMessage('IN_STOCK');?>
                     <?endif;?>
 
-                </span><br>
+                </span>
                 <!-- Доставка товара -->                   
 
                 <?
@@ -769,15 +766,17 @@ $arViewedData = array(
                     GetMessage('ITEMS_COUNT_3')
                 );
                 $wordForDays=$yearDeclension->get($arResult['PROPERTIES']['DELIVERY']['VALUE']);
-                if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])):?>
+                if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'] )):?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('DELIVERY_TIME');?>
                         </span>
-
-                    <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?><?=$wordForDays?></span>
-
-
+                        <?if(empty($arResult['PROPERTIES']['DELIVERY']['VALUE'])):?>
+                            <?=GetMessage('ONE_DAY');?>
+                        <?else:?>
+                            <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?> <?=$wordForDays?>
+                        <?endif;?>
+                    </span>
                     <span class="properties-element">     
                         <span class="properties-text"> <?=GetMessage('PICKUP_TIME');?></span>
                         <?=GetMessage('PICKUP_TIME2');?>
@@ -797,9 +796,8 @@ $arViewedData = array(
                         <?=GetMessage('PICKUP_SECOND_TIME2');?>
 
                     </span>
-                    </div>
-
                 <?endif;?>
+                </div>
                 <!-- Доставка товара --> 
                 <?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
                     <div class="showroom_txt">
@@ -1254,13 +1252,16 @@ $arViewedData = array(
         SITE_ID: '<? echo SITE_ID; ?>'
     })
 </script>
-
+<!-- Три слайдера в нижней части карточки -->
+<?
+$p1 = "/catalog/oboi/";
+if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 <div class="slider-area">
     <?
-
-
-    $GLOBALS['filterColor'] = array("PROPERTY_COLOR_VALUE"        =>$arResult['PROPERTIES']["COLOR"]["VALUE"],
-        "PROPERTY_DESIGN_OBOI_VALUE"  =>$arResult['PROPERTIES']["DESIGN_OBOI"]["VALUE"]); 
+    $GLOBALS['filterColor'] = array(
+        "PROPERTY_COLOR_VALUE"      =>$arResult['PROPERTIES']["COLOR"]["VALUE"],
+        "PROPERTY_DESIGN_OBOI_VALUE"=>$arResult['PROPERTIES']["DESIGN_OBOI"]["VALUE"]
+    ); 
     ?>
     <?$APPLICATION->IncludeComponent(
         "bitrix:news.list", 
@@ -1468,4 +1469,6 @@ $arViewedData = array(
     );?>
 
 </div>
+<?}?>
+<!-- Три слайдера в нижней части карточки (конец) -->
 

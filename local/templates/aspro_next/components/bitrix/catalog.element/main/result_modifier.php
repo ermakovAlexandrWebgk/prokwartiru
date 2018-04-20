@@ -350,8 +350,9 @@
     
 
 
-
-    $productSlider=$productSlider+$additionalPicture;
+    if (is_array($additionalPicture)){
+        $productSlider=array_merge($productSlider, $additionalPicture);
+    }
     $arResult["PROPERTIES"]["SUN"] = $sun;
     $arResult["PROPERTIES"]["PROPERTIES_STRING"] = $propertyProperty;
     $arResult["PROPERTIES"]["PROPERTIES_COLOR"] = $propertyColor;

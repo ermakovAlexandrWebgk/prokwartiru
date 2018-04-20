@@ -200,6 +200,7 @@
         // CIBlockPriceTools :: getSliderForItem() gibt ein Array DETAIL_PICTURE wenn WEITERE FOTOS leer, auch wenn ADD_DETAIL_TO_SLIDER == N
         // unset($arResult['DETAIL_PICTURE']);
     }
+    
     $productSlider = CNext::getSliderForItemExt($arResult, $arParams['ADD_PICT_PROP'], 'Y' == $arParams['ADD_DETAIL_TO_SLIDER']);
 
     if (empty($productSlider))
@@ -215,7 +216,14 @@
             );
         }
     }
-
+    $arSelect = Array("ID", "NAME", "PICTURE");
+    $arFilter = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => $arResult['IBLOCK_SECTION_ID'] );
+    $res = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, array());
+    while($arFields = $res->Fetch()){
+        if ($arFields['PICTURE']){
+            $productSlider[]=array('ID'=>$arFields['PICTURE']);
+        }
+    }
     $parent_res = CIBlockSection::GetList(Array('id'=>'asc'), array("IBLOCK_ID" => CATALOG_ID, "HAS_ELEMENT" => $arResult['ID'], "DEPTH_LEVEL" => 1), false, array('UF_*'));
     $vinilXmlId = 'vinil-na-flizeline';
     $paperXmlId = 'bumazhnye';
@@ -231,6 +239,8 @@
     $propertyStyle='';
     $propertyDesign='';
     $propertyCountry='';
+    
+ 
     while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товара в зависимости от раздела первого уровня
 
         switch ($ar_parent["ID"]) {
@@ -314,8 +324,7 @@
                 break;
 
         }
-        
-           
+    
         if ($ar_parent['UF_RELATED_COLLECT']) {
             $filter = array(
                 'SECTION_ID'         => $ar_parent['UF_RELATED_COLLECT'],
@@ -324,11 +333,11 @@
                 'CODE'               => $arResult['ORIGINAL_PARAMETERS']['SECTION_CODE']);
 
             $collectionPictures = CIBlockElement::GetList(array(), $filter, false, false, array('DETAIL_PICTURE', 'ID'));
-            $additionalPicture=array();
+            
             while ($picture = $collectionPictures->GetNext()){
                        
                 if ($picture['DETAIL_PICTURE']){
-                    $additionalPicture[]=array('ID'=>$picture['DETAIL_PICTURE']);   
+                    $additionalPicture[]=array('ID'=>$picture['DETAIL_PICTURE']);
                 }
                 
                 
@@ -338,8 +347,12 @@
         }
    
     }
+    
 
-    $productSlider=$productSlider+$additionalPicture;
+
+    if (is_array($additionalPicture)){
+        $productSlider=array_merge($productSlider, $additionalPicture);
+    }
     $arResult["PROPERTIES"]["SUN"] = $sun;
     $arResult["PROPERTIES"]["PROPERTIES_STRING"] = $propertyProperty;
     $arResult["PROPERTIES"]["PROPERTIES_COLOR"] = $propertyColor;

@@ -688,14 +688,19 @@ $arViewedData = array(
 
 
                     <?endif;?>
-                      <div class="btn-get_discount btn-lg btn transition_bg btn-default white wish_item text">Добавить клей</div>
-                </div>
-              
-            
-
-
-
-
+                    <div class="glue-button">
+                        <div class="btn-lg w_icons to-cart btn btn-default glue"
+                            data-item="400141"
+                                data-float_ratio="" data-ratio="1" data-bakset_div="bx_basket_div_381473" data-props="" data-part_props="Y"
+                                    data-add_props="Y" data-empty_props="Y" data-offers=""
+                                        data-iblockid="77" data-quantity="1"><?=GetMessage('ADD_GLUE');?>
+                        </div>
+                        <div class="glue-button">
+                        <a rel="nofollow" href="/basket/" class="btn-lg w_icons in-cart btn btn-default transition_bg" data-item="400141" style="display: none;"><i></i>
+                            <span><?=GetMessage('CATALOG_ADDED_TO_BASKET');?></span>
+                        </a>
+                        </div>
+                    </div>
         </div>
         <?if(is_array($arResult["STOCK"]) && $arResult["STOCK"]):?>
             <div class="stock_wrapper">
@@ -735,7 +740,7 @@ $arViewedData = array(
                     </span>
                 <?}?>
                 </div>
-
+ <?$catalogQuantity = $arResult['CATALOG_QUANTITY'];?>
             
                 <!--<span class="properties-element">               
                 <?/*if ($arResult['PROPERTIES']['PROPERTY']['VALUE']){?>
@@ -744,19 +749,24 @@ $arViewedData = array(
                 </span>
                 <br-->
                 <div class="delivery">
-                <?if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'])):?>
+                <? if(empty($catalogQuantity) || $catalogQuantity <=0){?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('STOCK');?>
                         </span>
                         <?=GetMessage('ON_ORDER');?>
 
-                    <?else:?>
+                    <?}else{?>
                         <span class="properties-text"><?=GetMessage('STOCK');?></span><?=GetMessage('IN_STOCK');?>
-                    <?endif;?>
+                    <?}?>
 
                 </span>
-                <!-- Доставка товара -->                   
+                <!-- Доставка товара -->                  
+               
+    
+
+
+
 
                 <?
                 use Bitrix\Main\Grid\Declension; /*   Склонение слова "День" в зависимости от количества */
@@ -766,23 +776,23 @@ $arViewedData = array(
                     GetMessage('ITEMS_COUNT_3')
                 );
                 $wordForDays=$yearDeclension->get($arResult['PROPERTIES']['DELIVERY']['VALUE']);
-                if (empty($arResult['PROPERTIES']['IN_STOCK']['VALUE'] )):?>
+                if(empty($catalogQuantity) || $catalogQuantity <=0){?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('DELIVERY_TIME');?>
                         </span>
-                        <?if(empty($arResult['PROPERTIES']['DELIVERY']['VALUE'])):?>
+                        <?if(empty($arResult['PROPERTIES']['DELIVERY']['VALUE'])){?>
                             <?=GetMessage('ONE_DAY');?>
-                        <?else:?>
+                        <?}else{?>
                             <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?> <?=$wordForDays?>
-                        <?endif;?>
+                        <?}?>
                     </span>
                     <span class="properties-element">     
                         <span class="properties-text"> <?=GetMessage('PICKUP_TIME');?></span>
                         <?=GetMessage('PICKUP_TIME2');?>
                     </span>
 
-                <?else:?>
+                <?}else{?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('DELIVERY');?>
@@ -796,8 +806,9 @@ $arViewedData = array(
                         <?=GetMessage('PICKUP_SECOND_TIME2');?>
 
                     </span>
-                <?endif;?>
+                <?}?>
                 </div>
+               
                 <!-- Доставка товара --> 
                 <?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
                     <div class="showroom_txt">
@@ -1252,7 +1263,7 @@ $arViewedData = array(
         SITE_ID: '<? echo SITE_ID; ?>'
     })
 </script>
-<!-- Три слайдера в нижней части карточки -->
+<!-- Два слайдера в нижней части карточки -->
 <?
 $p1 = "/catalog/oboi/";
 if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
@@ -1331,144 +1342,82 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 	),
 	false
 );?>
-    <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"slider1", 
-	array(
-		"ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"ADD_SECTIONS_CHAIN" => "N",
-		"AJAX_MODE" => "N",
-		"AJAX_OPTION_ADDITIONAL" => "",
-		"AJAX_OPTION_HISTORY" => "N",
-		"AJAX_OPTION_JUMP" => "N",
-		"AJAX_OPTION_STYLE" => "Y",
-		"CACHE_FILTER" => "N",
-		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
-		"CHECK_DATES" => "Y",
-		"COMPONENT_TEMPLATE" => "slider1",
-		"DETAIL_URL" => "/catalog/#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
-		"DISPLAY_BOTTOM_PAGER" => "N",
-		"DISPLAY_DATE" => "Y",
-		"DISPLAY_NAME" => "Y",
-		"DISPLAY_PICTURE" => "Y",
-		"DISPLAY_PREVIEW_TEXT" => "Y",
-		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"FILTER_NAME" => "colorFilter",
-		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "77",
-		"IBLOCK_TYPE" => "catalog",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-		"INCLUDE_SUBSECTIONS" => "Y",
-		"MESSAGE_404" => "",
-		"NEWS_COUNT" => "30",
-		"NORMAL_BLOCK" => "Y",
-		"PAGER_BASE_LINK_ENABLE" => "N",
-		"PAGER_DESC_NUMBERING" => "N",
-		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-		"PAGER_SHOW_ALL" => "N",
-		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Новости",
-		"PARENT_SECTION" => "34639",
-		"PARENT_SECTION_CODE" => "oboi",
-		"PREVIEW_TRUNCATE_LEN" => "",
-		"PROPERTY_CODE" => array(
-			0 => "MINIMUM_PRICE",
-			1 => "",
-		),
-		"SET_BROWSER_TITLE" => "N",
-		"SET_LAST_MODIFIED" => "N",
-		"SET_META_DESCRIPTION" => "N",
-		"SET_META_KEYWORDS" => "N",
-		"SET_STATUS_404" => "N",
-		"SET_TITLE" => "N",
-		"SHOW_404" => "N",
-		"SHOW_DETAIL_LINK" => "Y",
-		"SORT_BY1" => "RANDOM",
-		"SORT_BY2" => "SORT",
-		"SORT_ORDER1" => "DESC",
-		"SORT_ORDER2" => "ASC",
-		"STRICT_SECTION_CHECK" => "N"
-	),
-	false
-);?>
-    <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"slider3", 
-	array(
-		"ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"ADD_SECTIONS_CHAIN" => "N",
-		"AJAX_MODE" => "N",
-		"AJAX_OPTION_ADDITIONAL" => "",
-		"AJAX_OPTION_HISTORY" => "N",
-		"AJAX_OPTION_JUMP" => "N",
-		"AJAX_OPTION_STYLE" => "Y",
-		"CACHE_FILTER" => "N",
-		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
-		"CHECK_DATES" => "Y",
-		"COMPONENT_TEMPLATE" => "slider3",
-		"DETAIL_URL" => "/catalog/#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
-		"DISPLAY_BOTTOM_PAGER" => "N",
-		"DISPLAY_DATE" => "N",
-		"DISPLAY_NAME" => "Y",
-		"DISPLAY_PICTURE" => "Y",
-		"DISPLAY_PREVIEW_TEXT" => "Y",
-		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"FILTER_NAME" => "",
-		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "77",
-		"IBLOCK_TYPE" => "catalog",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-		"INCLUDE_SUBSECTIONS" => "Y",
-		"MESSAGE_404" => "",
-		"NEWS_COUNT" => "15",
-		"NORMAL_BLOCK" => "Y",
-		"PAGER_BASE_LINK_ENABLE" => "N",
-		"PAGER_DESC_NUMBERING" => "N",
-		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-		"PAGER_SHOW_ALL" => "N",
-		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Новости",
-		"PARENT_SECTION" => "34639",
-		"PARENT_SECTION_CODE" => "oboi",
-		"PREVIEW_TRUNCATE_LEN" => "",
-		"PROPERTY_CODE" => array(
-			0 => "BRAND",
-			1 => "COUNTRY",
-			2 => "CML2_ARTICLE",
-			3 => "",
-		),
-		"SET_BROWSER_TITLE" => "N",
-		"SET_LAST_MODIFIED" => "N",
-		"SET_META_DESCRIPTION" => "N",
-		"SET_META_KEYWORDS" => "N",
-		"SET_STATUS_404" => "N",
-		"SET_TITLE" => "N",
-		"SHOW_404" => "N",
-		"SHOW_DETAIL_LINK" => "Y",
-		"SORT_BY1" => "RANDOM",
-		"SORT_BY2" => "SORT",
-		"SORT_ORDER1" => "DESC",
-		"SORT_ORDER2" => "ASC",
-		"STRICT_SECTION_CHECK" => "N"
-	),
-	false
-);?>
+
+ <?
+    $GLOBALS['filterCompanion'] = array(
+    "=ID" => $arResult['PROPERTIES']['COMPANION']['VALUE']);
+    if(!empty($arResult['PROPERTIES']['COMPANION']['VALUE'])){?>
+            <?$APPLICATION->IncludeComponent(
+	        "bitrix:news.list", 
+	        "slider1", 
+	        array(
+		        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+		        "ADD_SECTIONS_CHAIN" => "N",
+		        "AJAX_MODE" => "N",
+		        "AJAX_OPTION_ADDITIONAL" => "",
+		        "AJAX_OPTION_HISTORY" => "N",
+		        "AJAX_OPTION_JUMP" => "N",
+		        "AJAX_OPTION_STYLE" => "Y",
+		        "CACHE_FILTER" => "N",
+		        "CACHE_GROUPS" => "Y",
+		        "CACHE_TIME" => "36000000",
+		        "CACHE_TYPE" => "A",
+		        "CHECK_DATES" => "Y",
+		        "COMPONENT_TEMPLATE" => "slider1",
+		        "DETAIL_URL" => "/catalog/#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
+		        "DISPLAY_BOTTOM_PAGER" => "N",
+		        "DISPLAY_DATE" => "Y",
+		        "DISPLAY_NAME" => "Y",
+		        "DISPLAY_PICTURE" => "Y",
+		        "DISPLAY_PREVIEW_TEXT" => "Y",
+		        "DISPLAY_TOP_PAGER" => "N",
+		        "FIELD_CODE" => array(
+			        0 => "",
+			        1 => "",
+		        ),
+		        "FILTER_NAME" => "filterCompanion",
+		        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		        "IBLOCK_ID" => "77",
+		        "IBLOCK_TYPE" => "catalog",
+		        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+		        "INCLUDE_SUBSECTIONS" => "Y",
+		        "MESSAGE_404" => "",
+		        "NEWS_COUNT" => "30",
+		        "NORMAL_BLOCK" => "Y",
+		        "PAGER_BASE_LINK_ENABLE" => "N",
+		        "PAGER_DESC_NUMBERING" => "N",
+		        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		        "PAGER_SHOW_ALL" => "N",
+		        "PAGER_SHOW_ALWAYS" => "N",
+		        "PAGER_TEMPLATE" => ".default",
+		        "PAGER_TITLE" => "Новости",
+		        "PARENT_SECTION" => "34639",
+		        "PARENT_SECTION_CODE" => "oboi",
+		        "PREVIEW_TRUNCATE_LEN" => "",
+		        "PROPERTY_CODE" => array(
+			        0 => "MINIMUM_PRICE",
+			        1 => "",
+		        ),
+		        "SET_BROWSER_TITLE" => "N",
+		        "SET_LAST_MODIFIED" => "N",
+		        "SET_META_DESCRIPTION" => "N",
+		        "SET_META_KEYWORDS" => "N",
+		        "SET_STATUS_404" => "N",
+		        "SET_TITLE" => "N",
+		        "SHOW_404" => "N",
+		        "SHOW_DETAIL_LINK" => "Y",
+		        "SORT_BY1" => "RANDOM",
+		        "SORT_BY2" => "SORT",
+		        "SORT_ORDER1" => "DESC",
+		        "SORT_ORDER2" => "ASC",
+		        "STRICT_SECTION_CHECK" => "N"
+	        ),
+	        false
+        );?>
+    <?}?>
+   
 
 </div>
 <?}?>
-<!-- Три слайдера в нижней части карточки (конец) -->
+<!-- Два слайдера в нижней части карточки (конец) -->
 

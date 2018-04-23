@@ -1299,8 +1299,9 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"FIELD_CODE" => array(
-			0 => "",
-			1 => "",
+			0 => "PREVIEW_PICTURE",
+			1 => "DETAIL_PICTURE",
+			2 => "",
 		),
 		"FILTER_NAME" => "filterColor",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",

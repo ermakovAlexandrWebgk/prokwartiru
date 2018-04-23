@@ -6454,3 +6454,27 @@ display: block;
 :focus::-moz-placeholder          {color: transparent}
 :focus:-moz-placeholder           {color: transparent}
 :focus:-ms-input-placeholder      {color: transparent}
+
+
+.glue-button{
+    color: #554e40 ;
+    background: #ffffff;
+    height: 40px;
+    width: 210px;
+    margin-top: 2px;
+
+}
+
+
+.btn-lg.w_icons.to-cart.btn.btn-default.glue{
+     color: #554e40 !important;
+    background: #ffffff;
+    height: 40px;
+    width: 210px;
+    margin-top: 2px;
+    
+}
+.glue-button:hover{
+color: #ffffff !important;
+    border-color: red;  
+}

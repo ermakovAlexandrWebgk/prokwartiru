@@ -113,6 +113,7 @@ $MESS ['DELIVERY2'] = "1 день (от 20 тыс€ч бесплатно)";
 $MESS ['PICKUP_SECOND_TIME'] = "—амовывоз:";
 $MESS ['PICKUP_SECOND_TIME2'] = "через 1 день после получени€ предоплаты";
 $MESS ['ONE_DAY'] = "1 день";
+$MESS ['ADD_GLUE'] = "ƒобавить клей";
 
 
 

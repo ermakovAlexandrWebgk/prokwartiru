@@ -12,7 +12,7 @@
                                         <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="thumb">                                
                                             
                                             
-                                                <img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="<?=$a_alt;?>" title="<?=$a_title;?>" />
+                                                <img src="<?=$arItem["DETAIL_PICTURE"]["SRC"]?>" alt="<?=$a_alt;?>" title="<?=$a_title;?>" />
                                             
                                         </a>
                                     </div>

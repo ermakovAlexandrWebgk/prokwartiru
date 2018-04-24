@@ -20,7 +20,7 @@ foreach($arSeoLn as $seoLn)
 	// 	$arSeoLinks = false;
 	// 	break;
 	// }
-	if(strpos($seoLn["CONDITION"], "/top_fil") !== FALSE && $seoLn["REAL_URL"] != $APPLICATION->GetCurPage(false))
+	if(strpos($seoLn["CONDITION"], "/top_fil") !== FALSE )
 	{
         // $name_link = str_replace("/top_fil","",$seoLn["NAME"]);
         $seo_ln_info = explode('/*/',$seoLn["NAME"]);

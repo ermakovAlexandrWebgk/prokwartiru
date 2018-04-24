@@ -114,7 +114,8 @@ $MESS ['PICKUP_SECOND_TIME'] = "Самовывоз:";
 $MESS ['PICKUP_SECOND_TIME2'] = "через 1 день после получения предоплаты";
 $MESS ['ONE_DAY'] = "1 день";
 $MESS ['ADD_GLUE'] = "Добавить клей";
-
+$MESS ['MANUAL'] = "Монтажная инструкция";
+$MESS["CATALOG_GLUE_ADDED_TO_BASKET"] = "Клей в корзине";
 
 
 ?>

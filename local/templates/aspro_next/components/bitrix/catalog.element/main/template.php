@@ -680,27 +680,25 @@ $arViewedData = array(
 
                             <?$arFile=CNext::GetFileInfo($arItem);?>
                             <div class="btn-get_discount btn-lg btn transition_bg btn-default white">
-                                <a target="_blank" href="<?=$arFile["SRC"];?>"
-                                    >Монтажная инструкция</a>
+                                <a target="_blank" href="<?=$arFile["SRC"];?>"><?=GetMessage('MANUAL');?></a>
                             </div>
                         <?endforeach;?>
 
 
 
                     <?endif;?>
-                    <div class="glue-button">
+                   
                         <div class="btn-lg w_icons to-cart btn btn-default glue"
                             data-item="400141"
                                 data-float_ratio="" data-ratio="1" data-bakset_div="bx_basket_div_381473" data-props="" data-part_props="Y"
                                     data-add_props="Y" data-empty_props="Y" data-offers=""
                                         data-iblockid="77" data-quantity="1"><?=GetMessage('ADD_GLUE');?>
                         </div>
-                        <div class="glue-button">
-                        <a rel="nofollow" href="/basket/" class="btn-lg w_icons in-cart btn btn-default transition_bg" data-item="400141" style="display: none;"><i></i>
-                            <span><?=GetMessage('CATALOG_ADDED_TO_BASKET');?></span>
-                        </a>
-                        </div>
-                    </div>
+                            <a rel="nofollow" href="/basket/" class="btn-lg w_icons in-cart btn btn-default transition_bg"  data-item="400141" style="display: none;"><i></i>
+                                <span><?=GetMessage('CATALOG_GLUE_ADDED_TO_BASKET');?></span>
+                            </a>
+                        
+                   
         </div>
         <?if(is_array($arResult["STOCK"]) && $arResult["STOCK"]):?>
             <div class="stock_wrapper">
@@ -1299,9 +1297,8 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"FIELD_CODE" => array(
-			0 => "PREVIEW_PICTURE",
-			1 => "DETAIL_PICTURE",
-			2 => "",
+			0 => "DETAIL_PICTURE",
+			1 => "",
 		),
 		"FILTER_NAME" => "filterColor",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
@@ -1373,9 +1370,8 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"FIELD_CODE" => array(
-			0 => "PREVIEW_PICTURE",
-			1 => "DETAIL_PICTURE",
-			2 => "",
+			0 => "DETAIL_PICTURE",
+			1 => "",
 		),
 		"FILTER_NAME" => "filterCompanion",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",

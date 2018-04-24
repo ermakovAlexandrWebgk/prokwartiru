@@ -32,11 +32,15 @@ if($arResult["ITEMS"]){?>
 										if($arParams["CONVERT_CURRENCY"]=="Y"){
 											$isConvert=true;
 										}
-										$price1 = $arItem["VALUES"]["MIN"]["VALUE"];
+										$price1 = $arItem["VALUES"]["MIN"]["FILTERED_VALUE"];
 										$price2 = $arItem["VALUES"]["MIN"]["VALUE"] + round(($arItem["VALUES"]["MAX"]["VALUE"] - $arItem["VALUES"]["MIN"]["VALUE"])/4);
 										$price3 = $arItem["VALUES"]["MIN"]["VALUE"] + round(($arItem["VALUES"]["MAX"]["VALUE"] - $arItem["VALUES"]["MIN"]["VALUE"])/2);
 										$price4 = $arItem["VALUES"]["MIN"]["VALUE"] + round((($arItem["VALUES"]["MAX"]["VALUE"] - $arItem["VALUES"]["MIN"]["VALUE"])*3)/4);
-										$price5 = $arItem["VALUES"]["MAX"]["VALUE"];
+										$price5 = $arItem["VALUES"]["MAX"]["FILTERED_VALUE"];
+                                        
+                                        $price6 = $arItem["VALUES"]["MIN"]["VALUE"];
+                                        
+                                        $price7 = $arItem["VALUES"]["MAX"]["VALUE"];
 
 										if($isConvert){
 											$price1 =SaleFormatCurrency($price1, $arParams["CURRENCY_ID"], true);
@@ -46,6 +50,7 @@ if($arResult["ITEMS"]){?>
 											$price5 =SaleFormatCurrency($price5, $arParams["CURRENCY_ID"], true);
 										}
 										?>
+                                        
 										<div class="wrapp_change_inputs iblock">
 											<div class="bx_filter_parameters_box_container_block">
 												<div class="bx_filter_input_container form-control bg">
@@ -56,11 +61,16 @@ if($arResult["ITEMS"]){?>
 														id="<?echo $arItem["VALUES"]["MIN"]["CONTROL_ID"]?>"
 														value="<?echo $arItem["VALUES"]["MIN"]["HTML_VALUE"]?>"
 														size="5"
+                                                        <?if(!empty($arItem["VALUES"]["MIN"]["FILTERED_VALUE"])){?>
 														placeholder="<?echo $price1;?>"
+                                                        <?}else{?>
+                                                        placeholder="<?=$price6?>"
+                                                        <?}?>
 														onkeyup="smartFilter.keyup(this)"
 													/>
 												</div>
 											</div>
+                                          
 											<div class="bx_filter_parameters_box_container_block">
 												<div class="bx_filter_input_container form-control bg">
 													<input
@@ -70,7 +80,12 @@ if($arResult["ITEMS"]){?>
 														id="<?echo $arItem["VALUES"]["MAX"]["CONTROL_ID"]?>"
 														value="<?echo $arItem["VALUES"]["MAX"]["HTML_VALUE"]?>"
 														size="5"
-														placeholder="<?echo $price5;?>"
+                                                        <?if(!empty($arItem["VALUES"]["MAX"]["FILTERED_VALUE"])){?>
+														placeholder="<?=$price5?>"
+                                                        <?}else{?>
+                                                        placeholder="<?=$price7?>"
+                                                        <?}?>
+                                                        
 														onkeyup="smartFilter.keyup(this)"
 													/>
 												</div>

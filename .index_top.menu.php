@@ -8,8 +8,8 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Мы онлайн", 
-		"", 
+		"Перезвонить", 
+		"/telephone/?edit=Y", 
 		Array(), 
 		Array(), 
 		"" 

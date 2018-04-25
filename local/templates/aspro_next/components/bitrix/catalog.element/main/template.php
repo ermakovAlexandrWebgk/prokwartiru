@@ -1261,6 +1261,7 @@ $arViewedData = array(
         SITE_ID: '<? echo SITE_ID; ?>'
     })
 </script>
+
 <!-- Два слайдера в нижней части карточки -->
 <?
 $p1 = "/catalog/oboi/";

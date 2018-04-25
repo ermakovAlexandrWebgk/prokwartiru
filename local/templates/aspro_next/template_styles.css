@@ -311,7 +311,7 @@ a.scroll-to-top.ROUND_WHITE, a.scroll-to-top.RECT_WHITE{background-color:#fff;}
 a.scroll-to-top.ROUND_GREY, a.scroll-to-top.RECT_GREY{background-color:#e3e3e3;}
 a.scroll-to-top.RECT_COLOR, a.scroll-to-top.RECT_GREY, a.scroll-to-top.RECT_WHITE{border-radius:2px;}
 a.scroll-to-top.TOUCH{border-radius:2px 0 0 2px;width:50px;height:50px;right:0;}
-a.scroll-to-top.ROUND_COLOR, a.scroll-to-top.RECT_COLOR{background-position:center 14px;}
+a.scroll-to-top.ROUND_COLOR, a.scroll-to-top.RECT_COLOR{background-position:center 14px; position:fixed;}
 a.scroll-to-top.ROUND_WHITE, a.scroll-to-top.RECT_WHITE, a.scroll-to-top.ROUND_GREY, a.scroll-to-top.RECT_GREY{background-position:center -70px;}
 a.scroll-to-top.RECT_COLOR.TOUCH{background-position:center 17px;}
 a.scroll-to-top.RECT_GREY.TOUCH, a.scroll-to-top.RECT_WHITE.TOUCH{background-position:center -67px;}
@@ -3609,7 +3609,7 @@ div[id^=smartFilterDropDown] .popup-window-top-row, div[id^=smartFilterDropDown]
 .catalog_block .hover_block{opacity:0;visibility:hidden;max-height:0;-webkit-transition:all .15s ease;-webkit-transition-delay:0.5s;-moz-transition:all .15s ease;transition:all .15s ease;transition-delay:0.05s;padding:17px 0px 0px;}
 .catalog_block .hover_block .sku_props{margin:0px;padding:0px 0px 2px;}
 
-.shadow_delay{transition-delay:0.22s !important;}
+
 .catalog_block:not(.items) .item_wrap{height:auto !important;position:relative;z-index:51;background:#fff;padding-bottom:0px;}
 .tabs_slider .catalog_item:not(.touch):hover, .tabs_slider .catalog_item.hover {z-index:58;padding-bottom:20px;}
 
@@ -6477,4 +6477,8 @@ display: block;
 .glue-button:hover{
 color: #ffffff !important;
     border-color: red;  
+}
+
+.discount_block{
+    width:70%;
 }

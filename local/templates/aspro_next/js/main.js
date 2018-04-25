@@ -671,7 +671,7 @@ $.fn.sliceHeightNoResize = function( options ){
     _slice(el);
 }
 
-if(!funcDefined('initHoverBlock')){
+/*if(!funcDefined('initHoverBlock')){
     function initHoverBlock(target){
         $(target).find('.catalog_item.item_wrap').on('mouseenter', function(){
             $(this).addClass('hover');
@@ -681,7 +681,7 @@ if(!funcDefined('initHoverBlock')){
         })
     }
 }
-
+*/
 if(!funcDefined('setStatusButton')){
     function setStatusButton(){
         $.ajax({
@@ -5211,8 +5211,8 @@ function touchBasket(selector){
 
 function initFull(){
     initSelects(document);
-    initHoverBlock(document);
-    touchItemBlock('.catalog_item a');
+    //initHoverBlock(document);
+    //touchItemBlock('.catalog_item a');
     InitOrderCustom();
 
     basketActions();

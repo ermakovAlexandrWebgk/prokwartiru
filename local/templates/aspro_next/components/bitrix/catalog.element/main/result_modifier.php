@@ -266,15 +266,10 @@
                 if($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID'] == $vinilXmlId ){
                     $propertyWashing = 'моющиеся' .', ';    
                 }
-                if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $paperXmlId){
-                    $propertyPaper = 'влагостойкие' .', ';    
+                if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  != $vinilXmlId){
+                    $propertyWaterproof = 'влагостойкие' .', ';    
                 }
-                if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $flizelinXmlId){  
-                    $propertyWaterproof = 'влагостойкие'.', ';    
-                }
-                if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  == $paperFlizelineXmlId){  
-                    $propertyWaterproof = 'влагостойкие'.', ';    
-                }
+               
 
 
                 $sun="не выгорают на солнце".', ';

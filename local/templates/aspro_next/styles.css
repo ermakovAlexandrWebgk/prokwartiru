@@ -173,8 +173,9 @@ a.icon-text:focus { color: #fff; }
 .btn.btn-default:focus:active{color:#fff;}
 .btn.btn-default.transparent.white:not(:hover){background: transparent;}
 footer#footer{
-position: sticky;
+position: fixed;
 bottom: 0;
+width:100%;
 z-index: 625;
 }
 footer#footer .footer_bottom_inner{

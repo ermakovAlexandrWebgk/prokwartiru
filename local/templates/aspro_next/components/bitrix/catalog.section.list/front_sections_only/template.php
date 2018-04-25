@@ -10,17 +10,17 @@ $key = 0;?>
         <div class="module-pagination">
             <div class="nums">
                 <ul class="flex-direction-nav">
-                    <?if($_GET["PAGEN"] > 1){?>
+                    <?if($_GET["PAGEN"] > 1){?>            
                         <li class="flex-nav-prev">
-                            <a href="<?=$APPLICATION->GetCurPage()?>?PAGEN=<?=$_GET["PAGEN"] - 1?>" class="flex-prev"></a>
+                            <a href="<?=$APPLICATION->GetCurPageParam("",array("PAGEN"))?><?=($_GET)?'&':'?'?>PAGEN=<?=$_GET["PAGEN"] - 1?>" class="flex-prev"></a>
                         </li>
                     <?}?>
                     <?if((!$_GET["PAGEN"] || $_GET["PAGEN"] > 2 || $_GET["PAGEN"]) && $_GET["PAGEN"] != $count_section_count){?>
                         <li class="flex-nav-next">
                             <?if(!$_GET["PAGEN"]){?>
-                                <a href="<?=$APPLICATION->GetCurPage()?>?PAGEN=<?=$_GET["PAGEN"] + 2?>" class="flex-next"></a>
+                                <a href="<?=$APPLICATION->GetCurPageParam("",array("PAGEN"))?><?=($_GET)?'&':'?'?>PAGEN=<?=$_GET["PAGEN"] + 2?>" class="flex-next"></a>
                             <?} else {?>
-                                <a href="<?=$APPLICATION->GetCurPage()?>?PAGEN=<?=$_GET["PAGEN"] + 1?>" class="flex-next"></a>
+                                <a href="<?=$APPLICATION->GetCurPageParam("",array("PAGEN"))?><?=($_GET)?'&':'?'?>PAGEN=<?=$_GET["PAGEN"] + 1?>" class="flex-next"></a>
                             <?}?>
                         </li>
                     <?}?>
@@ -34,7 +34,7 @@ $key = 0;?>
                                 <span class="cur"><?= $i ?></span>
                             <?} else if (($_GET["PAGEN"] && ($i == $_GET["PAGEN"] - 1) || ($i == $_GET["PAGEN"] + 1))
                                 || (!$_GET["PAGEN"] && $i == 2)) {?>
-                                <a href="<?=$APPLICATION->GetCurPage()?>?PAGEN=<?=$i?>" class="dark_link"><?=$i?></a>
+                                <a href="<?=$APPLICATION->GetCurPageParam("",array("PAGEN"))?><?=($_GET)?'&':'?'?>PAGEN=<?=$i?>" class="dark_link"><?=$i?></a>
                             <?}?>
                         
                         <?

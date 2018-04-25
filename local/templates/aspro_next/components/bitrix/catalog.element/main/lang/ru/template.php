@@ -116,6 +116,7 @@ $MESS ['ONE_DAY'] = "1 день";
 $MESS ['ADD_GLUE'] = "Добавить клей";
 $MESS ['MANUAL'] = "Монтажная инструкция";
 $MESS["CATALOG_GLUE_ADDED_TO_BASKET"] = "Клей в корзине";
+$MESS["ALL_COLLECTIONS"] = "- Посмотреть всю коллекцию";
 
 
 ?>

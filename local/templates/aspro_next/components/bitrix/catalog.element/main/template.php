@@ -721,7 +721,10 @@ $arViewedData = array(
                         <?=GetMessage('COLLECTION');?>
                     </span>
                     <?=$arResult["COLLECTION"]?>
-
+                    <?$page = explode('/', $APPLICATION->GetCurPage());
+                      unset ($page[count($page)-2]); // удаляем детальный товар из ссылки
+                      $page_new = implode("/", $page);// формируем ссылку заново?>
+                     <a href="<?=$page_new?>"><?=GetMessage("ALL_COLLECTIONS")?></a>
                 </span>
                
 
@@ -731,7 +734,6 @@ $arViewedData = array(
                             <?=GetMessage('FACTORY');?>
                         </span>
                         <?=$arResult['PROPERTIES']['BRAND']['VALUE']?>
-
 
                         (<?=$arResult['PROPERTIES']['COUNTRY']['VALUE'];?>)
 

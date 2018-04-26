@@ -12,6 +12,14 @@ $logoClass = ($arTheme['COLORED_LOGO']['VALUE'] !== 'Y' ? '' : ' colored');
 			<?=CNext::ShowLogo();?>
 		</div>
 	</div>
+    <div class="phone-block">
+        <li>
+            <a rel="nofollow" href="tel:79851551755" class="dark-color">
+                <i class="svg svg-phone"></i>
+            </a>
+        </li>
+    
+    </div>
 	<div class="right-icons pull-right">
 		<div class="pull-right">
 			<div class="wrap_icon">

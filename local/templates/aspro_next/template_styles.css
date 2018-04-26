@@ -157,7 +157,7 @@ font.notetext{color:#333;}
 
 /* SVG ICONS */
 .svg{top:-1px;display:inline-block;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;vertical-align:middle;min-width:30px;min-height:30px;position:relative;background-repeat:no-repeat;background-position:center center;}
-.svg-phone{margin:0 9px 0 0;min-width:9px;min-height:12px;background-image:url(images/svg/Phone_black.svg);}
+.svg-phone{margin:0 9px 0 0;min-width:21px;min-height:21px;background-image:url(images/svg/Phone_black.svg);}
 .svg-burger{background-image:url(images/svg/burger_black.svg);}
 .svg-burger.mask{background-color:#554e40;background-image:url(images/svg/burger_white.svg);}
 .svg-burger.white{background-image:url(images/svg/burger_white.svg);}
@@ -2871,7 +2871,7 @@ body .fast_view_frame.popup .prices .price_matrix_block .price_wrapper_block > d
 .index_bottom .banners_column { width: 234px; float: left; }
 
 /*breadcrumbs*/
-.breadcrumbs{margin: 0px 0px;padding:0px 0px 11px;}
+.breadcrumbs{margin: 0px 0px;}
 .breadcrumbs .breadcrumbs{padding:0px;}
 .breadcrumbs .bx-breadcrumb-item{display:inline-block;position:relative;line-height: 22px;font-size:14px;}
 .breadcrumbs a{text-decoration:none;}
@@ -6480,5 +6480,15 @@ color: #ffffff !important;
 }
 
 .discount_block{
-    width:70%;
+    width:450px;
+}
+.phone-block{
+    height: 100%;
+    position: absolute;
+    right: 60px;
+    top: 25%;
+}
+
+.title_block.sm.two{
+  margin-left: 35px;  
 }

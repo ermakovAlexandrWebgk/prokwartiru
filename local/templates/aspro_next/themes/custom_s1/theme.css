@@ -634,9 +634,6 @@ h4:hover .opener_icon,
   color: #554e40 !important;
   border: 1px solid #554e40;
   background: #ffffff;
-  height:40px;
-  width: 210px;
-  margin-top: 2px;
 }
 .btn.btn-default.white:hover,
 .btn-default.white:active,

@@ -746,11 +746,11 @@ if($arResult["ITEMS"]){?>
 							<div class="bx_filter_parameters_box_container">
 								<div class="bx_filter_popup_result right" id="modef_mobile" <?if(!isset($arResult["ELEMENT_COUNT"])) echo 'style="display:none"';?>>
 									<?echo GetMessage("CT_BCSF_FILTER_COUNT", array("#ELEMENT_COUNT#" => '<span id="modef_num_mobile">'.intval($arResult["ELEMENT_COUNT"]).'</span>'));?>
-									<a href="<?echo $arResult["FILTER_URL"]?>" class="btn btn-default white white-bg"><?echo GetMessage("CT_BCSF_FILTER_SHOW")?></a>
+									<a href="<?echo $arResult["FILTER_URL"]?>" class="show-button"><?echo GetMessage("CT_BCSF_FILTER_SHOW")?></a>
 								</div>
 								<div class="bx_filter_popup_result right" id="modef" <?if(!isset($arResult["ELEMENT_COUNT"])) echo 'style="display:none"';?>>
 									<?echo GetMessage("CT_BCSF_FILTER_COUNT", array("#ELEMENT_COUNT#" => '<span id="modef_num">'.intval($arResult["ELEMENT_COUNT"]).'</span>'));?>
-									<a href="<?echo $arResult["FILTER_URL"]?>" class="btn btn-default white white-bg"><?echo GetMessage("CT_BCSF_FILTER_SHOW")?></a>
+									<a href="<?echo $arResult["FILTER_URL"]?>" class="show-button"><?echo GetMessage("CT_BCSF_FILTER_SHOW")?></a>
 								</div>
 								<input class="bx_filter_search_button btn btn-default" type="submit" id="set_filter" name="set_filter" data-href="" value="<?=GetMessage("CT_BCSF_SET_FILTER")?>" />
 								<button class="bx_filter_search_reset btn btn-default white grey" type="reset" id="del_filter" name="del_filter" data-href="">

@@ -1416,7 +1416,14 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 	false
 );?>
     <?}?>
-   
+   <?$APPLICATION->IncludeComponent(
+    "aspro:catalog.viewed.next",
+    "main_horizontal_you_viewed_block",
+    Array(
+        "SHOW_MEASURE" => "Y",
+        "TITLE_BLOCK" => "Ранее вы смотрели"
+    )
+);?>
 
 </div>
 <?}?>

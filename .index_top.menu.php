@@ -1,6 +1,13 @@
 <?
 $aMenuLinks = Array(
 	Array(
+		"Блог", 
+		"/blog/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
 		"Контакты", 
 		"/contacts/", 
 		Array(), 
@@ -9,7 +16,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Перезвонить", 
-		"/telephone/?edit=Y", 
+		"/telephone/", 
 		Array(), 
 		Array(), 
 		"" 

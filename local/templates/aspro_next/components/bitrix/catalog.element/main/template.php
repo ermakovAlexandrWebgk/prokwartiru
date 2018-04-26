@@ -330,7 +330,7 @@ $arViewedData = array(
     </div>
     <div class="right_info">
         <div class="info_item">
-
+             <a href="<?=$_SERVER['HTTP_REFERER']?>" class="back_url"><?=GetMessage('BACK')?></a>
             <div class="price_txt">
 
 
@@ -736,7 +736,7 @@ $arViewedData = array(
                         <?=$arResult['PROPERTIES']['BRAND']['VALUE']?>
 
                         (<?=$arResult['PROPERTIES']['COUNTRY']['VALUE'];?>)
-
+                        <a href="/catalog/oboi/?brand=<?=$arResult['PROPERTIES']['BRAND']['VALUE_ENUM_ID']?>"><?=GetMessage("ALL_BRAND")?></a>
                     </span>
                 <?}?>
                 </div>

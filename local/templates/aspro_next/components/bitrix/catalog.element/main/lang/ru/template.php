@@ -117,6 +117,8 @@ $MESS ['ADD_GLUE'] = "Добавить клей";
 $MESS ['MANUAL'] = "Монтажная инструкция";
 $MESS["CATALOG_GLUE_ADDED_TO_BASKET"] = "Клей в корзине";
 $MESS["ALL_COLLECTIONS"] = "- Посмотреть всю коллекцию";
+$MESS["ALL_BRAND"] = "- Посмотреть все товары бренда";
+$MESS["BACK"] = "Назад";
 
 
 ?>

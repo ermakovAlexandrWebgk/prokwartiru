@@ -1,5 +1,12 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");?>
+<?if($_GET["brand"]){      
+    $db_enum_list = CIBlockProperty::GetPropertyEnum("BRAND", Array("VALUE"), Array("ID"=>$_GET["brand"]));
+    if($ar_enum_list = $db_enum_list->GetNext()) {
+        $NEXT_SMART_FILTER["PROPERTY_BRAND_VALUE"] = $ar_enum_list["VALUE"];
+    }
+}
+?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
 	"main", 

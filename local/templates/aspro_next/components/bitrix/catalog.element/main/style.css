@@ -62,4 +62,8 @@ button.btn-get_discount{
     
     
 }
-
+.back_url{
+    float: right;
+    top: -27px;
+    position: relative;
+}

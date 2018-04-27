@@ -1,5 +1,4 @@
 <?if('Y' == $arParams['USE_FILTER']):?>
-
 	<?$APPLICATION->IncludeComponent(
 		"bitrix:catalog.smart.filter",
 		($arParams["AJAX_FILTER_CATALOG"]=="Y" ? "main_ajax" : "main"),

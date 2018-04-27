@@ -43,7 +43,25 @@ $(document).ready(function(){
 		}
 	});
 })
-
+function getCookie(name) {
+    var cookie = " " + document.cookie;
+    var search = " " + name + "=";
+    var setStr = null;
+    var offset = 0;
+    var end = 0;
+    if (cookie.length > 0) {
+        offset = cookie.indexOf(search);
+        if (offset != -1) {
+            offset += search.length;
+            end = cookie.indexOf(";", offset)
+            if (end == -1) {
+                end = cookie.length;
+            }
+            setStr = unescape(cookie.substring(offset, end));
+        }
+    }
+    return(setStr);
+}
 function JCSmartFilter(ajaxURL, viewMode, params)
 {
 	this.ajaxURL = ajaxURL;
@@ -88,7 +106,7 @@ JCSmartFilter.prototype.click = function(checkbox)
 };
 
 JCSmartFilter.prototype.reload = function(input)
-{
+{   
 	if (this.cacheKey !== '')
 	{
 		//Postprone backend query
@@ -132,14 +150,30 @@ JCSmartFilter.prototype.reload = function(input)
 		var values = [];
 		values[0] = {name: 'ajax', value: 'y'};
 		this.gatherInputsValues(values, BX.findChildren(this.form, {'tag': new RegExp('^(input|select)$', 'i')}, true));
-
-		for (var i = 0; i < values.length; i++)
+        
+		for (var i = 0; i < values.length; i++){
 			this.cacheKey += values[i].name + ':' + values[i].value + '|';
-
+        }
+        
+        if(input.name == 'NEXT_SMART_FILTER_P5_MAX'){  // обходим проблему с работой цены фильтра
+            var count = 0;
+                if(count == 0) {
+                    var e = $.Event("keydown", { keyCode: 9 }); 
+                    $(".max-price").trigger(e);
+                    count++;
+                //    document.cookie = "count_filter="+count;
+                }
+          //   console.log(getCookie('count_filter'));
+        }
+        if(input.name == 'NEXT_SMART_FILTER_P5_MIN'){ // обходим проблему с работой цены фильтра
+            var e = $.Event("keydown", { keyCode: 9 }); 
+            $(".min-price").trigger(e);
+        }
+        
 		if (this.cache[this.cacheKey])
 		{
 			this.curFilterinput = input;
-			this.postHandler(this.cache[this.cacheKey], true);
+			this.postHandler(this.cache[this.cacheKey], true);       
 		}
 		else
 		{
@@ -150,12 +184,14 @@ JCSmartFilter.prototype.reload = function(input)
 			}
 
 			this.curFilterinput = input;
+
 			BX.ajax.loadJSON(
 				this.ajaxURL,
 				this.values2post(values),
 				BX.delegate(this.postHandler, this)
-			);
+			); 
 		}
+        $('#modef_num').show();
 	}
 };
 
@@ -392,15 +428,28 @@ JCSmartFilter.prototype.values2post = function (values)
 	var post = [];
 	var current = post;
 	var i = 0;
-
+    
 	while(i < values.length)
 	{
 		var p = values[i].name.indexOf('[');
 		if(p == -1)
 		{
+
+            if(values[i].name == 'NEXT_SMART_FILTER_P5_MIN'){
+                var min_val = values[i].value;
+            } else if(values[i].name == 'NEXT_SMART_FILTER_P5_MAX'){
+                var max_val = values[i].value;
+            }
+            if(max_val < min_val){
+               if(values[i].name == 'NEXT_SMART_FILTER_P5_MAX'){
+                   // values[i].value = min_val; 
+                }
+            }
+
 			current[values[i].name] = values[i].value;
 			current = post;
 			i++;
+           
 		}
 		else
 		{
@@ -511,7 +560,7 @@ JCSmartFilter.prototype.selectDropDownItem = function(element, controlId)
 		var wrapContainer = BX.findParent(BX(controlId), {className:"bx_filter_select_container"}, false);
 
 		var currentOption = wrapContainer.querySelector('[data-role="currentOption"]');
-
+        
 		currentOption.innerHTML = element.innerHTML;
 		$(element).closest('.bx_filter_select_popup').find('label').removeClass('selected');
 		BX.addClass(element, "selected");

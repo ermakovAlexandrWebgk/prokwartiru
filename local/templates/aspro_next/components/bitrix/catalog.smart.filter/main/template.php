@@ -66,7 +66,7 @@ if($arResult["ITEMS"]){?>
                                                         <?}else{?>
                                                         placeholder="<?=$price6?>"
                                                         <?}?>
-														onkeyup="smartFilter.keyup(this)"
+														onkeydown="smartFilter.keyup(this)"
 													/>
 												</div>
 											</div>
@@ -86,7 +86,7 @@ if($arResult["ITEMS"]){?>
                                                         placeholder="<?=$price7?>"
                                                         <?}?>
                                                         
-														onkeyup="smartFilter.keyup(this)"
+                                                        onkeydown="smartFilter.keyup(this)"
 													/>
 												</div>
 											</div>

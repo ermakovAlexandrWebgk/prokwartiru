@@ -2,9 +2,9 @@
 $aMenuLinks = Array(
 	Array(
 		"Скидки", 
-		"/", 
+		"/discount.php", 
 		Array(), 
-		Array("IMG"=>"/images/-2.png"), 
+		Array("IMG"=>"/images/-10.png"), 
 		"" 
 	),
 	Array(

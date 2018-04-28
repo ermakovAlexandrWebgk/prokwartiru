@@ -330,12 +330,10 @@ $arViewedData = array(
     </div>
     <div class="right_info">
         <div class="info_item">
-             <a href="<?=$_SERVER['HTTP_REFERER']?>" class="back_url"><?=GetMessage('BACK')?></a>
+            <div class="back-button">
+                <a href="<?=$_SERVER['HTTP_REFERER']?>" class="back_url"><?=GetMessage('BACK')?></a>
+            </div>
             <div class="price_txt">
-
-
-
-                <?//=$arResult["PROPERTIES"]["PROPERTY"]["VALUE"]?>
                 <span class="properties-string">
                     <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>  
                     <?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
@@ -347,12 +345,6 @@ $arViewedData = array(
                     <?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
                     <?=$arResult["PROPERTIES"]["COUNTRY_STRING"]?>
                 </span>
-
-
-
-
-
-
             </div>
             <?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>
             <?if($isArticle || $arResult["BRAND_ITEM"] || $arParams["SHOW_RATING"] == "Y" || strlen($arResult["PREVIEW_TEXT"])){?>

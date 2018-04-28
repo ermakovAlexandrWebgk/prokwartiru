@@ -6492,3 +6492,37 @@ color: #ffffff !important;
 .title_block.sm.two{
   margin-left: 35px;  
 }
+.back_url:hover{
+    color:white;
+
+}
+.back_url {
+    float: right;
+    top: -34px;
+    position: relative;
+    background-color: #554e40;
+    border-color: #dc9c1c;
+    color: #ffffff;
+    height: 28px;
+    width: 60px;
+    margin-bottom: px;
+    border-radius: 1px;
+    left: 15px;
+    text-align: center;
+    line-height: 27px;
+}
+.back-button::before{
+    content: '';
+    display: inline-block;
+    left: -58px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-right: 13px solid #554e40;
+    float: right;
+    top: -34px;
+    position: relative;

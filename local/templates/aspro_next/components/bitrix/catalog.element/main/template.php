@@ -333,6 +333,7 @@ $arViewedData = array(
             <div class="back-button">
                 <a href="<?=$_SERVER['HTTP_REFERER']?>" class="back_url"><?=GetMessage('BACK')?></a>
             </div>
+        
             <div class="price_txt">
                 <span class="properties-string">
                     <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>  
@@ -1408,7 +1409,9 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 	false
 );?>
     <?}?>
-   <?$APPLICATION->IncludeComponent(
+</div>
+<?}?>
+<?$APPLICATION->IncludeComponent(
     "aspro:catalog.viewed.next",
     "main_horizontal_you_viewed_block",
     Array(
@@ -1416,8 +1419,5 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
         "TITLE_BLOCK" => "Ранее вы смотрели"
     )
 );?>
-
-</div>
-<?}?>
-<!-- Два слайдера в нижней части карточки (конец) -->
+<!-- Три слайдера в нижней части карточки (конец) -->
 

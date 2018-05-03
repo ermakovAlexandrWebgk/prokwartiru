@@ -627,12 +627,12 @@ if (!strstr($APPLICATION->GetCurDir(), "/filter/") && $enabled_banners) {
                                 ), $component, array("HIDE_ICONS" => $isAjax)
                             );
                     }?>
-<?$section_info = CIBlockSection::GetByID($arResult["VARIABLES"]["SECTION_ID"]);
+<?/*$section_info = CIBlockSection::GetByID($arResult["VARIABLES"]["SECTION_ID"]);
     while ($current_section = $section_info -> Fetch()) {
         if (strlen($current_section["DESCRIPTION"])) {
             echo "<div class='section_desc'>" . $current_section["DESCRIPTION"] . "</div>";
         }
-}?>
+}*/?>
     <?endif;?>
 			    <?if($isAjax=="N"){?>
 				    <?if(!$arSeoItem):?>

@@ -7,9 +7,9 @@ GetMessage('ITEMS_COUNT_3')
 );
 $wordForItems=$yearDeclension->get($arResult["NavRecordCount"]);?>
     <div id="productPageCount" class="items_count">
-        (<?=$arResult["NavRecordCount"]?> <?=$wordForItems?>)
+        <? echo "(" .$arResult["NavRecordCount"].' ' .$wordForItems .")" ?>
     </div>
-  <script>
+<script>
   $( document ).ready( function () {
     var stores = $("#productPageCount");
     $("#replase_productPageCount").replaceWith(stores);

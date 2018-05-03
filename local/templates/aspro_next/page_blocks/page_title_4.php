@@ -4,9 +4,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="page-top-main">
-                          
 						<?=$APPLICATION->ShowViewContent('product_share')?>
-						
                         <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "next", array(
                         "START_FROM" => "0",
                         "PATH" => "",
@@ -15,10 +13,7 @@
                         ),
                         false
                     );?>    
-                        
-                        
-					</div>
-                    			
+					</div>  			
 				</div>
 			</div>
 		</section>

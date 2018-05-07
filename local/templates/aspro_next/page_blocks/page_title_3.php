@@ -16,7 +16,7 @@
                     <h1 id="pagetitle"><?$APPLICATION->ShowTitle(false)?></h1>
                         <?$p1 = "/catalog/";
                         if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
-                            <span style="dislpay:none;" id="replase_productPageCount"></span>
+                            <span style="dislpay:none;" id="replace_productPageCount"></span>
                         <?}?>
                 </div>
         </section>

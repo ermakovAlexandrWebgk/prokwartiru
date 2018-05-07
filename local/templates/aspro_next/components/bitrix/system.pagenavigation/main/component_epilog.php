@@ -12,6 +12,6 @@ $wordForItems=$yearDeclension->get($arResult["NavRecordCount"]);?>
 <script>
   $( document ).ready( function () {
     var stores = $("#productPageCount");
-    $("#replase_productPageCount").replaceWith(stores);
+    $("#replace_productPageCount").replaceWith(stores).remove();
   })
 </script>

@@ -1,0 +1,54 @@
+/*** backgrounds ***/
+/* .button-green */
+.button-20-green * { background-image: url('../buttons/20-green.png') !important; }
+.button-24-green * { background-image: url('../buttons/24-green.png') !important; }
+.button-40-green * { background-image: url('../buttons/40-green.png') !important; }
+
+/* .button-green-forward*/
+.button-20-green-forward * { background-image: url('../buttons/20-green-forward.png') !important; }
+.button-20-green-forward .after { width: 2.2em; }
+.button-24-green-forward * { background-image: url('../buttons/24-green-forward.png') !important; }
+.button-24-green-forward .after { width: 2em; }
+.button-40-green-forward * { background-image: url('../buttons/40-green-forward.png') !important; }
+.button-20-green-forward .after { width: 2.2em; }
+
+/* .button-orange */
+.button-20-orange * { background-image: url('../buttons/20-orange.png') !important; }
+.button-24-orange * { background-image: url('../buttons/24-orange.png') !important; }
+
+/* .button-orange-back */
+.button-20-orange-back * { background-image: url('../buttons/20-orange-back.png') !important; }
+.button-20-orange-back .before { width: 2.3em; }
+.button-24-orange-back * { background-image: url('../buttons/24-orange-back.png' !important); }
+.button-24-orange-back .before { width: 2em; }
+
+/* .button-red */
+.button-20-red * { background-image: url('../buttons/20-red.png') !important; }
+.button-24-red * { background-image: url('../buttons/24-red.png') !important; }
+
+/* .button-blue */
+.button-20-blue * { background-image: url('../buttons/20-blue.png') !important; }
+.button-24-blue * { background-image: url('../buttons/24-blue.png') !important; }
+
+/* disabled */
+.button-20-disabled * { background-image: url('../buttons/20-disabled.png') !important; }
+.button-20-disabled-forward * { background-image: url('../buttons/20-disabled-forward.png') !important; }
+.button-20-disabled-back *{ background-image: url('../buttons/20-disabled-back.png') !important; }
+.button-24-disabled * { background-image: url('../buttons/24-disabled.png') !important; }
+.button-24-disabled-forward * { background-image: url('../buttons/24-disabled-forward.png') !important; }
+.button-24-disabled-back * { background-image: url('../buttons/24-disabled-back.png') !important; } 
+
+/*** cursor ***/
+.button-20-disabled, .button-20-disabled *, .button-20-disabled-forward, .button-20-disabled-forward *, .button-20-disabled-back, .button-20-disabled-back *, .button-24-disabled, .button-24-disabled *, .button-24-disabled-forward, .button-24-disabled-forward *, .button-24-disabled-back, .button-24-disabled-back * {
+	cursor: default;
+}
+
+/*** colors ***/
+.button-20-disabled b, .button-20-disabled-forward b, .button-20-disabled-back b, .button-24-disabled b, .button-24-disabled-forward b, .button-24-disabled-back b {
+	background-color: #b6b6b6 !important;
+	color: #999 !important;
+}
+
+.button-20-disabled .shadow span b, .button-20-disabled-forward .shadow span b, .button-20-disabled-back .shadow span b, .button-24-disabled .shadow span b, .button-24-disabled-forward .shadow span b, .button-24-disabled-back .shadow span b {
+	color: #fff !important;
+}

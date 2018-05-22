@@ -1,0 +1,5 @@
+#left_menu { width: 200px; float: left; font-size: 14px;}
+
+
+#left_menu a {color: #000; text-decoration: none;}
+#left_menu a:hover {color: #000; text-decoration: underline;}

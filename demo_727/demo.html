@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+
+/* Страница */
+html, body {
+  background: #333;
+  overflow: hidden;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* div содрежит тег img с изображением деревянного стола */
+#wooden-table {
+  position: absolute;
+  left: -5000px;
+}
+
+/* Панель для изображений */
+#lighttable {
+  position: relative;
+  width: 800px;
+  height: 450px;
+  background: #eee url(images/wooden-table.jpg);
+  padding: 70px;
+  margin: 0 auto;
+  border: 20px solid #111;
+  display: none;
+}
+
+/* Фотографии */
+#lighttable img {
+  border: 10px solid #fff;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+  -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+#lighttable img:hover {
+  cursor: pointer;
+}
+
+/* Описание сверху страницы */
+
+#description {
+  padding: 10px 10px 5px 10px;
+  background: #111;
+  color: #fff;
+  width: 45em;
+  margin: 0 auto -5px auto;
+  text-align: center;
+}
+
+#description h1 {
+  font-size: 14px;
+}
+
+#description a {
+  color: #bbf;
+}
+
+</style>
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript" src="colorbox/jquery.colorbox-min.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="colorbox/colorbox.css" />
+
+<script type="text/javascript">
+
+var newImageZIndex = 1;  // Для того, чтобы только что загруженное изображение размещалось самым верхним на столе
+var loaded = false;      // Используется для предотвращения  запуска initPhotos() дважды
+
+// Когда документ загружен, инициализируем стол!
+$( init );
+
+// Когда загружено изображение стола, запускаем размещение изображений
+function init() {
+  var woodenTable = $('#wooden-table img');
+  woodenTable.load( initPhotos );
+
+  // Код для браузеров, которые не запускают события загрузки для кешированных изображений
+  if ( woodenTable.get(0).complete ) $(woodenTable).trigger("load");
+}
+
+// Устанавливаем каждую фотографию на столе
+
+function initPhotos() {
+
+  // (Убеждаемся, что функция не запущена дважды)
+  if ( loaded ) return;
+  loaded = true;
+
+  // Изображение стола загружено
+  $('#lighttable').fadeIn('fast');
+
+  // Обрабатываем каждую фотографию ...
+  $('#lighttable img').each( function(index) {
+
+    // Устанавливаем случайное положение и угол поворота для фотографии
+    var left = Math.floor( Math.random() * 450 + 100 );
+    var top = Math.floor( Math.random() * 100 + 100 );
+    var angle = Math.floor( Math.random() * 60 - 30 );
+    $(this).css( 'left', left+'px' );
+    $(this).css( 'top', top+'px' );
+    $(this).css( 'transform', 'rotate(' + angle + 'deg)' );   
+    $(this).css( '-moz-transform', 'rotate(' + angle + 'deg)' );   
+    $(this).css( '-webkit-transform', 'rotate(' + angle + 'deg)' );
+    $(this).css( '-o-transform', 'rotate(' + angle + 'deg)' );
+
+    // Делаем фотографию перемещаемой
+    $(this).draggable( { containment: 'parent', stack: '#lighttable img', cursor: 'pointer' } );
+
+	// Вызываем лайтбокс, когда на фотографии нажимают кнопку мыши
+    addLightbox(this);
+
+    // Прячем фотографию в случае если она еще не загружена до конца
+    $(this).hide();
+
+    // После окончания загрузки изображения...
+    $(this).load( function() {
+
+      // (Убеждаемся, что функция не запущена дважды)
+      if ( $(this).data('loaded') ) return;
+      $(this).data('loaded', true);
+
+      // Записываем реальные размеры изображения
+      var imgWidth = $(this).width();
+      var imgHeight = $(this).height();
+
+      // Делаем фотографию больше, так что она будет выглядеть значительно больше стола
+      $(this).css( 'width', imgWidth * 1.5 );
+      $(this).css( 'height', imgHeight * 1.5 );
+
+      // Делаем ее полностью прозрачной
+      $(this).css( 'opacity', 0 );
+
+      // Устанавливаем z-index больше, чем у фотографий, уже размещенных на столе
+      $(this).css( 'z-index', newImageZIndex++ );
+
+      // Постепенно уменьшаем размеры фотографии до нормальных размеров и одновременно уменьшаем ее прозрачность
+      $(this).animate( { width: imgWidth, height: imgHeight, opacity: .95 }, 1200 );
+    } );
+
+    // Код для браузеров, которые не запускают события загрузки для кешированных изображений
+    if ( this.complete ) $(this).trigger("load");
+
+  });
+}
+
+function addLightbox( image ) {
+  var imageFile = $(image).attr('src');
+  imageFile = imageFile.replace ( /^slides\//, "" )
+  var imageCaption = $(image).attr('alt');
+  $(image).colorbox( { href:'slides-big/'+imageFile, maxWidth: "900px", maxHeight: "600px", title: imageCaption } );
+}
+
+
+</script>
+
+</head>
+<body>
+
+  <div id="wooden-table"><img src="images/wooden-table.jpg" alt="Изображение деревянного стола" /></div>
+
+  <div id="description">
+    <h1>Кухонный стол | <span style="font-weight: normal;">Галерея с перемещаемыми фотографиями. Используется CSS3 и jQuery | © Elated.com | Перевод RUSELLER.COM</span></h1>
+  </div>
+
+  <div id="lighttable">
+    <img src="slides/bird-marking.jpg" alt="Bird Marking" />
+    <img src="slides/double-propellors.jpg" alt="Double Propellors" />
+    <img src="slides/moody-listener-satellite-dish.jpg" alt="Moody Listener Satellite Dish" />
+    <img src="slides/orange-hatches.jpg" alt="Orange Hatches" />
+    <img src="slides/plane-nose-closeup.jpg" alt="Plane Nose Closeup" />
+  </div>
+
+</body>
+</html>
+

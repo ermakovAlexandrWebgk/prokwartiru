@@ -340,7 +340,7 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
                         <? $URL = explode('/',$APPLICATION->GetCurDir() );?>
                         <?if (count($URL) == 4) {?>
                             <a href="/catalog/<?=$arResult["VARIABLES"]["SECTION_CODE"].'/collections_'.$arResult["VARIABLES"]["SECTION_CODE"]?>/">
-                                <div class="bx_filter_parameters_box">По колекциям</div>
+                                <div class="bx_filter_parameters_box">По коллекциям</div>
                             </a>
                         <?}else{?>
                             <a href="/catalog/<?=$URL[2]?>/">

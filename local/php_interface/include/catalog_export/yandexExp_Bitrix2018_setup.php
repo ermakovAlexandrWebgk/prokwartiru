@@ -62,7 +62,6 @@ if (($ACTION == 'EXPORT_EDIT' || $ACTION == 'EXPORT_COPY') && $STEP == 1)
 
 if ($STEP > 1)
 {
-    $IBLOCK_ID = 77;
     $IBLOCK_ID = (int)$IBLOCK_ID;
     $rsIBlocks = CIBlock::GetByID($IBLOCK_ID);
     if ($IBLOCK_ID <= 0 || !($arIBlock = $rsIBlocks->Fetch()))

@@ -51,25 +51,22 @@
 
         if($section[$arParams["SECTION_DISPLAY_PROPERTY"]]){
             
-            /*
+            
             //кеширование запроса списка свойств
             $arSection["DISPLAY"] = array();
             $cache = new CPHPCache();
             if ($cache->InitCache(36000000, "IBLOCK_CATALOG_SECTION_PROPS_" . $arSection["ID"], "/work_catalog")) {
                 $data = $cache->GetVars();
                 $arSection["DISPLAY"] = $data['result'];
-                return false; 
-            } elseif ($cache->StartDataCache()) {   
-            */ 
+            } elseif ($cache->StartDataCache()) {                  
                 
                 $arDisplayRes = CUserFieldEnum::GetList(array(), array("ID" => $section[$arParams["SECTION_DISPLAY_PROPERTY"]]));
                 if($arDisplay = $arDisplayRes->GetNext()){
                     $arSection["DISPLAY"] = $arDisplay["XML_ID"];
                 } 
-             /*
                 $cache->EndDataCache(array("result" => $arSection["DISPLAY"])); // записываем в кеш  
             }  
-            */
+            
             
         }
 

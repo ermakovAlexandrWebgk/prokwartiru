@@ -632,13 +632,12 @@
 
 
     //кешируем информацию о товарах
-    /*
+    
     $cache = new CPHPCache();
     if ($cache->InitCache(36000000, "IBLOCK_CATALOG_SECTION_ITEMS_" . $arResult["ID"], "/work_catalog")) {
     $data = $cache->GetVars();
     $arResult["ITEM_PROPS_INFO"] = $data['result'];
-    return false; 
-    } elseif ($cache->StartDataCache()) {   */ 
+    } elseif ($cache->StartDataCache()) {    
 
     //собираем информацию о разделах-родителях элементов
     $sectionList = array();
@@ -682,8 +681,7 @@
             }
         }
     }
-    /*
     $cache->EndDataCache(array("result" => $arResult["ITEM_PROPS_INFO"])); // записываем в кеш  
     }  
-    */
+    
 ?>

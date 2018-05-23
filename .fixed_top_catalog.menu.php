@@ -3,7 +3,7 @@ $aMenuLinks = $APPLICATION->IncludeComponent(
     "bitrix:menu.sections", "",
     Array(
         "IBLOCK_TYPE" => "catalog",
-        "IBLOCK_ID" => "70",
+        "IBLOCK_ID" => "77",
         //"DEPTH_LEVEL" => $arTheme["MAX_DEPTH_MENU"]["VALUE"],
         "DEPTH_LEVEL" => "2", 
         "MENU_CACHE_TIME" => "3600000",

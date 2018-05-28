@@ -631,10 +631,11 @@
     } 
 
 
-    //кешируем информацию о товарах
-    
+    //кешируем информацию о товарах    
     $cache = new CPHPCache();
-    if ($cache->InitCache(36000000, "IBLOCK_CATALOG_SECTION_ITEMS_" . $arResult["ID"], "/work_catalog")) {
+    $cacheKey = "IBLOCK_CATALOG_SECTION_ITEMS_" . $arResult["ORIGINAL_PARAMETERS"]["CURRENT_BASE_PAGE"] . intval($_REQUEST["PAGEN_1"]);
+   
+    if ($cache->InitCache(36000000, $cacheKey, "/work_catalog")) {
     $data = $cache->GetVars();
     $arResult["ITEM_PROPS_INFO"] = $data['result'];
     } elseif ($cache->StartDataCache()) {    

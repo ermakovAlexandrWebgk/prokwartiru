@@ -630,11 +630,18 @@
         }
     } 
 
+    $itemsIds = array();
+    foreach ($arResult["ITEMS"] as $item) {
+        $itemsIds[$item["ID"]] = $item["ID"];   
+    }
+    
+    ksort($itemsIds);
+    $itemsHash = md5(json_encode($itemsIds));
 
     //кешируем информацию о товарах    
     $cache = new CPHPCache();
-    $cacheKey = "IBLOCK_CATALOG_SECTION_ITEMS_" . $arResult["ORIGINAL_PARAMETERS"]["CURRENT_BASE_PAGE"] . intval($_REQUEST["PAGEN_1"]);
-   
+    //$cacheKey = "IBLOCK_CATALOG_SECTION_ITEMS_" . $arResult["ORIGINAL_PARAMETERS"]["CURRENT_BASE_PAGE"] . intval($_REQUEST["PAGEN_1"]);
+    $cacheKey = "IBLOCK_CATALOG_SECTION_ITEMS_" . $itemsHash;
     if ($cache->InitCache(36000000, $cacheKey, "/work_catalog")) {
     $data = $cache->GetVars();
     $arResult["ITEM_PROPS_INFO"] = $data['result'];

@@ -4,7 +4,42 @@ $aMenuLinks = Array(
 		"Акции", 
 		"/sale/", 
 		Array(), 
-		Array("CLASS" => "icon sale_icon"), 
+		Array("CLASS"=>"icon sale_icon"), 
+		"" 
+	),
+	Array(
+		"Обои", 
+		"/catalog/oboi/collections_oboi/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Плитка", 
+		"/catalog/plitka/collections_plitka/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Ламинат", 
+		"/catalog/floor/collections_floor/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Лепнина", 
+		"/catalog/lepnina/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Шторы", 
+		"/catalog/curtains/", 
+		Array(), 
+		Array(), 
 		"" 
 	)
 );

@@ -78,5 +78,24 @@
 
         return $result;
 
-    }       
+    }              
+    
+    //Добавление в административном разделе пункта меню "массовое обновление цен"
+    AddEventHandler("main", "OnBuildGlobalMenu", "extraMenu");
+    function extraMenu(&$adminMenu, &$moduleMenu) {
+        
+        //страница экспорта заказов в "accordpost"
+        $moduleMenu[] = array(
+            "parent_menu" => "global_menu_store",
+            "section" => "price_update",
+            "sort" => 10,
+            "url" => "price_update.php",
+            "text" => 'Массовое обновление цен',
+            "title" => 'Массовое обновление цен',
+            "icon" => "form_menu_icon",
+            "page_icon" => "form_page_icon",
+            "items_id" => "price_update",
+            "items" => array()
+        );
+    } 
 ?>

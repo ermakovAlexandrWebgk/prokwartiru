@@ -15,12 +15,12 @@ foreach($arResult as $arItem):?>
 
 		<?if ($arItem["DEPTH_LEVEL"] == 1):?>
         <div class="menu_item"> <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
-			<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a>
+			<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>"  target="_blank"><?=$arItem["TEXT"]?></a>
             </div>
 				<ul>
 		<?else:?>
         <div class="menu_item"> <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
-			<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>" class="parent"><?=$arItem["TEXT"]?></a>
+			<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>" class="parent" target="_blank"><?=$arItem["TEXT"]?></a>
             </div> 
 				<ul>                      
 		<?endif?>
@@ -32,11 +32,11 @@ foreach($arResult as $arItem):?>
 
 			<?if ($arItem["DEPTH_LEVEL"] == 1):?>
              <div class="menu_item"> <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
-				<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a></li>
+				<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>"  target="_blank"><?=$arItem["TEXT"]?></a></li>
                 </div>
 			<?else:?>
              <div class="menu_item"> <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
-				<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a></li>
+				<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>"  target="_blank"><?=$arItem["TEXT"]?></a></li>
                 </div>
 			<?endif?>
 

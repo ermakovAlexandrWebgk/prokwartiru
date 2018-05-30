@@ -24,20 +24,20 @@
     
     
     $cache = new CPHPCache();
-    if ($cache->InitCache(36000000, "IBLOCK_CATALOG_PROPS_" . $arParams["IBLOCK_ID"], "/work_catalog")) {
+   /* if ($cache->InitCache(36000000, "IBLOCK_CATALOG_PROPS_" . $arParams["IBLOCK_ID"], "/work_catalog")) {
         $data = $cache->GetVars();
         $arIblockProps = $data['result'];
     } elseif ($cache->StartDataCache()) {
-       
+    */
         $res = CIBlock::GetProperties($arParams["IBLOCK_ID"], array(), array());
         while ($arRes = $res -> Fetch()) {
             if (in_array($arRes["ID"], $arItemsProps)) {
                 $arIblockProps[$arRes["ID"]] = $arRes["SORT"];
             }
         }  
-        $cache->EndDataCache(array("result" => $arIblockProps)); // записываем в кеш  
+        /*$cache->EndDataCache(array("result" => $arIblockProps)); // записываем в кеш  
     }                                              
-    
+    */
 
     global $sotbitFilterResult;
     $sotbitFilterResult = $arResult;

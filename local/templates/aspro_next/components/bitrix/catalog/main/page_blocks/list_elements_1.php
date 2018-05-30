@@ -337,13 +337,15 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
                         <!--<div class="bx_filter_parameters_box active title">
                             <div class="bx_filter_parameters_box_title">Вывод товаров</div>
                         </div>-->
-                        <? $URL = $APPLICATION->GetCurDir();?>
+                        <? $URL = $APPLICATION->GetCurDir();
+                           $urlItems = explode("/", $URL);
+                        ?>
                         <?if (!substr_count($URL, "collections_")) {?>
                             <a href="/catalog/<?=$arResult["VARIABLES"]["SECTION_CODE"].'/collections_'.$arResult["VARIABLES"]["SECTION_CODE"]?>/">
                                 <div class="bx_filter_parameters_box">По коллекциям</div>
                             </a>
                         <?}else{?>
-                            <a href="/catalog/<?=$URL[2]?>/">
+                            <a href="/catalog/<?=$urlItems[2]?>/">
                                 <div class="bx_filter_parameters_box">По артикулам</div>
                             </a>
                         <?}?>

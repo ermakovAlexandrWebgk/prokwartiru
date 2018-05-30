@@ -9,7 +9,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Обои", 
-		"/catalog/oboi/collections_oboi/", 
+		"/catalog/oboi/", 
 		Array(), 
 		Array(), 
 		"" 

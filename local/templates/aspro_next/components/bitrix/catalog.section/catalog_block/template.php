@@ -107,7 +107,7 @@
 									<?$prop = ($arParams["STIKERS_PROP"] ? $arParams["STIKERS_PROP"] : "HIT");?>
 									<?if (is_array($arItem["PROPERTIES"][$prop]["VALUE_XML_ID"])):?>
 										<?foreach($arItem["PROPERTIES"][$prop]["VALUE_XML_ID"] as $key=>$class){?>
-											<div><div class="sticker_<?=CUtil::translit($arItem["PROPERTIES"][$prop]["VALUE"][$key], "ru");?>"><?=$arItem["PROPERTIES"][$prop]["VALUE"][$key]?></div></div>
+											<div><div class="sticker_<?=$arItem["PROPERTIES"][$prop]["VALUE_XML_ID"][$key];?>"><?=$arItem["PROPERTIES"][$prop]["VALUE"][$key]?></div></div>
 										<?}?>
 									<?endif;?>
 									<?if($arParams["SALE_STIKER"] && $arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>

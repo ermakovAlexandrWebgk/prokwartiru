@@ -341,7 +341,7 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
                            $urlItems = explode("/", $URL);
                         ?>
                         <?if (!substr_count($URL, "collections_")) {?>
-                            <a href="/catalog/<?=$arResult["VARIABLES"]["SECTION_CODE"].'/collections_'.$arResult["VARIABLES"]["SECTION_CODE"]?>/">
+                            <a href="/catalog/<?=$urlItems[2].'/collections_'.$urlItems[2]?>/">
                                 <div class="bx_filter_parameters_box">По коллекциям</div>
                             </a>
                         <?}else{?>

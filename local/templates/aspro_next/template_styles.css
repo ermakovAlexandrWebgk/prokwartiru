@@ -2160,9 +2160,18 @@ body .tabs_slider .catalog_item:hover .inner_wrap {border-color:#fff;box-shadow:
 
 .stickers *{text-align:left;}
 .stickers .sticker_sale_text{background-image:none;background-color:#e52929;display:inline-block;color:#fff;width: auto;font-size: 10px;line-height: 12px;position:relative;box-sizing: border-box;}
-.stickers .sticker_hit, .stickers .sticker_khit{background-color:#2992d9;}
+.stickers .sticker_hit, .stickers .sticker_khit{background-color:#33CC33;}
 .stickers .sticker_stock, .stickers .sticker_aktsiya{background-color:#ffc438;color: #1d2029;}
 .stickers .sticker_recommend, .stickers .sticker_sovetuem{background-color:#893ca9;}
+.stickers .sticker_novinka {background-color:#F58220;}
+.stickers .sticker_sale {background-color:#FF0000;}
+/*новые шильдики*/
+.stickers .sticker_HIT {background-color:#7455FF;}
+.stickers .sticker_NEW {background-color:#F58220;}
+.stickers .sticker_BESTPRICE {background-color:#ffce0c;}
+.stickers .sticker_SHOW {background-color:#4fad00;}
+.stickers .sticker_STOCK {background-color:#FF0000;}
+.stickers .sticker_PREMIUM {background-color:#00CCF0;}
 
 .item .stickers{left: 0px;}
 .display_list .item .stickers{top: 5px;left: 3px;}

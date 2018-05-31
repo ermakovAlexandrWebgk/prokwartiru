@@ -637,7 +637,7 @@
     
     ksort($itemsIds);
     $itemsHash = md5(json_encode($itemsIds));
-
+   
     //кешируем информацию о товарах    
     $cache = new CPHPCache();
     //$cacheKey = "IBLOCK_CATALOG_SECTION_ITEMS_" . $arResult["ORIGINAL_PARAMETERS"]["CURRENT_BASE_PAGE"] . intval($_REQUEST["PAGEN_1"]);
@@ -653,18 +653,41 @@
     foreach ($arResult["ITEMS"] as $arItem) {
         $sectionId[$arItem["~IBLOCK_SECTION_ID"]] = $arItem["~IBLOCK_SECTION_ID"];    
     }
+    
+    //значения свойства "стикеры" 
+    $stickerList = array();
+    $stickers = CUserFieldEnum::GetList(array(), array("USER_FIELD_ID" => 308));
+    while ($arSticker = $stickers->Fetch()) {
+        $stickerList[$arSticker["ID"]] = $arSticker;
+    }
+    
 
-    $rsSection = CIBlockSection::GetList(array(), array("ID" => $sectionId), false, array("NAME", "ID"));
+    $rsSection = CIBlockSection::GetList(array(), array("ID" => $sectionId, "IBLOCK_ID" => $arParams['IBLOCK_ID']), false, array("NAME", "ID", "UF_*"));
     while($arSection = $rsSection->Fetch()) {
+        if($arSection["UF_STICKERS"]) {
+            foreach ($arSection["UF_STICKERS"] as $value) {
+                $arSection["STICKERS_LIST"][] = $stickerList[$value];
+            }
+        }
         $sectionList[$arSection["ID"]] = $arSection;    
-    }    
-
-    foreach ($arResult["ITEMS"] as $arItem) {
+    }       
+    
+    
+    foreach ($arResult["ITEMS"] as $i => $arItem) {
         $arResult["ITEM_PROPS_INFO"][$arItem["ID"]] = array();
         $arSelect = array("ID", "IBLOCK_SECTION_ID", "PROPERTY_BRAND_VALUE", "PROPERTY_SIZE", "PROPERTY_COUNTRY");                    
 
         $item_info = CIBlockElement::GetList (array(), array("ID" => $arItem["ID"]), false, false, $arSelect);
         while ($item_props_info = $item_info -> Fetch()) {
+            
+            if ($sectionList[$item_props_info["IBLOCK_SECTION_ID"]]["STICKERS_LIST"]) {
+                unset($arResult["ITEMS"][$i]["PROPERTIES"][$arParams["STIKERS_PROP"]]["VALUE_XML_ID"]);
+                unset($arResult["ITEMS"][$i]["PROPERTIES"][$arParams["STIKERS_PROP"]]["VALUE"]);
+                foreach ($sectionList[$item_props_info["IBLOCK_SECTION_ID"]]["STICKERS_LIST"] as $sticker) {    
+                    $arResult["ITEMS"][$i]["PROPERTIES"][$arParams["STIKERS_PROP"]]["VALUE_XML_ID"][] = $sticker["XML_ID"];    
+                    $arResult["ITEMS"][$i]["PROPERTIES"][$arParams["STIKERS_PROP"]]["VALUE"][] = $sticker["VALUE"];    
+                }
+            }
 
             if (strlen($item_props_info["PROPERTY_SIZE_VALUE"])) {
                 $arResult["ITEM_PROPS_INFO"][$arItem["ID"]][] = "Размер: " . $item_props_info["PROPERTY_SIZE_VALUE"];

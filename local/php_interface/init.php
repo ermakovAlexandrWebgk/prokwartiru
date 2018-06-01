@@ -1,8 +1,18 @@
 <? 
-/************** NEW ****************/
+    /************** NEW ****************/
+
+    CModule::includeModule("iblock");
+    CModule::includeModule("sale");
+    CModule::includeModule("catalog");
+
+    define("WORK_CATALOG_ID", 77); //ID рабочего каталога
 
     if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/config.php")) {
         include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/config.php");
+    }
+    
+    if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/collections_handlers.php")) {
+        include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/collections_handlers.php");
     }
 
     AddEventHandler("currency", "CurrencyFormat", "myFormat");
@@ -79,11 +89,11 @@
         return $result;
 
     }              
-    
+
     //ƒобавление в административном разделе пункта меню "массовое обновление цен"
     AddEventHandler("main", "OnBuildGlobalMenu", "extraMenu");
     function extraMenu(&$adminMenu, &$moduleMenu) {
-        
+
         //страница экспорта заказов в "accordpost"
         $moduleMenu[] = array(
             "parent_menu" => "global_menu_store",
@@ -98,4 +108,6 @@
             "items" => array()
         );
     } 
+
+   
 ?>

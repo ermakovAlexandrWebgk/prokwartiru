@@ -283,6 +283,7 @@ endif;?>
 	<?elseif(count($arResult["SEARCH"])>0):?>
 		<?if($arParams["DISPLAY_TOP_PAGER"] != "N") echo $arResult["NAV_STRING"]?>
 		<?foreach($arResult["SEARCH"] as $arItem):?>
+        
 			<div class="search-item">
 				<h4><a href="<?echo $arItem["URL"]?>"><?echo $arItem["TITLE_FORMATED"]?></a></h4>
 				<div class="search-preview"><?echo $arItem["BODY_FORMATED"]?></div>

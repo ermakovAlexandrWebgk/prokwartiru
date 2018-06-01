@@ -311,7 +311,7 @@
 									<?}?>
 								</div>
 								<div style="font-size: 12px;">
-                                    <?if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
+                                    <?if (strstr($APPLICATION->GetCurDir(), $p1) || ($_GET['q'])) {?>
                                         <span><?=GetMessage('BRAND')?> <?=$arItem["PROPERTIES"]["BRAND"]["VALUE"]?></span><br>
                                         <span><?=GetMessage('COUNTRY')?> <?=$arItem["PROPERTIES"]["COUNTRY"]["VALUE"]?></span><br>
                                     <?}else{?>

@@ -231,6 +231,7 @@ if (is_array($arElements) && !empty($arElements))
 				),
 				$arResult["THEME_COMPONENT"]
 			);?>
+
 		</div>
 	</div>
 <?}else{

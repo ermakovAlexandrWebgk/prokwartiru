@@ -13,6 +13,7 @@
 						<div style="clear:both;"></div>
 					</div>
 				</div>
+               
 			<?elseif(isset($arResult["ELEMENTS"][$arItem["ITEM_ID"]])):
 				$arElement = $arResult["ELEMENTS"][$arItem["ITEM_ID"]];?>
 				<a class="bx_item_block" href="<?=$arItem["URL"]?>">

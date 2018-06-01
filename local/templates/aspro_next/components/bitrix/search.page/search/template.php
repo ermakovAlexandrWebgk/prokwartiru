@@ -1,5 +1,6 @@
 <?if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();?>
 <div class="search-page-wrap">
+
 	<div class="searchinput">
 		<form action="" method="get">
 			<div class="form-control">
@@ -133,6 +134,7 @@
 		<?if($arParams["DISPLAY_BOTTOM_PAGER"] != "N") echo $arResult["NAV_STRING"]?>
 		<br />
 		<p>
+    
 		<?if($arResult["REQUEST"]["HOW"]=="d"):?>
 			<a href="<?=$arResult["URL"]?>&amp;how=r<?=$arResult["REQUEST"]["FROM"]? '&amp;from='.$arResult["REQUEST"]["FROM"]: ''?><?=$arResult["REQUEST"]["TO"]? '&amp;to='.$arResult["REQUEST"]["TO"]: ''?>"><?=GetMessage("SEARCH_SORT_BY_RANK")?></a>&nbsp;|&nbsp;<b><?=GetMessage("SEARCH_SORTED_BY_DATE")?></b>
 		<?else:?>

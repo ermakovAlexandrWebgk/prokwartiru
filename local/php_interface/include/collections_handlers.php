@@ -58,8 +58,8 @@
         function checkProduct(&$arFields) {
             $itemData = CIBlockElement::getList(array(), array("ID" => $arFields["ID"]), false, false, array("IBLOCK_SECTION_ID"))->GetNext();
             //тригерим событие обновление раздела-родителя товара, чтобы перенести нужную информацию в псевдотовары
-            $arFields = array("ID" => $itemData["IBLOCK_SECTION_ID"]);
-            CollectionsHandlers::checkSectionOnUpdate($arFields);    
+            $arSection = array("ID" => $itemData["IBLOCK_SECTION_ID"]);
+            CollectionsHandlers::checkSectionOnUpdate($arSection);    
         }   
 
 

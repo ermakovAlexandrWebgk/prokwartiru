@@ -107,7 +107,101 @@
             "items_id" => "price_update",
             "items" => array()
         );
-    } 
+    }
+     AddEventHandler("iblock", "OnAfterIBlockElementUpdate", "setPropertyRooms");
+    function setPropertyRooms(&$arFields)
+    {
 
-   
+       // $arSelect = Array("ID", "IBLOCK_ID"); // то же самое для пустого апдейта, только через гет лист.
+        $arFilter = Array("ID" => $arFields["ID"]);
+        $itemInfo = CIBlockElement::GetByID($arFields["ID"]);
+        $arItem = $itemInfo->Fetch();
+        if($arItem["IBLOCK_ID"] == WORK_CATALOG_ID && $arFields["ID"] > 0 ){ 
+           
+       
+        $arPictureToRoom = array(       
+        "2666"=> array(3379, 3380, 3382, 3385, 3386),
+        "2667"=> array(3379, 3380, 3383, 3385, 3386),
+        "2668"=> array(3380, 3382, 3384, 3385, 3386,3387),
+        "2669"=> array(3379, 3380, 3382, 3384, 3385, 3386,3387),
+        "2670"=> array(3380, 3381, 3383, 3385, 3386,3387),
+        "2671"=> array(3379, 3380, 3381, 3383, 3385,3387),
+        "2672"=> array(3380, 3381, 3383, 3385,3387),
+        "2673"=> array(3380, 3381, 3385,3387),
+        "2674"=> array(3380, 3381, 3385,3387),
+        "2675"=> array(3379, 3380, 3382, 3384,3385,3386,3387),
+        "2676"=> array(3379, 3380, 3381, 3382,3383,3384,3385,3386,3387),
+        "2677"=> array(3379, 3380, 3382,3384,3385,3386,3387),
+        "2678"=> array(3379, 3380, 3382,3384, 3385, 3387),
+        "2679"=> array(3379, 3380, 3381, 3383, 3385, 3387),
+        "2680"=> array(3380, 3381, 3383, 3385, 3387),
+        "2681"=> array(3379, 3380, 3381, 3383, 3385, 3387),
+        "2682"=> array(3380, 3381, 3383, 3384, 3385, 3387),
+        "2683"=> array(3380, 3385, 3386, 3387),
+        "2684"=> array(3380, 3385, 3386,),
+        "2685"=> array(3380, 3384, 3385, 3386, 3387),
+        "2686"=> array(3379, 3380),
+        "2687"=> array(3380, 3386, 3387),
+        "2688"=> array(3379, 3380, 3381,3383, 3385,),
+        "2689"=> array(3380, 3385, 3387),
+        "2690"=> array(3379, 3380, 3381, 3382, 3383, 3384, 3385, 3386, 3387),
+        "2704"=> array(3379, 3384),
+        "2705"=> array(3379, 3384),
+    );
+            if(isset($arFields["PROPERTY_VALUES"][959])){ 
+
+                $arItemPictureRoom = array();
+                foreach($arFields["PROPERTY_VALUES"][959] as $designId){
+                    $arItemPictureRoom[] = $arPictureToRoom[$designId["VALUE"]]; //собираем ID всех свойств типа "рисуок", которые необходимо будет проставить обновляемому элементу
+
+                }
+            }
+            if(isset($arFields["PROPERTY_VALUES"][962])){
+
+                foreach($arFields["PROPERTY_VALUES"][962] as $materialId){    //собираем ID всех свойств типа "материал", которые необходимо будет проставить обновляемому элементу
+                    $arItemPictureRoom[] = $arPictureToRoom[$materialId["VALUE"]];
+
+                }
+
+
+            }
+            if(empty($arFields["PROPERTY_VALUES"][959]) && empty($arFields["PROPERTY_VALUES"][962])){
+                $arSelect = Array("ID", "PROPERTY_DESIGN_OBOI", "PROPERTY_MATERIAL"); // то же самое для пустого апдейта, только через гет лист.
+                $arFilter = Array("IBLOCK_ID"=>WORK_CATALOG_ID, "ID" => $arFields["ID"]);
+                $propertiesArr = array();
+                $res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
+                $arr = array();
+                while($ob = $res->Fetch()){
+                    if(!empty($ob["PROPERTY_DESIGN_OBOI_ENUM_ID"])){
+                        $arr[] = $ob["PROPERTY_DESIGN_OBOI_ENUM_ID"];
+
+
+                    }
+                    if(!empty($ob["PROPERTY_MATERIAL_ENUM_ID"])){
+                        $arr[] = $ob["PROPERTY_MATERIAL_ENUM_ID"];
+                    }
+                }
+
+                $arItemPictureRoom = array();
+                foreach ($arr as $value){
+                    $arItemPictureRoom[] = $arPictureToRoom[$value];
+                }
+
+
+            }
+            $newArr = array();
+            foreach($arItemPictureRoom as $arrPropsId){
+                foreach ($arrPropsId as $propId){
+                    if(!in_array($propId,$newArr)){
+                        $newArr[] = $propId;
+                    }
+                }
+            }
+           
+            $PROPERTY_CODE = "ROOM"; 
+            $PROPERTY_VALUE = $newArr; 
+            CIBlockElement::SetPropertyValuesEx($arFields["ID"], false, array($PROPERTY_CODE => $PROPERTY_VALUE));
+
+        }
+    }
 ?>

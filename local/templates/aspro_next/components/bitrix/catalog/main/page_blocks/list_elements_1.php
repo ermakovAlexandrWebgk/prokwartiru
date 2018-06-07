@@ -530,8 +530,18 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
                     // } else {
                     //     $arParams['FILTER_NAME'] = $arParams['FILTER_NAME'];
                     // }
-                  
-                        if ((!$_REQUEST["view_by_collections"] && !$_SESSION["view_by_collections"]) || $sect_depth_level > 2) {
+                  ?>
+
+
+<?
+$currentDir = $APPLICATION->GetCurDir();
+if(!strstr($currentDir,'collections' )){
+$GLOBALS[$arParams['FILTER_NAME']]["!IBLOCK_SECTION_ID"] = array(37441, 37442, 37443, 37444, 37289, 37445);
+}
+?>
+
+
+                      <?  
                             $APPLICATION->IncludeComponent(
                                 "bitrix:catalog.section",
                                 'catalog_block',//$template,
@@ -549,7 +559,6 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
                                     "ELEMENT_SORT_ORDER" => $sort_order,
                                     "ELEMENT_SORT_FIELD2" => $alternative_sort,
                                     "ELEMENT_SORT_ORDER2" => $arParams["ELEMENT_SORT_ORDER2"],
-                                    // "FILTER_NAME" => $filter_name,
                                     "FILTER_NAME" => $arParams['FILTER_NAME'],
                                     "INCLUDE_SUBSECTIONS" => $arParams["INCLUDE_SUBSECTIONS"],
                                     "PAGE_ELEMENT_COUNT" => $show,
@@ -647,7 +656,7 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
                                     "SHOW_RATING" => $arParams["SHOW_RATING"],
                                 ), $component, array("HIDE_ICONS" => $isAjax)
                             );
-                    }?>
+                    ?>
 <?/*$section_info = CIBlockSection::GetByID($arResult["VARIABLES"]["SECTION_ID"]);
     while ($current_section = $section_info -> Fetch()) {
         if (strlen($current_section["DESCRIPTION"])) {

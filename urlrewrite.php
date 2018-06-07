@@ -160,7 +160,7 @@ $arUrlRewrite=array (
     'PATH' => '/advices/index.php',
     'SORT' => 100,
   ),
-  20 => 
+  26 => 
   array (
     'CONDITION' => '#^/catalog/#',
     'RULE' => '',

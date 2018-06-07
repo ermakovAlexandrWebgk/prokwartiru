@@ -21,6 +21,7 @@ if (CModule::IncludeModule("catalog"))
 {
 	$rsCatalog = CCatalog::GetList(array(
 		"sort" => "asc",
+        "SECTION_ID"
 	));
 	while ($ar = $rsCatalog->Fetch())
 	{

@@ -1,4 +1,6 @@
-<? $this_sect_info = CIBlockSection::GetByID($arResult["VARIABLES"]["SECTION_ID"]);
+<? 
+
+$this_sect_info = CIBlockSection::GetByID($arResult["VARIABLES"]["SECTION_ID"]);
     while ($this_sect = $this_sect_info -> Fetch()) {
         $sect_depth_level = $this_sect["DEPTH_LEVEL"];
     }
@@ -22,7 +24,7 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
     $enabled_banners = false;
 }
 
-<?
+
 $arSeoLn = GetSeoLinks($arResult["VARIABLES"]["SECTION_ID"]);
 
 foreach($arSeoLn as $seoLn)
@@ -324,6 +326,13 @@ foreach($arSeoLn as $seoLn)
 			<?if($isAjax=="N"){?>
 				<div class="ajax_load <?=$display;?>">
 			<?}?>
+  <?
+if(substr($curDir) != 'collections'){
+$GLOBALS[$arParams['FILTER_NAME']]["!IBLOCK_SECTION_ID"] = array(37441, 37442, 37443, 37444, 37289, 37445);
+}
+?>
+          
+
 				<?$APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
 					'catalog_block',//$template,
@@ -341,7 +350,7 @@ foreach($arSeoLn as $seoLn)
 						"ELEMENT_SORT_ORDER" => $sort_order,
 						"ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD2"],
 						"ELEMENT_SORT_ORDER2" => $arParams["ELEMENT_SORT_ORDER2"],
-						"FILTER_NAME" => $arParams["FILTER_NAME"],
+						"FILTER_NAME" => $arParams['FILTER_NAME'],
 						"INCLUDE_SUBSECTIONS" => $arParams["INCLUDE_SUBSECTIONS"],
 						"PAGE_ELEMENT_COUNT" => $show,
 						"LINE_ELEMENT_COUNT" => $arParams["LINE_ELEMENT_COUNT"],

@@ -34,7 +34,9 @@
 				break;
 		}?>
 
-		<?foreach($arResult["ITEMS"] as $arItem){?>
+
+<?foreach($arResult["ITEMS"] as $arItem){?>
+  
 			<div class="item_block col-<?=$col;?> col-md-<?=floor(12/$arParams["LINE_ELEMENT_COUNT"]);?> col-sm-<?=floor(12/round($arParams['LINE_ELEMENT_COUNT'] / 2))?> col-xs-6">
 				<div class="catalog_item_wrapp item">
 					<div class="basket_props_block" id="bx_basket_div_<?=$arItem["ID"];?>" style="display: none;">
@@ -146,7 +148,7 @@
 								<?endif;?>
                                 
                                 <?$p1 = "/collections_";
-                                    if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
+                                    if (strstr($APPLICATION->GetCurDir(), $p1) || !empty($arItem["PROPERTIES"]["COLLECTION_URL"]["VALUE"])) {?>
                                         <a href="<?=$arItem["PROPERTIES"]["COLLECTION_URL"]["VALUE"]?>" class="thumb shine">
                                         <?
                                     $a_alt=($arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"] ? $arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"] : $arItem["NAME"] );
@@ -191,7 +193,7 @@
 							</div>
 							<div class="item_info <?=$arParams["TYPE_SKU"]?>">
 								<div class="item-title">
-                                     <?if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
+                                     <?if (strstr($APPLICATION->GetCurDir(), $p1) || !empty($arItem["PROPERTIES"]["COLLECTION_URL"]["VALUE"])) {?>
                                         <a href="<?=$arItem["PROPERTIES"]["COLLECTION_URL"]["VALUE"]?>" class="dark_link">
                                             <span><?=$arItem["NAME"]?></span></a>
                                      <?}else{?>
@@ -406,6 +408,7 @@
 					</div>
 				</div>
 			</div>
+    
 		<?}?>
 	<?if(($arParams["AJAX_REQUEST"]=="N") || !isset($arParams["AJAX_REQUEST"])){?>
 			</div>

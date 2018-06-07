@@ -266,7 +266,7 @@ $arViewedData = array(
                         </div>
 
                     </div>
-                    <span class"interior"><?=GetMessage('INTERIOR')?> <?=$arResult['ORIGINAL_PARAMETERS']['SECTION_CODE'];?></span>
+                    <span class"interior"><?=GetMessage('INTERIOR')?> <?=$arResult["COLLECTION"]?></span>
 
                     <script>
                         $(document).ready(function(){
@@ -732,7 +732,9 @@ $arViewedData = array(
                         <?=$arResult['PROPERTIES']['BRAND']['VALUE']?>
 
                         (<?=$arResult['PROPERTIES']['COUNTRY']['VALUE'];?>)
-                        <a href="/catalog/oboi/?brand=<?=$arResult['PROPERTIES']['BRAND']['VALUE_ENUM_ID']?>"><?=GetMessage("ALL_BRAND")?></a>
+                    <?$brandUrl = strtolower($arResult['PROPERTIES']['BRAND']['VALUE']);
+                    $brandUrl = str_replace(' ', '-', $brandUrl);?>
+                    <a href="/catalog/oboi/filter/brand-is-<?=$brandUrl?>/apply/"><?=GetMessage("ALL_BRAND")?></a>
                     </span>
                 <?}?>
                 </div>

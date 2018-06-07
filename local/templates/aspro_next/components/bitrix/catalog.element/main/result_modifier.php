@@ -323,7 +323,7 @@
     
         if ($ar_parent['UF_RELATED_COLLECT']) {
             //arshow($ar_parent, true);
-            
+          
             $filter = array(
                 'SECTION_ID'         => $ar_parent['UF_RELATED_COLLECT'],
                 'INCLUDE_SUBSECTIONS'=> 'Y',

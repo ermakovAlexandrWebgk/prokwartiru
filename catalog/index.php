@@ -5,6 +5,8 @@ $APPLICATION->SetTitle("Каталог");?><?if($_GET["brand"]){
         $NEXT_SMART_FILTER["PROPERTY_BRAND_VALUE"] = $ar_enum_list["VALUE"];
     }
 }
+
+
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
@@ -152,13 +154,13 @@ $APPLICATION->SetTitle("Каталог");?><?if($_GET["brand"]){
 		"DETAIL_PRODUCT_INFO_BLOCK_ORDER" => "sku,props",
 		"DETAIL_PRODUCT_PAY_BLOCK_ORDER" => "rating,price,priceRanges,quantityLimit,quantity,buttons",
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "CML2_MANUFACTURER",
-			1 => "COLOR",
+			0 => "COLOR",
+			1 => "CML2_MANUFACTURER",
 			2 => "DESIGN_OBOI",
 			3 => "TYPE_PLITKA",
-			4 => "MATERIAL",
-			5 => "CLASS",
-			6 => "STYLE",
+			4 => "STYLE",
+			5 => "MATERIAL",
+			6 => "CLASS",
 			7 => "WIDTH_OBOI",
 			8 => "LENGTH_PLITKA",
 			9 => "BRAND",
@@ -413,7 +415,7 @@ $APPLICATION->SetTitle("Каталог");?><?if($_GET["brand"]){
 		"SECTION_ADD_TO_BASKET_ACTION" => "ADD",
 		"SECTION_BACKGROUND_IMAGE" => "-",
 		"SECTION_COUNT_ELEMENTS" => "Y",
-		"SECTION_DISPLAY_PROPERTY" => "UF_STRUCTURE",
+		"SECTION_DISPLAY_PROPERTY" => "UF_STICKERS",
 		"SECTION_ELEMENTS_TYPE_VIEW" => "list_elements_1",
 		"SECTION_ID_VARIABLE" => "SECTION_ID",
 		"SECTION_PREVIEW_DESCRIPTION" => "Y",
@@ -539,6 +541,10 @@ $APPLICATION->SetTitle("Каталог");?><?if($_GET["brand"]){
 		"USE_STORE_SCHEDULE" => "Y",
 		"VIEWED_BLOCK_TITLE" => "Ранее вы смотрели",
 		"VIEWED_ELEMENT_COUNT" => "20",
+		"USER_CONSENT" => "N",
+		"USER_CONSENT_ID" => "0",
+		"USER_CONSENT_IS_CHECKED" => "Y",
+		"USER_CONSENT_IS_LOADED" => "N",
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_CODE_PATH#/",

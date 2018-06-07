@@ -29,7 +29,7 @@ while($ob = $res->Fetch())
 				<div class="bx_item_block all_result">
 					<div class="maxwidth-theme">
 						<div class="bx_item_element">
-						<?	if ($urls["ID"] == $arItem[$i]["ITEM_ID"]){?><a class="all_result_title btn btn-default white bold" href="<?=$urls?>"><?=$arItem["NAME"]?></a> <?}?>  
+						<?if ($urls["ID"] == $arItem[$i]["ITEM_ID"]){?><a class="all_result_title btn btn-default white bold" href="<?=$arItem["URL"]?>"><?=$arItem["NAME"]?></a> <?}?>  
 						</div>
 						<div style="clear:both;"></div>
 					</div>

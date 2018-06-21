@@ -175,5 +175,3 @@ function printDiv(divName) {
      location.reload()
 }
 
-
-

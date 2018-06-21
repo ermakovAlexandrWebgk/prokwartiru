@@ -69,4 +69,4 @@ $APPLICATION->SetTitle("ѕолучить скидку в интернет-магазине prokwarti.ru");
 </tbody>
 </table>
 <br><br>
-<sup>*</sup> Ќа товары фабрик Zambaiti, Limonta, Grandeco, Marburg, BN, Porcelanosa, Venis, Kronotex скидки <b>не распростран€ютс€</b>.<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+<sup>*</sup> Ќа товары фабрик Zambaiti, Limonta, Grandeco, Marburg, BN, Porcelanosa, Venis, Kronotex, Ugepa, Hookendonwalls, Khroma, Rasch Textil, Arte, Chelsea Premium Wallpapers, Eijffinger, Lutece скидки <b>не распростран€ютс€</b>.<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

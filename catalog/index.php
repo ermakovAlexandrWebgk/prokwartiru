@@ -467,7 +467,7 @@ $APPLICATION->SetTitle("Каталог");?><?if($_GET["brand"]){
 		),
 		"SORT_PRICES" => "SALE",
 		"SORT_REGION_PRICE" => "SALE",
-		"STIKERS_PROP" => "STIKERS",
+		"STIKERS_PROP" => "-",
 		"STORES" => array(
 			0 => "",
 			1 => "",

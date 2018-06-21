@@ -6540,3 +6540,7 @@ color: #ffffff !important;
 a.back_url:focus {
 color: white;
 }
+
+.hidemyspan{
+    display:none;
+}

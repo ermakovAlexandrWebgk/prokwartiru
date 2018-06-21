@@ -1,4 +1,5 @@
 <?
+$PERM["cat_update"]["*"]="D";
 $PERM["personal"]["6"]="W";
 $PERM["personal"]["8"]="W";
 $PERM["catalog"]["6"]="W";

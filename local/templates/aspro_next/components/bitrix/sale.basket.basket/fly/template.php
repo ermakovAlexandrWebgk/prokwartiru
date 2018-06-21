@@ -1,5 +1,7 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+
 <?
+
 $normalCount = count($arResult["ITEMS"]["AnDelCanBuy"]);
 $delayCount = count($arResult["ITEMS"]["DelDelCanBuy"]);
 $subscribeCount = count($arResult["ITEMS"]["ProdSubscribe"]);

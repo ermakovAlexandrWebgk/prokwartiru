@@ -166,7 +166,7 @@
 										<?if (isset($arItem["AVAILABLE_QUANTITY"]) /*&& floatval($arItem["AVAILABLE_QUANTITY"]) != 0*/ && !CSaleBasketHelper::isSetParent($arItem)):?><span onclick="setQuantity('<?=$arItem["ID"]?>', '<?=$arItem["MEASURE_RATIO"]?>', 'up')" class="plus">+</span><?endif;?>
 									</div>
 									<input type="hidden" id="QUANTITY_<?=$arItem['ID']?>" name="QUANTITY_<?=$arItem['ID']?>" value="<?=$arItem["QUANTITY"]?>" /> 
-									<?if($arItem["QUANTITY"]>$arItem["AVAILABLE_QUANTITY"]):?><div class="error"><?=GetMessage("NO_NEED_AMMOUNT")?></div><?endif;?>
+									
 								</td>
 							<?elseif ($arHeader["id"] == "SUMM"):?>
 								<td class="summ-cell"><div class="cost prices"><div class="price"><?=$arItem["SUMM_FORMATED"];?></div></div></td>
@@ -198,7 +198,7 @@
 							<?elseif ($arHeader["id"] == "WEIGHT"):?>
 								<td class="weight-cell"><?=$arItem["WEIGHT_FORMATED"]?></td>
 							<?else:?>
-								<td class="cell"><?=$arItem[$arHeader["id"]]?></td>
+								
 							<?endif;?>
 						<?endforeach;?>
 

@@ -93,9 +93,18 @@
     //Добавление в административном разделе пункта меню "массовое обновление цен"
     AddEventHandler("main", "OnBuildGlobalMenu", "extraMenu");
     function extraMenu(&$adminMenu, &$moduleMenu) {
-
-        //страница экспорта заказов в "accordpost"
-        $moduleMenu[] = array(
+        $priceMenu = array(
+            "parent_menu" => "global_menu_store",
+            "section"	=> "price_update",
+            "sort"		=> 10,
+            "url"		=> "",
+            "text"		=> 'Конвертация цен',
+            "title"		=> 'Конвертация цен',
+            "icon"		=> "iblock_menu_icon_settings",
+            "page_icon" => "form_page_icon",
+            "items"		=> array()
+        );
+        $priceMenu["items"][] = array(
             "parent_menu" => "global_menu_store",
             "section" => "price_update",
             "sort" => 10,
@@ -107,6 +116,19 @@
             "items_id" => "price_update",
             "items" => array()
         );
+        $priceMenu["items"][] = array(
+            "parent_menu" => "global_menu_store",
+            "section" => "euro_update",
+            "sort" => 10,
+            "url" => "euro_update.php",
+            "text" => 'Массовое обновление цен в евро',
+            "title" => 'Массовое обновление цен в евро',
+            "icon" => "form_menu_icon",
+            "page_icon" => "form_page_icon",
+            "items_id" => "euro_update",
+            "items" => array()
+        );
+        $moduleMenu[] = $priceMenu;
     }
 
     AddEventHandler("iblock", "OnAfterIBlockElementUpdate", "setPropertyRooms");
@@ -226,7 +248,7 @@
                     foreach($newArr as $arrKey => $arrValue){
                         if($arrValue == $childrenRoom) {
                             unset($newArr[$arrKey]);
-                            
+
                         }
                     }
                 }
@@ -237,11 +259,11 @@
                         }
                     }
                 }
-                
+
                 $PROPERTY_CODE = "ROOM";
                 $PROPERTY_VALUE = $newArr;
                 CIBlockElement::SetPropertyValuesEx($arFields["ID"], false, array($PROPERTY_CODE => $PROPERTY_VALUE));
-                
+
             }
         }
     }

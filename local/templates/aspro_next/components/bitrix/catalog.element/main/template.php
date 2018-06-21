@@ -808,12 +808,12 @@ $arViewedData = array(
                 </div>
                
                 <!-- Доставка товара --> 
-                <?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
+                <?if ($arResult["SHOWROOM"]){?>
                     <div class="showroom_txt">
                         <a href="/contacts/"><span>Посмотреть в шоуруме по адресу:</span><br>
                             <span>г. Москва, ул. Азовская, д. 24, к. 3, офис 71, ст.м. Севастопольская</span></a>
                     </div>
-                <?endif;?>
+                <?}?>
 
 
 

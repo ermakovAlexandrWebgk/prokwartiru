@@ -200,7 +200,7 @@
         // CIBlockPriceTools :: getSliderForItem() gibt ein Array DETAIL_PICTURE wenn WEITERE FOTOS leer, auch wenn ADD_DETAIL_TO_SLIDER == N
         // unset($arResult['DETAIL_PICTURE']);
     }
-    
+
     $productSlider = CNext::getSliderForItemExt($arResult, $arParams['ADD_PICT_PROP'], 'Y' == $arParams['ADD_DETAIL_TO_SLIDER']);
 
     if (empty($productSlider))
@@ -216,7 +216,7 @@
             );
         }
     }
-    
+
     $arSelect = Array("ID", "NAME", "PICTURE");
     $arFilter = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => $arResult['IBLOCK_SECTION_ID'] );
     $res = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, array());
@@ -240,27 +240,27 @@
     $propertyStyle='';
     $propertyDesign='';
     $propertyCountry='';
-    
- 
+
+
     while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товара в зависимости от раздела первого уровн€
 
         switch ($ar_parent["ID"]) {
             case OBOI_SECTION_ID:
-            if($arResult['PROPERTIES']['COUNTRY']['VALUE']){
-                $propertyCountry = "производство: ".$arResult['PROPERTIES']['COUNTRY']['VALUE'];
-            }
-            if($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']){
-                $propertyDesign  = implode($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']).', ';
-            }
-            if($arResult['PROPERTIES']['STYLE']['VALUE']){
-                $propertyStyle = implode($arResult['PROPERTIES']['STYLE']['VALUE']).', ';
-            }
-            if($arResult['PROPERTIES']['PROPERTY']['VALUE']){
-                $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .',';
-            }
-            if($arResult["PROPERTIES"]["COLOR"]["VALUE"]){
-                $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
-            }
+                if($arResult['PROPERTIES']['COUNTRY']['VALUE']){
+                    $propertyCountry = "производство: ".$arResult['PROPERTIES']['COUNTRY']['VALUE'];
+                }
+                if($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']){
+                    $propertyDesign  = implode($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']).', ';
+                }
+                if($arResult['PROPERTIES']['STYLE']['VALUE']){
+                    $propertyStyle = implode($arResult['PROPERTIES']['STYLE']['VALUE']).', ';
+                }
+                if($arResult['PROPERTIES']['PROPERTY']['VALUE']){
+                    $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .',';
+                }
+                if($arResult["PROPERTIES"]["COLOR"]["VALUE"]){
+                    $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
+                }
 
                 //$arResult["PROPERTIES"]["DESIGN_OBOI"]["VALUE"]["0"].',' 
                 //$arResult["PROPERTIES"]["STYLE"]["VALUE"]["0"].',');
@@ -270,7 +270,7 @@
                 if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  != $vinilXmlId){
                     $propertyWaterproof = 'влагостойкие' .', ';    
                 }
-               
+
 
 
                 $sun="не выгорают на солнце".', ';
@@ -320,10 +320,10 @@
                 break;
 
         }
-    
+
         if ($ar_parent['UF_RELATED_COLLECT']) {
             //arshow($ar_parent, true);
-          
+
             $filter = array(
                 'SECTION_ID'         => $ar_parent['UF_RELATED_COLLECT'],
                 'INCLUDE_SUBSECTIONS'=> 'Y',
@@ -332,21 +332,21 @@
                 'NAME'               => $arResult['SECTION']['NAME']);
 
             $collectionPictures = CIBlockElement::GetList(array(), $filter, false, false, array('DETAIL_PICTURE', 'ID'));
-             //arshow($arResult, true);
+            //arshow($arResult, true);
             while ($picture = $collectionPictures->GetNext()){
-                       
+
                 if ($picture['DETAIL_PICTURE']){
                     $additionalPicture[]=array('ID'=>$picture['DETAIL_PICTURE']);
                 }
-                
-                
+
+
 
             }
 
         }
-   
+
     }
-    
+
 
 
     if (is_array($additionalPicture)){
@@ -362,7 +362,7 @@
     $arResult["PROPERTIES"]["OBOI_DESIGN"] = $propertyDesign;
     $arResult["PROPERTIES"]["COUNTRY_STRING"] = $propertyCountry;
     $arResult["PROPERTIES"]["PROPERTY_STYLE"] = $propertyStyle;
-    
+
 
 
 
@@ -1182,6 +1182,12 @@
             $arResult["COLLECTION"] = /*" оллекци€: " . */$section_info["NAME"];
         }
     }
+
+        $res = CIBlockSection::GetList($arSort, array("IBLOCK_ID" => 77, "UF_STICKERS" => 143, "ID" => $arResult["IBLOCK_SECTION_ID"]), false, array("UF_STICKERS"));
+        if($object = $res -> Fetch()){
+            $arResult["SHOWROOM"] = true;
+
+        }
 ?>
 
 

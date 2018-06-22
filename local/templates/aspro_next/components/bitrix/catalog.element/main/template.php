@@ -344,7 +344,8 @@ $arViewedData = array(
                     <?=$arResult["PROPERTIES"]["WATERPROOFPAPER"]?>
                     <?=$arResult["PROPERTIES"]["PROPERTY_STYLE"]?>
                     <?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
-                    <?=$arResult["PROPERTIES"]["COUNTRY_STRING"]?>
+                    <?=$arResult["PROPERTIES"]["COUNTRY_STRING"]?><br>
+                    <?=$arResult["PROPERTIES"]["PROPERTY_ROOM"]?>
                 </span>
             </div>
             <?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>

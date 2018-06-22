@@ -1,4 +1,4 @@
-<div class="top_inner_block_wrapper maxwidth-theme">
+<?/*<div class="top_inner_block_wrapper maxwidth-theme">
     <section class="page-top maxwidth-theme <?CNext::ShowPageProps('TITLE_CLASS');?>">
         <div class="header_row">
             <h1 id="pagetitle"><?$APPLICATION->ShowTitle(false)?></h1>

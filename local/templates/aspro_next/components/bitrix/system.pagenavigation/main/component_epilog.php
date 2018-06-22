@@ -10,13 +10,13 @@ $count = $arResult["NavRecordCount"];
 $wordForItems=$yearDeclension->get($arResult["NavRecordCount"]);?>
     <?$p1 = "/catalog/";
     if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
-    <div id="productPageCount" class="items_count">
-        (<?=$count;?> <?=$wordForItems;?>)
-    </div>
+        <span style="display: none"id="productPageCount">(<?=$count;?> <?=$wordForItems;?>)</span>
     <?}?>
 <script>
-  $( document ).ready( function () {
-    var stores = $("#productPageCount");
-    $("#replace_productPageCount").replaceWith(stores).remove();
-  })
+$(window).on("load", function() {
+    var itemsCountString = $("#productPageCount").text();
+    $('#replace_productPageCount').text(itemsCountString).addClass('items_count');
+});
+
+
 </script>

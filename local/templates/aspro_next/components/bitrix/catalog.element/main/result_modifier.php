@@ -240,6 +240,7 @@
     $propertyStyle='';
     $propertyDesign='';
     $propertyCountry='';
+    $propertyRoom = '';
 
 
     while ($ar_parent = $parent_res->GetNext()) { //выбор важных характеристик товара в зависимости от раздела первого уровня
@@ -270,7 +271,11 @@
                 if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  != $vinilXmlId){
                     $propertyWaterproof = 'влагостойкие' .', ';    
                 }
-
+                if($arResult['PROPERTIES']['ROOM']['VALUE']){
+                    $propertyRoom  = "Подходят для: " .implode(', ', $arResult['PROPERTIES']['ROOM']['VALUE']);
+                    $propertyRoomString = strtolower($propertyRoom);
+                    
+                }
 
 
                 $sun="не выгорают на солнце".', ';
@@ -362,6 +367,7 @@
     $arResult["PROPERTIES"]["OBOI_DESIGN"] = $propertyDesign;
     $arResult["PROPERTIES"]["COUNTRY_STRING"] = $propertyCountry;
     $arResult["PROPERTIES"]["PROPERTY_STYLE"] = $propertyStyle;
+    $arResult["PROPERTIES"]["PROPERTY_ROOM"] = $propertyRoomString;
 
 
 
@@ -1188,6 +1194,7 @@
             $arResult["SHOWROOM"] = true;
 
         }
+        
 ?>
 
 

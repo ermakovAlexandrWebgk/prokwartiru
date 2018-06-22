@@ -1,4 +1,4 @@
-    <div class="top_inner_block_wrapper maxwidth-theme">
+<? /*   <div class="top_inner_block_wrapper maxwidth-theme">
         <div class="page-top-wrapper grey">
             <section class="page-top maxwidth-theme  <?CNext::ShowPageProps('TITLE_CLASS');?>">
                 <div class="header_row">
@@ -18,4 +18,4 @@
                     </div>
             </section>
         </div>
-</div>
+</div>*/?>

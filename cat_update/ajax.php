@@ -128,22 +128,21 @@ function emptyUpdate($COUNT,$last_id)
     CModule::IncludeModule("iblock");
     CModule::IncludeModule("catalog");
 
-    $elements = CIBlockElement::GetList (array("ID" => "asc"), array("IBLOCK_ID" => 77, "SECTION_ID" => 34639, ">ID" => $last_id , "INCLUDE_SUBSECTIONS" => "Y"), false, Array("nPageSize"=>$COUNT), array("ID", "ACTIVE"));
+    $elements = CIBlockElement::GetList (array("ID" => "asc"), array("IBLOCK_ID" => 77, "SECTION_ID" => 34639, ">ID" => $last_id , "INCLUDE_SUBSECTIONS" => "Y", "PROPERTY_CML2_BASE_UNIT_ENUM_ID" => 2721, ">DATE_CREATE"=> '10.05.2018 00:00:00',), false, Array("nPageSize"=>$COUNT), array("ID"));
     while ($subsection_elements = $elements -> Fetch()) {
-        $IDs[$subsection_elements["ID"]] = $subsection_elements["ACTIVE"];
+        $IDs[] = $subsection_elements["ID"];
         $last_id = $subsection_elements["ID"];
     }
     $result["last_id"] = $last_id;
     $result["method"] = $_POST["method"];
-	foreach ($IDs as $id => $active){
-       \Bitrix\Iblock\PropertyIndex\Manager::updateElementIndex(77, $id);
-     //$el = new CIBlockElement;
-    // $res = $el->Update($id, Array("ACTIVE" => $active));
-    //    if($res){
-	//        $result["SUCCESS_UPD"][] = $id;
-	 //   }else{
-	 //       $result["FAIL_UPDATE"][] = $id;
-	// }
+	foreach ($IDs as $id){
+      // \Bitrix\Iblock\PropertyIndex\Manager::updateElementIndex(77, $id);
+
+      if(CIBlockElement::SetPropertyValuesEx($ELEMENT_ID, false, array("CML2_BASE_UNIT" => 2720))){
+	      $result["SUCCESS_UPD"][] = $id;
+	   }else{
+	        $result["FAIL_UPDATE"][] = $id;
+	 }
     }    
     if (count($IDs) > 0) {
         $result['end_parse'] = false;

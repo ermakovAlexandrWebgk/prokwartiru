@@ -1,14 +1,5 @@
 <?$APPLICATION->ShowViewContent('produkts_count');?>
 <?$curDir = $APPLICATION->GetCurDir();
-/*$arSelect = Array("ID", "PROPERTY_URL");
-$arFilter = Array("IBLOCK_ID"=>74, "PROPERTY_URL" =>$curDir);
-$res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
-$tmp = '';
-while($ob = $res->Fetch())
-{
-$tmp = $ob["PROPERTY_URL_VALUE"];
-}
-*/
 $arSeoLn = GetSeoLinks($arResult["VARIABLES"]["SECTION_ID"]);
 
 foreach($arSeoLn as $seoLn)
@@ -95,8 +86,13 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
 
 
 
-    global $arFilterBanners;
-    $arFilterBanners = array('PROPERTY_URL' => $curDir);
+     global $arFilterBanners;   
+   
+    if(strstr($curDir, 'oboi')){                       
+        $arFilterBanners[] = array('LOGIC' => 'OR', array('PROPERTY_URL' => $curDir), array('PROPERTY_URL' => '/catalog/oboi/'));
+    }else{
+        $arFilterBanners[] = array('PROPERTY_URL' => $curDir);   
+    }
     ?>
 
 
@@ -537,7 +533,12 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
 $currentDir = $APPLICATION->GetCurDir();
 if(!strstr($currentDir,'collections' )){
 $GLOBALS[$arParams['FILTER_NAME']]["!IBLOCK_SECTION_ID"] = array(37441, 37442, 37443, 37444, 37289, 37445);
+
+}else{
+    $sort = 'name';
+    $sort_order = 'asc';
 }
+
 ?>
 
 

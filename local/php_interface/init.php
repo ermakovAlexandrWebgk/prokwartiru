@@ -22,7 +22,10 @@
             return number_format ( $fSum, 0, '.', ' ' ).' ð';
         }
     }
-
+    function compareByName($a, $b){
+        return strcmp($a["VALUE"], $b["VALUE"]);
+    }
+    
     function arshow($array, $adminCheck = false){
         global $USER;
         $USER = new Cuser;
@@ -203,5 +206,22 @@
             CIBlockElement::SetPropertyValuesEx($arFields["ID"], false, array($PROPERTY_CODE => $PROPERTY_VALUE));
 
         }
+    }
+
+AddEventHandler("iblock", "OnAfterIBlockPropertyUpdate", "sortBrandProperties");
+    function sortBrandProperties(&$arFields){
+        if($arFields["CODE"] == 'BRAND'){
+            $sortIndex = 1;
+            foreach($arFields["VALUES"] as $propsValues){
+                $allPropsArray[] = $propsValues;
+            }
+                usort($allPropsArray, "compareByName");
+                foreach ($allPropsArray as $singleProp){
+                    $ibpenum = new CIBlockPropertyEnum;
+                        $ibpenum->Update($singleProp["ID"], Array('SORT'=>$sortIndex++));
+
+                }
+        }
+        
     }
 ?>

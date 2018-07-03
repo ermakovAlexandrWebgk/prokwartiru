@@ -6,4 +6,4 @@ if($count<5){
 		$arResult["ITEMS"][]='';
 	}
 }
-?>
+}

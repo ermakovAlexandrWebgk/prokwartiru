@@ -1,0 +1,61 @@
+div.filter {
+    /*border-bottom: 1px solid #91908D;*/
+    margin: 5px 0 10px 5px;
+    padding: 2px 0 7px 0;
+}
+div.filter table.filters{
+   width: 725px;
+}
+div.filter table.filters td{
+    vertical-align: top;
+    width: 33%;
+}
+div.filter table.filters td p{
+    font-size: 14px;
+}
+div.filter table.filters td.separator{
+    width: 10px;
+}
+div.filter select{
+    width: 137px;
+    font-size: 12px;
+    font-family: arial;
+}
+div.filter img.color{
+    margin: 0 5px 5px 0;
+    border: 1px solid transparent;
+}
+div.filter input{
+    margin-right:3px;
+    margin-left:4px;
+}
+div.filter input.price{
+    width:60px;
+}
+div.filter table.filters td.left{
+    /*width: 150px;*/
+    vertical-align: top;
+    /*padding-top: 12px;*/
+}
+div.filter h4.title{
+    font-size: 15px;
+    text-align: left;
+    width:170px;
+    border-bottom: 1px solid black;
+    margin:0 0 12px 13px;
+    padding:0px;
+}
+div.poisk{
+    text-decoration: none;
+    color: white !important;
+    background-color: #161616;
+    padding: 10px 30px 10px 30px;
+    width: 40px;
+}
+div.poisk:hover{
+    text-decoration: none;
+    background-color: #908d88;
+    color: white !important;
+    cursor: pointer;
+}
+

@@ -1,0 +1,64 @@
+div.filter {
+    border-bottom: 1px solid #91908D;
+    margin: -10px 0 20px 0;
+    padding-bottom: 10px;
+}
+div.filter table{
+    width: 735px;
+}
+div.filter td{
+    vertical-align: middle;
+    width: 147px;
+}
+div.filter p{
+    font-size: 12px;
+    padding: 0 0 0 3px; margin: 0;
+    font-family: arial;
+
+}
+div.filter div.box{
+    background: #fff;
+    font-size: 12px;
+    width: 139px;
+    padding: 1px 0 1px 0; margin: 0;
+}
+ 
+div.filter select{
+    width: 139px;
+    font-size: 12px;
+    font-family: arial;
+
+}
+div.filter input{
+    margin: 0; padding: 0;
+}
+
+.catalog-item-filter-body-inner {
+    /*overflow: hidden;*/
+}
+.filter-dropdown {
+    margin: 0 22px 8px 8px;
+    float: left;
+}
+.filter-dropdown input {
+    width: 140px;
+    padding: 2px 0 1px;
+    border: 0;
+    background: #b7b6b2;
+    color: #fff;
+    cursor: pointer;
+}
+
+.filter-textbox {
+    width: 140px;
+    padding: 2px 0 1px;
+    border: 1px solid red;
+    /*background: #b7b6b2;*/
+    /*color: #fff;*/
+    cursor: pointer;
+}
+
+
+.filter-dropdown select {
+    width: 140px;
+}

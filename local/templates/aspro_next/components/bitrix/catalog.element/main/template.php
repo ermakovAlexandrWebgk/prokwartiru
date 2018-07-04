@@ -162,7 +162,7 @@ $arViewedData = array(
                   <div><div class="sticker_<?=$key;?>"><?=$class?></div></div>
               <?}?>
               <?if(isset($arResult['RATIO_PRICE'])){?>
-                 <?if(!empty($arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"])){?>
+                 <?if(!empty($arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"]) &&$arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"] > 0 ){?>
                      <div><div class="sticker_SALE"><?='-'.$arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"].'%'?></div></div>
                  <?}?>
              <?}?>

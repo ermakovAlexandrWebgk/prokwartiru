@@ -22,7 +22,11 @@
             return number_format ( $fSum, 0, '.', ' ' ).' р';
         }
     }
-
+    
+    function compareByName($a, $b){
+        return strcmp($a["VALUE"], $b["VALUE"]);
+    }
+    
     function arshow($array, $adminCheck = false){
         global $USER;
         $USER = new Cuser;
@@ -131,7 +135,7 @@
         $moduleMenu[] = $priceMenu;
     }
 
-    AddEventHandler("iblock", "OnAfterIBlockElementUpdate", "setPropertyRooms");
+AddEventHandler("iblock", "OnAfterIBlockElementUpdate", "setPropertyRooms");
 
     function setPropertyRooms(&$arFields)  {
         if (empty($arFields["PROPERTY_VALUES"]["COLLECTION_URL"])) {
@@ -165,6 +169,7 @@
                     "2704"=> array(3379, 3384),
                     "2705"=> array(3379, 3384),
                 );
+              
 
                 $kitchenAndCoridor = array("3379", "3384");
                 $childrenRoom = "3380";
@@ -193,7 +198,7 @@
                     }
                 }
 
-                if(empty($arFields["PROPERTY_VALUES"][959]) && empty($arFields["PROPERTY_VALUES"][962])){
+                if(empty($arFields["PROPERTY_VALUES"][959]) && empty($arFields["PROPERTY_VALUES"][962]) && empty($arFields["PROPERTY_VALUES"][963])){
                     $arSelect = Array("ID", "PROPERTY_DESIGN_OBOI", "PROPERTY_MATERIAL", "PROPERTY_STYLE"); // то же самое для пустого апдейта, только через гет лист.
                     $arFilter = Array("IBLOCK_ID"=>WORK_CATALOG_ID, "ID" => $arFields["ID"]);
                     $propertiesArr = array();
@@ -258,13 +263,37 @@
                             unset ($newArr[$arrKey]);
                         }
                     }
+                }if ($children == true && empty($newArr)){
+                    $newArr[] = '3380';
                 }
-
+    
+                
                 $PROPERTY_CODE = "ROOM";
                 $PROPERTY_VALUE = $newArr;
                 CIBlockElement::SetPropertyValuesEx($arFields["ID"], false, array($PROPERTY_CODE => $PROPERTY_VALUE));
+                if($children == true){
+                $PROP = "FILTER_OBOI";
+                $PROPTOP[] = 3327;
+                CIBlockElement::SetPropertyValuesEx($arFields["ID"], false, array($PROP => $PROPTOP));
+                }
 
             }
         }
+    }
+AddEventHandler("iblock", "OnAfterIBlockPropertyUpdate", "sortBrandProperties");
+    function sortBrandProperties(&$arFields){
+        if($arFields["CODE"] == 'BRAND'){
+            $sortIndex = 1;
+            foreach($arFields["VALUES"] as $propsValues){
+                $allPropsArray[] = $propsValues;
+            }
+                usort($allPropsArray, "compareByName");
+                foreach ($allPropsArray as $singleProp){
+                    $ibpenum = new CIBlockPropertyEnum;
+                        $ibpenum->Update($singleProp["ID"], Array('SORT'=>$sortIndex++));
+
+                }
+        }
+        
     }
 ?>

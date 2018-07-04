@@ -229,7 +229,7 @@
     $vinilXmlId = 'vinil-na-flizeline';
     $paperXmlId = 'bumazhnye';
     $flizelinXmlId = 'flizelinovye';
-    $paperFlizelineXmlId='bumazhnye-na-flizeline';    
+    $paperFlizelineXmlId='bumazhnye-na-flizeline';
 
     $sun='';
     $propertyProperty='';
@@ -263,18 +263,18 @@
                     $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
                 }
 
-                //$arResult["PROPERTIES"]["DESIGN_OBOI"]["VALUE"]["0"].',' 
+                //$arResult["PROPERTIES"]["DESIGN_OBOI"]["VALUE"]["0"].','
                 //$arResult["PROPERTIES"]["STYLE"]["VALUE"]["0"].',');
                 if($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID'] == $vinilXmlId ){
-                    $propertyWashing = 'моющиеся' .', ';    
+                    $propertyWashing = 'моющиеся' .', ';
                 }
                 if ($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID']  != $vinilXmlId){
-                    $propertyWaterproof = 'влагостойкие' .', ';    
+                    $propertyWaterproof = 'влагостойкие' .', ';
                 }
                 if($arResult['PROPERTIES']['ROOM']['VALUE']){
-                    $propertyRoom  = "Подходят для: " .implode(', ', $arResult['PROPERTIES']['ROOM']['VALUE']);
+                    $propertyRoom  = "Подходят: " .implode(', ', $arResult['PROPERTIES']['ROOM']['VALUE']);
                     $propertyRoomString = strtolower($propertyRoom);
-                    
+
                 }
 
 
@@ -1194,9 +1194,27 @@
             $arResult["SHOWROOM"] = true;
 
         }
-        
+$stickerList = array();
+    $stickers = CUserFieldEnum::GetList(array(), array("USER_FIELD_ID" => 308));
+    while ($arSticker = $stickers->Fetch()) {
+        $stickerList[$arSticker["ID"]] = $arSticker;     //Получаем значения всех свойств "Стикеры"
+    }
+ $arSelect = Array("ID", "UF_*");
+    $arFilter = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => $arResult['IBLOCK_SECTION_ID'] );
+    $res = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, array());
+    while($arFields = $res->Fetch()){
+       $relatedStickersId[] = $arFields["UF_STICKERS"];     //Плучаем айди всех стикеров в текущей карточке товара
+    }
+
+foreach ($stickerList as $stickerId => $values){
+    foreach ($relatedStickersId as $ArrId){
+        foreach($ArrId as $singleId){                       //Перебираем айдишники всех текущих стикеров в карточке
+            if($stickerId == $singleId){
+                $arResult["RELATED_ELEMENT_STICKER"][$values["XML_ID"]] = $values["VALUE"]; //Собираем массив вида XML_ID=>Значеие
+                if($_SERVER["REMOTE_ADDR"] == "91.201.253.5"){
+                }
+            }
+        }
+    }
+}
 ?>
-
-
-
-

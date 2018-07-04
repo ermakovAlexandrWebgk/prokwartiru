@@ -1,4 +1,3 @@
-<?$APPLICATION->ShowViewContent('produkts_count');?>
 <?$curDir = $APPLICATION->GetCurDir();
 $arSeoLn = GetSeoLinks($arResult["VARIABLES"]["SECTION_ID"]);
 
@@ -8,12 +7,12 @@ foreach($arSeoLn as $seoLn)
 
     // $arSeoLinks[$seoLn["NAME"]] = $seoLn["NEW_URL"];
 
-    // if(strpos($seoLn["CONDITION"], "/привязка") !== FALSE && $seoLn["REAL_URL"] == $APPLICATION->GetCurPage(false))
+    // if(strpos($seoLn["CONDITION"], "/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ") !== FALSE && $seoLn["REAL_URL"] == $APPLICATION->GetCurPage(false))
     // {
     //     $arSeoLinks = false;
     //     break;
     // }
-    // if(strpos($seoLn["CONDITION"], "/бренд") !== FALSE && $seoLn["REAL_URL"] == $APPLICATION->GetCurPage(false))
+    // if(strpos($seoLn["CONDITION"], "/пїЅпїЅпїЅпїЅпїЅ") !== FALSE && $seoLn["REAL_URL"] == $APPLICATION->GetCurPage(false))
     // {
     //     $vendor = $seoLn["NEW_URL"];
     //     $vendor_code = Cutil::translit($seoLn["PROPERTIES"]["PROIZVODITEL"][0], "ru");
@@ -86,12 +85,12 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
 
 
 
-     global $arFilterBanners;   
-   
-    if(strstr($curDir, 'oboi')){                       
+     global $arFilterBanners;
+
+    if(strstr($curDir, 'oboi')){
         $arFilterBanners[] = array('LOGIC' => 'OR', array('PROPERTY_URL' => $curDir), array('PROPERTY_URL' => '/catalog/oboi/'));
     }else{
-        $arFilterBanners[] = array('PROPERTY_URL' => $curDir);   
+        $arFilterBanners[] = array('PROPERTY_URL' => $curDir);
     }
     ?>
 
@@ -327,15 +326,12 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
     <?if($itemsCnt):?>
 	    <?if($arTheme["FILTER_VIEW"]["VALUE"]=="VERTICAL"){?>
 		    <?ob_start()?>
-            
+
+        <?$URL = $APPLICATION->GetCurDir();
+          $urlItems = explode("/", $URL);
+          if(!strstr($URL, "/catalog/oboi/filter/filter_oboi-is-sale/apply/" )){?>
                 <div class="bx_filter">
                     <div class="bx_filter_section">
-                        <!--<div class="bx_filter_parameters_box active title">
-                            <div class="bx_filter_parameters_box_title">Вывод товаров</div>
-                        </div>-->
-                        <? $URL = $APPLICATION->GetCurDir();
-                           $urlItems = explode("/", $URL);
-                        ?>
                         <?if (!substr_count($URL, "collections_")) {?>
                             <a href="/catalog/<?=$urlItems[2].'/collections_'.$urlItems[2]?>/">
                                 <div class="bx_filter_parameters_box">По коллекциям</div>
@@ -347,7 +343,8 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
                         <?}?>
                     </div>
                 </div>
-            
+                <?}?>
+
 			    <?if (!$_REQUEST["view_by_collections"] && !$_SESSION["view_by_collections"] || $sect_depth_level > 2) {
                     include_once(__DIR__."/../filter.php");
                 }?>
@@ -440,110 +437,14 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
 			    <?if($isAjax=="N"){?>
 				    <div class="ajax_load <?=$display;?>">
 			    <?}?>
-				    <?
-                    
-                    /*
-                    global $sectionFilter;
-                    if ($_REQUEST["for_bathroom"]) {
-                        unset($_SESSION["view_by_collections"]);
-                        // $section_ids = array(25249, 25252);
-                        $section_ids = array(35616, 35617);
-                    } else if ($_REQUEST["for_kitchen"]) {
-                        unset($_SESSION["view_by_collections"]);
-                        // $section_ids = 25258;
-                        $section_ids = 35620;
-                    } else if ($_REQUEST["for_floor"]) {
-                        unset($_SESSION["view_by_collections"]);
-                        // $section_ids = 25250;
-                        $section_ids = 	35618;
-                    } else if ($_REQUEST["for_outdoors"]) {
-                        unset($_SESSION["view_by_collections"]);
-                        // $section_ids = array(25251, 25253);
-                        $section_ids = array(35621, 35619);
-                    }
-                    if ($_REQUEST["for_bathroom"] || $_REQUEST["for_kitchen"] || $_REQUEST["for_floor"] || $_REQUEST["for_outdoors"]) {
-                        $cheap_sections_arr = CIBlockSection::GetList(array(), array("IBLOCK_ID" => 77, "SECTION_ID" => $section_ids), false, array("ID"), false);
-                        while ($cheap_sections = $cheap_sections_arr -> Fetch()) {
-                            $sectionFilter["SECTION_ID"][] = $cheap_sections["ID"];
-                        }
-                    }
-                    if ($_REQUEST["CHEAP"]) {
-                        $cheap_sections_arr = CIBlockSection::GetList(array(), array("IBLOCK_ID" => 77, ">DEPTH_LEVEL" => 2, "INCLUDE_SUBSECTIONS" => "Y", "UF_CHEAP" => "Y"), false, array("ID", "UF_CHEAP"), false);
-                        while ($cheap_sections = $cheap_sections_arr -> Fetch()) {
-                            $sectionFilter["SECTION_ID"][] = $cheap_sections["ID"];
-                        }
-                    }
-                    if ($_REQUEST["DESIGN_WALLPAPERS"]) {
-                        $design_wallpapers_elements = CIBlockElement::GetList (array(), array("IBLOCK_ID" => 77, "PROPERTY_DESIGN_WALLPAPER_VALUE" => "Y"), false, false, array("ID", "PROPERTY_DESIGN_WALLPAPER"));
-                        while ($design_wallpapers = $design_wallpapers_elements -> Fetch()) {
-                            $sectionFilter["ID"][] = $design_wallpapers["ID"];
-                        }
-                    }
-                    if ($_REQUEST["FLOOR_BOARDS"]) {
-                        $design_wallpapers_elements = CIBlockElement::GetList (array(), array("IBLOCK_ID" => 77, "PROPERTY_FLOOR_BOARDS_VALUE" => "Y"), false, false, array("ID", "PROPERTY_FLOOR_BOARDS"));
-                        while ($design_wallpapers = $design_wallpapers_elements -> Fetch()) {
-                            $sectionFilter["ID"][] = $design_wallpapers["ID"];
-                        }
-                    }
-                    if ($_REQUEST["WALL_PANELS"]) {
-                        $design_wallpapers_elements = CIBlockElement::GetList (array(), array("IBLOCK_ID" => 77, "PROPERTY_WALL_PANEL_VALUE" => "Y"), false, false, array("ID", "PROPERTY_WALL_PANEL"));
-                        while ($design_wallpapers = $design_wallpapers_elements -> Fetch()) {
-                            $sectionFilter["ID"][] = $design_wallpapers["ID"];
-                        }
-                    }
-                    if ($_REQUEST["FACADE_DECORATION"]) {
-                        $design_wallpapers_elements = CIBlockElement::GetList (array(), array("IBLOCK_ID" => 77, "PROPERTY_FACADE_DECORATION_VALUE" => "Y"), false, false, array("ID", "PROPERTY_FACADE_DECORATION"));
-                        while ($design_wallpapers = $design_wallpapers_elements -> Fetch()) {
-                            $sectionFilter["ID"][] = $design_wallpapers["ID"];
-                        }
-                    }
-                    if ($_REQUEST["GLUE"]) {
-                        $design_wallpapers_elements = CIBlockElement::GetList (array(), array("IBLOCK_ID" => 77, "PROPERTY_GLUE_VALUE" => "Y"), false, false, array("ID", "PROPERTY_GLUE"));
-                        while ($design_wallpapers = $design_wallpapers_elements -> Fetch()) {
-                            $sectionFilter["ID"][] = $design_wallpapers["ID"];
-                        }
-                    }
-                    if ($_REQUEST["CHEAP_FLOOR"]) {
-                        $design_wallpapers_elements = CIBlockElement::GetList (array(), array("IBLOCK_ID" => 77, "PROPERTY_CHEAP_VALUE" => "Y"), false, false, array("ID", "PROPERTY_CHEAP"));
-                        while ($design_wallpapers = $design_wallpapers_elements -> Fetch()) {
-                            $sectionFilter["ID"][] = $design_wallpapers["ID"];
-                        }
-                    }
-                    if ($_REQUEST["WATERPROOF"]) {
-                        $design_wallpapers_elements = CIBlockElement::GetList (array(), array("IBLOCK_ID" => 77, "PROPERTY_WATERPROOF_VALUE" => "Y"), false, false, array("ID", "PROPERTY_WATERPROOF"));
-                        while ($design_wallpapers = $design_wallpapers_elements -> Fetch()) {
-                            $sectionFilter["ID"][] = $design_wallpapers["ID"];
-                        }
-                    }
-                    */
-                    // if (!strstr($APPLICATION->GetCurDir(), "/filter/")) {
-                    //     $filter_name = 'sectionFilter';
-                    // } else {
-                    //     $filter_name = $arParams['FILTER_NAME'];
-                    // }
-                    // if (!strstr($APPLICATION->GetCurDir(), "/filter/")) {
-                    //     $arParams['FILTER_NAME'] = 'sectionFilter';
-                    // } else {
-                    //     $arParams['FILTER_NAME'] = $arParams['FILTER_NAME'];
-                    // }
-                  ?>
-
-
-<?
-$currentDir = $APPLICATION->GetCurDir();
-if(!strstr($currentDir,'collections' )){
-$GLOBALS[$arParams['FILTER_NAME']]["!IBLOCK_SECTION_ID"] = array(37441, 37442, 37443, 37444, 37289, 37445);
-
-}else{
-    $sort = 'name';
-    $sort_order = 'asc';
-}
-
-?>
-
-
-                      <?  
-                            $APPLICATION->IncludeComponent(
+                                <?$currentDir = $APPLICATION->GetCurDir();
+                                if(!strstr($currentDir,'collections' )){
+                                  $GLOBALS[$arParams['FILTER_NAME']]["!IBLOCK_SECTION_ID"] = array(37441, 37442, 37443, 37444, 37289, 37445);
+                                }else{
+                                  $sort = 'name';
+                                  $sort_order = 'asc';
+                                }?>
+                      <?$APPLICATION->IncludeComponent(
                                 "bitrix:catalog.section",
                                 'catalog_block',//$template,
                                 Array(
@@ -862,5 +763,5 @@ $APPLICATION->IncludeComponent(
      "COMPONENT_TEMPLATE" => ".default",
    )
 );
-
+$APPLICATION->ShowViewContent('sotbitSeoMetaBottomDesc'); //РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РЅРёР¶РЅРµРіРѕ РѕРїРёСЃР°РЅРёСЏ РёР· РјРѕРґСѓР»СЏ СЃРѕС‚Р±РёС‚
 ?>

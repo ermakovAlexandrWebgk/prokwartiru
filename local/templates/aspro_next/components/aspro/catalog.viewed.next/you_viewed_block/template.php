@@ -3,7 +3,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 $this->setFrameMode(true);
 $arParams['TITLE_BLOCK'] = strlen($arParams['TITLE_BLOCK']) ? $arParams['TITLE_BLOCK'] : GetMessage('CATALOG_VIEWED_TITLE');
 ?>
-<!-- noindex -->
+
 <?if(strlen($arResult['ERROR'])):?>
 	<?ShowError($arResult['ERROR']);?>
 <?else:?>
@@ -13,6 +13,7 @@ $arParams['TITLE_BLOCK'] = strlen($arParams['TITLE_BLOCK']) ? $arParams['TITLE_B
 			<div class="outer_wrap flexslider shadow items border custom_flex top_right" data-plugin-options='{"animation": "slide", "directionNav": true, "itemMargin":10, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [5,4,3,2,1]}'>
 				<ul class="rows_block slides">
 					<?foreach($arResult['ITEMS'] as $key=>$arItem):?>
+
 						<?
 						if($key > 7)
 							continue;
@@ -20,7 +21,7 @@ $arParams['TITLE_BLOCK'] = strlen($arParams['TITLE_BLOCK']) ? $arParams['TITLE_B
 						?>
 						<li class="item_block">
 							<?if($isItem):?>
-								<div data-id=<?=$arItem['PRODUCT_ID']?> data-picture='<?=str_replace('\'', '"', CUtil::PhpToJSObject($arItem['PICTURE']))?>' class="item_wrap item <?=($isItem ? 'has-item' : '' );?>" id=<?=$this->GetEditAreaId($arItem['PRODUCT_ID'])?>>
+								<div data-id=<?=$arItem['PRODUCT_ID']?> data-picture='<?=str_replace('\'', '"', CUtil::PhpToJSObject($arItem['PICTURE']))?>' class="item_wrap item <?=($isItem ? 'has-item' : '' );?>" id=<?=$this->GetEditAreaId($arItem['PRODUCT_ID'])?> style="height: 400px">
 									<?
 									$this->AddEditAction($arItem['PRODUCT_ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arParams['IBLOCK_ID'], 'ELEMENT_EDIT'));
 									$this->AddDeleteAction($arItem['PRODUCT_ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arParams['IBLOCK_ID'], 'ELEMENT_DELETE'), array('CONFIRM' => GetMessage('CT_BCS_ELEMENT_DELETE_CONFIRM')));
@@ -41,7 +42,7 @@ $arParams['TITLE_BLOCK'] = strlen($arParams['TITLE_BLOCK']) ? $arParams['TITLE_B
 				SITE_TEMPLATE_PATH: '<?=SITE_TEMPLATE_PATH?>',
 				CATALOG_FROM_VIEWED: '<?=GetMessage('CATALOG_FROM')?>',
 				SITE_ID: '<? echo SITE_ID; ?>'
-			})		
+			})
 		</script>
 	<?endif;?>
 <?endif;?>

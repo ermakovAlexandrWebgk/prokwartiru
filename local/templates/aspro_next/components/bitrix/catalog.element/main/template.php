@@ -156,16 +156,16 @@ $arViewedData = array(
 <div class="item_main_info <?=(!$showCustomOffer ? "noffer" : "");?> <?=($arParams["SHOW_UNABLE_SKU_PROPS"] != "N" ? "show_un_props" : "unshow_un_props");?>" id="<?=$arItemIDs["strMainID"];?>">
 
     <div class="img_wrapper">
-        <div class="stickers">
-            <?if (is_array($arResult["PROPERTIES"]["HIT"]["VALUE_XML_ID"])):?>
-                <?foreach($arResult["PROPERTIES"]["HIT"]["VALUE_XML_ID"] as $key=>$class){?>
-                    <div><div class="sticker_<?=strtolower($class);?>"><?=$arResult["PROPERTIES"]["HIT"]["VALUE"][$key]?></div></div>
-                <?}?>
-            <?endif;?>
-            <?if($arParams["SALE_STIKER"] && $arResult["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>
-                <div><div class="sticker_sale_text"><?=$arResult["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"];?></div></div>
-            <?}?>
-        </div>
+      <div class="stickers">
+          <?if (is_array($arResult["RELATED_ELEMENT_STICKER"])):?>
+              <?foreach($arResult["RELATED_ELEMENT_STICKER"] as $key=>$class){?>
+                  <div><div class="sticker_<?=$key;?>"><?=$class?></div></div>
+              <?}?>
+          <?endif;?>
+          <?if($arParams["SALE_STIKER"] && $arResult["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>
+              <div><div class="sticker_sale_text"><?=$arResult["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"];?></div></div>
+          <?}?>
+      </div>
         <div class="item_slider">
             <?if(((!$arResult["OFFERS"] && $arParams["DISPLAY_WISH_BUTTONS"] != "N") || ($arParams["DISPLAY_COMPARE"] == "Y")) || (strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer))):?>
                 <div class="like_wrapper">
@@ -333,10 +333,10 @@ $arViewedData = array(
             <div class="back-button">
                 <a href="<?=$_SERVER['HTTP_REFERER']?>" class="back_url"><?=GetMessage('BACK')?></a>
             </div>
-        
+
             <div class="price_txt">
                 <span class="properties-string">
-                    <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>  
+                    <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>
                     <?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
                     <?=$arResult["PROPERTIES"]["SUN"]?>
                     <?=$arResult["PROPERTIES"]["WASHING"]?>
@@ -667,7 +667,7 @@ $arViewedData = array(
                             }
                         }
                     }
-                    ?> 
+                    ?>
                     <?if($arFiles):?>
 
                         <?foreach($arFiles as $arItem):?>
@@ -694,8 +694,8 @@ $arViewedData = array(
                             <a rel="nofollow" href="/basket/" class="btn-lg w_icons in-cart btn btn-default transition_bg"  data-item="400141" style="display: none;"><i></i>
                                 <span><?=GetMessage('CATALOG_GLUE_ADDED_TO_BASKET');?></span>
                             </a>
-                        
-                   
+
+
         </div>
         <?if(is_array($arResult["STOCK"]) && $arResult["STOCK"]):?>
             <div class="stock_wrapper">
@@ -723,7 +723,7 @@ $arViewedData = array(
                       $page_new = implode("/", $page);// формируем ссылку заново?>
                      <a href="<?=$page_new?>"><?=GetMessage("ALL_COLLECTIONS")?></a>
                 </span>
-               
+
 
                 <?if (($arResult['PROPERTIES']['COUNTRY']['VALUE']) && ($arResult['PROPERTIES']['BRAND']['VALUE']) ){?>
                     <span class="properties-element">
@@ -740,8 +740,8 @@ $arViewedData = array(
                 <?}?>
                 </div>
  <?$catalogQuantity = $arResult['CATALOG_QUANTITY'];?>
-            
-                <!--<span class="properties-element">               
+
+                <!--<span class="properties-element">
                 <?/*if ($arResult['PROPERTIES']['PROPERTY']['VALUE']){?>
                 <?=GetMessage('CHARACTERISTICS');?><span class="properties-text"><?=$arResult['PROPERTIES']['PROPERTY']['VALUE']?></span>
                 <?}*/?>
@@ -760,9 +760,9 @@ $arViewedData = array(
                     <?}?>
 
                 </span>
-                <!-- Доставка товара -->                  
-               
-    
+                <!-- Доставка товара -->
+
+
 
 
 
@@ -786,7 +786,7 @@ $arViewedData = array(
                             <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?> <?=$wordForDays?>
                         <?}?>
                     </span>
-                    <span class="properties-element">     
+                    <span class="properties-element">
                         <span class="properties-text"> <?=GetMessage('PICKUP_TIME');?></span>
                         <?=GetMessage('PICKUP_TIME2');?>
                     </span>
@@ -807,8 +807,8 @@ $arViewedData = array(
                     </span>
                 <?}?>
                 </div>
-               
-                <!-- Доставка товара --> 
+
+                <!-- Доставка товара -->
                 <?if ($arResult["SHOWROOM"]){?>
                     <div class="showroom_txt">
                         <a href="/contacts/"><span>Посмотреть в шоуруме по адресу:</span><br>
@@ -1275,11 +1275,11 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
             "PROPERTY_COLOR_VALUE"      =>$arResult['PROPERTIES']["COLOR"]["VALUE"],
             "PROPERTY_DESIGN_OBOI_VALUE"=>$arResult['PROPERTIES']["DESIGN_OBOI"]["VALUE"]
         );
-     
+
     ?>
     <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"slider2", 
+	"bitrix:news.list",
+	"slider2",
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "N",
@@ -1345,7 +1345,7 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 	),
 	false
 );
-}?> 
+}?>
  <?
     $companions = GetCompanions($arResult["ID"]);
     $GLOBALS['filterCompanion'] = array(
@@ -1353,8 +1353,8 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
     );
     if(!empty($companions)){?>
             <?$APPLICATION->IncludeComponent(
-	            "bitrix:news.list", 
-	            "companions", 
+	            "bitrix:news.list",
+	            "companions",
 	            array(
 		            "ACTIVE_DATE_FORMAT" => "d.m.Y",
 		            "ADD_SECTIONS_CHAIN" => "N",
@@ -1431,4 +1431,3 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
     )
 );?>
 <!-- Три слайдера в нижней части карточки (конец) -->
-

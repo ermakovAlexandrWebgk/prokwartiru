@@ -36,7 +36,7 @@
 
 
 <?foreach($arResult["ITEMS"] as $arItem){?>
-  
+
 			<div class="item_block col-<?=$col;?> col-md-<?=floor(12/$arParams["LINE_ELEMENT_COUNT"]);?> col-sm-<?=floor(12/round($arParams['LINE_ELEMENT_COUNT'] / 2))?> col-xs-6">
 				<div class="catalog_item_wrapp item">
 					<div class="basket_props_block" id="bx_basket_div_<?=$arItem["ID"];?>" style="display: none;">
@@ -111,7 +111,13 @@
 										<?foreach($arItem["PROPERTIES"][$prop]["VALUE_XML_ID"] as $key=>$class){?>
 											<div><div class="sticker_<?=$arItem["PROPERTIES"][$prop]["VALUE_XML_ID"][$key];?>"><?=$arItem["PROPERTIES"][$prop]["VALUE"][$key]?></div></div>
 										<?}?>
+
 									<?endif;?>
+									<?if(!empty($arItem["PRICES"]["SALE"])){
+											if (isset($arItem["PRICES"]["SALE"]["DISCOUNT_DIFF_PERCENT"])){?>
+												<div><div class="sticker_SALE"><?='-'.$arItem["PRICES"]["SALE"]["DISCOUNT_DIFF_PERCENT"].'%'?></div></div>
+										<?}?>
+									<?}?>
 									<?if($arParams["SALE_STIKER"] && $arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>
 										<div><div class="sticker_sale_text"><?=$arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"];?></div></div>
 									<?}?>
@@ -146,7 +152,7 @@
 										<?endif;?>
 									</div>
 								<?endif;?>
-                                
+
                                 <?$p1 = "/collections_";
                                     if (strstr($APPLICATION->GetCurDir(), $p1) || !empty($arItem["PROPERTIES"]["COLLECTION_URL"]["VALUE"])) {?>
                                         <a href="<?=$arItem["PROPERTIES"]["COLLECTION_URL"]["VALUE"]?>" class="thumb shine">
@@ -168,9 +174,9 @@
                                         $fast_view_text = GetMessage('FAST_VIEW');?>
                                         </a>
                                     <?}else{?>
-                                
+
 								<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="thumb shine" id="<? echo $arItemIDs["ALL_ITEM_IDS"]['PICT']; ?>">
-                                
+
 									<?
 									$a_alt=($arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"] ? $arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"] : $arItem["NAME"] );
 									$a_title=($arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_TITLE"] ? $arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_TITLE"] : $arItem["NAME"] );
@@ -408,7 +414,7 @@
 					</div>
 				</div>
 			</div>
-    
+
 		<?}?>
 	<?if(($arParams["AJAX_REQUEST"]=="N") || !isset($arParams["AJAX_REQUEST"])){?>
 			</div>

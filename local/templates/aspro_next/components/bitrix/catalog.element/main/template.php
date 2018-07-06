@@ -158,12 +158,12 @@ $arViewedData = array(
     <div class="img_wrapper">
       <div class="stickers">
           <?if (is_array($arResult["RELATED_ELEMENT_STICKER"])):?>
-              <?foreach($arResult["RELATED_ELEMENT_STICKER"] as $key=>$class){?>
-                  <div><div class="sticker_<?=$key;?>"><?=$class?></div></div>
+              <?foreach($arResult["RELATED_ELEMENT_STICKER"] as $xmlId=>$stickerDescription){?>
+                  <div><div class="sticker_<?=$xmlId;?>"><?=$stickerDescription?></div></div>
               <?}?>
               <?if(isset($arResult['RATIO_PRICE'])){?>
                  <?if(!empty($arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"]) &&$arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"] > 0 ){?>
-                     <div><div class="sticker_SALE"><?='-'.$arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"].'%'?></div></div>
+                     <div><div class="sticker_STOCK"><?='-'.$arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"].'%'?></div></div>
                  <?}?>
              <?}?>
           <?endif;?>

@@ -14,6 +14,10 @@
     if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/collections_handlers.php")) {
         include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/collections_handlers.php");
     }
+    
+    if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/addPropertySaleAgent.php")) {
+        include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/addPropertySaleAgent.php");
+    }
 
     AddEventHandler("currency", "CurrencyFormat", "myFormat");
     function myFormat($fSum, $strCurrency)

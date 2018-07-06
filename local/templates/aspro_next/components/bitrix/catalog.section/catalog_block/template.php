@@ -115,7 +115,7 @@
 									<?endif;?>
 									<?if(!empty($arItem["PRICES"]["SALE"])){
 											if (isset($arItem["PRICES"]["SALE"]["DISCOUNT_DIFF_PERCENT"]) && $arItem["PRICES"]["SALE"]["DISCOUNT_DIFF_PERCENT"] > 0){?>
-												<div><div class="sticker_SALE"><?='-'.$arItem["PRICES"]["SALE"]["DISCOUNT_DIFF_PERCENT"].'%'?></div></div>
+												<div><div class="sticker_STOCK"><?='-'.$arItem["PRICES"]["SALE"]["DISCOUNT_DIFF_PERCENT"].'%'?></div></div>
 										<?}?>
 									<?}?>
 									<?if($arParams["SALE_STIKER"] && $arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>

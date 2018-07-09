@@ -90,8 +90,6 @@ $arCounters = CNext::updateBasketCounters(array('READY' => array('COUNT' => $nor
 			<span class="wrap_remove_button">
 				<?if($normalCount){?>
 					<span class="btn btn-default white white-bg grey remove_all_basket AnDelCanBuy cur" data-type="basket"><?=GetMessage('CLEAR_BASKET')?></span>
-
-
 				<?}?>
 				<?if($delayCount){?>
 					<span class="btn btn-default white white-bg grey remove_all_basket DelDelCanBuy" data-type="delay"><?=GetMessage('CLEAR_BASKET')?></span>
@@ -102,9 +100,6 @@ $arCounters = CNext::updateBasketCounters(array('READY' => array('COUNT' => $nor
 			</span>
 
      
-
-
-
 		</div>
 
 		<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="basket_form" id="basket_form" class="basket_wrapp">

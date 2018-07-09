@@ -44,7 +44,13 @@
         print_r($array);
         echo "</pre>";
     }
-
+    function logger($data, $file) {
+        file_put_contents(
+            $file,
+            var_export($data, 1)."\n",
+            FILE_APPEND
+        );
+    }
     //Выборка чпу-ссылок из модуля sotbit seo по id раздела
     function GetSeoLinks($sectionId)
     {
@@ -300,4 +306,13 @@ AddEventHandler("iblock", "OnAfterIBlockPropertyUpdate", "sortBrandProperties");
         }
 
     }
-?>
+AddEventHandler("sale", "OnBeforeBasketAdd", "ItemBasketPrise");
+function ItemBasketPrise(&$arFields) { // округляем цену товара
+    if($arFields["BASE_PRICE"]){
+      $arFields["BASE_PRICE"] = round($arFields["BASE_PRICE"]);
+    }
+    if($arFields["PRICE"]){
+        $arFields["PRICE"] = round($arFields["PRICE"]);
+    }
+}
+ 

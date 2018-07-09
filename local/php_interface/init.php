@@ -14,9 +14,9 @@
     if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/collections_handlers.php")) {
         include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/collections_handlers.php");
     }
-    
-    if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/addPropertySaleAgent.php")) {
-        include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/addPropertySaleAgent.php");
+
+    if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/addPropertySaleAgent.php")) {
+        include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/addPropertySaleAgent.php");
     }
 
     AddEventHandler("currency", "CurrencyFormat", "myFormat");
@@ -26,11 +26,11 @@
             return number_format ( $fSum, 0, '.', ' ' ).' ð';
         }
     }
-    
+
     function compareByName($a, $b){
         return strcmp($a["VALUE"], $b["VALUE"]);
     }
-    
+
     function arshow($array, $adminCheck = false){
         global $USER;
         $USER = new Cuser;
@@ -173,7 +173,7 @@ AddEventHandler("iblock", "OnAfterIBlockElementUpdate", "setPropertyRooms");
                     "2704"=> array(3379, 3384),
                     "2705"=> array(3379, 3384),
                 );
-              
+
 
                 $kitchenAndCoridor = array("3379", "3384");
                 $childrenRoom = "3380";
@@ -270,8 +270,8 @@ AddEventHandler("iblock", "OnAfterIBlockElementUpdate", "setPropertyRooms");
                 }if ($children == true && empty($newArr)){
                     $newArr[] = '3380';
                 }
-    
-                
+
+
                 $PROPERTY_CODE = "ROOM";
                 $PROPERTY_VALUE = $newArr;
                 CIBlockElement::SetPropertyValuesEx($arFields["ID"], false, array($PROPERTY_CODE => $PROPERTY_VALUE));
@@ -298,6 +298,6 @@ AddEventHandler("iblock", "OnAfterIBlockPropertyUpdate", "sortBrandProperties");
 
                 }
         }
-        
+
     }
 ?>

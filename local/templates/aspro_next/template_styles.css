@@ -4511,7 +4511,7 @@ tr.drop td{border-top-width:0px;}
 .item-views .item .section_name {color: #85878b;font-size: 11px;line-height: 13px;margin: 7px 0 10px;}
 
 /*brands*/
-.similar_products_wrapp h3{margin-bottom:37px;padding:7px 0px 0px;}
+.similar_products_wrapp h3{/*margin-bottom:37px;*/padding:7px 0px 0px;}
 .similar_products_wrapp .slider_navigation.top_big{top:-66px;}
 .similar_products_wrapp .wrapper_block .all_wrapp{margin:0px;}
 .similar_products_wrapp .wrapper_block .all_wrapp .catalog_item:hover .item_info{height:auto !important;}

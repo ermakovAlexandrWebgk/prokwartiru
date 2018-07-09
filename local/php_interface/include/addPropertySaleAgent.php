@@ -1,7 +1,7 @@
 <?
-function AddPropertySaleAgent(){
-  CModule::IncludeModule("iblock");
-  CModule::IncludeModule("catalog");
+function AddPropertySaleAgent()
+  {
+    CModule::IncludeModule("iblock");
     $res = CCatalogDiscount::GetList(array(),array(),false,false,array('SECTION_ID'));                                                            //собираем ID разделов на которые распространяется скидка
     while($ob = $res->Fetch()){
       $needSectionId[] = $ob['SECTION_ID'];

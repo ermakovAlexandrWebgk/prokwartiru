@@ -70,3 +70,6 @@ button.btn-get_discount{
 .viewed_product_block .title_block.sm{
     margin-left: 80px; 
 }
+.viewed_product_block{
+    clear: both;
+}

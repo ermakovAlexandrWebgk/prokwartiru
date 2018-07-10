@@ -67,3 +67,6 @@ button.btn-get_discount{
     top: -27px;
     position: relative;
 }
+.viewed_product_block .title_block.sm{
+    margin-left: 80px; 
+}

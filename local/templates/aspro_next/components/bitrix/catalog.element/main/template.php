@@ -1443,6 +1443,7 @@ if($arRegion)
 			$arParams['STORES'] = $arRegion['LIST_STORES'];
 	}
 }
+
 $arViewedIDs=CNext::getViewedProducts((int)CSaleBasket::GetBasketUserID(false), SITE_ID);
 if($arViewedIDs){?>
 	<?Bitrix\Main\Page\Frame::getInstance()->startDynamicWithID("viewed-block");?>

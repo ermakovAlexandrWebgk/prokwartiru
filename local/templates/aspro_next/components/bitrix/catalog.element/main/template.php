@@ -1451,6 +1451,7 @@ if($arViewedIDs){?>
 		<div class="wrapper_inner">
 			<div class="similar_products_wrapp">
 				<?if(!$IsViewedTypeLocal):?>
+                <?arshow(strtolower($arTheme['VIEWED_TEMPLATE']['VALUE']))?>
 					<?$GLOBALS['arrFilterViewed'] = array( "ID" => $arViewedIDs );?>
 					<?$APPLICATION->IncludeComponent(
 						"bitrix:catalog.section",

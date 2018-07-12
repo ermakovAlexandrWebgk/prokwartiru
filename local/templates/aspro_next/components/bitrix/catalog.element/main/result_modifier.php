@@ -1211,9 +1211,10 @@ foreach ($stickerList as $stickerId => $values){
         foreach($ArrId as $singleId){                       //Перебираем айдишники всех текущих стикеров в карточке
             if($stickerId == $singleId){
                 $arResult["RELATED_ELEMENT_STICKER"][$values["XML_ID"]] = $values["VALUE"]; //Собираем массив вида XML_ID=>Значеие
-                
+
             }
         }
     }
 }
+unset($arResult['CATALOG_MEASURE_NAME']);
 ?>

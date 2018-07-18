@@ -9,6 +9,10 @@
 </p>
 <p>
 	 Email: <a href="mailto:info@prokwarti.ru">info@prokwarti.ru</a>
+
+</p>
+<p>
+Страница <a style="text-decoration:underline" href="https://vk.com/prokwartiru">Вконтакте </a>
 </p>
 <p>
  <b>м. Севастопольская, м. Каховская</b>, ТРЦ "Азовский", Бизнес-центр на 5 этаже, офис 71

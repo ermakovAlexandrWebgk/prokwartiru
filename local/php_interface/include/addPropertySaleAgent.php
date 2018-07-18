@@ -6,7 +6,7 @@ function AddPropertySaleAgent()
     while($ob = $res->Fetch()){
       $needSectionId[] = $ob['SECTION_ID'];
     }
-    $saleData = CIBlockElement::GetList(Array(), Array("IBLOCK_ID"=>WORK_CATALOG_ID, "PROPERTY_FILTER_OBOI" => 3330), false, false, Array("ID", 'ACTIVE'));              //Собираем ID элементов с свойстом SALE
+    $saleData = CIBlockElement::GetList(Array(), Array("IBLOCK_ID"=>WORK_CATALOG_ID, "!IBLOCK_SECTION_ID" => 35614, "PROPERTY_FILTER_OBOI" => 3330), false, false, Array("ID", 'ACTIVE'));              //Собираем ID элементов с свойстом SALE
     while($result = $saleData->Fetch()){                                                                                                                                                  //Ставим пустое свойство SALE
        CIBlockElement::SetPropertyValuesEx($result['ID'], false, array('FILTER_OBOI' => ''));
        $step1 = new CIBlockElement;

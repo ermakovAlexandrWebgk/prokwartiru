@@ -343,16 +343,31 @@ $arViewedData = array(
 
             <div class="price_txt">
                 <span class="properties-string">
+                  <?if($_SERVER['REMOTE_ADDR'] == "91.201.253.5"){
+                  //  arshow($arResult);
+                  }?>
                     <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>
                     <?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
+                    <?=$arResult["PROPERTIES"]["SURFACE"]?>
+                    <?=$arResult["PROPERTIES"]["FASKA"]?>
+                    <?=$arResult["PROPERTIES"]["CLASS"]?>
+                    <?=$arResult["PROPERTIES"]["THICKNESS_NEW"]?>
                     <?=$arResult["PROPERTIES"]["SUN"]?>
                     <?=$arResult["PROPERTIES"]["WASHING"]?>
                     <?=$arResult["PROPERTIES"]["WATERPROOF"]?>
                     <?=$arResult["PROPERTIES"]["WATERPROOFPAPER"]?>
                     <?=$arResult["PROPERTIES"]["PROPERTY_STYLE"]?>
                     <?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
+                    <?=$arResult["PROPERTIES"]["LAMEL"]?>
                     <?=$arResult["PROPERTIES"]["COUNTRY_STRING"]?><br>
                     <?=$arResult["PROPERTIES"]["PROPERTY_ROOM"]?>
+                    <?=$arResult["PROPERTIES"]["LOCK"]?>
+                    <?=$arResult["PROPERTIES"]["PERIOD"]?>
+
+
+
+
+
                 </span>
             </div>
             <?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>
@@ -421,7 +436,8 @@ $arViewedData = array(
                 </div>-->
             <?}?>
             <div class="middle_info main_item_wrapper">
-                <?=$arResult["IMP_PROPS_STR"];?>
+                <?=$arResult["IMP_PROPS_STR"]?>
+
                 <div class="prices_block">
                     <div class="cost prices clearfix">
                         <?if( count( $arResult["OFFERS"] ) > 0 ){
@@ -622,6 +638,7 @@ $arViewedData = array(
                     <?elseif($arResult["OFFERS"] && $arParams['TYPE_SKU'] != 'TYPE_1'):?>
                         <span class="btn btn-default btn-lg slide_offer transition_bg type_block"><i></i><span><?=GetMessage("MORE_TEXT_BOTTOM");?></span></span>
                     <?endif;?>
+                  
                 </div>
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
@@ -1449,8 +1466,8 @@ if($arRegion)
 
 
 $APPLICATION->IncludeComponent(
-	"bitrix:catalog.products.viewed", 
-	"newViewed", 
+	"bitrix:catalog.products.viewed",
+	"newViewed",
 	array(
 		"ACTION_VARIABLE" => "action_cpv",
 		"ADDITIONAL_PICT_PROP_77" => "-",

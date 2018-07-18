@@ -320,6 +320,74 @@
                 // unset($arResult["DISPLAY_PROPERTIES"]['RAPPORT']);
 
                 break;
+                case LAMINAT_SECTION_ID:
+
+                    if($arResult['PROPERTIES']['COUNTRY']['VALUE']){
+                        $propertyCountry = "производство ".$arResult['PROPERTIES']['COUNTRY']['VALUE'].', ';
+                    }
+                    if($arResult['PROPERTIES']['STYLE']['VALUE']){
+                        $propertyStyle = implode($arResult['PROPERTIES']['STYLE']['VALUE']).', ';
+                    }
+                    if($arResult['PROPERTIES']['PROPERTY']['VALUE']){
+                        $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .',';
+                    }
+                    if($arResult["PROPERTIES"]["COLOR"]["VALUE"]){
+                        $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
+                    }
+                    if($arResult["PROPERTIES"]["LOCK"]["VALUE"]){
+                        $propertyLock =  $arResult["PROPERTIES"]["LOCK"]["VALUE"].', ';
+                    }
+                    if($arResult["PROPERTIES"]["PERIOD"]["VALUE"]){
+                        $propertyPeriod = "срок службы ". $arResult["PROPERTIES"]["PERIOD"]["VALUE"].', ';
+                    }
+                    if($arResult["PROPERTIES"]["LAMEL"]["VALUE"]){
+                        $propertyLamel =  $arResult["PROPERTIES"]["LAMEL"]["VALUE"].', ';
+                    }
+                    $propertyUpak = 'Упаковка: ';
+                    if($arResult["PROPERTIES"]["UPAK_KBM"]["VALUE"]){
+                        $propertyUpak .= $arResult["PROPERTIES"]["UPAK_KBM"]["VALUE"] ." кв.м, ";
+                    }
+                    if($arResult["PROPERTIES"]["UPAK_PCS"]["VALUE"]){
+                        $propertyUpak .= $arResult["PROPERTIES"]["UPAK_PCS"]["VALUE"] ." штук, ";
+                    }
+                    if($arResult["PROPERTIES"]["UPAK_KG"]["VALUE"]){
+                        $propertyUpak .= $arResult["PROPERTIES"]["UPAK_KG"]["VALUE"] ." кг.";
+                    }
+
+                  //  if($arResult["PROPERTIES"]["DESIGN_FLOOR"]["VALUE"]){
+                    //    $propertyDesignFloor = "фактура: " . $arResult["PROPERTIES"]["DESIGN_FLOOR"]["VALUE"].', ';
+                  //  }
+
+                    if($arResult["PROPERTIES"]["SURFACE"]["VALUE"]){
+                        $propertySurface = $arResult["PROPERTIES"]["SURFACE"]["VALUE"].', ';
+                    }
+                    if($arResult["PROPERTIES"]["FASKA"]["VALUE"]){
+                        $propertyFaska = $arResult["PROPERTIES"]["FASKA"]["VALUE"].', ';
+                    }
+                    if($arResult["PROPERTIES"]["CLASS"]["VALUE"]){
+                        $propertyClass =  $arResult["PROPERTIES"]["CLASS"]["VALUE"].' класс, ';
+                    }
+                    if($arResult["PROPERTIES"]["THICKNESS_NEW"]["VALUE"]){
+                        $propertyThickness = 'толщина '. $arResult["PROPERTIES"]["THICKNESS_NEW"]["VALUE"].' мм, ';
+                    }
+                    if($arResult["PROPERTIES"]["SIZE"]["VALUE"]){
+                      $string = $arResult["PROPERTIES"]["SIZE"]["VALUE"];
+                      $string = str_replace('х', 'x', $string);   //меняем хэ на икс
+                      $items = explode('x', $string);   //икс
+                      $propertiesString .= "<div class='imp_props_txt'>";
+                      $propertiesString .= "<span class='red'>Размеры: </span>";
+                      $propertiesString .= "<span>длина: ".$items[0]." мм | ширина: ".$items[1]." мм |<br>".$propertyUpak."</span></div>";
+                      $arResult["IMP_PROPS_STR"] = $propertiesString;
+                    }
+                    $upakCoefficient = $arResult['PROPERTIES']['UPAK_KBM'];
+                    
+
+
+
+
+
+
+
 
             default:
                 break;
@@ -368,6 +436,15 @@
     $arResult["PROPERTIES"]["COUNTRY_STRING"] = $propertyCountry;
     $arResult["PROPERTIES"]["PROPERTY_STYLE"] = $propertyStyle;
     $arResult["PROPERTIES"]["PROPERTY_ROOM"] = $propertyRoomString;
+    $arResult["PROPERTIES"]["LOCK"] = $propertyLock;
+    $arResult["PROPERTIES"]["PERIOD"] = $propertyPeriod;
+    $arResult["PROPERTIES"]["LAMEL"] = $propertyLamel;
+    $arResult["PROPERTIES"]["UPAK"] = $propertyUpak;
+    $arResult["PROPERTIES"]["DESIGN_FLOOR"] = $propertyDesignFloor;
+    $arResult["PROPERTIES"]["SURFACE"] = $propertySurface;
+    $arResult["PROPERTIES"]["FASKA"] = $propertyFaska;
+    $arResult["PROPERTIES"]["CLASS"] = $propertyClass;
+    $arResult["PROPERTIES"]["THICKNESS_NEW"] = $propertyThickness;
 
 
 

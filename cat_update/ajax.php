@@ -62,7 +62,7 @@ switch ($method) {
 
     case 16:
         set_faset_index($COUNT, $last_id);
-        break; 
+        break;
 	case 17:
         emptyUpdate($COUNT, $last_id);
         break;
@@ -77,7 +77,7 @@ CModule::IncludeModule("iblock");
 CModule::IncludeModule("catalog");
 function plitka_size($COUNT,$last_id)
 {
-    
+
 
     $elements = CIBlockElement::GetList (array("ID" => "asc"), array("IBLOCK_ID" => 77, "SECTION_ID" => 35615, ">ID" => $last_id , "INCLUDE_SUBSECTIONS" => "Y"), false, Array("nPageSize"=>$COUNT), array("ID", "NAME", "PROPERTY_SIZE"));
     while ($subsection_elements = $elements -> Fetch()) {
@@ -124,7 +124,7 @@ function emptyUpdate($COUNT,$last_id)
     CModule::IncludeModule("iblock");
     CModule::IncludeModule("catalog");
 
-    $elements = CIBlockElement::GetList (array("ID" => "asc"), array("IBLOCK_ID" => 77, "SECTION_ID" => 34639, ">ID" => $last_id , "INCLUDE_SUBSECTIONS" => "Y"), false, Array("nPageSize"=>$COUNT), array("ID", "ACTIVE"));
+    $elements = CIBlockElement::GetList (array("ID" => "asc"), array("IBLOCK_ID" => 77, "SECTION_ID" => 35615, ">ID" => $last_id , "INCLUDE_SUBSECTIONS" => "Y"), false, Array("nPageSize"=>$COUNT), array("ID", "ACTIVE"));
     while ($subsection_elements = $elements -> Fetch()) {
         $IDs[$subsection_elements["ID"]] = $subsection_elements["ACTIVE"];
         $last_id = $subsection_elements["ID"];
@@ -133,14 +133,14 @@ function emptyUpdate($COUNT,$last_id)
     $result["method"] = $_POST["method"];
 	foreach ($IDs as $id => $active){
        \Bitrix\Iblock\PropertyIndex\Manager::updateElementIndex(77, $id);
-   // $el = new CIBlockElement;
-   // $res = $el->Update($id, Array("ACTIVE" => $active));
-    //    if($res){
-	 //      $result["SUCCESS_UPD"][] = $id;
-	//   }else{
-	 //      $result["FAIL_UPDATE"][] = $id;
-	// }
-    }    
+    $el = new CIBlockElement;
+    $res = $el->Update($id, Array("ACTIVE" => $active));
+       if($res){
+	      $result["SUCCESS_UPD"][] = $id;
+	  }else{
+	     $result["FAIL_UPDATE"][] = $id;
+ }
+    }
     if (count($IDs) > 0) {
         $result['end_parse'] = false;
     } else {

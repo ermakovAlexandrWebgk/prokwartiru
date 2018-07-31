@@ -88,12 +88,12 @@ $arUrlRewrite=array (
     'PATH' => '/company/staff/index.php',
     'SORT' => 100,
   ),
-  13 => 
+  11 => 
   array (
-    'CONDITION' => '#^/catalog/oboi/#',
+    'CONDITION' => '#^/catalog_test/#',
     'RULE' => '',
-    'ID' => '',
-    'PATH' => '/catalog/oboi/index.php',
+    'ID' => 'bitrix:catalog',
+    'PATH' => '/catalog_test/index.php',
     'SORT' => 100,
   ),
   12 => 
@@ -104,12 +104,12 @@ $arUrlRewrite=array (
     'PATH' => '/company/news/index.php',
     'SORT' => 100,
   ),
-  11 => 
+  13 => 
   array (
-    'CONDITION' => '#^/catalog_test/#',
+    'CONDITION' => '#^/catalog/oboi/#',
     'RULE' => '',
-    'ID' => 'bitrix:catalog',
-    'PATH' => '/catalog_test/index.php',
+    'ID' => '',
+    'PATH' => '/catalog/oboi/index.php',
     'SORT' => 100,
   ),
   14 => 

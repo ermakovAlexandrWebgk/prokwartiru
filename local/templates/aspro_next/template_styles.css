@@ -2692,7 +2692,7 @@ footer .footer-grey.ext_view .bottom-under{border-color:#555;}
 
 /*footer menu*/
 #footer .footer_inner .rows_block .item_block{padding-top:0px;padding-bottom:0px;}
-#footer .footer_inner .menu_item a{display:inline-block;line-height:18px;}
+#footer .footer_inner .menu_item a{/*display:inline-block;*/line-height:18px;}
 #footer .footer_inner .submenu_top .menu_item a{text-transform:uppercase;font-weight:bold;font-size:13px;}
 #footer .footer_inner .submenu .menu_item{margin:0px;line-height: 23px;padding-left:0px;}
 #footer .footer_inner .submenu .menu_item a.dark_link{font-size:13px;}

@@ -9,10 +9,18 @@
 </p>
 <p>
 	 Email: <a href="mailto:info@prokwarti.ru">info@prokwarti.ru</a>
-
 </p>
 <p>
-Страница <a style="text-decoration:underline" href="https://vk.com/prokwartiru">Вконтакте </a>
+<p>
+<a href ="https://vk.com/prokwartiru">
+<img src="/images/vklogo.png" height="35px" width="35px">
+<span style="text-decoration:underline">страница Вконтакте</span>
+</a>
+</p>
+</p>
+<p>
+</p>
+<p>
 </p>
 <p>
  <b>м. Севастопольская, м. Каховская</b>, ТРЦ "Азовский", Бизнес-центр на 5 этаже, офис 71
@@ -34,3 +42,4 @@
 	 КПП 772701001<br>
 	 ОГРН 1117746508868
 </p>
+ <br>

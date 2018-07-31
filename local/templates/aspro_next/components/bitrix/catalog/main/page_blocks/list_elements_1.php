@@ -1,6 +1,7 @@
 <?$curDir = $APPLICATION->GetCurDir();
 $arSeoLn = GetSeoLinks($arResult["VARIABLES"]["SECTION_ID"]);
 
+
 foreach($arSeoLn as $seoLn)
 {
     // arshow($seoLn);
@@ -56,6 +57,7 @@ foreach($arSeoLn as $seoLn)
                 "ALLOW_MULTI_SELECT" => "N" ),
                 false, array( "ACTIVE_COMPONENT" => "Y" )
             );?>
+
 <? $this_sect_info = CIBlockSection::GetByID($arResult["VARIABLES"]["SECTION_ID"]);
     while ($this_sect = $this_sect_info -> Fetch()) {
         $sect_depth_level = $this_sect["DEPTH_LEVEL"];
@@ -204,6 +206,7 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
 				</tbody>
 			</table>
 		<?endif;?>
+
 		<?if($arSeoItem["PROPERTY_TIZERS_VALUE"]):?>
 			<?$GLOBALS["arLandingTizers"] = array("ID" => $arSeoItem["PROPERTY_TIZERS_VALUE"]);?>
 			<?$APPLICATION->IncludeComponent(
@@ -311,6 +314,7 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
         </div>
     <?}?>
 <?endif;?>
+
 <?//$section_elements_list = CIBlockElement::GetList(array(), array("SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"]), false, false, array());
 //if ($section_elements_list -> SelectedRowsCount() > 0) {?>
     <?global $arTheme;?>
@@ -321,8 +325,10 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
     <?if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == "xmlhttprequest" && isset($_GET["ajax_get_filter"]) && $_GET["ajax_get_filter"] == "Y" ){
 	    $isAjaxFilter="Y";
     }?>
+
     <?$section_pos_top = \Bitrix\Main\Config\Option::get("aspro.next", "TOP_SECTION_DESCRIPTION_POSITION", "UF_SECTION_DESCR", SITE_ID );?>
     <?$section_pos_bottom = \Bitrix\Main\Config\Option::get("aspro.next", "BOTTOM_SECTION_DESCRIPTION_POSITION", "DESCRIPTION", SITE_ID );?>
+
     <?if($itemsCnt):?>
 	    <?if($arTheme["FILTER_VIEW"]["VALUE"]=="VERTICAL"){?>
 		    <?ob_start()?>
@@ -364,6 +370,7 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
 		    <?}?>
 		    <div class="inner_wrapper">
     <?endif;?>
+  
 			    <?if(!$arSeoItem):?>
 				    <?if($posSectionDescr=="BOTH"):?>
 					    <?if ($arSection[$section_pos_top]):?>
@@ -437,13 +444,15 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
 			    <?if($isAjax=="N"){?>
 				    <div class="ajax_load <?=$display;?>">
 			    <?}?>
-                                <?$currentDir = $APPLICATION->GetCurDir();
+
+                                <?$currentDir = $APPLICATION->GetCurDir(); 
+
                                 if(!strstr($currentDir,'collections' )){
                                   $GLOBALS[$arParams['FILTER_NAME']]["!IBLOCK_SECTION_ID"] = array(37441, 37442, 37443, 37444, 37289, 37445);
                                 }else{
                                   $sort = 'name';
                                   $sort_order = 'asc';
-                                }?>
+                                }?>   
                       <?$APPLICATION->IncludeComponent(
                                 "bitrix:catalog.section",
                                 'catalog_block',//$template,

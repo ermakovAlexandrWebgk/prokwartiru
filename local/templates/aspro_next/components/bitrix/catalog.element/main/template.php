@@ -347,7 +347,9 @@ $arViewedData = array(
                   //  arshow($arResult);
                   }?>
                     <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>
-                    <?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
+                    <?foreach($arResult['COLOR'] as $value){?>
+                      <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/color-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'].','?></a>
+                    <?}?>
                     <?=$arResult["PROPERTIES"]["SURFACE"]?>
                     <?=$arResult["PROPERTIES"]["FASKA"]?>
                     <?=$arResult["PROPERTIES"]["CLASS"]?>
@@ -356,11 +358,34 @@ $arViewedData = array(
                     <?=$arResult["PROPERTIES"]["WASHING"]?>
                     <?=$arResult["PROPERTIES"]["WATERPROOF"]?>
                     <?=$arResult["PROPERTIES"]["WATERPROOFPAPER"]?>
-                    <?=$arResult["PROPERTIES"]["PROPERTY_STYLE"]?>
-                    <?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
-                    <?=$arResult["PROPERTIES"]["LAMEL"]?>
-                    <?=$arResult["PROPERTIES"]["COUNTRY_STRING"]?><br>
-                    <?=$arResult["PROPERTIES"]["PROPERTY_ROOM"]?>
+                    <?foreach($arResult['STYLE'] as $value){?>
+                      <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/style-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'];?></a>
+                    <?}?>
+                    <?foreach($arResult['DESIGN'] as $value){?>
+                      <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/design_oboi-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'];?></a>
+                    <?}?>
+                    <?=$arResult["PROPERTIES"]["LAMEL"]?><br>
+                    <?if($arResult['COUNTRY']){
+                      echo 'производство';
+                    foreach($arResult['COUNTRY'] as $code => $value){?>
+                   <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/country-is-<?=$code?>/apply/"><?=$value;?></a><br>
+                    <?}?>
+                  <?}?>
+
+
+                    <?$countItems = count($arResult['ROOM']);
+                    $i = 0;
+                    if($arResult['ROOM']){
+                    echo 'Подходят для:';
+                    foreach($arResult['ROOM'] as $value){
+                      if(++$i === $countItems){?>
+                        <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/room-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'];?></a>
+                      <?}else{?>
+                        <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/room-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'].',';?></a>
+                        <?}?>
+                    <?}?>
+                  <?}?>
+
                     <?=$arResult["PROPERTIES"]["LOCK"]?>
                     <?=$arResult["PROPERTIES"]["PERIOD"]?>
 
@@ -638,7 +663,7 @@ $arViewedData = array(
                     <?elseif($arResult["OFFERS"] && $arParams['TYPE_SKU'] != 'TYPE_1'):?>
                         <span class="btn btn-default btn-lg slide_offer transition_bg type_block"><i></i><span><?=GetMessage("MORE_TEXT_BOTTOM");?></span></span>
                     <?endif;?>
-                  
+
                 </div>
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
@@ -742,25 +767,27 @@ $arViewedData = array(
                     <span class="properties-text">
                         <?=GetMessage('COLLECTION');?>
                     </span>
-                    <?=$arResult["COLLECTION"]?>
                     <?$page = explode('/', $APPLICATION->GetCurPage());
                       unset ($page[count($page)-2]); // удаляем детальный товар из ссылки
                       $page_new = implode("/", $page);// формируем ссылку заново?>
+                       <a href="<?=$page_new?>"><?=$arResult["COLLECTION"]?></a>
                      <a href="<?=$page_new?>"><?=GetMessage("ALL_COLLECTIONS")?></a>
                 </span>
-
+  <?$brandUrl = strtolower($arResult['PROPERTIES']['BRAND']['VALUE_XML_ID']);?>
 
                 <?if (($arResult['PROPERTIES']['COUNTRY']['VALUE']) && ($arResult['PROPERTIES']['BRAND']['VALUE']) ){?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('FACTORY');?>
                         </span>
-                        <?=$arResult['PROPERTIES']['BRAND']['VALUE']?>
+                        <a href="/catalog/<?=$arResult['CURRENT_SECTION'];?>/filter/brand-is-<?=$brandUrl?>/apply/"><?=$arResult['PROPERTIES']['BRAND']['VALUE']?></a>
+                        <?foreach($arResult['COUNTRY'] as $code => $value){?>
+                       <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/country-is-<?=$code?>/apply/">(<?=$value;?>)</a>
+                        <?}?>
 
-                        (<?=$arResult['PROPERTIES']['COUNTRY']['VALUE'];?>)
-                    <?$brandUrl = strtolower($arResult['PROPERTIES']['BRAND']['VALUE']);
-                    $brandUrl = str_replace(' ', '-', $brandUrl);?>
-                    <a href="/catalog/oboi/filter/brand-is-<?=$brandUrl?>/apply/"><?=GetMessage("ALL_BRAND")?></a>
+
+
+                    <a href="/catalog/<?=$arResult['CURRENT_SECTION'];?>/filter/brand-is-<?=$brandUrl?>/apply/"><?=GetMessage("ALL_BRAND")?></a>
                     </span>
                 <?}?>
                 </div>
@@ -786,12 +813,6 @@ $arViewedData = array(
 
                 </span>
                 <!-- Доставка товара -->
-
-
-
-
-
-
                 <?
                 use Bitrix\Main\Grid\Declension; /*   Склонение слова "День" в зависимости от количества */
                 $yearDeclension = new Declension(
@@ -815,21 +836,27 @@ $arViewedData = array(
                         <span class="properties-text"> <?=GetMessage('PICKUP_TIME');?></span>
                         <?=GetMessage('PICKUP_TIME2');?>
                     </span>
-
                 <?}else{?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('DELIVERY');?>
                         </span>
-                        <?=GetMessage('DELIVERY2');?>
+                        <?if(strstr($curDir, 'oboi')){?>
+                          <?=GetMessage('DELIVERY3');?>
+                        <?}else{?>
+                              <?=GetMessage('DELIVERY2');?>
+                        <?}?>
+
+
                     </span>
+                  <?if(strstr($APPLICATION->GetCurDir, "/catalog/oboi/")){?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('PICKUP_SECOND_TIME');?>
                         </span>
                         <?=GetMessage('PICKUP_SECOND_TIME2');?>
-
                     </span>
+                    <?}?>
                 <?}?>
                 </div>
 

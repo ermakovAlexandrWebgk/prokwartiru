@@ -247,14 +247,44 @@
 
         switch ($ar_parent["ID"]) {
             case OBOI_SECTION_ID:
-                if($arResult['PROPERTIES']['COUNTRY']['VALUE']){
-                    $propertyCountry = "производство: ".$arResult['PROPERTIES']['COUNTRY']['VALUE'];
+           if($arResult['PROPERTIES']['COUNTRY']['VALUE']){
+               $propertyCountry = ", производство ".$arResult['PROPERTIES']['COUNTRY']['VALUE'].'. ';
+               $arResult['COUNTRY'][$arResult['PROPERTIES']['COUNTRY']["VALUE_XML_ID"]] = $arResult['PROPERTIES']['COUNTRY']["VALUE"];
+             }
+                if(!empty($arResult['PROPERTIES']['ROOM'])){
+                $arResult['ROOM'] = array();
+                  foreach($arResult['PROPERTIES']['ROOM']['VALUE_XML_ID'] as $roomKey => $roomCode){
+                    $arResult['ROOM'][] = array(
+                      'CODE' => $roomCode,
+                      'NAME' => $arResult['PROPERTIES']['ROOM']['VALUE_ENUM'][$roomKey]
+                    );
+                  }
                 }
+
+
                 if($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']){
-                    $propertyDesign  = implode($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']).', ';
+                    //$propertyDesign  = implode($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE']).', ';
+                    if(!empty($arResult['PROPERTIES']['DESIGN_OBOI'])){
+                    $arResult['DESIGN'] = array();
+                      foreach($arResult['PROPERTIES']['DESIGN_OBOI']['VALUE_XML_ID'] as $designKey => $designCode){
+                        $arResult['DESIGN'][] = array(
+                          'CODE' => $designCode,
+                          'NAME' => $arResult['PROPERTIES']['DESIGN_OBOI']['VALUE_ENUM'][$designKey]
+                        );
+                      }
+                    }
                 }
                 if($arResult['PROPERTIES']['STYLE']['VALUE']){
-                    $propertyStyle = implode($arResult['PROPERTIES']['STYLE']['VALUE']).', ';
+                  //  $propertyStyle = implode($arResult['PROPERTIES']['STYLE']['VALUE']).', ';
+                    if(!empty($arResult['PROPERTIES']['STYLE'])){
+                    $arResult['STYLE'] = array();
+                      foreach($arResult['PROPERTIES']['STYLE']['VALUE_XML_ID'] as $styleKey => $styleCode){
+                        $arResult['STYLE'][] = array(
+                          'CODE' => $styleCode,
+                          'NAME' => $arResult['PROPERTIES']['STYLE']['VALUE_ENUM'][$styleKey]
+                        );
+                      }
+                    }
                 }
                 if($arResult['PROPERTIES']['PROPERTY']['VALUE']){
                     $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .',';
@@ -263,8 +293,19 @@
                     $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
                 }
 
-                //$arResult["PROPERTIES"]["DESIGN_OBOI"]["VALUE"]["0"].','
-                //$arResult["PROPERTIES"]["STYLE"]["VALUE"]["0"].',');
+                if(!empty($arResult['PROPERTIES']['COLOR'])){
+                  $arResult['COLOR'] = array();
+                  foreach($arResult['PROPERTIES']['COLOR']['VALUE_XML_ID'] as $colorKey => $colorCode){
+                    $arResult['COLOR'][] = array(
+                      'CODE' => $colorCode,
+                      'NAME' => $arResult['PROPERTIES']['COLOR']['VALUE_ENUM'][$colorKey]
+                    );
+                  }
+                }
+
+
+
+
                 if($arResult['PROPERTIES']['MATERIAL']['VALUE_XML_ID'] == $vinilXmlId ){
                     $propertyWashing = 'моющиеся' .', ';
                 }
@@ -276,7 +317,7 @@
                     $propertyRoomString = strtolower($propertyRoom);
 
                 }
-
+                $arResult['CURRENT_SECTION'] = 'oboi';
 
                 $sun="не выгорают на солнце".', ';
                 $prop_str = "";
@@ -345,14 +386,20 @@
                     }
                     $propertyUpak = 'Упаковка: ';
                     if($arResult["PROPERTIES"]["UPAK_KBM"]["VALUE"]){
-                        $propertyUpak .= $arResult["PROPERTIES"]["UPAK_KBM"]["VALUE"] ." кв.м, ";
+                        $propertyUpak .= $arResult["PROPERTIES"]["UPAK_KBM"]["VALUE"] ." кв.м | ";
                     }
                     if($arResult["PROPERTIES"]["UPAK_PCS"]["VALUE"]){
-                        $propertyUpak .= $arResult["PROPERTIES"]["UPAK_PCS"]["VALUE"] ." штук, ";
+                        $propertyUpak .= $arResult["PROPERTIES"]["UPAK_PCS"]["VALUE"] ." штук | ";
                     }
                     if($arResult["PROPERTIES"]["UPAK_KG"]["VALUE"]){
-                        $propertyUpak .= $arResult["PROPERTIES"]["UPAK_KG"]["VALUE"] ." кг.";
+                        $propertyUpak .= $arResult["PROPERTIES"]["UPAK_KG"]["VALUE"] ." кг|";
                     }
+                    
+                    $propertyUpak .='<span class="upak">';
+                    $propertyUpak .= '<br>'.'Продается только упаковками.<br>';
+                    //$propertyUpak .= 'Цена за квадратный метр: '.$arResult['PROPERTIES']['PRICE_PER_M2']['VALUE']. ' руб';
+                    $propertyUpak .= '</span>';
+
 
                   //  if($arResult["PROPERTIES"]["DESIGN_FLOOR"]["VALUE"]){
                     //    $propertyDesignFloor = "фактура: " . $arResult["PROPERTIES"]["DESIGN_FLOOR"]["VALUE"].', ';
@@ -380,7 +427,8 @@
                       $arResult["IMP_PROPS_STR"] = $propertiesString;
                     }
                     $upakCoefficient = $arResult['PROPERTIES']['UPAK_KBM'];
-                    
+                    $arResult['CURRENT_SECTION'] = 'floor';
+
 
 
 
@@ -1294,4 +1342,6 @@ foreach ($stickerList as $stickerId => $values){
     }
 }
 unset($arResult['CATALOG_MEASURE_NAME']);
+
+
 ?>

@@ -2172,6 +2172,7 @@ body .tabs_slider .catalog_item:hover .inner_wrap {border-color:#fff;box-shadow:
 .stickers .sticker_SHOW {background-color:#4fad00;}
 .stickers .sticker_STOCK {background-color:#FF0000;}
 .stickers .sticker_PREMIUM {background-color:#1d2029;}
+.stickers .sticker_SALE_LABEL {background-color:#FF0000;}
 
 .item .stickers{left: 0px;}
 .display_list .item .stickers{top: 5px;left: 3px;}

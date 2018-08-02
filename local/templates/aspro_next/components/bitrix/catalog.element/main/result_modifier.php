@@ -1342,6 +1342,21 @@ foreach ($stickerList as $stickerId => $values){
     }
 }
 unset($arResult['CATALOG_MEASURE_NAME']);
-
+$db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $arResult['ID'], "CATALOG_GROUP_ID" => 1));
+        if ($ar_res = $db_res->Fetch())
+        {
+            if ($ar_res['PRICE'] && $ar_res['PRICE'] > $arResult["PRICES"]["SALE"]["VALUE"]){
+                $arResult["PRICES"]["SALE"]["VALUE"] = $ar_res['PRICE'];    
+                $arResult["PRICES"]["SALE"]["VALUE"] = $ar_res['PRICE'];    
+                $arResult["PRICES"]["SALE"]["PRINT_VALUE_VAT"] = $ar_res['PRICE'];    
+                $arResult["PRICES"]["SALE"]["PRINT_VALUE_NOVAT"] = $ar_res['PRICE'];    
+                $arResult["PRICES"]["SALE"]["ROUND_VALUE_NOVAT"] = $ar_res['PRICE'];    
+                $arResult["PRICES"]["SALE"]["ROUND_VALUE_VAT"] = $ar_res['PRICE'];    
+                $arResult["PRICES"]["SALE"]["VALUE_NOVAT"] = $ar_res['PRICE'];    
+                $arResult["PRICES"]["SALE"]["VALUE_VAT"] = $ar_res['PRICE'];    
+                $arResult["PRICES"]["SALE"]["PRINT_DISCOUNT_DIFF"] = $ar_res['PRICE'] - $arResult["ITEMS"][$key]["PRICES"]["SALE"]["UNROUND_DISCOUNT_VALUE"] .' ð';
+                $arResult["PRICES"]["SALE"]["PRINT_VALUE"] = $ar_res['PRICE']." ð.";      
+            }    
+        }
 
 ?>

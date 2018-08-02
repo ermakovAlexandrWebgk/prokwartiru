@@ -718,5 +718,22 @@
     $cache->EndDataCache(array("result" => $arResult["ITEM_PROPS_INFO"])); // записываем в кеш
     }
     */
-  
+   foreach ($arResult["ITEMS"] as $key => $item) {
+    $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $item['ID'], "CATALOG_GROUP_ID" => 1));
+        if ($ar_res = $db_res->Fetch())
+        {
+            if ($ar_res['PRICE'] && $ar_res['PRICE'] > $item["PRICES"]["SALE"]["VALUE"]){
+                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE"] = $ar_res['PRICE'];    
+                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE"] = $ar_res['PRICE'];    
+                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE_VAT"] = $ar_res['PRICE'];    
+                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE_NOVAT"] = $ar_res['PRICE'];    
+                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["ROUND_VALUE_NOVAT"] = $ar_res['PRICE'];    
+                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["ROUND_VALUE_VAT"] = $ar_res['PRICE'];    
+                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE_NOVAT"] = $ar_res['PRICE'];    
+                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE_VAT"] = $ar_res['PRICE'];    
+                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_DISCOUNT_DIFF"] = $ar_res['PRICE'] - $arResult["ITEMS"][$key]["PRICES"]["SALE"]["UNROUND_DISCOUNT_VALUE"] .' р';
+                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE"] = $ar_res['PRICE']." р.";      
+            }    
+        }
+    }
 ?>

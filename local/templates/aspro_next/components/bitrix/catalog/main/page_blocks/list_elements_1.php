@@ -445,14 +445,18 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
 				    <div class="ajax_load <?=$display;?>">
 			    <?}?>
 
-                                <?$currentDir = $APPLICATION->GetCurDir(); 
-
+                               <?$currentDir = $APPLICATION->GetCurDir();                
                                 if(!strstr($currentDir,'collections' )){
-                                  $GLOBALS[$arParams['FILTER_NAME']]["!IBLOCK_SECTION_ID"] = array(37441, 37442, 37443, 37444, 37289, 37445);
-                                }else{
+                                    $GLOBALS[$arParams['FILTER_NAME']]["!IBLOCK_SECTION_ID"] = array(37441, 37442, 37443, 37444, 37289, 37445);
+                                }
+                                $sectionId = $arResult['VARIABLES']['SECTION_ID'];
+                                if($currentDir == '/catalog/floor/'){
+                                    $sectionId = 34378;
+                                }
+                                else{
                                   $sort = 'name';
                                   $sort_order = 'asc';
-                                }?>   
+                                }?>    
                       <?$APPLICATION->IncludeComponent(
                                 "bitrix:catalog.section",
                                 'catalog_block',//$template,
@@ -463,7 +467,7 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
                                     "SEF_URL_TEMPLATES" => $arParams["SEF_URL_TEMPLATES"],
                                     "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                                     "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-                                    "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
+                                    "SECTION_ID" => $sectionId,
                                     "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
                                     "AJAX_REQUEST" => $isAjax,
                                     "ELEMENT_SORT_FIELD" => $sort,

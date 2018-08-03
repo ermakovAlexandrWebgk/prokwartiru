@@ -813,6 +813,7 @@ $arViewedData = array(
 
                 </span>
                 <!-- Доставка товара -->
+                <?$currentDir = $APPLICATION->GetCurDir();?>
                 <?
                 use Bitrix\Main\Grid\Declension; /*   Склонение слова "День" в зависимости от количества */
                 $yearDeclension = new Declension(
@@ -841,13 +842,13 @@ $arViewedData = array(
                         <span class="properties-text">
                             <?=GetMessage('DELIVERY');?>
                         </span>
-                        <?if(strstr($curDir, 'oboi')){?>
-                          <?=GetMessage('DELIVERY3');?>
+                        <?$i = 10;?>
+                        <?if(strstr($currentDir,'/catalog/floor')){?>
+                             <?=GetMessage('DELIVERY3');?>
                         <?}else{?>
-                              <?=GetMessage('DELIVERY2');?>
+                        <?=GetMessage('DELIVERY2');?>
                         <?}?>
-
-
+                        
                     </span>
                   <?if(strstr($APPLICATION->GetCurDir, "/catalog/oboi/")){?>
                     <span class="properties-element">

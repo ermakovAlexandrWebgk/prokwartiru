@@ -395,10 +395,10 @@
                         $propertyUpak .= $arResult["PROPERTIES"]["UPAK_KG"]["VALUE"] ." кг|";
                     }
                     
-                    $propertyUpak .='<span class="upak">';
-                    $propertyUpak .= '<br>'.'Продается только упаковками.<br>';
-                    //$propertyUpak .= 'Цена за квадратный метр: '.$arResult['PROPERTIES']['PRICE_PER_M2']['VALUE']. ' руб';
-                    $propertyUpak .= '</span>';
+                  
+                    $propertyUpakPrice .= 'Продается только упаковками.';
+                    $propertyUpakUnderPrice .= $arResult['PROPERTIES']['PRICE_PER_M2']['VALUE']. ' р/м2';
+                    
 
 
                   //  if($arResult["PROPERTIES"]["DESIGN_FLOOR"]["VALUE"]){
@@ -488,6 +488,8 @@
     $arResult["PROPERTIES"]["PERIOD"] = $propertyPeriod;
     $arResult["PROPERTIES"]["LAMEL"] = $propertyLamel;
     $arResult["PROPERTIES"]["UPAK"] = $propertyUpak;
+    $arResult["PROPERTIES"]["UPAK_UNDER_PRICE"] = $propertyUpakUnderPrice;
+    $arResult["PROPERTIES"]["UPAK_UNDER"] = $propertyUpakPrice;
     $arResult["PROPERTIES"]["DESIGN_FLOOR"] = $propertyDesignFloor;
     $arResult["PROPERTIES"]["SURFACE"] = $propertySurface;
     $arResult["PROPERTIES"]["FASKA"] = $propertyFaska;

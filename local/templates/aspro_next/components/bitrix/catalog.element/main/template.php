@@ -343,9 +343,6 @@ $arViewedData = array(
 
             <div class="price_txt">
                 <span class="properties-string">
-                  <?if($_SERVER['REMOTE_ADDR'] == "91.201.253.5"){
-                  //  arshow($arResult);
-                  }?>
                     <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>
                     <?foreach($arResult['COLOR'] as $value){?>
                       <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/color-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'].','?></a>
@@ -385,14 +382,8 @@ $arViewedData = array(
                         <?}?>
                     <?}?>
                   <?}?>
-
                     <?=$arResult["PROPERTIES"]["LOCK"]?>
                     <?=$arResult["PROPERTIES"]["PERIOD"]?>
-
-
-
-
-
                 </span>
             </div>
             <?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>
@@ -579,7 +570,7 @@ $arViewedData = array(
                         <?}?>
                     <?}?>
                     <div class="quantity_block_wrapper">
-                        <?if($useStores){?>
+                        <?/*if($useStores){?>
                             <div class="p_block">
                             <?}?>
                             <?=$arQuantityData["HTML"];?>
@@ -590,8 +581,11 @@ $arViewedData = array(
                             <div class="cheaper_form">
                                 <span class="animate-load" data-event="jqm" data-param-form_id="CHEAPER" data-name="cheaper" data-autoload-product_name="<?=$arResult["NAME"];?>" data-autoload-product_id="<?=$arResult["ID"];?>"><?=($arParams["CHEAPER_FORM_NAME"] ? $arParams["CHEAPER_FORM_NAME"] : GetMessage("CHEAPER"));?></span>
                             </div>
-                        <?endif;?>
+                        <?endif;*/?>
+                        <span class="upakPrice"><?=$arResult["PROPERTIES"]["UPAK_UNDER_PRICE"].'<br>'?></span>
+                        <span class="upakData"><?=$arResult["PROPERTIES"]["UPAK_UNDER"]?></span>
                     </div>
+                   
                 </div>
                 <div class="buy_block">
                     <?if($arResult["OFFERS"] && $showCustomOffer){?>
@@ -665,6 +659,7 @@ $arViewedData = array(
                     <?endif;?>
 
                 </div>
+                
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
                         <img height="16" width="16" src="<?=SITE_TEMPLATE_PATH?>/images/perIcon.png"></a>

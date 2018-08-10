@@ -3751,7 +3751,7 @@ body .ajax_load.table .main_item_wrapper .counter_wrapp div.total_summ{margin: -
 .info_item .middle_info .item-stock > span{font-size:13px;}
 .info_item .middle_info .item-stock .store_view{cursor:pointer;color:#666;}
 
-.quantity_block_wrapper{font-size:0px;padding: 10px 0px;}
+.quantity_block_wrapper{/*font-size:0px;*/padding: 10px 0px;}
 #fast_view_item .quantity_block_wrapper{padding-top:0px;}
 .quantity_block_wrapper > div{display:inline-block;vertical-align:middle;font-size: 13px;color:#666;margin-right:30px !important;}
 .middle_info .quantity_block_wrapper .item-stock{margin-top:0px;}
@@ -6492,6 +6492,15 @@ color: #ffffff !important;
 
 .discount_block{
     width:450px;
+    
+}
+.upakPrice{
+    font-size:15px;
+    font-weight:bold;
+}
+.upakData{
+    font-size:11px;
+    font-weight:bold;
 }
 .phone-block{
     height: 100%;

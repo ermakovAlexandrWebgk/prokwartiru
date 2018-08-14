@@ -181,3 +181,8 @@ z-index: 625;
 footer#footer .footer_bottom_inner{
 padding-bottom: 0;
 }
+.price_per_m2{
+    color:black;
+    font-size:16px;
+    font-weight:bold;
+}

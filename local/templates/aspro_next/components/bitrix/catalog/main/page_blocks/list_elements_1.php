@@ -453,7 +453,7 @@ if ((isset($_GET["view_by_collections"]) || isset($_GET["view_by_items"])) && $e
                                 if($currentDir == '/catalog/floor/'){
                                     $sectionId = 34378;
                                 }
-                                else{
+                                if(strstr($currentDir,'collections' )){
                                   $sort = 'name';
                                   $sort_order = 'asc';
                                 }?>    

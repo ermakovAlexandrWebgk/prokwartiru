@@ -397,7 +397,9 @@
                     
                   
                     $propertyUpakPrice .= 'Продается только упаковками.';
-                    $propertyUpakUnderPrice .= $arResult['PROPERTIES']['PRICE_PER_M2']['VALUE']. ' р/м2';
+                    if(!empty($arResult['PROPERTIES']['PRICE_PER_M2']['VALUE'])){
+                        $propertyUpakUnderPrice .= $arResult['PROPERTIES']['PRICE_PER_M2']['VALUE']. ' р/м2';
+                    }
                     
 
 

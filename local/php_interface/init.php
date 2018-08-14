@@ -315,4 +315,20 @@ function ItemBasketPrise(&$arFields) { // округляем цену товара
         $arFields["PRICE"] = round($arFields["PRICE"]);
     }
 }
- 
+AddEventHandler("search", "BeforeIndex", "logIndex");
+   function logIndex($arFields){
+      logger($arFields["ITEM_ID"], $_SERVER['DOCUMENT_ROOT'].'/log.log');
+   }
+AddEventHandler("catalog", "OnProductAdd", "setElementCount");
+function setElementCount($id, $arFields){
+        logger($arFields,$_SERVER['DOCUMENT_ROOT'].'/log2.log');
+        CCatalogProduct::Update($id, array("QUANTITY" => 1));
+}
+
+
+        
+        
+                
+                
+            
+   

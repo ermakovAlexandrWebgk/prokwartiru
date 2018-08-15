@@ -1,7 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-<?if($_SERVER["REMOTE_ADDR"] = "91.201.253.5"){
-  //arshow($arResult);
-}?>
+
 <?$this->SetViewTarget('collection');?>
 <?=$arResult['COLLECTION']?>
 <?$this->EndViewTarget();?>
@@ -13,11 +11,6 @@
                 unset($arResult['PRODUCT_PROPERTIES'][$propID]);
         }
     }
-
-
-
-
-
     $arResult["EMPTY_PROPS_JS"]="Y";
     $emptyProductProperties = empty($arResult['PRODUCT_PROPERTIES']);
     if (!$emptyProductProperties){
@@ -48,6 +41,7 @@
         </div>
     <?}?>
 </div>
+
 <?
 $this->setFrameMode(true);
 $currencyList = '';
@@ -569,6 +563,7 @@ $arViewedData = array(
                             </div>
                         <?}?>
                     <?}?>
+                    <input id="hiddenId" value="<?=$arResult["ID"]?>" hidden> 
                     <div class="quantity_block_wrapper">
                         <?/*if($useStores){?>
                             <div class="p_block">
@@ -585,6 +580,7 @@ $arViewedData = array(
                         <span class="upakPrice"><?=$arResult["PROPERTIES"]["UPAK_UNDER_PRICE"].'<br>'?></span>
                         <span class="upakData"><?=$arResult["PROPERTIES"]["UPAK_UNDER"]?></span>
                     </div>
+                
                    
                 </div>
                 <div class="buy_block">
@@ -652,14 +648,16 @@ $arViewedData = array(
                         <?endif;?>
                     <?elseif($arResult["OFFERS"] && $arParams['TYPE_SKU'] == 'TYPE_1'):?>
                         <div class="offer_buy_block buys_wrapp" style="display:none;">
-                            <div class="counter_wrapp"></div>
+                            <div class="counter_wrapp">
+                            </div>
+                            
                         </div>
                     <?elseif($arResult["OFFERS"] && $arParams['TYPE_SKU'] != 'TYPE_1'):?>
                         <span class="btn btn-default btn-lg slide_offer transition_bg type_block"><i></i><span><?=GetMessage("MORE_TEXT_BOTTOM");?></span></span>
                     <?endif;?>
 
                 </div>
-                
+                   <div class="upak_count"><span class="upakData" id="resultCount"></span></div>
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
                         <img height="16" width="16" src="<?=SITE_TEMPLATE_PATH?>/images/perIcon.png"></a>

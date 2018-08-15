@@ -3769,3 +3769,23 @@ window.JCCatalogElement.prototype.allowViewedCount = function(update)
 	}
 };
 })(window);
+$( document ).ready(function(){
+var ID = $('#hiddenId').val();
+$(".counter_block.big_basket input").on('change', function() {
+var elementCount = $(this).val();
+if(elementCount > 0){
+    console.log(this);
+    $.ajax({
+    type: "POST",
+       url: '/ajax/calculateKbmValue.php',
+       data: {elementID: ID, elementCount: elementCount},
+       success: function(response) {
+           console.log(response);
+           if(response != 'error'){
+               $("#resultCount").html(response);
+           }
+       }
+   });
+}
+});
+});

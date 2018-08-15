@@ -1362,5 +1362,4 @@ $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $arResult['ID'], "CATAL
                 $arResult["PRICES"]["SALE"]["PRINT_VALUE"] = $ar_res['PRICE']." ð.";      
             }    
         }
-
 ?>

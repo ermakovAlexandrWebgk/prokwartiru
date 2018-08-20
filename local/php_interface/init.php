@@ -146,6 +146,8 @@
     }
 
 AddEventHandler("iblock", "OnAfterIBlockElementUpdate", "setPropertyRooms");
+AddEventHandler("iblock", "OnAfterIBlockElementAdd", "setPropertyRooms");
+
 
     function setPropertyRooms(&$arFields)  {
         if (empty($arFields["PROPERTY_VALUES"]["COLLECTION_URL"])) {

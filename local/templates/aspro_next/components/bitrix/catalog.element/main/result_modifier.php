@@ -1346,7 +1346,7 @@ foreach ($stickerList as $stickerId => $values){
     }
 }
 unset($arResult['CATALOG_MEASURE_NAME']);
- if($arResult["~IBLOCK_SECTION_ID"] == 35614){
+ if($arResult["~IBLOCK_SECTION_ID"] == SALE_SECTION_ID){
 $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $arResult['ID'], "CATALOG_GROUP_ID" => 1));
         if ($ar_res = $db_res->Fetch())
         {

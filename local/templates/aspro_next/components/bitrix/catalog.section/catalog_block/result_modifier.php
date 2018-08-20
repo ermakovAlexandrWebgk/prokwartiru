@@ -719,7 +719,7 @@
     }
     */
    foreach ($arResult["ITEMS"] as $key => $item) {
-       if($item["~IBLOCK_SECTION_ID"] == 35614){
+       if($item["~IBLOCK_SECTION_ID"] == SALE_SECTION_ID){
         $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $item['ID'], "CATALOG_GROUP_ID" => 1));
         if ($ar_res = $db_res->Fetch())
         {

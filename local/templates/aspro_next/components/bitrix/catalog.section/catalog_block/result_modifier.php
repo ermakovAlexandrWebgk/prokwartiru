@@ -719,7 +719,8 @@
     }
     */
    foreach ($arResult["ITEMS"] as $key => $item) {
-    $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $item['ID'], "CATALOG_GROUP_ID" => 1));
+       if($item["~IBLOCK_SECTION_ID"] == 35614){
+        $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $item['ID'], "CATALOG_GROUP_ID" => 1));
         if ($ar_res = $db_res->Fetch())
         {
             if ($ar_res['PRICE'] && $ar_res['PRICE'] > $item["PRICES"]["SALE"]["VALUE"]){
@@ -735,5 +736,6 @@
                 $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE"] = $ar_res['PRICE']." ð.";      
             }    
         }
+       }
     }
 ?>

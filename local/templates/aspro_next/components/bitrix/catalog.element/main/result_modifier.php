@@ -1346,6 +1346,7 @@ foreach ($stickerList as $stickerId => $values){
     }
 }
 unset($arResult['CATALOG_MEASURE_NAME']);
+ if($arResult["~IBLOCK_SECTION_ID"] == 35614){
 $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $arResult['ID'], "CATALOG_GROUP_ID" => 1));
         if ($ar_res = $db_res->Fetch())
         {
@@ -1362,4 +1363,5 @@ $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $arResult['ID'], "CATAL
                 $arResult["PRICES"]["SALE"]["PRINT_VALUE"] = $ar_res['PRICE']." ð.";      
             }    
         }
+ }
 ?>

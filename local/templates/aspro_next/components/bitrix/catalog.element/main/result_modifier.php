@@ -1364,4 +1364,19 @@ $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $arResult['ID'], "CATAL
             }    
         }
  }
+$select = Array("UF_GLUE");
+    $arFilter = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => array($arResult['IBLOCK_SECTION_ID'], $arResult['SECTION']['IBLOCK_SECTION_ID']));
+    $result = CIBlockSection::GetList(Array(), $arFilter, false, $select, array());
+        while($fields = $result->Fetch()){
+           $glueIds[] = $fields['UF_GLUE'];
+        }
+    $glueIds = array_diff($glueIds, array(''));
+    
+foreach($glueIds as $valueId){
+    $rsUField = CUserFieldEnum::GetList(array(), array("ID" => $valueId));
+        while($arUField = $rsUField->GetNext()){
+            $arResult['ITEM']['GLUE_CATALOG_ID'] = $arUField['XML_ID'];
+        }
+}
+
 ?>

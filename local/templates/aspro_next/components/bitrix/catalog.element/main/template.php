@@ -1,5 +1,4 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-
 <?$this->SetViewTarget('collection');?>
 <?=$arResult['COLLECTION']?>
 <?$this->EndViewTarget();?>
@@ -726,9 +725,9 @@ $arViewedData = array(
                     <?endif;?>
                         <?
                         $p1 = "/catalog/oboi/";
-                        if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
+                        if (strstr($APPLICATION->GetCurDir(), $p1) && (!empty($arResult['ITEM']['GLUE_CATALOG_ID']))) {?>
                             <div class="btn-lg w_icons to-cart btn btn-default glue"
-                                data-item="400141"
+                                data-item="<?=$arResult['ITEM']['GLUE_CATALOG_ID']?>"
                                     data-float_ratio="" data-ratio="1" data-bakset_div="bx_basket_div_381473" data-props="" data-part_props="Y"
                                         data-add_props="Y" data-empty_props="Y" data-offers=""
                                             data-iblockid="77" data-quantity="1"><?=GetMessage('ADD_GLUE');?>

@@ -320,9 +320,7 @@
                                     <?}?>
                                 </div>
                                 <?if($arItem["PROPERTIES"]["PRICE_PER_M2"]["VALUE"] && !empty($arItem["PROPERTIES"]["PRICE_PER_M2"]["VALUE"])){?>
-                                <div>
-                                <span class="price_per_m2"><?=$arItem["PROPERTIES"]["PRICE_PER_M2"]["VALUE"].' ð/ì2';?></span>
-                                </div>
+                                
                                 <?}?>
                                 <div style="font-size: 12px;">
                                     <?if (strstr($APPLICATION->GetCurDir(), $p1) || ($_GET['q'])) {?>

@@ -577,7 +577,7 @@ $arViewedData = array(
                                 <span class="animate-load" data-event="jqm" data-param-form_id="CHEAPER" data-name="cheaper" data-autoload-product_name="<?=$arResult["NAME"];?>" data-autoload-product_id="<?=$arResult["ID"];?>"><?=($arParams["CHEAPER_FORM_NAME"] ? $arParams["CHEAPER_FORM_NAME"] : GetMessage("CHEAPER"));?></span>
                             </div>
                         <?endif;*/?>
-                        <span class="upakPrice"><?=$arResult["PROPERTIES"]["UPAK_UNDER_PRICE"].'<br>'?></span>
+                       
                         <span class="upakData"><?=$arResult["PROPERTIES"]["UPAK_UNDER"]?></span>
                     </div>
                 

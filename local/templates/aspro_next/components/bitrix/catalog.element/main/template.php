@@ -1,5 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?$this->SetViewTarget('collection');?>
+
 <?=$arResult['COLLECTION']?>
 <?$this->EndViewTarget();?>
 <div class="basket_props_block" id="bx_basket_div_<?=$arResult["ID"];?>" style="display: none;">
@@ -724,8 +725,9 @@ $arViewedData = array(
 
                     <?endif;?>
                         <?
+                        
                         $p1 = "/catalog/oboi/";
-                        if (strstr($APPLICATION->GetCurDir(), $p1) && (!empty($arResult['ITEM']['GLUE_CATALOG_ID']))) {?>
+                        if (strstr($APPLICATION->GetCurDir(), $p1) && !empty($arResult['ITEM']['GLUE_CATALOG_ID'])) {?>
                             <div class="btn-lg w_icons to-cart btn btn-default glue"
                                 data-item="<?=$arResult['ITEM']['GLUE_CATALOG_ID']?>"
                                     data-float_ratio="" data-ratio="1" data-bakset_div="bx_basket_div_381473" data-props="" data-part_props="Y"
@@ -733,7 +735,7 @@ $arViewedData = array(
                                             data-iblockid="77" data-quantity="1"><?=GetMessage('ADD_GLUE');?>
                             </div>
                         <?}?>
-                            <a rel="nofollow" href="/basket/" class="btn-lg w_icons in-cart btn btn-default transition_bg"  data-item="400141" style="display: none;"><i></i>
+                            <a rel="nofollow" href="/basket/" class="btn-lg w_icons in-cart btn btn-default transition_bg"  data-item="<?=$arResult['ITEM']['GLUE_CATALOG_ID']?>" style="display: none;"><i></i>
                                 <span><?=GetMessage('CATALOG_GLUE_ADDED_TO_BASKET');?></span>
                             </a>
 

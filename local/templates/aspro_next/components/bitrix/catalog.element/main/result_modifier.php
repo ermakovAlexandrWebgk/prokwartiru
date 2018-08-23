@@ -1365,18 +1365,10 @@ $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $arResult['ID'], "CATAL
         }
  }
 $select = Array("UF_GLUE");
-    $arFilter = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => array($arResult['IBLOCK_SECTION_ID']));  //получаем свойство "клей" дл€ коллекци
-    $result = CIBlockSection::GetList(Array(), $arFilter, false, $select, array());
+    $arFilter = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => array($arResult['IBLOCK_SECTION_ID'], $arResult['SECTION']['IBLOCK_SECTION_ID']));  //получаем свойство "клей" дл€ коллекци
+    $result = CIBlockSection::GetList(Array('sort'=>'id'), $arFilter, false, $select, array());
         while($fields = $result->Fetch()){
            $glueValue = $fields['UF_GLUE'];
-        }
-        
-        if(empty($glueValue)){                                                                     //если дл€ коллекции не задан, получаем свойство дл€ верхнего раздела
-            $arFilter2 = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => array($arResult['SECTION']['IBLOCK_SECTION_ID']));
-            $result2 = CIBlockSection::GetList(Array(), $arFilter2, false, $select, array());
-                while($fields2 = $result2->Fetch()){
-                   $glueValue = $fields2['UF_GLUE'];
-                }
         }
 $rsUField = CUserFieldEnum::GetList(array(), array("ID" => $glueValue));
 while($arUField = $rsUField->GetNext()){

@@ -1366,7 +1366,7 @@ $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $arResult['ID'], "CATAL
  }
 $select = Array("UF_GLUE");
     $arFilter = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => array($arResult['IBLOCK_SECTION_ID'], $arResult['SECTION']['IBLOCK_SECTION_ID']));  //получаем свойство "клей" для коллекци
-    $result = CIBlockSection::GetList(Array('sort'=>'id'), $arFilter, false, $select, array());
+    $result = CIBlockSection::GetList(Array('ID'=>'ASC'), $arFilter, false, $select, array());
         while($fields = $result->Fetch()){
            $glueValue = $fields['UF_GLUE'];
         }

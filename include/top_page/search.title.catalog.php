@@ -1,11 +1,11 @@
 <?$APPLICATION->IncludeComponent(
-	"bitrix:search.title", 
+	"webgk:search.title", 
 	"corp", 
 	array(
 		"NUM_CATEGORIES" => "1",
 		"TOP_COUNT" => "10",
 		"ORDER" => "date",
-		"USE_LANGUAGE_GUESS" => "Y",
+		"USE_LANGUAGE_GUESS" => "N",
 		"CHECK_DATES" => "Y",
 		"SHOW_OTHERS" => "N",
 		"PAGE" => CNext::GetFrontParametrValue("CATALOG_PAGE_URL"),

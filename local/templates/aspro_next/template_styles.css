@@ -157,7 +157,7 @@ font.notetext{color:#333;}
 
 /* SVG ICONS */
 .svg{top:-1px;display:inline-block;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;vertical-align:middle;min-width:30px;min-height:30px;position:relative;background-repeat:no-repeat;background-position:center center;}
-.svg-phone{margin:0 9px 0 0;min-width:21px;min-height:21px;background-image:url(images/svg/Phone_black.svg);}
+.svg-phone{margin:0 9px 0 0;min-width:21px;min-height:21px;background-image:url(images/svg/Phone_white.svg);}
 .svg-burger{background-image:url(images/svg/burger_black.svg);}
 .svg-burger.mask{background-color:#554e40;background-image:url(images/svg/burger_white.svg);}
 .svg-burger.white{background-image:url(images/svg/burger_white.svg);}

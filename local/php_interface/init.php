@@ -326,6 +326,25 @@ function setElementCount($id, $arFields){
         logger($arFields,$_SERVER['DOCUMENT_ROOT'].'/log2.log');
         CCatalogProduct::Update($id, array("QUANTITY" => 1));
 }
+AddEventHandler("iblock", "OnAfterIBlockElementAdd", "sendEmailAfterElementAdd");
+function sendEmailAfterElementAdd($arFields){
+        if($arFields['IBLOCK_ID'] == PHONE_IBLOCK_ID){
+             $arSelect = Array("ID", "PROPERTY_FORM_NAMW", "PROPERTY_FORM_TELEPHONE", "PROPERTY_FORM_GOOD_TIME", "PROPERTY_FORM_GOOD_DAY");
+             $arFilter = Array("IBLOCK_ID"=>PHONE_IBLOCK_ID, "ID" => $arFields["ID"]);
+             $res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
+             while($obj = $res->Fetch()){
+                 $data[] = $obj;
+             }
+                foreach($data as $value){
+                    $arEventFields = array(
+                    "USERNAME"=>$value["PROPERTY_FORM_NAMW_VALUE"],
+                    "PHONE"=>$value["PROPERTY_FORM_TELEPHONE_VALUE"],
+                    "TIME"=>$value["PROPERTY_FORM_GOOD_TIME_VALUE"]
+                    );
+                }
+           CEvent::Send("PHONE_BLOCK_ELEMENT_SEND", "s1", $arEventFields);
+        }
+}
 
 
         

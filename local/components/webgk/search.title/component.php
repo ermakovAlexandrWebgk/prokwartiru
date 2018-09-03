@@ -19,6 +19,8 @@ if(
 	)
 )
 {
+    
+    $APPLICATION->RestartBuffer();
 	CUtil::decodeURIComponent($query);
 	if (!$isSearchInstalled)
 	{

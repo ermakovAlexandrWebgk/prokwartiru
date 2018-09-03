@@ -127,7 +127,7 @@ class Prototype extends Entity\DataManager
      * @param integer $cacheTime Время кэширования
      * @return void
      */
-    public static function defineConstants($cacheTime = 3600)
+    public static function defineConstants($cacheTime = 0)
     {
         if (self::$constantsDefined)
             return;

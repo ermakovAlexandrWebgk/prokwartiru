@@ -1374,4 +1374,15 @@ $rsUField = CUserFieldEnum::GetList(array(), array("ID" => $glueValue));
 while($arUField = $rsUField->GetNext()){
     $arResult['ITEM']['GLUE_CATALOG_ID'] = $arUField['XML_ID'];
 }
+
+//информация о цене "цена за метр"
+$meterPriceId = floorHandlers::getPriceIdByCode("METER_PRICE");
+
+//цена за метр для текущего товара
+$meterPrice = CPrice::GetList(array(), array("PRODUCT_ID" => $arResult["ID"], "CATALOG_GROUP_ID" => $meterPriceId))->Fetch();
+if ($meterPrice) {  
+    $meterPrice["PRICE_FORMATED"] = number_format($meterPrice["PRICE"], 0, ',', ' ') . " р/м2";
+    $arResult["METER_PRICE"] = $meterPrice;
+}
+
 ?>

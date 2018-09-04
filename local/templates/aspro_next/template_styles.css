@@ -3704,7 +3704,7 @@ div[id^=smartFilterDropDown] .popup-window-top-row, div[id^=smartFilterDropDown]
 
 body .main_item_wrapper div.total_summ{display:none;font-size: 13px;line-height: 20px;color:#666;}
 body .main_item_wrapper div.total_summ span{color:#1d2029;font-weight:bold;}
-body .catalog_detail .main_item_wrapper div.total_summ{margin: -11px 0px 23px;}
+body .catalog_detail .main_item_wrapper div.total_summ {/*margin: -11px 0px 23px;*/}
 body #fast_view_item .catalog_detail .main_item_wrapper div.total_summ{margin: 15px -3px 0px;}
 body .ajax_load .main_item_wrapper div.total_summ{margin: 9px 0px 0px;}
 body .ajax_load.table .main_item_wrapper div.counter_wrapp{position:relative;text-align:left;padding-left:10px;}
@@ -3770,7 +3770,7 @@ body .ajax_load.table .main_item_wrapper .counter_wrapp div.total_summ{margin: -
 .ajax_load.table .counter_wrapp{padding-top:0px;}
 .info_item .middle_info .buy_block .sku_props + .counter_wrapp.woffers, .ajax_load  .counter_wrapp.woffers{transition:opacity 0.1s ease;opacity:0;}
 .info_item .middle_info .buy_block .counter_wrapp{padding:0px 12px 0px 0px;white-space:nowrap;}
-.info_item .middle_info .buy_block .counter_wrapp >div{margin-bottom:22px !important;}
+.info_item .middle_info .buy_block .counter_wrapp > div{/* margin-bottom:22px !important;*/}
 .info_item .middle_info .buy_block .counter_wrapp .more_text{font-size:12px;white-space:normal;}
 .noffer .info_item .middle_info .buy_block .one_click{opacity:1;}
 .info_item .middle_info .preview_text{padding:22px 0px 0px 0px;font-size:13px;line-height:18px;}

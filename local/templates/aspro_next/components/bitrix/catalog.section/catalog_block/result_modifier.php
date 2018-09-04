@@ -718,24 +718,36 @@
     $cache->EndDataCache(array("result" => $arResult["ITEM_PROPS_INFO"])); // записываем в кеш
     }
     */
-   foreach ($arResult["ITEMS"] as $key => $item) {
-       if($item["~IBLOCK_SECTION_ID"] == SALE_SECTION_ID){
-        $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $item['ID'], "CATALOG_GROUP_ID" => 1));
-        if ($ar_res = $db_res->Fetch())
-        {
-            if ($ar_res['PRICE'] && $ar_res['PRICE'] > $item["PRICES"]["SALE"]["VALUE"]){
-                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE"] = $ar_res['PRICE'];    
-                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE"] = $ar_res['PRICE'];    
-                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE_VAT"] = $ar_res['PRICE'];    
-                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE_NOVAT"] = $ar_res['PRICE'];    
-                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["ROUND_VALUE_NOVAT"] = $ar_res['PRICE'];    
-                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["ROUND_VALUE_VAT"] = $ar_res['PRICE'];    
-                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE_NOVAT"] = $ar_res['PRICE'];    
-                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE_VAT"] = $ar_res['PRICE'];    
-                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_DISCOUNT_DIFF"] = $ar_res['PRICE'] - $arResult["ITEMS"][$key]["PRICES"]["SALE"]["UNROUND_DISCOUNT_VALUE"] .' р';
-                $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE"] = $ar_res['PRICE']." р.";      
-            }    
+    $itemID = array();
+    foreach ($arResult["ITEMS"] as $key => $item) {
+    $itemID[] = $item["ID"]; 
+    if($item["~IBLOCK_SECTION_ID"] == SALE_SECTION_ID){
+            $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $item['ID'], "CATALOG_GROUP_ID" => 1));
+            if ($ar_res = $db_res->Fetch()) {
+                if ($ar_res['PRICE'] && $ar_res['PRICE'] > $item["PRICES"]["SALE"]["VALUE"]){
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE_VAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE_NOVAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["ROUND_VALUE_NOVAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["ROUND_VALUE_VAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE_NOVAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE_VAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_DISCOUNT_DIFF"] = $ar_res['PRICE'] - $arResult["ITEMS"][$key]["PRICES"]["SALE"]["UNROUND_DISCOUNT_VALUE"] .' р';
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE"] = $ar_res['PRICE']." р.";      
+                }    
+            }
         }
-       }
     }
+    
+    //информация о цене "цена за метр"
+    $meterPriceId = floorHandlers::getPriceIdByCode("METER_PRICE");
+    
+    //собираем цены за метр квадратный
+    $rsMeterPrice = CPrice::GetList(array(), array("PRODUCT_ID" => $itemID, "CATALOG_GROUP_ID" => $meterPriceId));
+    while ($arMeterPrice = $rsMeterPrice->Fetch()) {
+        $arMeterPrice["PRICE_FORMATED"] = number_format($arMeterPrice["PRICE"], 0, ',', ' ');
+        $arMeterPrice["FULL_PRICE_FORMATED"] = number_format($arMeterPrice["PRICE"], 0, ',', ' ') . " р/м2";
+        $arResult["METER_PRICE"][$arMeterPrice["PRODUCT_ID"]] = $arMeterPrice;
+    }        
 ?>

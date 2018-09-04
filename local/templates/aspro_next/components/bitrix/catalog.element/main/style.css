@@ -73,3 +73,28 @@ button.btn-get_discount{
 .viewed_product_block{
     clear: both;
 }
+
+.meter_price_block {
+    width: 100%;
+    clear: both;
+    color: #000;
+}
+
+.meter_price_block .price_value {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.price_per_m2{
+    color:black;
+    font-size:16px;
+    font-weight:bold;
+}
+.upak_count {
+    margin: 10px 0 0;
+    padding: 3px 0;
+}
+
+.catalog_detail .main_item_wrapper div.total_summ {
+    margin: 10px 0px 0;
+}

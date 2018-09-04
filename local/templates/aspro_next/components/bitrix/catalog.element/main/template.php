@@ -447,6 +447,15 @@ $arViewedData = array(
             <?}?>
             <div class="middle_info main_item_wrapper">
                 <?=$arResult["IMP_PROPS_STR"]?>
+                
+                <?if ($arResult["METER_PRICE"]) {?>  
+                    <div class="meter_price_block">
+                    <span class="price_value"><?=$arResult["METER_PRICE"]["PRICE_FORMATED"]?></span>
+                    <br>
+                    <span class="upakData"><?=$arResult["PROPERTIES"]["UPAK_UNDER"]?></span>
+                    </div>
+                    
+                <?}?>
 
                 <div class="prices_block">
                     <div class="cost prices clearfix">
@@ -472,14 +481,18 @@ $arViewedData = array(
                                 $prefix=GetMessage("CATALOG_FROM");
                         }?>
                             <div class="with_matrix" style="display:none;">
-                                <div class="price price_value_block"><span class="values_wrapper"><?=$minPrice["PRINT_DISCOUNT_VALUE"];?></span></div>
+                                <div class="price price_value_block">
+                                    <span class="values_wrapper"><?=$minPrice["PRINT_DISCOUNT_VALUE"];?></span>
+                                </div>
                                 <?//if($arParams["SHOW_OLD_PRICE"]=="Y" && $minPrice["DISCOUNT_DIFF"]):?>
                                 <div class="price discount"></div>
                                 <?//endif;?>
                                 <?if($arParams["SHOW_DISCOUNT_PERCENT"]=="Y"){?>
                                     <div class="sale_block matrix" <?=(!$minPrice["DISCOUNT_DIFF"] ? 'style="display:none;"' : '')?>>
                                         <span class="title"><?=GetMessage("CATALOG_ECONOMY");?></span>
-                                        <div class="text"><span class="values_wrapper"><?=$minPrice["PRINT_DISCOUNT_DIFF"];?></span></div>
+                                        <div class="text">
+                                            <span class="values_wrapper"><?=$minPrice["PRINT_DISCOUNT_DIFF"];?></span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 <?}?>
@@ -534,7 +547,7 @@ $arViewedData = array(
                             else
                             {
                                 $arCountPricesCanAccess = 0;
-                                $min_price_id=0;?>
+                                $min_price_id=0;?>                                   
                                 <?=\Aspro\Functions\CAsproNextItem::getItemPrices($arParams, $arResult["PRICES"], $strMeasure, $min_price_id);?>
                             <?}?>
                         <?}?>
@@ -577,8 +590,6 @@ $arViewedData = array(
                                 <span class="animate-load" data-event="jqm" data-param-form_id="CHEAPER" data-name="cheaper" data-autoload-product_name="<?=$arResult["NAME"];?>" data-autoload-product_id="<?=$arResult["ID"];?>"><?=($arParams["CHEAPER_FORM_NAME"] ? $arParams["CHEAPER_FORM_NAME"] : GetMessage("CHEAPER"));?></span>
                             </div>
                         <?endif;*/?>
-                       
-                        <span class="upakData"><?=$arResult["PROPERTIES"]["UPAK_UNDER"]?></span>
                     </div>
                 
                    
@@ -657,7 +668,7 @@ $arViewedData = array(
                     <?endif;?>
 
                 </div>
-                   <div class="upak_count"><span class="upakData" id="resultCount"></span></div>
+                   
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
                         <img height="16" width="16" src="<?=SITE_TEMPLATE_PATH?>/images/perIcon.png"></a>

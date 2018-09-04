@@ -315,7 +315,18 @@
                                         {
                                             $arCountPricesCanAccess = 0;
                                             $min_price_id=0;?>
+                                            <?if ($arResult["METER_PRICE"][$arItem["ID"]]) { //если естьцена за метр, выводим ее
+                                            $itemMeterPrice = $arResult["METER_PRICE"][$arItem["ID"]];
+                                            ?>
+                                            <div class="price" data-currency="RUB" data-value="<?=$itemMeterPrice["PRICE"]?>" id="">
+                                                <span class="values_wrapper">
+                                                    <span class="price_value"><?=$itemMeterPrice["PRICE_FORMATED"]?></span>
+                                                    <span class="price_currency"> р</span></span><span class="price_measure">/м2</span>
+                                            </div>
+                                            <?} else {?>
                                             <?=\Aspro\Functions\CAsproNextItem::getItemPrices($arParams, $arItem["PRICES"], $strMeasure, $min_price_id);?>
+                                            <?}?>
+                                            
                                         <?}?>
                                     <?}?>
                                 </div>

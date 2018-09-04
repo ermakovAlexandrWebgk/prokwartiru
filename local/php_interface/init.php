@@ -14,7 +14,11 @@
     if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/collections_handlers.php")) {
         include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/collections_handlers.php");
     }
-
+                                                                                             
+    if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/floor_handlers.php")) {
+        include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/floor_handlers.php");
+    }
+    
     if (file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/addPropertySaleAgent.php")) {
         include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/include/addPropertySaleAgent.php");
     }

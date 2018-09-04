@@ -3769,23 +3769,25 @@ window.JCCatalogElement.prototype.allowViewedCount = function(update)
 	}
 };
 })(window);
+
 $( document ).ready(function(){
-var ID = $('#hiddenId').val();
-$(".counter_block.big_basket input").on('change', function() {
-var elementCount = $(this).val();
-if(elementCount > 0){
-    console.log(this);
-    $.ajax({
-    type: "POST",
-       url: '/ajax/calculateKbmValue.php',
-       data: {elementID: ID, elementCount: elementCount},
-       success: function(response) {
-           console.log(response);
-           if(response != 'error'){
-               $("#resultCount").html(response);
-           }
-       }
-   });
-}
-});
+    var ID = $('#hiddenId').val();
+    $(".counter_block.big_basket input").on('change', function() {
+        var elementCount = $(this).val();
+        if(elementCount > 0){
+            $.ajax({
+            type: "POST",
+               url: '/ajax/calculateKbmValue.php',
+               data: {elementID: ID, elementCount: elementCount},
+               success: function(response) {
+                   if(response != 'error'){
+                       $("#resultCount").parent().remove();
+                       var html = '<div class="upak_count"><span class="upakData" id="resultCount"> ' + response + '</span></div>'
+                       $(".counter_wrapp").append(html);
+                       
+                   }
+               }
+           });
+        }
+    });
 });

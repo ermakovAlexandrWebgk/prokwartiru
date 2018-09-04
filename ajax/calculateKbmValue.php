@@ -11,7 +11,7 @@
         }
         $propM2 = round($result * $countElements, 2);
         if($propM2 > 0){
-            echo 'Количество квадратных метров: '.$propM2.'м2';
+            echo 'Количество: '.$propM2.'м2';
         }else{
             echo 'error';
         }

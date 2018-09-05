@@ -315,7 +315,7 @@
                                         {
                                             $arCountPricesCanAccess = 0;
                                             $min_price_id=0;?>
-                                            <?if ($arResult["METER_PRICE"][$arItem["ID"]]) { //если естьцена за метр, выводим ее
+                                            <?if ($arResult["METER_PRICE"][$arItem["ID"]] && $arResult["METER_PRICE"][$arItem["ID"]]["PRICE"] > 0) { //если есть цена за метр, выводим ее
                                             $itemMeterPrice = $arResult["METER_PRICE"][$arItem["ID"]];
                                             ?>
                                             <div class="price" data-currency="RUB" data-value="<?=$itemMeterPrice["PRICE"]?>" id="">

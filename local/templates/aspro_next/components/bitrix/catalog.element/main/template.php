@@ -361,9 +361,7 @@ $arViewedData = array(
                     foreach($arResult['COUNTRY'] as $code => $value){?>
                    <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/country-is-<?=$code?>/apply/"><?=$value;?></a><br>
                     <?}?>
-                  <?}?>
-
-
+                  <?}?>     
                     <?$countItems = count($arResult['ROOM']);
                     $i = 0;
                     if($arResult['ROOM']){
@@ -378,6 +376,7 @@ $arViewedData = array(
                   <?}?>
                     <?=$arResult["PROPERTIES"]["LOCK"]?>
                     <?=$arResult["PROPERTIES"]["PERIOD"]?>
+                    <?=$arResult["PROPERTIES"]["WATERPROOF_FLOOR"]?>
                 </span>
             </div>
             <?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>

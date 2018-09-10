@@ -370,7 +370,7 @@
                         $propertyStyle = implode($arResult['PROPERTIES']['STYLE']['VALUE']).', ';
                     }
                     if($arResult['PROPERTIES']['PROPERTY']['VALUE']){
-                        $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .',';
+                        $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .', ';
                     }
                     if($arResult["PROPERTIES"]["COLOR"]["VALUE"]){
                         $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
@@ -394,6 +394,8 @@
                     if($arResult["PROPERTIES"]["UPAK_KG"]["VALUE"]){
                         $propertyUpak .= $arResult["PROPERTIES"]["UPAK_KG"]["VALUE"] ." кг|";
                     }
+                    
+                    $waterproofFloor = "влагостойкий, ";
                     
                   
                     $propertyUpakPrice .= 'Продается только упаковками.';
@@ -429,14 +431,10 @@
                       $arResult["IMP_PROPS_STR"] = $propertiesString;
                     }
                     $upakCoefficient = $arResult['PROPERTIES']['UPAK_KBM'];
-                    $arResult['CURRENT_SECTION'] = 'floor';
+                    $arResult['CURRENT_SECTION'] = 'floor';       
 
 
-
-
-
-
-
+                   break;
 
 
             default:
@@ -497,6 +495,7 @@
     $arResult["PROPERTIES"]["FASKA"] = $propertyFaska;
     $arResult["PROPERTIES"]["CLASS"] = $propertyClass;
     $arResult["PROPERTIES"]["THICKNESS_NEW"] = $propertyThickness;
+    $arResult["PROPERTIES"]["WATERPROOF_FLOOR"] = $waterproofFloor;
 
 
 

@@ -11,15 +11,7 @@
                 unset($arResult['PRODUCT_PROPERTIES'][$propID]);
         }
     }
-<<<<<<< HEAD
 
-
-
-
-
-    
-=======
->>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
     $arResult["EMPTY_PROPS_JS"]="Y";
     $emptyProductProperties = empty($arResult['PRODUCT_PROPERTIES']);
     if (!$emptyProductProperties){
@@ -676,16 +668,13 @@ $arViewedData = array(
                     <?endif;?>
 
                 </div>
-<<<<<<< HEAD
+
                 <input id="hiddenId" value="<?=$arResult["ID"]?>" hidden> 
                 <div class="totalCount">
                     <div>
                         
                     </div>
                 </div>
-=======
-                   
->>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
                         <img height="16" width="16" src="<?=SITE_TEMPLATE_PATH?>/images/perIcon.png"></a>

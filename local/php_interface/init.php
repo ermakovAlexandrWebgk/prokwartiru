@@ -30,18 +30,10 @@
             return number_format ( $fSum, 0, '.', ' ' ).' р';
         }
     }
-<<<<<<< HEAD
-    function compareByName($a, $b){
-        return strcmp($a["VALUE"], $b["VALUE"]);
-    }
-    
-=======
 
     function compareByName($a, $b){
         return strcmp($a["VALUE"], $b["VALUE"]);
     }
-
->>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
     function arshow($array, $adminCheck = false){
         global $USER;
         $USER = new Cuser;
@@ -324,7 +316,6 @@ function ItemBasketPrise(&$arFields) { // округляем цену товара
     if($arFields["BASE_PRICE"]){
       $arFields["BASE_PRICE"] = round($arFields["BASE_PRICE"]);
     }
-<<<<<<< HEAD
 
 AddEventHandler("iblock", "OnAfterIBlockPropertyUpdate", "sortBrandProperties");
     function sortBrandProperties(&$arFields){
@@ -342,8 +333,8 @@ AddEventHandler("iblock", "OnAfterIBlockPropertyUpdate", "sortBrandProperties");
         }
         
     }
-?>
-=======
+
+
     if($arFields["PRICE"]){
         $arFields["PRICE"] = round($arFields["PRICE"]);
     }
@@ -376,12 +367,4 @@ function sendEmailAfterElementAdd($arFields){
            CEvent::Send("PHONE_BLOCK_ELEMENT_SEND", "s1", $arEventFields);
         }
 }
-
-
-        
-        
-                
-                
-            
-   
->>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
+?>

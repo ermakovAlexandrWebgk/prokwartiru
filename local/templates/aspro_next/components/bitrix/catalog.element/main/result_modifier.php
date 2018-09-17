@@ -372,9 +372,15 @@
                     if($arResult['PROPERTIES']['PROPERTY']['VALUE']){
                         $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .', ';
                     }
-                    if($arResult["PROPERTIES"]["COLOR"]["VALUE"]){
-                        $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
-                    }
+                if(!empty($arResult['PROPERTIES']['COLOR'])){
+                  $arResult['COLOR'] = array();
+                  foreach($arResult['PROPERTIES']['COLOR']['VALUE_XML_ID'] as $colorKey => $colorCode){
+                    $arResult['COLOR'][] = array(
+                      'CODE' => $colorCode,
+                      'NAME' => $arResult['PROPERTIES']['COLOR']['VALUE_ENUM'][$colorKey]
+                    );
+                  }
+                }
                     if($arResult["PROPERTIES"]["LOCK"]["VALUE"]){
                         $propertyLock =  $arResult["PROPERTIES"]["LOCK"]["VALUE"].', ';
                     }

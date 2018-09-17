@@ -15,7 +15,7 @@
 
 
 
-
+    
     $arResult["EMPTY_PROPS_JS"]="Y";
     $emptyProductProperties = empty($arResult['PRODUCT_PROPERTIES']);
     if (!$emptyProductProperties){
@@ -613,6 +613,12 @@ $arViewedData = array(
                     <?elseif($arResult["OFFERS"] && $arParams['TYPE_SKU'] != 'TYPE_1'):?>
                         <span class="btn btn-default btn-lg slide_offer transition_bg type_block"><i></i><span><?=GetMessage("MORE_TEXT_BOTTOM");?></span></span>
                     <?endif;?>
+                </div>
+                <input id="hiddenId" value="<?=$arResult["ID"]?>" hidden> 
+                <div class="totalCount">
+                    <div>
+                        
+                    </div>
                 </div>
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку

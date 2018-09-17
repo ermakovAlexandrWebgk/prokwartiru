@@ -8,12 +8,11 @@ $arParams['TITLE_BLOCK'] = strlen($arParams['TITLE_BLOCK']) ? $arParams['TITLE_B
 	<?ShowError($arResult['ERROR']);?>
 <?else:?>
 	<?if($arResult['ITEMS']):?>
-		<div class="viewed_block">
-			<h3 class="title_block sm two"><?=$arParams["TITLE_BLOCK"]?></h3>
-			<div class="outer_wrap flexslider shadow items border custom_flex top_right" data-plugin-options='{"animation": "slide", "directionNav": true, "itemMargin":10, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [4]}'>
+		<div class="viewed_block horizontal">
+			<h3 class="title_block sm"><?=$arParams["TITLE_BLOCK"]?></h3>
+			<div class="outer_wrap flexslider shadow items border custom_flex top_right" data-plugin-options='{"animation": "slide", "directionNav": true, "itemMargin":10, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [5,4,3,2,1]}'>
 				<ul class="rows_block slides">
 					<?foreach($arResult['ITEMS'] as $key=>$arItem):?>
-                   
 						<?
 						if($key > 7)
 							continue;
@@ -28,23 +27,26 @@ $arParams['TITLE_BLOCK'] = strlen($arParams['TITLE_BLOCK']) ? $arParams['TITLE_B
 									?>
 								</div>
 							<?else:?>
-								<div class="item_wrap item">
-                                </div>
+								<div class="item_wrap item"></div>
 							<?endif;?>
 						</li>
-                   
 					<?endforeach;?>
 				</ul>
 			</div>
 		</div>
-		<script type="text/javascript">
+		<script type="text/javascript" data-skip-moving="true">
 			BX.message({
 				LAST_ACTIVE_FROM_VIEWED: '<?=$arResult['LAST_ACTIVE_FROM']?>',
-				SHOW_MEASURE_VIEWED: '<?=($arParams['SHOW_MEASURE'] !== 'N' ? 'true' : 'false')?>',
+				SHOW_MEASURE_VIEWED: '<?=($arParams['SHOW_MEASURE'] !== 'N' ? 'true' : '')?>',
 				SITE_TEMPLATE_PATH: '<?=SITE_TEMPLATE_PATH?>',
 				CATALOG_FROM_VIEWED: '<?=GetMessage('CATALOG_FROM')?>',
 				SITE_ID: '<? echo SITE_ID; ?>'
-			})		
+			})
+			var lastViewedTime = BX.message('LAST_ACTIVE_FROM_VIEWED');
+			var bShowMeasure = BX.message('SHOW_MEASURE_VIEWED');
+			var $viewedSlider = $('.viewed_block .item_block');
+
+			showViewedItems(lastViewedTime, bShowMeasure, $viewedSlider);
 		</script>
 	<?endif;?>
 <?endif;?>

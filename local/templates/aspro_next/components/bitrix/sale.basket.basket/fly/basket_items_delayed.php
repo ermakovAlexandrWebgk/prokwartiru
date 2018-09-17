@@ -183,7 +183,7 @@ $bPropsColumn  = false;
 						<?elseif ($arHeader["id"] == "WEIGHT"):?>
 							<td class="weight-cell"><?=$arItem["WEIGHT_FORMATED"]?></td>
 						<?else:?>
-							<td class="cell"><?=$arItem[$arHeader["id"]]?></td>
+							<td class="cell"><?//=$arItem[$arHeader["id"]]?></td>
 						<?endif;?>
 					<?endforeach;?>
 					<?if ($bDelayColumn ):?>
@@ -194,7 +194,7 @@ $bPropsColumn  = false;
 						</td>
 					<?endif;?>
 					<?if ($bDeleteColumn):?>
-						<td class="remove-cell"><a class="remove" href="<?=str_replace("#ID#", $arItem["ID"], $arUrls["delete"])?>" title="<?=GetMessage("SALE_DELETE")?>"><i></i></a></td>
+						<td class="remove-cell"><a class="remove" href="javascript:void(0)" onclick="delete_delay('Y', <?=$arItem["ID"]?>);return false" title="<?=GetMessage("SALE_DELETE")?>"><i></i></a></td>
 					<?endif;?>
 				</tr>
 				<?

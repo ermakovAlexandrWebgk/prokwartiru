@@ -1,5 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?$this->SetViewTarget('collection');?>
+
 <?=$arResult['COLLECTION']?>
 <?$this->EndViewTarget();?>
 <div class="basket_props_block" id="bx_basket_div_<?=$arResult["ID"];?>" style="display: none;">
@@ -10,12 +11,15 @@
                 unset($arResult['PRODUCT_PROPERTIES'][$propID]);
         }
     }
+<<<<<<< HEAD
 
 
 
 
 
     
+=======
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
     $arResult["EMPTY_PROPS_JS"]="Y";
     $emptyProductProperties = empty($arResult['PRODUCT_PROPERTIES']);
     if (!$emptyProductProperties){
@@ -46,6 +50,7 @@
         </div>
     <?}?>
 </div>
+
 <?
 $this->setFrameMode(true);
 $currencyList = '';
@@ -156,16 +161,21 @@ $arViewedData = array(
 <div class="item_main_info <?=(!$showCustomOffer ? "noffer" : "");?> <?=($arParams["SHOW_UNABLE_SKU_PROPS"] != "N" ? "show_un_props" : "unshow_un_props");?>" id="<?=$arItemIDs["strMainID"];?>">
 
     <div class="img_wrapper">
-        <div class="stickers">
-            <?if (is_array($arResult["PROPERTIES"]["HIT"]["VALUE_XML_ID"])):?>
-                <?foreach($arResult["PROPERTIES"]["HIT"]["VALUE_XML_ID"] as $key=>$class){?>
-                    <div><div class="sticker_<?=strtolower($class);?>"><?=$arResult["PROPERTIES"]["HIT"]["VALUE"][$key]?></div></div>
-                <?}?>
-            <?endif;?>
-            <?if($arParams["SALE_STIKER"] && $arResult["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>
-                <div><div class="sticker_sale_text"><?=$arResult["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"];?></div></div>
-            <?}?>
-        </div>
+      <div class="stickers">
+          <?if (is_array($arResult["RELATED_ELEMENT_STICKER"])):?>
+              <?foreach($arResult["RELATED_ELEMENT_STICKER"] as $xmlId=>$stickerDescription){?>
+                  <div><div class="sticker_<?=$xmlId;?>"><?=$stickerDescription?></div></div>
+              <?}?>
+              <?if(isset($arResult['RATIO_PRICE'])){?>
+                 <?if(!empty($arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"]) &&$arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"] > 0 ){?>
+                     <div><div class="sticker_STOCK"><?='-'.$arResult["RATIO_PRICE"]["DISCOUNT_DIFF_PERCENT"].'%'?></div></div>
+                 <?}?>
+             <?}?>
+          <?endif;?>
+          <?if($arParams["SALE_STIKER"] && $arResult["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>
+              <div><div class="sticker_sale_text"><?=$arResult["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"];?></div></div>
+          <?}?>
+      </div>
         <div class="item_slider">
             <?if(((!$arResult["OFFERS"] && $arParams["DISPLAY_WISH_BUTTONS"] != "N") || ($arParams["DISPLAY_COMPARE"] == "Y")) || (strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer))):?>
                 <div class="like_wrapper">
@@ -333,18 +343,49 @@ $arViewedData = array(
             <div class="back-button">
                 <a href="<?=$_SERVER['HTTP_REFERER']?>" class="back_url"><?=GetMessage('BACK')?></a>
             </div>
-        
+
             <div class="price_txt">
                 <span class="properties-string">
-                    <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>  
-                    <?=$arResult["PROPERTIES"]["PROPERTIES_COLOR"]?>
+                    <?=$arResult["PROPERTIES"]["PROPERTIES_STRING"]?>
+                    <?foreach($arResult['COLOR'] as $value){?>
+                      <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/color-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'].','?></a>
+                    <?}?>
+                    <?=$arResult["PROPERTIES"]["SURFACE"]?>
+                    <?=$arResult["PROPERTIES"]["FASKA"]?>
+                    <?=$arResult["PROPERTIES"]["CLASS"]?>
+                    <?=$arResult["PROPERTIES"]["THICKNESS_NEW"]?>
                     <?=$arResult["PROPERTIES"]["SUN"]?>
                     <?=$arResult["PROPERTIES"]["WASHING"]?>
                     <?=$arResult["PROPERTIES"]["WATERPROOF"]?>
                     <?=$arResult["PROPERTIES"]["WATERPROOFPAPER"]?>
-                    <?=$arResult["PROPERTIES"]["PROPERTY_STYLE"]?>
-                    <?=$arResult["PROPERTIES"]["OBOI_DESIGN"]?>
-                    <?=$arResult["PROPERTIES"]["COUNTRY_STRING"]?>
+                    <?foreach($arResult['STYLE'] as $value){?>
+                      <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/style-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'];?></a>
+                    <?}?>
+                    <?foreach($arResult['DESIGN'] as $value){?>
+                      <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/design_oboi-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'];?></a>
+                    <?}?>
+                    <?=$arResult["PROPERTIES"]["LAMEL"]?><br>
+                    <?if($arResult['COUNTRY']){
+                      echo 'производство';
+                    foreach($arResult['COUNTRY'] as $code => $value){?>
+                   <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/country-is-<?=$code?>/apply/"><?=$value;?></a><br>
+                    <?}?>
+                  <?}?>     
+                    <?$countItems = count($arResult['ROOM']);
+                    $i = 0;
+                    if($arResult['ROOM']){
+                    echo 'Подходят для:';
+                    foreach($arResult['ROOM'] as $value){
+                      if(++$i === $countItems){?>
+                        <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/room-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'];?></a>
+                      <?}else{?>
+                        <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/room-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'].',';?></a>
+                        <?}?>
+                    <?}?>
+                  <?}?>
+                    <?=$arResult["PROPERTIES"]["LOCK"]?>
+                    <?=$arResult["PROPERTIES"]["PERIOD"]?>
+                    <?=$arResult["PROPERTIES"]["WATERPROOF_FLOOR"]?>
                 </span>
             </div>
             <?$isArticle=(strlen($arResult["DISPLAY_PROPERTIES"]["CML2_ARTICLE"]["VALUE"]) || ($arResult['SHOW_OFFERS_PROPS'] && $showCustomOffer));?>
@@ -413,7 +454,17 @@ $arViewedData = array(
                 </div>-->
             <?}?>
             <div class="middle_info main_item_wrapper">
-                <?=$arResult["IMP_PROPS_STR"];?>
+                <?=$arResult["IMP_PROPS_STR"]?>
+                
+                <?if ($arResult["METER_PRICE"]) {?>  
+                    <div class="meter_price_block">
+                    <span class="price_value"><?=$arResult["METER_PRICE"]["PRICE_FORMATED"]?></span>
+                    <br>
+                    <span class="upakData"><?=$arResult["PROPERTIES"]["UPAK_UNDER"]?></span>
+                    </div>
+                    
+                <?}?>
+
                 <div class="prices_block">
                     <div class="cost prices clearfix">
                         <?if( count( $arResult["OFFERS"] ) > 0 ){
@@ -438,14 +489,18 @@ $arViewedData = array(
                                 $prefix=GetMessage("CATALOG_FROM");
                         }?>
                             <div class="with_matrix" style="display:none;">
-                                <div class="price price_value_block"><span class="values_wrapper"><?=$minPrice["PRINT_DISCOUNT_VALUE"];?></span></div>
+                                <div class="price price_value_block">
+                                    <span class="values_wrapper"><?=$minPrice["PRINT_DISCOUNT_VALUE"];?></span>
+                                </div>
                                 <?//if($arParams["SHOW_OLD_PRICE"]=="Y" && $minPrice["DISCOUNT_DIFF"]):?>
                                 <div class="price discount"></div>
                                 <?//endif;?>
                                 <?if($arParams["SHOW_DISCOUNT_PERCENT"]=="Y"){?>
                                     <div class="sale_block matrix" <?=(!$minPrice["DISCOUNT_DIFF"] ? 'style="display:none;"' : '')?>>
                                         <span class="title"><?=GetMessage("CATALOG_ECONOMY");?></span>
-                                        <div class="text"><span class="values_wrapper"><?=$minPrice["PRINT_DISCOUNT_DIFF"];?></span></div>
+                                        <div class="text">
+                                            <span class="values_wrapper"><?=$minPrice["PRINT_DISCOUNT_DIFF"];?></span>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 <?}?>
@@ -466,6 +521,7 @@ $arViewedData = array(
                                         <?=$prefix;?> <span class="values_wrapper"><?=$minPrice['PRINT_DISCOUNT_VALUE'];?></span><?=$measure_block;?>
                                     <?endif;?>
                                 </div>
+                                <span class="price_measure">/<?=$arResult['PROPERTIES']['CML2_BASE_UNIT']['VALUE']?></span>
                             <?}?>
                             <?if($arParams["SHOW_DISCOUNT_PERCENT"]=="Y"){?>
                                 <div class="sale_block not_matrix" <?=(!$minPrice["DISCOUNT_DIFF"] ? 'style="display:none;"' : '')?>>
@@ -499,7 +555,7 @@ $arViewedData = array(
                             else
                             {
                                 $arCountPricesCanAccess = 0;
-                                $min_price_id=0;?>
+                                $min_price_id=0;?>                                   
                                 <?=\Aspro\Functions\CAsproNextItem::getItemPrices($arParams, $arResult["PRICES"], $strMeasure, $min_price_id);?>
                             <?}?>
                         <?}?>
@@ -528,8 +584,9 @@ $arViewedData = array(
                             </div>
                         <?}?>
                     <?}?>
+                    <input id="hiddenId" value="<?=$arResult["ID"]?>" hidden> 
                     <div class="quantity_block_wrapper">
-                        <?if($useStores){?>
+                        <?/*if($useStores){?>
                             <div class="p_block">
                             <?}?>
                             <?=$arQuantityData["HTML"];?>
@@ -540,8 +597,10 @@ $arViewedData = array(
                             <div class="cheaper_form">
                                 <span class="animate-load" data-event="jqm" data-param-form_id="CHEAPER" data-name="cheaper" data-autoload-product_name="<?=$arResult["NAME"];?>" data-autoload-product_id="<?=$arResult["ID"];?>"><?=($arParams["CHEAPER_FORM_NAME"] ? $arParams["CHEAPER_FORM_NAME"] : GetMessage("CHEAPER"));?></span>
                             </div>
-                        <?endif;?>
+                        <?endif;*/?>
                     </div>
+                
+                   
                 </div>
                 <div class="buy_block">
                     <?if($arResult["OFFERS"] && $showCustomOffer){?>
@@ -608,18 +667,25 @@ $arViewedData = array(
                         <?endif;?>
                     <?elseif($arResult["OFFERS"] && $arParams['TYPE_SKU'] == 'TYPE_1'):?>
                         <div class="offer_buy_block buys_wrapp" style="display:none;">
-                            <div class="counter_wrapp"></div>
+                            <div class="counter_wrapp">
+                            </div>
+                            
                         </div>
                     <?elseif($arResult["OFFERS"] && $arParams['TYPE_SKU'] != 'TYPE_1'):?>
                         <span class="btn btn-default btn-lg slide_offer transition_bg type_block"><i></i><span><?=GetMessage("MORE_TEXT_BOTTOM");?></span></span>
                     <?endif;?>
+
                 </div>
+<<<<<<< HEAD
                 <input id="hiddenId" value="<?=$arResult["ID"]?>" hidden> 
                 <div class="totalCount">
                     <div>
                         
                     </div>
                 </div>
+=======
+                   
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
                         <img height="16" width="16" src="<?=SITE_TEMPLATE_PATH?>/images/perIcon.png"></a>
@@ -672,7 +738,7 @@ $arViewedData = array(
                             }
                         }
                     }
-                    ?> 
+                    ?>
                     <?if($arFiles):?>
 
                         <?foreach($arFiles as $arItem):?>
@@ -687,20 +753,21 @@ $arViewedData = array(
 
                     <?endif;?>
                         <?
+                        
                         $p1 = "/catalog/oboi/";
-                        if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
+                        if (strstr($APPLICATION->GetCurDir(), $p1) && !empty($arResult['ITEM']['GLUE_CATALOG_ID'])) {?>
                             <div class="btn-lg w_icons to-cart btn btn-default glue"
-                                data-item="400141"
+                                data-item="<?=$arResult['ITEM']['GLUE_CATALOG_ID']?>"
                                     data-float_ratio="" data-ratio="1" data-bakset_div="bx_basket_div_381473" data-props="" data-part_props="Y"
                                         data-add_props="Y" data-empty_props="Y" data-offers=""
                                             data-iblockid="77" data-quantity="1"><?=GetMessage('ADD_GLUE');?>
                             </div>
                         <?}?>
-                            <a rel="nofollow" href="/basket/" class="btn-lg w_icons in-cart btn btn-default transition_bg"  data-item="400141" style="display: none;"><i></i>
+                            <a rel="nofollow" href="/basket/" class="btn-lg w_icons in-cart btn btn-default transition_bg"  data-item="<?=$arResult['ITEM']['GLUE_CATALOG_ID']?>" style="display: none;"><i></i>
                                 <span><?=GetMessage('CATALOG_GLUE_ADDED_TO_BASKET');?></span>
                             </a>
-                        
-                   
+
+
         </div>
         <?if(is_array($arResult["STOCK"]) && $arResult["STOCK"]):?>
             <div class="stock_wrapper">
@@ -722,31 +789,33 @@ $arViewedData = array(
                     <span class="properties-text">
                         <?=GetMessage('COLLECTION');?>
                     </span>
-                    <?=$arResult["COLLECTION"]?>
                     <?$page = explode('/', $APPLICATION->GetCurPage());
                       unset ($page[count($page)-2]); // удаляем детальный товар из ссылки
                       $page_new = implode("/", $page);// формируем ссылку заново?>
+                       <a href="<?=$page_new?>"><?=$arResult["COLLECTION"]?></a>
                      <a href="<?=$page_new?>"><?=GetMessage("ALL_COLLECTIONS")?></a>
                 </span>
-               
+  <?$brandUrl = strtolower($arResult['PROPERTIES']['BRAND']['VALUE_XML_ID']);?>
 
                 <?if (($arResult['PROPERTIES']['COUNTRY']['VALUE']) && ($arResult['PROPERTIES']['BRAND']['VALUE']) ){?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('FACTORY');?>
                         </span>
-                        <?=$arResult['PROPERTIES']['BRAND']['VALUE']?>
+                        <a href="/catalog/<?=$arResult['CURRENT_SECTION'];?>/filter/brand-is-<?=$brandUrl?>/apply/"><?=$arResult['PROPERTIES']['BRAND']['VALUE']?></a>
+                        <?foreach($arResult['COUNTRY'] as $code => $value){?>
+                       <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/country-is-<?=$code?>/apply/">(<?=$value;?>)</a>
+                        <?}?>
 
-                        (<?=$arResult['PROPERTIES']['COUNTRY']['VALUE'];?>)
-                    <?$brandUrl = strtolower($arResult['PROPERTIES']['BRAND']['VALUE']);
-                    $brandUrl = str_replace(' ', '-', $brandUrl);?>
-                    <a href="/catalog/oboi/filter/brand-is-<?=$brandUrl?>/apply/"><?=GetMessage("ALL_BRAND")?></a>
+
+
+                    <a href="/catalog/<?=$arResult['CURRENT_SECTION'];?>/filter/brand-is-<?=$brandUrl?>/apply/"><?=GetMessage("ALL_BRAND")?></a>
                     </span>
                 <?}?>
                 </div>
  <?$catalogQuantity = $arResult['CATALOG_QUANTITY'];?>
-            
-                <!--<span class="properties-element">               
+
+                <!--<span class="properties-element">
                 <?/*if ($arResult['PROPERTIES']['PROPERTY']['VALUE']){?>
                 <?=GetMessage('CHARACTERISTICS');?><span class="properties-text"><?=$arResult['PROPERTIES']['PROPERTY']['VALUE']?></span>
                 <?}*/?>
@@ -765,13 +834,8 @@ $arViewedData = array(
                     <?}?>
 
                 </span>
-                <!-- Доставка товара -->                  
-               
-    
-
-
-
-
+                <!-- Доставка товара -->
+                <?$currentDir = $APPLICATION->GetCurDir();?>
                 <?
                 use Bitrix\Main\Grid\Declension; /*   Склонение слова "День" в зависимости от количества */
                 $yearDeclension = new Declension(
@@ -791,35 +855,41 @@ $arViewedData = array(
                             <?=$arResult['PROPERTIES']['DELIVERY']['VALUE']?> <?=$wordForDays?>
                         <?}?>
                     </span>
-                    <span class="properties-element">     
+                    <span class="properties-element">
                         <span class="properties-text"> <?=GetMessage('PICKUP_TIME');?></span>
                         <?=GetMessage('PICKUP_TIME2');?>
                     </span>
-
                 <?}else{?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('DELIVERY');?>
                         </span>
+                        <?$i = 10;?>
+                        <?if(strstr($currentDir,'/catalog/floor')){?>
+                             <?=GetMessage('DELIVERY3');?>
+                        <?}else{?>
                         <?=GetMessage('DELIVERY2');?>
+                        <?}?>
+                        
                     </span>
+                  <?if(strstr($APPLICATION->GetCurDir, "/catalog/oboi/")){?>
                     <span class="properties-element">
                         <span class="properties-text">
                             <?=GetMessage('PICKUP_SECOND_TIME');?>
                         </span>
                         <?=GetMessage('PICKUP_SECOND_TIME2');?>
-
                     </span>
+                    <?}?>
                 <?}?>
                 </div>
-               
-                <!-- Доставка товара --> 
-                <?if ( in_array('SHOWROOM', $arResult['PROPERTIES']['STIKERS']['VALUE']) ):?>
+
+                <!-- Доставка товара -->
+                <?if ($arResult["SHOWROOM"]){?>
                     <div class="showroom_txt">
                         <a href="/contacts/"><span>Посмотреть в шоуруме по адресу:</span><br>
                             <span>г. Москва, ул. Азовская, д. 24, к. 3, офис 71, ст.м. Севастопольская</span></a>
                     </div>
-                <?endif;?>
+                <?}?>
 
 
 
@@ -1274,83 +1344,7 @@ $p1 = "/catalog/oboi/";
 if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 <div class="slider-area">
 
-    <?
-    if (!empty($arResult['PROPERTIES']["COLOR"]["VALUE"]) && (!empty($arResult['PROPERTIES']["DESIGN_OBOI"]["VALUE"]))){
-        $GLOBALS['filterColor'] = array(
-            "PROPERTY_COLOR_VALUE"      =>$arResult['PROPERTIES']["COLOR"]["VALUE"],
-            "PROPERTY_DESIGN_OBOI_VALUE"=>$arResult['PROPERTIES']["DESIGN_OBOI"]["VALUE"]
-        );
-     
-    ?>
-    <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"slider2", 
-	array(
-		"ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"ADD_SECTIONS_CHAIN" => "N",
-		"AJAX_MODE" => "N",
-		"AJAX_OPTION_ADDITIONAL" => "",
-		"AJAX_OPTION_HISTORY" => "N",
-		"AJAX_OPTION_JUMP" => "N",
-		"AJAX_OPTION_STYLE" => "Y",
-		"CACHE_FILTER" => "N",
-		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
-		"CHECK_DATES" => "Y",
-		"COMPONENT_TEMPLATE" => "slider2",
-		"DETAIL_URL" => "/catalog/#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
-		"DISPLAY_BOTTOM_PAGER" => "N",
-		"DISPLAY_DATE" => "Y",
-		"DISPLAY_NAME" => "Y",
-		"DISPLAY_PICTURE" => "Y",
-		"DISPLAY_PREVIEW_TEXT" => "Y",
-		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array(
-			0 => "DETAIL_PICTURE",
-			1 => "",
-		),
-		"FILTER_NAME" => "filterColor",
-		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "77",
-		"IBLOCK_TYPE" => "catalog",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-		"INCLUDE_SUBSECTIONS" => "Y",
-		"MESSAGE_404" => "",
-		"NEWS_COUNT" => "30",
-		"NORMAL_BLOCK" => "Y",
-		"PAGER_BASE_LINK_ENABLE" => "N",
-		"PAGER_DESC_NUMBERING" => "N",
-		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-		"PAGER_SHOW_ALL" => "N",
-		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Новости",
-		"PARENT_SECTION" => "34639",
-		"PARENT_SECTION_CODE" => "oboi",
-		"PREVIEW_TRUNCATE_LEN" => "",
-		"PROPERTY_CODE" => array(
-			0 => "",
-			1 => "PRICE",
-			2 => "",
-		),
-		"SET_BROWSER_TITLE" => "N",
-		"SET_LAST_MODIFIED" => "N",
-		"SET_META_DESCRIPTION" => "N",
-		"SET_META_KEYWORDS" => "N",
-		"SET_STATUS_404" => "N",
-		"SET_TITLE" => "N",
-		"SHOW_404" => "N",
-		"SHOW_DETAIL_LINK" => "Y",
-		"SORT_BY1" => "NAME",
-		"SORT_BY2" => "RANDOM",
-		"SORT_ORDER1" => "DESC",
-		"SORT_ORDER2" => "RANDOM",
-		"STRICT_SECTION_CHECK" => "N"
-	),
-	false
-);
-}?> 
+    
  <?
     $companions = GetCompanions($arResult["ID"]);
     $GLOBALS['filterCompanion'] = array(
@@ -1358,8 +1352,8 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
     );
     if(!empty($companions)){?>
             <?$APPLICATION->IncludeComponent(
-	            "bitrix:news.list", 
-	            "companions", 
+	            "bitrix:news.list",
+	            "companions",
 	            array(
 		            "ACTIVE_DATE_FORMAT" => "d.m.Y",
 		            "ADD_SECTIONS_CHAIN" => "N",
@@ -1370,7 +1364,7 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 		            "AJAX_OPTION_STYLE" => "Y",
 		            "CACHE_FILTER" => "N",
 		            "CACHE_GROUPS" => "Y",
-		            "CACHE_TIME" => "36000000",
+		            "CACHE_TIME" => "36000",
 		            "CACHE_TYPE" => "A",
 		            "CHECK_DATES" => "Y",
 		            "COMPONENT_TEMPLATE" => "slider1",
@@ -1426,14 +1420,167 @@ if (strstr($APPLICATION->GetCurDir(), $p1)) {?>
 );?>
     <?}?>
 </div>
-<?}?>
-<?$APPLICATION->IncludeComponent(
-    "aspro:catalog.viewed.next",
-    "main_horizontal_you_viewed_block",
-    Array(
-        "SHOW_MEASURE" => "Y",
-        "TITLE_BLOCK" => "Ранее вы смотрели"
-    )
-);?>
-<!-- Три слайдера в нижней части карточки (конец) -->
+<?
+    if (!empty($arResult['PROPERTIES']["COLOR"]["VALUE"]) && (!empty($arResult['PROPERTIES']["DESIGN_OBOI"]["VALUE"]))){
+        $GLOBALS['filterColor'] = array(
+            "PROPERTY_COLOR_VALUE"      =>$arResult['PROPERTIES']["COLOR"]["VALUE"],
+            "PROPERTY_DESIGN_OBOI_VALUE"=>$arResult['PROPERTIES']["DESIGN_OBOI"]["VALUE"]
+        );
 
+    ?>
+    <?$APPLICATION->IncludeComponent(
+    "bitrix:news.list",
+    "slider2",
+    array(
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "ADD_SECTIONS_CHAIN" => "N",
+        "AJAX_MODE" => "N",
+        "AJAX_OPTION_ADDITIONAL" => "",
+        "AJAX_OPTION_HISTORY" => "N",
+        "AJAX_OPTION_JUMP" => "N",
+        "AJAX_OPTION_STYLE" => "Y",
+        "CACHE_FILTER" => "N",
+        "CACHE_GROUPS" => "Y",
+        "CACHE_TIME" => "36000",
+        "CACHE_TYPE" => "A",
+        "CHECK_DATES" => "Y",
+        "COMPONENT_TEMPLATE" => "slider2",
+        "DETAIL_URL" => "/catalog/#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
+        "DISPLAY_BOTTOM_PAGER" => "N",
+        "DISPLAY_DATE" => "Y",
+        "DISPLAY_NAME" => "Y",
+        "DISPLAY_PICTURE" => "Y",
+        "DISPLAY_PREVIEW_TEXT" => "Y",
+        "DISPLAY_TOP_PAGER" => "N",
+        "FIELD_CODE" => array(
+            0 => "DETAIL_PICTURE",
+            1 => "",
+        ),
+        "FILTER_NAME" => "filterColor",
+        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+        "IBLOCK_ID" => "77",
+        "IBLOCK_TYPE" => "catalog",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "INCLUDE_SUBSECTIONS" => "Y",
+        "MESSAGE_404" => "",
+        "NEWS_COUNT" => "30",
+        "NORMAL_BLOCK" => "Y",
+        "PAGER_BASE_LINK_ENABLE" => "N",
+        "PAGER_DESC_NUMBERING" => "N",
+        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+        "PAGER_SHOW_ALL" => "N",
+        "PAGER_SHOW_ALWAYS" => "N",
+        "PAGER_TEMPLATE" => ".default",
+        "PAGER_TITLE" => "Новости",
+        "PARENT_SECTION" => "34639",
+        "PARENT_SECTION_CODE" => "oboi",
+        "PREVIEW_TRUNCATE_LEN" => "",
+        "PROPERTY_CODE" => array(
+            0 => "",
+            1 => "PRICE",
+            2 => "",
+        ),
+        "SET_BROWSER_TITLE" => "N",
+        "SET_LAST_MODIFIED" => "N",
+        "SET_META_DESCRIPTION" => "N",
+        "SET_META_KEYWORDS" => "N",
+        "SET_STATUS_404" => "N",
+        "SET_TITLE" => "N",
+        "SHOW_404" => "N",
+        "SHOW_DETAIL_LINK" => "Y",
+        "SORT_BY1" => "NAME",
+        "SORT_BY2" => "RANDOM",
+        "SORT_ORDER1" => "DESC",
+        "SORT_ORDER2" => "RANDOM",
+        "STRICT_SECTION_CHECK" => "N"
+    ),
+    false
+);
+}?>
+<?}?>
+<?
+global $arTheme, $arRegion;
+$IsViewedTypeLocal = $arTheme['VIEWED_TYPE']['VALUE'] === 'LOCAL';
+if($arRegion)
+{
+	if($arRegion['LIST_PRICES'])
+	{
+		if(reset($arRegion['LIST_PRICES']) != 'component')
+			$arParams['PRICE_CODE'] = array_keys($arRegion['LIST_PRICES']);
+	}
+	if($arRegion['LIST_STORES'])
+	{
+		if(reset($arRegion['LIST_STORES']) != 'component')
+			$arParams['STORES'] = $arRegion['LIST_STORES'];
+	}
+}
+
+
+$APPLICATION->IncludeComponent(
+	"bitrix:catalog.products.viewed",
+	"newViewed",
+	array(
+		"ACTION_VARIABLE" => "action_cpv",
+		"ADDITIONAL_PICT_PROP_77" => "-",
+		"ADD_PROPERTIES_TO_BASKET" => "Y",
+		"ADD_TO_BASKET_ACTION" => "ADD",
+		"BASKET_URL" => "/personal/basket.php",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "3600",
+		"CACHE_TYPE" => "A",
+		"CART_PROPERTIES_77" => "",
+		"CONVERT_CURRENCY" => "N",
+		"DEPTH" => "2",
+		"DISPLAY_COMPARE" => "N",
+		"ENLARGE_PRODUCT" => "STRICT",
+		"HIDE_NOT_AVAILABLE" => "N",
+		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
+		"IBLOCK_ID" => "77",
+		"IBLOCK_MODE" => "single",
+		"IBLOCK_TYPE" => "catalog",
+		"LABEL_PROP_77" => "",
+		"LABEL_PROP_POSITION" => "top-left",
+		"MESS_BTN_ADD_TO_BASKET" => "В корзину",
+		"MESS_BTN_BUY" => "Купить",
+		"MESS_BTN_DETAIL" => "Подробнее",
+		"MESS_BTN_SUBSCRIBE" => "Подписаться",
+		"MESS_NOT_AVAILABLE" => "Нет в наличии",
+		"PAGE_ELEMENT_COUNT" => "18",
+		"PARTIAL_PRODUCT_PROPERTIES" => "N",
+		"PRICE_CODE" => array(
+			0 => "SALE",
+		),
+		"PRICE_VAT_INCLUDE" => "Y",
+		"PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
+		"PRODUCT_ID_VARIABLE" => "id",
+		"PRODUCT_PROPS_VARIABLE" => "prop",
+		"PRODUCT_QUANTITY_VARIABLE" => "quantity",
+		"PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'6','BIG_DATA':false},{'VARIANT':'6','BIG_DATA':false},{'VARIANT':'6','BIG_DATA':false}]",
+		"PRODUCT_SUBSCRIPTION" => "Y",
+		"PROPERTY_CODE_77" => "",
+		"PROPERTY_CODE_MOBILE_77" => "",
+		"SECTION_CODE" => "",
+		"SECTION_ELEMENT_CODE" => "",
+		"SECTION_ELEMENT_ID" => $GLOBALS["CATALOG_CURRENT_ELEMENT_ID"],
+		"SECTION_ID" => $GLOBALS["CATALOG_CURRENT_SECTION_ID"],
+		"SHOW_CLOSE_POPUP" => "N",
+		"SHOW_DISCOUNT_PERCENT" => "N",
+		"SHOW_FROM_SECTION" => "N",
+		"SHOW_MAX_QUANTITY" => "N",
+		"SHOW_OLD_PRICE" => "N",
+		"SHOW_PRICE_COUNT" => "1",
+		"SHOW_SLIDER" => "Y",
+		"SLIDER_INTERVAL" => "3000",
+		"SLIDER_PROGRESS" => "N",
+		"TEMPLATE_THEME" => "blue",
+		"USE_ENHANCED_ECOMMERCE" => "N",
+		"USE_PRICE_COUNT" => "N",
+		"USE_PRODUCT_QUANTITY" => "N",
+		"COMPONENT_TEMPLATE" => "newViewed",
+		"LABEL_PROP_MOBILE_77" => ""
+	),
+	false
+);
+?>
+
+<!-- Три слайдера в нижней части карточки (конец) -->

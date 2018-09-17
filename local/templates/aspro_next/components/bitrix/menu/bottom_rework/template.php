@@ -14,41 +14,54 @@ foreach($arResult as $arItem):?>
 	<?if ($arItem["IS_PARENT"]):?>
 
 		<?if ($arItem["DEPTH_LEVEL"] == 1):?>
-        <div class="menu_item"> <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
+        <div class="menu_item">
+<a href="<?=$arItem["LINK"]?>" target="_blank">
+					<img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
+</a>
 			<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>"  target="_blank"><?=$arItem["TEXT"]?></a>
             </div>
 				<ul>
 		<?else:?>
-        <div class="menu_item"> <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
+        <div class="menu_item">
+					<a href="<?=$arItem["LINK"]?>" target="_blank">
+					 <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
 			<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>" class="parent" target="_blank"><?=$arItem["TEXT"]?></a>
-            </div> 
-				<ul>                      
+</a>
+						</div>
+				<ul>
 		<?endif?>
-        
+
 
 	<?else:?>
 
 		<?if ($arItem["PERMISSION"] > "D"):?>
 
 			<?if ($arItem["DEPTH_LEVEL"] == 1):?>
-             <div class="menu_item"> <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
+             <div class="menu_item">
+							 <a href="<?=$arItem["LINK"]?>" target="_blank">
+							 <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
 				<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>"  target="_blank"><?=$arItem["TEXT"]?></a></li>
+			</a>
                 </div>
 			<?else:?>
-             <div class="menu_item"> <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
+
+             <div class="menu_item">
+							  <a href="<?=$arItem["LINK"]?>" target="_blank">
+							 <img class="menu_image <?if (isset($arItem["PARAMS"]["YANDEX"]) && $arItem["PARAMS"]["YANDEX"] == "Y"):?> yandex_reviews <?endif;?>" src="<?=$arItem["PARAMS"]["IMG"]?>">
 				<li class="bottom_navigation"><a href="<?=$arItem["LINK"]?>"  target="_blank"><?=$arItem["TEXT"]?></a></li>
-                </div>
+</a>
+								</div>
 			<?endif?>
 
 		<?else:?>
 
-			
+
 
 		<?endif?>
 
 	<?endif?>
 
-	<?$previousLevel = $arItem["DEPTH_LEVEL"];?> 
+	<?$previousLevel = $arItem["DEPTH_LEVEL"];?>
 
 <?endforeach?>
 

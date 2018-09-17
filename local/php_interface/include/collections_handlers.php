@@ -9,7 +9,7 @@
     AddEventHandler("iblock", "OnAfterIblockElementUpdate", array("CollectionsHandlers", "checkProduct"));
     /**
     * класс для работы с коллекциями
-    */
+   */
     class CollectionsHandlers {
 
         /**

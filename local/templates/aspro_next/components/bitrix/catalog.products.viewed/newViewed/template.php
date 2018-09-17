@@ -137,10 +137,18 @@ $containerName = 'catalog-products-viewed-container';
                                             <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="dark-color">
                                             <span class="price">Артикул: <?=$arItem['NAME'];?> </a></span><br>
                                             <span class="price-slider price">
+<<<<<<< HEAD
                                             Цена:<?=$arItem['PROPERTIES']['MAXIMUM_PRICE']['VALUE']?>р </span><br>
                                             <span class="price-slider">Бренд: <?=$arItem['PROPERTIES']['BRAND']['VALUE']?></span><br>
                                             <span class="price-slider">Страна: <?=$arItem['PROPERTIES']['COUNTRY']['VALUE']?></span><br>
                                             <span class="price-slider">Размер: <?=$arItem['PROPERTIES']['SIZE']['VALUE']?></span><br>
+=======
+																				  Цена: <?=$arItem['PROPERTIES']['MAXIMUM_PRICE']['VALUE']?>р </span><br>
+                                            <span class="price-slider">Бренд: <?=$arItem['PROPERTIES']['BRAND']['VALUE']?></span><br>
+                                            <span class="price-slider">Страна: <?=$arItem['PROPERTIES']['COUNTRY']['VALUE']?></span><br>
+                                            <span class="price-slider">Размер: <?=$arItem['PROPERTIES']['SIZE']['VALUE']?></span><br>
+
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
                                         </div>
 
 

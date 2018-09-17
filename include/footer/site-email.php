@@ -1,1 +1,1 @@
-<a href="mailto:info@dev-prokwartiru.webgk.ru">info@dev-prokwartiru.webgk.ru</a>
+<a href="mailto:info@prokwarti.ru">info@prokwarti.ru</a>

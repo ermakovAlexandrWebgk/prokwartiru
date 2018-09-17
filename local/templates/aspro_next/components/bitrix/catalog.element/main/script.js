@@ -163,10 +163,17 @@ if (!window.JCCatalogOnlyElement)
 
 		setPriceAction: function()
 		{
+<<<<<<< HEAD
 			this.set_quantity = this.params.MIN_QUANTITY_BUY;			
 			if($(this.obProduct).find('input[name=quantity]').length)
 				this.set_quantity = $(this.obProduct).find('input[name=quantity]').val();
 			
+=======
+			this.set_quantity = this.params.MIN_QUANTITY_BUY;
+			if($(this.obProduct).find('input[name=quantity]').length)
+				this.set_quantity = $(this.obProduct).find('input[name=quantity]').val();
+
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 			this.checkPriceRange(this.set_quantity);
 
 			$(this.obProduct).find('.not_matrix').hide();
@@ -179,7 +186,11 @@ if (!window.JCCatalogOnlyElement)
 			}
 
 			$(this.obProduct).find('.with_matrix .sale_block .text .values_wrapper').html(getCurrentPrice(this.currentPrices[this.currentPriceSelected].DISCOUNT, this.currentPrices[this.currentPriceSelected].CURRENCY, this.currentPrices[this.currentPriceSelected].PRINT_DISCOUNT));
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 			$(this.obProduct).find('.with_matrix').show();
 
 			if(arNextOptions['THEME']['SHOW_TOTAL_SUMM'] == 'Y')
@@ -195,7 +206,11 @@ if (!window.JCCatalogOnlyElement)
 				return;
 
 			var range, found = false;
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 			for (var i in this.currentQuantityRanges)
 			{
 				if (this.currentQuantityRanges.hasOwnProperty(i))
@@ -1029,7 +1044,11 @@ window.JCCatalogElement.prototype.initProductData = function()
 				this.stepQuantity = Math.round(this.stepQuantity*this.precisionFactor)/this.precisionFactor;
 			}
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 		this.product.canBuy = this.params.PRODUCT.CAN_BUY;
 		this.product.canSubscription = this.params.PRODUCT.SUBSCRIPTION;
 		if (this.config.showPrice)
@@ -2374,10 +2393,17 @@ window.JCCatalogElement.prototype.UpdateRow = function(intNumber, activeID, show
 
 				if (BX.util.in_array(value, canBuyID)){
 					obData.props.className = (isCurrent ? this.skuVisualParams[propMode].ACTIVE_CLASS : '');
+<<<<<<< HEAD
 					
 				}else{
 					obData.props.className = (isCurrent ? this.skuVisualParams[propMode].ACTIVE_CLASS+' '+this.skuVisualParams[propMode].HIDE_CLASS : this.skuVisualParams[propMode].HIDE_CLASS);
 					
+=======
+
+				}else{
+					obData.props.className = (isCurrent ? this.skuVisualParams[propMode].ACTIVE_CLASS+' '+this.skuVisualParams[propMode].HIDE_CLASS : this.skuVisualParams[propMode].HIDE_CLASS);
+
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 				}
 				// obData.props.className = (isCurrent ? this.skuVisualParams[propMode].ACTIVE_CLASS : '');
 
@@ -2574,7 +2600,11 @@ window.JCCatalogElement.prototype.ChangeInfo = function()
 		}
 	}
 	if (-1 < index)
+<<<<<<< HEAD
 	{		
+=======
+	{
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 		for (i = 0; i < this.offers.length; i++)
 		{
 
@@ -2611,7 +2641,11 @@ window.JCCatalogElement.prototype.ChangeInfo = function()
 				}
 			}*/
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 		if (this.config.showOfferGroup && this.offers[index].OFFER_GROUP)
 		{
 			BX.adjust(BX(this.visual.OFFER_GROUP+this.offers[index].ID), { style: {display: ''} });
@@ -2673,7 +2707,11 @@ window.JCCatalogElement.prototype.ChangeInfo = function()
 				{
 					if(this.offers[index].DISPLAY_PROPERTIES_CODE.ARTICLE.VALUE)
 						BX.adjust(this.obSkuArticleProps, {style: {display: ''}, html: this.offers[index].DISPLAY_PROPERTIES_CODE.ARTICLE.VALUE_FORMAT});
+<<<<<<< HEAD
 					
+=======
+
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 				}
 				else if(this.offers[index].SHOW_ARTICLE_SKU == 'Y' && this.offers[index].ARTICLE_SKU)
 					BX.adjust(this.obSkuArticleProps, {style: {display: ''}, html: this.offers[index].ARTICLE_SKU});
@@ -2696,7 +2734,11 @@ window.JCCatalogElement.prototype.ChangeInfo = function()
 
 		this.offerNum = index;
 		this.QuantitySet(this.offerNum);
+<<<<<<< HEAD
 		this.setStoreBlock(this.offers[index].ID);		
+=======
+		this.setStoreBlock(this.offers[index].ID);
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 		this.setQuantityStore(this.offers[index].MAX_QUANTITY, this.offers[index].AVAILIABLE.TEXT);
 
 		this.incViewedCounter();
@@ -3271,8 +3313,13 @@ window.JCCatalogElement.prototype.setPriceAction = function(change, sku)
 	var product = $(this.obProduct),
 		check_quantity = '',
 		is_sku = (typeof sku !== 'undefined' && sku == 'Y');
+<<<<<<< HEAD
 		
 	this.offers[this.offerNum].offer_set_quantity = this.offers[this.offerNum].CONFIG.MIN_QUANTITY_BUY;			
+=======
+
+	this.offers[this.offerNum].offer_set_quantity = this.offers[this.offerNum].CONFIG.MIN_QUANTITY_BUY;
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 	if($(product).find('input[name=quantity]').length)
 		this.offers[this.offerNum].offer_set_quantity = $(product).find('input[name=quantity]').val();
 
@@ -3372,7 +3419,11 @@ window.JCCatalogElement.prototype.setPrice = function(obPrices, measure)
 						strPrice += '<span class="values_wrapper">'+getCurrentPrice(obPrices[j].DISCOUNT_VALUE, obPrices[j].CURRENCY, obPrices[j].PRINT_DISCOUNT_VALUE)+'</span>';
 						if(measure)
 							strPrice += '<span class="price_measure">/'+measure+'</span>';
+<<<<<<< HEAD
 						
+=======
+
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 					strPrice += '</div>';
 					if (obPrices[j].DISCOUNT_VALUE !== obPrices[j].VALUE)
 					{
@@ -3424,7 +3475,11 @@ window.JCCatalogElement.prototype.setPrice = function(obPrices, measure)
 			$(this.obPrice.full).hide().html('');
 			if(this.showPercent)
 				$(this.obPrice.full).closest('.cost').find('.sale_block').hide();
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d
 		}
 	}
 };
@@ -3769,6 +3824,7 @@ window.JCCatalogElement.prototype.allowViewedCount = function(update)
 	}
 };
 })(window);
+<<<<<<< HEAD
 $( document ).ready(function(){
 var ID = $('#hiddenId').val();
 $(".counter_block.big_basket input").on('change', function() {
@@ -3790,3 +3846,27 @@ if(elementCount > 0){
 });
 });
 
+=======
+
+$( document ).ready(function(){
+    var ID = $('#hiddenId').val();
+    $(".counter_block.big_basket input").on('change', function() {
+        var elementCount = $(this).val();
+        if(elementCount > 0){
+            $.ajax({
+            type: "POST",
+               url: '/ajax/calculateKbmValue.php',
+               data: {elementID: ID, elementCount: elementCount},
+               success: function(response) {
+                   if(response != 'error'){
+                       $("#resultCount").parent().remove();
+                       var html = '<div class="upak_count"><span class="upakData" id="resultCount"> ' + response + '</span></div>'
+                       $(".counter_wrapp").append(html);
+                       
+                   }
+               }
+           });
+        }
+    });
+});
+>>>>>>> 8ce9b6f88725f3d37b042a1e1a8d8aade0150e2d

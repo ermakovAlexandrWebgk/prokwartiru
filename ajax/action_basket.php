@@ -23,12 +23,20 @@
 	}
 	$arItems=CNext::getBasketItems($iblockID, "ID");
 	foreach($arItems[$type] as $id){
+        $arFields = array(
+           "DELAY" => "N"
+        );
+        CSaleBasket::Update($id, $arFields);
 		CSaleBasket::Delete($id);
 	}
 
 	Bitrix\Main\Page\Frame::getInstance()->finishDynamicWithID("basket-allitems-block", "");
 }elseif($_POST["delete_top_item"]=="Y"){
 	\Bitrix\Main\Loader::includeModule('sale');
+    $arFields = array(
+       "DELAY" => "N"
+    );             
+    CSaleBasket::Update($_POST["delete_top_item_id"], $arFields);
 	CSaleBasket::Delete($_POST["delete_top_item_id"]);
 }?>
 <?CNextCache::ClearCacheByTag('sale_basket');?>

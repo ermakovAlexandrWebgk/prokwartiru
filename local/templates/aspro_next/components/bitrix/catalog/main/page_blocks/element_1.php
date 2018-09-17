@@ -40,7 +40,7 @@
 		"MESSAGE_404" => $arParams["MESSAGE_404"],
 		"SHOW_404" => $arParams["SHOW_404"],
 		"FILE_404" => $arParams["FILE_404"],
-		"PRICE_CODE" => $arParams['PRICE_CODE'],
+		"PRICE_CODE" => $arParams["PRICE_CODE"],
 		"USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"],
 		"SHOW_PRICE_COUNT" => $arParams["SHOW_PRICE_COUNT"],
 		"USE_RATIO_IN_RANGES" => $arParams["USE_RATIO_IN_RANGES"],

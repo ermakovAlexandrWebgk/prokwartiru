@@ -59,6 +59,7 @@
 						<div class="image_wrapper_block">
 							<div class="stickers">
 								<?$prop = ($arParams["STIKERS_PROP"] ? $arParams["STIKERS_PROP"] : "HIT");?>
+                                
 								<?if (is_array($arItem["PROPERTIES"][$prop]["VALUE_XML_ID"])):?>
 									<?foreach($arItem["PROPERTIES"][$prop]["VALUE_XML_ID"] as $key=>$class){?>
 										<div><div class="sticker_<?=CUtil::translit($arItem["PROPERTIES"][$prop]["VALUE"][$key], "ru");?>"><?=$arItem["PROPERTIES"][$prop]["VALUE"][$key]?></div></div>

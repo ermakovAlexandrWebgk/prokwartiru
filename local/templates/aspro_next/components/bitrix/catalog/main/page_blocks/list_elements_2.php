@@ -330,6 +330,14 @@ foreach($arSeoLn as $seoLn)
 if(substr($curDir) != 'collections'){
 $GLOBALS[$arParams['FILTER_NAME']]["!IBLOCK_SECTION_ID"] = array(37441, 37442, 37443, 37444, 37289, 37445);
 }
+
+$arSort = array(
+
+"name" => "asc",
+
+"left_margin"=>"asc",
+
+); 
 ?>
           
 
@@ -346,7 +354,7 @@ $GLOBALS[$arParams['FILTER_NAME']]["!IBLOCK_SECTION_ID"] = array(37441, 37442, 3
 						"SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
 						"SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
 						"AJAX_REQUEST" => $isAjax,
-						"ELEMENT_SORT_FIELD" => $sort,
+						"ELEMENT_SORT_FIELD" => $arSort,
 						"ELEMENT_SORT_ORDER" => $sort_order,
 						"ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD2"],
 						"ELEMENT_SORT_ORDER2" => $arParams["ELEMENT_SORT_ORDER2"],

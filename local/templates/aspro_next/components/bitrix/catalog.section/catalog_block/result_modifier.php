@@ -1,6 +1,6 @@
-<?
+<?         
     use Bitrix\Main\Type\Collection;
-    use Bitrix\Currency\CurrencyTable;
+    use Bitrix\Currency\CurrencyTable;      
 
     if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) die();
     /** @var CBitrixComponentTemplate $this */
@@ -628,39 +628,41 @@
                 unset($currencyFormat, $currency, $currencyIterator);
             }
         }
-    } 
+    }
 
     $itemsIds = array();
     foreach ($arResult["ITEMS"] as $item) {
-        $itemsIds[$item["ID"]] = $item["ID"];   
+        $itemsIds[$item["ID"]] = $item["ID"];
     }
-    
+
     ksort($itemsIds);
     $itemsHash = md5(json_encode($itemsIds));
-   
-    //кешируем информацию о товарах    
+
+    //кешируем информацию о товарах
     $cache = new CPHPCache();
     //$cacheKey = "IBLOCK_CATALOG_SECTION_ITEMS_" . $arResult["ORIGINAL_PARAMETERS"]["CURRENT_BASE_PAGE"] . intval($_REQUEST["PAGEN_1"]);
     $cacheKey = "IBLOCK_CATALOG_SECTION_ITEMS_" . $itemsHash;
+
+    /*
     if ($cache->InitCache(36000000, $cacheKey, "/work_catalog")) {
     $data = $cache->GetVars();
     $arResult["ITEM_PROPS_INFO"] = $data['result'];
-    } elseif ($cache->StartDataCache()) {    
+    } elseif ($cache->StartDataCache()) {  */
 
     //собираем информацию о разделах-родителях элементов
     $sectionList = array();
     $sectionId = array();
     foreach ($arResult["ITEMS"] as $arItem) {
-        $sectionId[$arItem["~IBLOCK_SECTION_ID"]] = $arItem["~IBLOCK_SECTION_ID"];    
+        $sectionId[$arItem["~IBLOCK_SECTION_ID"]] = $arItem["~IBLOCK_SECTION_ID"];
     }
-    
-    //значения свойства "стикеры" 
+
+    //значения свойства "стикеры"
     $stickerList = array();
     $stickers = CUserFieldEnum::GetList(array(), array("USER_FIELD_ID" => 308));
     while ($arSticker = $stickers->Fetch()) {
         $stickerList[$arSticker["ID"]] = $arSticker;
     }
-    
+
 
     $rsSection = CIBlockSection::GetList(array(), array("ID" => $sectionId, "IBLOCK_ID" => $arParams['IBLOCK_ID']), false, array("NAME", "ID", "UF_*"));
     while($arSection = $rsSection->Fetch()) {
@@ -669,23 +671,23 @@
                 $arSection["STICKERS_LIST"][] = $stickerList[$value];
             }
         }
-        $sectionList[$arSection["ID"]] = $arSection;    
-    }       
-    
-    
+        $sectionList[$arSection["ID"]] = $arSection;
+    }
+
+
     foreach ($arResult["ITEMS"] as $i => $arItem) {
         $arResult["ITEM_PROPS_INFO"][$arItem["ID"]] = array();
-        $arSelect = array("ID", "IBLOCK_SECTION_ID", "PROPERTY_BRAND_VALUE", "PROPERTY_SIZE", "PROPERTY_COUNTRY");                    
+        $arSelect = array("ID", "IBLOCK_SECTION_ID", "PROPERTY_BRAND_VALUE", "PROPERTY_SIZE", "PROPERTY_COUNTRY");
 
         $item_info = CIBlockElement::GetList (array(), array("ID" => $arItem["ID"]), false, false, $arSelect);
         while ($item_props_info = $item_info -> Fetch()) {
-            
+
             if ($sectionList[$item_props_info["IBLOCK_SECTION_ID"]]["STICKERS_LIST"]) {
                 unset($arResult["ITEMS"][$i]["PROPERTIES"][$arParams["STIKERS_PROP"]]["VALUE_XML_ID"]);
                 unset($arResult["ITEMS"][$i]["PROPERTIES"][$arParams["STIKERS_PROP"]]["VALUE"]);
-                foreach ($sectionList[$item_props_info["IBLOCK_SECTION_ID"]]["STICKERS_LIST"] as $sticker) {    
-                    $arResult["ITEMS"][$i]["PROPERTIES"][$arParams["STIKERS_PROP"]]["VALUE_XML_ID"][] = $sticker["XML_ID"];    
-                    $arResult["ITEMS"][$i]["PROPERTIES"][$arParams["STIKERS_PROP"]]["VALUE"][] = $sticker["VALUE"];    
+                foreach ($sectionList[$item_props_info["IBLOCK_SECTION_ID"]]["STICKERS_LIST"] as $sticker) {
+                    $arResult["ITEMS"][$i]["PROPERTIES"][$arParams["STIKERS_PROP"]]["VALUE_XML_ID"][] = $sticker["XML_ID"];
+                    $arResult["ITEMS"][$i]["PROPERTIES"][$arParams["STIKERS_PROP"]]["VALUE"][] = $sticker["VALUE"];
                 }
             }
 
@@ -694,7 +696,7 @@
             }
 
             if ($item_props_info["IBLOCK_SECTION_ID"]) {
-                $section_info = $sectionList[$item_props_info["IBLOCK_SECTION_ID"]]; 
+                $section_info = $sectionList[$item_props_info["IBLOCK_SECTION_ID"]];
                 if (strlen($section_info["NAME"])) {
                     // $arResult["ITEM_PROPS_INFO"][$arItem["ID"]][] = "Фабрика: " . $section_info["NAME"];
                     $arResult["ITEM_PROPS_INFO"][$arItem["ID"]][] = "Коллекция: " . $section_info["NAME"];
@@ -712,7 +714,40 @@
             }
         }
     }
-    $cache->EndDataCache(array("result" => $arResult["ITEM_PROPS_INFO"])); // записываем в кеш  
-    }  
+    /*
+    $cache->EndDataCache(array("result" => $arResult["ITEM_PROPS_INFO"])); // записываем в кеш
+    }
+    */
+    $itemID = array();
+    foreach ($arResult["ITEMS"] as $key => $item) {
+    $itemID[] = $item["ID"]; 
+    if($item["~IBLOCK_SECTION_ID"] == SALE_SECTION_ID){
+            $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $item['ID'], "CATALOG_GROUP_ID" => 1));
+            if ($ar_res = $db_res->Fetch()) {
+                if ($ar_res['PRICE'] && $ar_res['PRICE'] > $item["PRICES"]["SALE"]["VALUE"]){
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE_VAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE_NOVAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["ROUND_VALUE_NOVAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["ROUND_VALUE_VAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE_NOVAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["VALUE_VAT"] = $ar_res['PRICE'];    
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_DISCOUNT_DIFF"] = $ar_res['PRICE'] - $arResult["ITEMS"][$key]["PRICES"]["SALE"]["UNROUND_DISCOUNT_VALUE"] .' р';
+                    $arResult["ITEMS"][$key]["PRICES"]["SALE"]["PRINT_VALUE"] = $ar_res['PRICE']." р.";      
+                }    
+            }
+        }
+    }
     
+    //информация о цене "цена за метр"
+    $meterPriceId = floorHandlers::getPriceIdByCode("METER_PRICE");
+    
+    //собираем цены за метр квадратный
+    $rsMeterPrice = CPrice::GetList(array(), array("PRODUCT_ID" => $itemID, "CATALOG_GROUP_ID" => $meterPriceId));
+    while ($arMeterPrice = $rsMeterPrice->Fetch()) {
+        $arMeterPrice["PRICE_FORMATED"] = number_format($arMeterPrice["PRICE"], 0, ',', ' ');
+        $arMeterPrice["FULL_PRICE_FORMATED"] = number_format($arMeterPrice["PRICE"], 0, ',', ' ') . " р/м2";
+        $arResult["METER_PRICE"][$arMeterPrice["PRODUCT_ID"]] = $arMeterPrice;
+    }        
 ?>

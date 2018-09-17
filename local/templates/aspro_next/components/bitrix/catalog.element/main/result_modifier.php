@@ -362,8 +362,7 @@
 
                 break;
                 case LAMINAT_SECTION_ID:
-                
-                
+
                     if($arResult['PROPERTIES']['COUNTRY']['VALUE']){
                         $propertyCountry = "производство ".$arResult['PROPERTIES']['COUNTRY']['VALUE'].', ';
                     }
@@ -374,15 +373,7 @@
                         $propertyProperty = $arResult['PROPERTIES']['PROPERTY']['VALUE'] .', ';
                     }
                     if($arResult["PROPERTIES"]["COLOR"]["VALUE"]){
-
-                  $arResult['COLOR'] = array();
-                  foreach($arResult['PROPERTIES']['COLOR']['VALUE_XML_ID'] as $colorKey => $colorCode){
-                    $arResult['COLOR'][] = array(
-                      'CODE' => $colorCode,
-                      'NAME' => $arResult['PROPERTIES']['COLOR']['VALUE_ENUM'][$colorKey]
-                    );
-                  }
-                  
+                        $propertyColor= implode(',', $arResult["PROPERTIES"]["COLOR"]["VALUE"]).', ';
                     }
                     if($arResult["PROPERTIES"]["LOCK"]["VALUE"]){
                         $propertyLock =  $arResult["PROPERTIES"]["LOCK"]["VALUE"].', ';
@@ -441,6 +432,7 @@
                     }
                     $upakCoefficient = $arResult['PROPERTIES']['UPAK_KBM'];
                     $arResult['CURRENT_SECTION'] = 'floor';       
+
 
                    break;
 
@@ -1336,7 +1328,7 @@ $stickerList = array();
         $stickerList[$arSticker["ID"]] = $arSticker;     //Получаем значения всех свойств "Стикеры"
     }
  $arSelect = Array("ID", "UF_*");
-    $arFilter = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => $arResult['IBLOCK_SECTION_ID']);
+    $arFilter = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => $arResult['IBLOCK_SECTION_ID'] );
     $res = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, array());
     while($arFields = $res->Fetch()){
        $relatedStickersId[] = $arFields["UF_STICKERS"];     //Плучаем айди всех стикеров в текущей карточке товара
@@ -1352,7 +1344,6 @@ foreach ($stickerList as $stickerId => $values){
         }
     }
 }
-
 $arSelect = Array("ID", "UF_*");        //выбираем все свойства MARK текущего раздела
     $arFilter = Array("IBLOCK_ID"=>IntVal($arResult['IBLOCK_ID']), "ID" => $arResult['SECTION']['IBLOCK_SECTION_ID']);
     $res = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, array());
@@ -1379,7 +1370,6 @@ foreach($markPattern as $ufId => $value){ // перебираем все текущие и проверяем 
 
 $currentUfMarkValues = (array_unique($ufCurrent));
 $arResult['UF_MARK_CURRENT_VALUES'] = implode(', ', $currentUfMarkValues).', '; //склеиваем свойства в одну строку.
-
 unset($arResult['CATALOG_MEASURE_NAME']);
  if($arResult["~IBLOCK_SECTION_ID"] == SALE_SECTION_ID){
 $db_res = CPrice::GetList(array(), array("PRODUCT_ID" => $arResult['ID'], "CATALOG_GROUP_ID" => 1));

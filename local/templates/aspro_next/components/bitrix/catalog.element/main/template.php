@@ -1,4 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+
 <?$this->SetViewTarget('collection');?>
 
 <?=$arResult['COLLECTION']?>
@@ -11,6 +12,7 @@
                 unset($arResult['PRODUCT_PROPERTIES'][$propID]);
         }
     }
+
     $arResult["EMPTY_PROPS_JS"]="Y";
     $emptyProductProperties = empty($arResult['PRODUCT_PROPERTIES']);
     if (!$emptyProductProperties){
@@ -150,7 +152,6 @@ $arViewedData = array(
 <meta itemprop="category" content="<?=$arResult['CATEGORY_PATH']?>" />
 <meta itemprop="description" content="<?=(strlen(strip_tags($arResult['PREVIEW_TEXT'])) ? strip_tags($arResult['PREVIEW_TEXT']) : (strlen(strip_tags($arResult['DETAIL_TEXT'])) ? strip_tags($arResult['DETAIL_TEXT']) : $name))?>" />
 <div class="item_main_info <?=(!$showCustomOffer ? "noffer" : "");?> <?=($arParams["SHOW_UNABLE_SKU_PROPS"] != "N" ? "show_un_props" : "unshow_un_props");?>" id="<?=$arItemIDs["strMainID"];?>">
-
     <div class="img_wrapper">
       <div class="stickers">
           <?if (is_array($arResult["RELATED_ELEMENT_STICKER"])):?>
@@ -345,10 +346,7 @@ $arViewedData = array(
                     <?=$arResult["PROPERTIES"]["FASKA"]?>
                     <?=$arResult["PROPERTIES"]["CLASS"]?>
                     <?=$arResult["PROPERTIES"]["THICKNESS_NEW"]?>
-                    <?=$arResult["PROPERTIES"]["SUN"]?>
-                    <?=$arResult["PROPERTIES"]["WASHING"]?>
-                    <?=$arResult["PROPERTIES"]["WATERPROOF"]?>
-                    <?=$arResult["PROPERTIES"]["WATERPROOFPAPER"]?>
+                    <?=$arResult['UF_MARK_CURRENT_VALUES'];?>
                     <?foreach($arResult['STYLE'] as $value){?>
                       <a href="/catalog/<?=$arResult['CURRENT_SECTION']?>/filter/style-is-<?=$value['CODE']?>/apply/"><?=$value['NAME'];?></a>
                     <?}?>
@@ -667,7 +665,13 @@ $arViewedData = array(
                     <?endif;?>
 
                 </div>
-                   
+
+                <input id="hiddenId" value="<?=$arResult["ID"]?>" hidden> 
+                <div class="totalCount">
+                    <div>
+                        
+                    </div>
+                </div>
                 <div class="discount_block">
                     <a href="/discount.php" class="btn-get_discount btn-lg btn transition_bg btn-default white">Получить скидку
                         <img height="16" width="16" src="<?=SITE_TEMPLATE_PATH?>/images/perIcon.png"></a>
